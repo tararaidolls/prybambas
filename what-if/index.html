@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#0a0a0a">
+    <meta name="description" content="Prybambas: The Butterfly Effect Series">
+    <title>PRYBAMBAS | The Butterfly Effect</title>
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="manifest.json">
+    
+    <!-- Icons -->
+    <link rel="apple-touch-icon" href="icon-192.png">
+    
+    <style>
+        :root {
+            --bg-color: #0a0a0a;
+            --surface: #1a1a1a;
+            --neon-blue: #00f3ff;
+            --neon-pink: #ff00ff;
+            --text: #e0e0e0;
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Courier New', Courier, monospace;
+            -webkit-tap-highlight-color: transparent;
+        }
+        
+        body {
+            background-color: var(--bg-color);
+            color: var(--text);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(0, 243, 255, 0.05), transparent 25%),
+                radial-gradient(circle at 85% 30%, rgba(255, 0, 255, 0.05), transparent 25%);
+        }
+        
+        header {
+            width: 100%;
+            padding: 20px;
+            text-align: center;
+            border-bottom: 1px solid rgba(0, 243, 255, 0.2);
+        }
+        
+        h1 {
+            font-size: 2rem;
+            letter-spacing: 4px;
+            color: var(--neon-blue);
+            text-shadow: 0 0 10px rgba(0, 243, 255, 0.5);
+            animation: pulse 2s infinite;
+        }
+        
+        .subtitle {
+            font-size: 0.8rem;
+            color: var(--neon-pink);
+            letter-spacing: 2px;
+            margin-top: 5px;
+        }
+        
+        main {
+            flex: 1;
+            width: 100%;
+            max-width: 600px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .card {
+            background: var(--surface);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .chain-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            position: relative;
+        }
+        
+        .node {
+            background: rgba(0,0,0,0.5);
+            border: 1px solid var(--neon-blue);
+            padding: 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .node.hidden {
+            border-color: #333;
+            color: transparent;
+            text-shadow: 0 0 10px rgba(255,255,255,0.2);
+        }
+        
+        .node.revealed {
+            animation: glitch 0.3s forwards;
+            color: var(--text);
+            text-shadow: none;
+            box-shadow: 0 0 10px rgba(0, 243, 255, 0.2) inset;
+        }
+        
+        .connector {
+            position: absolute;
+            width: 2px;
+            background: #333;
+            left: 20px;
+            top: 30px;
+            bottom: 30px;
+            z-index: 1;
+        }
+        
+        .btn {
+            background: transparent;
+            border: 1px solid var(--neon-pink);
+            color: var(--neon-pink);
+            padding: 15px 20px;
+            font-size: 1rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+            margin-top: 20px;
+        }
+        
+        .btn:active {
+            background: rgba(255, 0, 255, 0.2);
+            box-shadow: 0 0 15px rgba(255, 0, 255, 0.4);
+        }
+        
+        @keyframes pulse {
+            0%, 100% { text-shadow: 0 0 10px rgba(0, 243, 255, 0.5); }
+            50% { text-shadow: 0 0 20px rgba(0, 243, 255, 0.8), 0 0 30px rgba(0, 243, 255, 0.4); }
+        }
+        
+        @keyframes glitch {
+            0% { transform: translate(0) }
+            20% { transform: translate(-2px, 2px) }
+            40% { transform: translate(-2px, -2px) }
+            60% { transform: translate(2px, 2px) }
+            80% { transform: translate(2px, -2px) }
+            100% { transform: translate(0) }
+        }
+        
+        .level-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            border-bottom: 1px dashed #333;
+            padding-bottom: 10px;
+        }
+        
+        .badge {
+            background: rgba(255, 0, 255, 0.1);
+            color: var(--neon-pink);
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            border: 1px solid rgba(255, 0, 255, 0.3);
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>PRYBAMBAS</h1>
+        <div class="subtitle">THE BUTTERFLY EFFECT</div>
+    </header>
+    
+    <main id="app">
+        <!-- Content injected by JS -->
+    </main>
+
+    <script>
+        const chains = [
+            {
+                id: 1,
+                type: "Historical What If",
+                title: "The Roman Steam Engine",
+                nodes: [
+                    "Hero of Alexandria patents the aeolipile (steam engine) in 1st Century AD.",
+                    "Romans use it to mechanize aqueduct water pumps instead of slave labor.",
+                    "Mechanization spreads to mining and agriculture, accelerating metallurgy.",
+                    "The Industrial Revolution happens 1,600 years early.",
+                    "The Roman Empire lands on the Moon in 400 AD."
+                ]
+            },
+            {
+                id: 2,
+                type: "Science What If",
+                title: "The Caffeine Bug",
+                nodes: [
+                    "Coffee plants fail to evolve caffeine as a natural insecticide.",
+                    "Early humans never discover the stimulating effects of the bean.",
+                    "The Enlightenment era lacks coffeehouses; intellectual discourse slows down.",
+                    "Modern software developers sleep 8 hours a night.",
+                    "The internet is never invented."
+                ]
+            }
+        ];
+        
+        let currentChain = 0;
+        let revealedNodes = 1; // Start with first node revealed
+        
+        const app = document.getElementById('app');
+        
+        function renderChain() {
+            const chain = chains[currentChain];
+            
+            let html = `
+                <div class="card">
+                    <div class="level-header">
+                        <span style="color: #fff">CASE #${chain.id}: ${chain.title}</span>
+                        <span class="badge">${chain.type}</span>
+                    </div>
+                    
+                    <div class="chain-container">
+                        <div class="connector"></div>
+            `;
+            
+            chain.nodes.forEach((text, index) => {
+                const isRevealed = index < revealedNodes;
+                const isLast = index === chain.nodes.length - 1;
+                const statusClass = isRevealed ? 'revealed' : 'hidden';
+                
+                // Show final node content if it's the target they are trying to reach (for "Reverse Engineering" style play)
+                // Let's hide the middle ones, but show the start and the bizarre end.
+                let displayText = text;
+                if (!isRevealed && index !== chain.nodes.length - 1) {
+                    displayText = "DATA CORRUPTED // TAP TO DECRYPT";
+                }
+                
+                html += `
+                    <div class="node ${statusClass}" onclick="revealNext(${index})">
+                        ${index === 0 ? '🦋 ' : ''}${isLast && !isRevealed ? '💥 END: ' : ''}${displayText}
+                    </div>
+                `;
+            });
+            
+            html += `
+                    </div>
+                    ${revealedNodes === chain.nodes.length ? '<button class="btn" style="width: 100%" onclick="nextChain()">Load Next Case</button>' : ''}
+                </div>
+            `;
+            
+            app.innerHTML = html;
+        }
+        
+        window.revealNext = function(index) {
+            const chain = chains[currentChain];
+            // Only allow revealing the next sequential node
+            if (index === revealedNodes && index < chain.nodes.length) {
+                revealedNodes++;
+                renderChain();
+                
+                // Haptic feedback if available
+                if (navigator.vibrate) navigator.vibrate(50);
+            }
+        };
+        
+        window.nextChain = function() {
+            currentChain = (currentChain + 1) % chains.length;
+            revealedNodes = 1;
+            renderChain();
+        };
+        
+        // Register Service Worker
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('sw.js')
+                .then(reg => console.log('SW registered'))
+                .catch(err => console.log('SW error', err));
+        }
+        
+        // Init
+        renderChain();
+    </script>
+</body>
+</html>

@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#0a0a0a">
+    <title>PRYBAMBAS | Educational Hub</title>
+    <style>
+        :root {
+            --bg-color: #050510;
+            --surface: #111122;
+            --surface-hover: #1a1a3a;
+            --text-main: #ffffff;
+            --text-muted: #8888aa;
+            
+            /* Space Colors */
+            --neon-blue: #00f3ff;
+            --neon-purple: #b537f2;
+            --neon-pink: #ff007f;
+            --neon-green: #39ff14;
+            --neon-orange: #ff5e00;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+            /* Deep space grid background */
+            background-image: 
+                linear-gradient(rgba(0, 243, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 243, 255, 0.03) 1px, transparent 1px);
+            background-size: 30px 30px;
+        }
+
+        /* Top Navigation */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 5%;
+            background: rgba(5, 5, 16, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0, 243, 255, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 900;
+            letter-spacing: 3px;
+            color: var(--text-main);
+            text-transform: uppercase;
+            text-shadow: 0 0 10px rgba(0, 243, 255, 0.5);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .logo-icon {
+            color: var(--neon-purple);
+        }
+
+        .lang-selector {
+            background: transparent;
+            color: var(--text-main);
+            border: 1px solid rgba(255,255,255,0.2);
+            padding: 8px 12px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            outline: none;
+            background-color: var(--surface);
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 40px 20px 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+            background: linear-gradient(90deg, var(--neon-blue), var(--neon-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            line-height: 1.5;
+        }
+
+        /* Spaces Grid */
+        .spaces-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            padding: 30px 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+            flex: 1;
+            width: 100%;
+        }
+
+        /* Space Card */
+        .space-card {
+            background: var(--surface);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            position: relative;
+            overflow: hidden;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .space-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--card-color);
+            opacity: 0.8;
+            box-shadow: 0 0 15px var(--card-color);
+        }
+
+        .space-card:hover {
+            transform: translateY(-5px);
+            background: var(--surface-hover);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .card-icon {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            filter: drop-shadow(0 0 10px rgba(255,255,255,0.2));
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .card-desc {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.4;
+            flex: 1;
+        }
+
+        .card-badge {
+            align-self: flex-start;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            background: rgba(255,255,255,0.05);
+            color: var(--card-color);
+            border: 1px solid var(--card-color);
+        }
+
+        /* Specific Card Colors */
+        .card-whatif { --card-color: var(--neon-purple); }
+        .card-inventor { --card-color: var(--neon-orange); }
+        .card-aicoach { --card-color: var(--neon-blue); }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            margin-top: 40px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2rem; }
+            .spaces-container {
+                grid-template-columns: 1fr;
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">
+            <span class="logo-icon">🧬</span> PRYBAMBAS
+        </div>
+        <select class="lang-selector" id="lang-switch">
+            <option value="en">🇺🇸 EN</option>
+            <option value="uk">🇺🇦 UK</option>
+            <option value="es">🇪🇸 ES</option>
+            <option value="de">🇩🇪 DE</option>
+        </select>
+    </nav>
+
+    <div class="hero">
+        <h1 data-i18n="hero_title">Welcome to the Lab</h1>
+        <p data-i18n="hero_desc">Explore interactive logic puzzles, engineering challenges, and smart language coaching. Choose your space to begin.</p>
+    </div>
+
+    <div class="spaces-container">
+        
+        <!-- The Butterfly Effect (What If) -->
+        <a href="./what-if/index.html" class="space-card card-whatif">
+            <div class="card-badge" data-i18n="badge_logic">Logic Puzzles</div>
+            <div class="card-icon">🦋</div>
+            <div class="card-title" data-i18n="title_whatif">The Butterfly Effect</div>
+            <div class="card-desc" data-i18n="desc_whatif">Connect the dots between seemingly unrelated events. Discover how a tiny change alters history, science, and the future.</div>
+        </a>
+
+        <!-- Inventor Lab (TRIZ) -->
+        <a href="#inventor-lab" class="space-card card-inventor">
+            <div class="card-badge" data-i18n="badge_engineering">Engineering</div>
+            <div class="card-icon">⚙️</div>
+            <div class="card-title" data-i18n="title_inventor">Inventor Lab</div>
+            <div class="card-desc" data-i18n="desc_inventor">Think like an inventor. Solve impossible contradictions using the 40 principles of TRIZ. Build machines with logic.</div>
+        </a>
+
+        <!-- AI Coach (One Verb a Day) -->
+        <a href="#ai-coach" class="space-card card-aicoach">
+            <div class="card-badge" data-i18n="badge_language">Language</div>
+            <div class="card-icon">🤖</div>
+            <div class="card-title" data-i18n="title_aicoach">AI Language Coach</div>
+            <div class="card-desc" data-i18n="desc_aicoach">Upload your handwritten sentences. Get instant grammar corrections, explanations, and pronunciation practice.</div>
+        </a>
+
+    </div>
+
+    <footer>
+        &copy; 2026 Prybambas Labs. Educational content for curious minds.
+    </footer>
+
+    <script>
+        // Simple i18n Dictionary
+        const dict = {
+            en: {
+                hero_title: "Welcome to the Lab",
+                hero_desc: "Explore interactive logic puzzles, engineering challenges, and smart language coaching. Choose your space to begin.",
+                badge_logic: "Logic Puzzles",
+                title_whatif: "The Butterfly Effect",
+                desc_whatif: "Connect the dots between seemingly unrelated events. Discover how a tiny change alters history, science, and the future.",
+                badge_engineering: "Engineering",
+                title_inventor: "Inventor Lab",
+                desc_inventor: "Think like an inventor. Solve impossible contradictions using the 40 principles of TRIZ. Build machines with logic.",
+                badge_language: "Language",
+                title_aicoach: "AI Language Coach",
+                desc_aicoach: "Upload your handwritten sentences. Get instant grammar corrections, explanations, and pronunciation practice."
+            },
+            uk: {
+                hero_title: "Ласкаво просимо в Лабораторію",
+                hero_desc: "Досліджуйте інтерактивні логічні головоломки, інженерні задачі та розумного мовного тренера. Оберіть свій простір.",
+                badge_logic: "Логіка",
+                title_whatif: "Ефект Метелика",
+                desc_whatif: "З'єднайте неочевидні події. Дізнайтеся, як крихітна зміна може змінити історію, науку та майбутнє.",
+                badge_engineering: "Інженерія",
+                title_inventor: "Лабораторія Винахідника",
+                desc_inventor: "Мисли як винахідник. Вирішуй неможливі протиріччя за допомогою принципів ТВВЗ. Будуй механізми логікою.",
+                badge_language: "Мови",
+                title_aicoach: "AI Мовний Тренер",
+                desc_aicoach: "Завантажуй свої написані речення. Отримуй миттєве виправлення граматики та пояснення помилок."
+            }
+        };
+
+        const langSwitch = document.getElementById('lang-switch');
+        
+        // Load saved language or default to EN
+        const savedLang = localStorage.getItem('prybambas_lang') || 'en';
+        langSwitch.value = savedLang;
+        updateLanguage(savedLang);
+
+        langSwitch.addEventListener('change', (e) => {
+            const lang = e.target.value;
+            localStorage.setItem('prybambas_lang', lang);
+            updateLanguage(lang);
+        });
+
+        function updateLanguage(lang) {
+            // Fallback to EN if translation is missing for the selected language
+            const translations = dict[lang] || dict['en'];
+            
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[key]) {
+                    el.textContent = translations[key];
+                }
+            });
+        }
+    </script>
+</body>
+</html>
