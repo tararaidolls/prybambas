@@ -12,6 +12,8 @@
             --bg: #0b1224;
         }
 
+        * { box-sizing: border-box; }
+
         body, html {
             margin: 0; padding: 0; min-height: 100vh;
             background-color: var(--bg); color: white;
@@ -116,7 +118,21 @@
         }
         .generate-btn:hover { background: var(--magenta); color: white; box-shadow: 0 0 25px rgba(217,44,255,0.6); }
 
+
+        /* MOBILE FIXES */
+        @media (max-width: 600px) {
+            #app-container { width: 95%; }
+            .card { padding: 15px; width: 100%; max-width: 100vw; overflow-x: hidden; }
+            .tool-selector { padding-bottom: 10px; width: 100%; overflow-x: auto; }
+            h2.screen-title { font-size: 1.2rem; }
+            .mode-btn { padding: 15px; font-size: 1rem; }
+            .mode-btn .icon { font-size: 2rem; }
+            .mission-text { font-size: 1.2rem; }
+            .tool-display h3 { font-size: 1.2rem; }
+            .tool-display p, .tool-display .example { font-size: 0.95rem; }
+        }
     </style>
+
 </head>
 <body>
 
@@ -194,14 +210,31 @@
     </div>
 
     <script>
+        
         const db = {
             en: {
                 menu: { m1: "Tools & Examples", m2: "Observation Calendar", m3: "Challenges per Tool", m4: "Mission Possible", back: "← Back to Menu", calHint: "Select a day to reveal your observation challenge.", genBtn: "Generate Mission" },
                 tools: [
-                    { name: "Segmentation", desc: "Divide an object into independent parts to make it flexible or easy to replace.", ex: "Instead of one giant window blind, vertical blinds use many thin strips." },
-                    { name: "Inversion", desc: "Do it exactly the opposite way. Turn the object upside down or reverse the action.", ex: "Instead of running outside (you move, ground stays), use a treadmill (ground moves, you stay)." },
-                    { name: "Copying", desc: "Use a cheap or simple copy instead of a fragile or expensive original.", ex: "A scarecrow in a field copies a human to scare away birds." },
-                    { name: "Nesting", desc: "Place one object inside another, which is inside another.", ex: "A measuring cup set where smaller cups fit inside larger ones to save space." }
+                    { name: "1. Segmentation", desc: "Divide an object into independent parts to make it flexible or easy to replace.", ex: "Instead of one giant window blind, vertical blinds use many thin strips." },
+                    { name: "2. Inversion", desc: "Do it exactly the opposite way. Turn the object upside down or reverse the action.", ex: "Instead of running outside (you move, ground stays), use a treadmill (ground moves, you stay)." },
+                    { name: "3. Copying", desc: "Use a cheap or simple copy instead of a fragile or expensive original.", ex: "A scarecrow in a field copies a human to scare away birds." },
+                    { name: "4. Nesting", desc: "Place one object inside another, which is inside another.", ex: "A measuring cup set where smaller cups fit inside larger ones to save space." },
+                    { name: "5. Asymmetry", desc: "Change the shape of an object from symmetrical to asymmetrical.", ex: "Scissors have one larger loop for multiple fingers and one smaller loop for the thumb." },
+                    { name: "6. Merging", desc: "Bring closer together (or merge) identical or similar objects.", ex: "A Swiss Army Knife combines many tools into one handle." },
+                    { name: "7. Spheroidality", desc: "Replace linear parts with curved parts, flat surfaces with spherical ones.", ex: "Adding wheels to a heavy suitcase instead of carrying it." },
+                    { name: "8. Prior Action", desc: "Perform the required change of an object in advance.", ex: "Tea bags or pre-sliced bread in the supermarket." },
+                    { name: "9. Pneumatics", desc: "Use gas or liquid parts of an object instead of solid parts.", ex: "Inflatable mattresses or airbags in a car." },
+                    { name: "10. Feedback", desc: "Introduce feedback (referring back) to improve a process or action.", ex: "A whistling tea kettle tells you when the water is boiling." },
+                    { name: "11. Color Changes", desc: "Change the color of an object or its environment.", ex: "A glass lid on a pot to see inside without opening it." },
+                    { name: "12. Dynamization", desc: "Make an object or its environment automatically adjust for optimal performance.", ex: "A folding chair or a flexible drinking straw." },
+                    { name: "13. Extraction", desc: "Extract the 'disturbing' part or property from an object.", ex: "An air conditioner places the noisy motor outside the house." },
+                    { name: "14. Self-Service", desc: "Make an object serve itself by performing auxiliary helpful functions.", ex: "A robot vacuum cleaner that returns to its base to charge." },
+                    { name: "15. Local Quality", desc: "Change an object's structure from uniform to non-uniform.", ex: "A shovel with a rubber grip only where your hands touch it." },
+                    { name: "16. Cushion in Advance", desc: "Prepare emergency means beforehand to compensate for low reliability.", ex: "A phone case or a safety net under a circus acrobat." },
+                    { name: "17. Another Dimension", desc: "Move an object into two- or three-dimensional space.", ex: "A bunk bed or a multi-level parking garage." },
+                    { name: "18. Porous Materials", desc: "Make an object porous or add porous elements (inserts, coatings).", ex: "Styrofoam is light but bulky; a kitchen sponge absorbs water." },
+                    { name: "19. Equipotentiality", desc: "Limit position changes (e.g. avoid lifting or lowering).", ex: "Using ramps instead of stairs for wheelchairs." },
+                    { name: "20. Discarding", desc: "Make portions of an object that have fulfilled their functions go away.", ex: "Space rocket boosters falling off in space after using their fuel." }
                 ],
                 calendar: [
                     "Find 3 things in your house that use 'Nesting' (things inside things).",
@@ -210,13 +243,22 @@
                     "Observe a bird or insect for 3 minutes. How does it solve the problem of getting food?",
                     "Find something that is asymmetrical (not the same on both sides). Why is it designed that way?",
                     "Look at your shoes. Find 3 different materials used and guess why they were chosen.",
-                    "Find something in the kitchen that uses 'Inversion' (does the opposite of what you expect)."
+                    "Find something in the kitchen that uses 'Inversion' (does the opposite of what you expect).",
+                    "Find an object that uses 'Color Changes' to give a signal.",
+                    "Where do you see 'Merging' (two tools in one) in the bathroom?",
+                    "Find a 'Self-Service' object that turns itself off automatically."
                 ],
                 toolChallenges: [
                     { name: "Segmentation", task: "Take an empty cardboard box. How many different ways can you cut it to make a new useful object?" },
                     { name: "Inversion", task: "How do you water a plant without pouring water on top of the soil? Invent a bottom-up watering system." },
                     { name: "Copying", task: "You need to measure how tall your dog is, but the dog won't stand still. How do you use a 'copy' to measure it?" },
-                    { name: "Nesting", task: "Design a backpack for an astronaut where all tools fit inside each other perfectly." }
+                    { name: "Nesting", task: "Design a backpack for an astronaut where all tools fit inside each other perfectly." },
+                    { name: "Asymmetry", task: "Design a cup that is impossible to knock over. What shape is it?" },
+                    { name: "Merging", task: "Invent a toothbrush that also dispenses toothpaste. How does it work?" },
+                    { name: "Dynamization", task: "Design a table that grows taller as you grow up." },
+                    { name: "Extraction", task: "How can you eat a watermelon without getting your hands dirty?" },
+                    { name: "Pneumatics", task: "Invent a shoe that uses air to make you jump higher." },
+                    { name: "Discarding", task: "Design a wrapper for a candy that you can eat so there's no trash." }
                 ],
                 missions: [
                     "Move a glass of water from the table to the floor without using your hands or arms.",
@@ -226,12 +268,28 @@
                 ]
             },
             uk: {
-                menu: { m1: "Інструменти та Приклади", m2: "Календар Спостережень", m3: "Виклики для Інструментів", m4: "Місія Здійсненна", back: "← Назад до меню", calHint: "Обери день, щоб отримати завдання для спостереження.", genBtn: "Отримати місію" },
+                menu: { m1: "Інструменти та Приклади", m2: "Календар Спостережень", m3: "Виклики для Інструментів", m4: "Місія Здійсненна", back: "← Назад до меню", calHint: "Обери день, щоб отримати завдання.", genBtn: "Отримати місію" },
                 tools: [
-                    { name: "Дроблення", desc: "Розділи об'єкт на незалежні частини, щоб зробити його гнучким або легким для заміни.", ex: "Замість однієї суцільної штори використовують жалюзі з багатьох смужок." },
-                    { name: "Навпаки", desc: "Зроби все з точністю до навпаки. Переверни об'єкт або зміни дію на зворотну.", ex: "Замість того, щоб бігати по вулиці (ти рухаєшся, земля стоїть), використовують бігову доріжку (земля рухається, ти стоїш)." },
-                    { name: "Копіювання", desc: "Використай дешеву копію замість крихкого або дорогого оригіналу.", ex: "Опудало на полі копіює людину, щоб відлякувати птахів." },
-                    { name: "Матрьошка", desc: "Помісти один об'єкт всередину іншого, а той — ще в інший.", ex: "Набір мірних чашок, де менші чашки ховаються у більші для економії місця." }
+                    { name: "1. Дроблення", desc: "Розділи об'єкт на незалежні частини, щоб зробити його гнучким або легким для заміни.", ex: "Замість однієї суцільної штори використовують жалюзі з багатьох смужок." },
+                    { name: "2. Навпаки", desc: "Зроби все з точністю до навпаки. Переверни об'єкт або зміни дію на зворотну.", ex: "Замість того, щоб бігати по вулиці (ти рухаєшся, земля стоїть), використовують бігову доріжку (земля рухається, ти стоїш)." },
+                    { name: "3. Копіювання", desc: "Використай дешеву копію замість крихкого або дорогого оригіналу.", ex: "Опудало на полі копіює людину, щоб відлякувати птахів." },
+                    { name: "4. Матрьошка", desc: "Помісти один об'єкт всередину іншого, а той — ще в інший.", ex: "Набір мірних чашок, де менші чашки ховаються у більші для економії місця." },
+                    { name: "5. Асиметрія", desc: "Зроби симетричний об'єкт нерівним (одна сторона більша або іншої форми).", ex: "Ножиці (одне кільце більше для кількох пальців, інше менше для великого)." },
+                    { name: "6. Об'єднання", desc: "З'єднай дві різні речі в одну, щоб вони працювали разом і займали менше місця.", ex: "Швейцарський ніж (багато інструментів у ручці); олівець із гумкою." },
+                    { name: "7. Округлення", desc: "Заміни прямі кути на кола, ролики або кулі. Кругле краще котиться!", ex: "Коліщатка на важкій валізі замість ніжок." },
+                    { name: "8. Заздалегідь", desc: "Зроби частину роботи наперед, щоб у потрібний момент зекономити час.", ex: "Пакетик чаю; нарізаний хліб у магазині." },
+                    { name: "9. Повітря і Вода", desc: "Використовуй газ або рідину замість твердих частин.", ex: "Надувний матрац; подушки безпеки в автомобілі." },
+                    { name: "10. Зворотний зв'язок", desc: "Зроби так, щоб річ сама 'бачила', що відбувається, і реагувала на це.", ex: "Чайник зі свистком (повідомляє, коли вода кипить)." },
+                    { name: "11. Зміна кольору", desc: "Зміни колір об'єкта або зроби його прозорим.", ex: "Прозора кришка на каструлі, щоб бачити їжу." },
+                    { name: "12. Динамічність", desc: "Зроби жорстку річ гнучкою, щоб вона могла складатися або змінювати форму.", ex: "Складаний стілець; гнучка трубочка для соку." },
+                    { name: "13. Винесення", desc: "Відірви від об'єкта тільки ту частину, яка шкодить або заважає.", ex: "Кондиціонер (шумний мотор винесли на вулицю)." },
+                    { name: "14. Самообслуговування", desc: "Примусь систему саму себе обслуговувати.", ex: "Робот-пилосос, який сам їде на зарядку." },
+                    { name: "15. Місцева якість", desc: "Зміни умови або матеріал тільки в ОДНОМУ конкретному місці.", ex: "Лопата з гумовою накладкою лише на ручці, щоб не мерзли руки." },
+                    { name: "16. Захист наперед", desc: "Підготуй м'яке місце або захист заздалегідь.", ex: "Чохол для телефона; сітка під гімнастом у цирку." },
+                    { name: "17. Інший вимір", desc: "Якщо об'єкт не влазить по горизонталі (у 2D), підніми його вгору (у 3D).", ex: "Двоповерхове ліжко; багаторівнева парковка." },
+                    { name: "18. Пористість", desc: "Зроби предмет пористим (з дірочками), щоб вбирати рідину чи зробити легшим.", ex: "Пінопласт (легкий, але об'ємний); губка для посуду." },
+                    { name: "19. Рівновага", desc: "Зроби так, щоб не треба було піднімати важкі речі.", ex: "Пандуси замість сходинок для візків." },
+                    { name: "20. Відкидання", desc: "Частина об'єкта має відпасти після того, як виконала роботу.", ex: "Ступені космічної ракети, які відпадають у космосі." }
                 ],
                 calendar: [
                     "Знайди 3 речі вдома, які використовують принцип 'Матрьошки' (речі всередині речей).",
@@ -240,13 +298,22 @@
                     "Спостерігай за птахом або комахою 3 хвилини. Як вони вирішують проблему пошуку їжі?",
                     "Знайди щось асиметричне (неоднакове з обох боків). Чому воно так створено?",
                     "Подивись на своє взуття. Знайди 3 різні матеріали і вгадай, чому обрали саме їх.",
-                    "Знайди на кухні річ, яка використовує принцип 'Навпаки'."
+                    "Знайди на кухні річ, яка використовує принцип 'Навпаки'.",
+                    "Знайди предмет, який використовує 'Зміну кольору', щоб подати сигнал.",
+                    "Де у ванній кімнаті є 'Об'єднання' (два інструменти в одному)?",
+                    "Знайди річ 'Самообслуговування', яка сама вимикається."
                 ],
                 toolChallenges: [
                     { name: "Дроблення", task: "Візьми порожню картонну коробку. Скількома способами ти можеш розрізати її, щоб зробити новий корисний предмет?" },
                     { name: "Навпаки", task: "Як полити рослину, не наливаючи воду зверху на землю? Винайди систему поливу 'знизу-вверх'." },
                     { name: "Копіювання", task: "Тобі треба виміряти зріст собаки, але собака не стоїть на місці. Як використати 'копію' для вимірювання?" },
-                    { name: "Матрьошка", task: "Спроектуй рюкзак для астронавта, де всі інструменти ідеально ховаються один в один." }
+                    { name: "Матрьошка", task: "Спроектуй рюкзак для астронавта, де всі інструменти ідеально ховаються один в один." },
+                    { name: "Асиметрія", task: "Спроектуй чашку, яку неможливо перекинути. Яку форму вона має?" },
+                    { name: "Об'єднання", task: "Винайди зубну щітку, яка сама видає пасту. Як вона працює?" },
+                    { name: "Динамічність", task: "Спроектуй стіл, який росте разом з тобою." },
+                    { name: "Винесення", task: "Як з'їсти кавун, не забруднивши руки?" },
+                    { name: "Повітря", task: "Винайди взуття, яке використовує повітря, щоб стрибати вище." },
+                    { name: "Відкидання", task: "Спроектуй обгортку для цукерки, яку можна з'їсти, щоб не лишалося сміття." }
                 ],
                 missions: [
                     "Перемісти склянку з водою зі столу на підлогу, не використовуючи руки.",
@@ -256,6 +323,7 @@
                 ]
             }
         };
+
 
         let currentLang = 'en';
 
