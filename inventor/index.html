@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>What If? | Prybambas</title>
+    <title>Inventor Lab | Prybambas</title>
     <style>
         :root {
             --magenta: #d92cff;
@@ -13,218 +13,108 @@
         }
 
         body, html {
-            margin: 0;
-            padding: 0;
-            min-height: 100vh;
-            background-color: var(--bg);
-            color: white;
+            margin: 0; padding: 0; min-height: 100vh;
+            background-color: var(--bg); color: white;
             font-family: 'Segoe UI', Roboto, Helvetica, sans-serif;
-            overflow-x: hidden;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+            overflow-x: hidden; display: flex; flex-direction: column; align-items: center;
         }
 
         .fixed-bg {
-            position: fixed;
-            top: 0; left: 0;
-            width: 100vw; height: 100vh;
-            background-image: url('../bg-image.jpg');
-            background-size: cover;
-            background-position: center center;
-            z-index: -1;
+            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+            background-image: url('../bg-image.jpg'); 
+            background-size: cover; background-position: center center; z-index: -1;
         }
 
         header {
-            width: 90%; max-width: 800px;
-            display: flex; justify-content: space-between; align-items: center;
+            width: 90%; max-width: 800px; display: flex; justify-content: space-between; align-items: center;
             margin-top: 20px; z-index: 10;
         }
 
         .back-btn {
-            background: rgba(10,15,30,0.7);
-            backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
-            border: 1px solid rgba(255,255,255,0.2);
-            color: white; padding: 10px 20px; border-radius: 50px;
-            text-decoration: none; font-weight: bold;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3); transition: 0.3s;
+            background: rgba(10,15,30,0.7); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(255,255,255,0.2); color: white; padding: 10px 20px; border-radius: 50px;
+            text-decoration: none; font-weight: bold; box-shadow: 0 4px 15px rgba(0,0,0,0.3); transition: 0.3s;
         }
         .back-btn:hover { background: rgba(255,255,255,0.1); }
 
         h1 {
-            letter-spacing: 2px;
-            text-shadow: 0 0 15px var(--magenta);
-            text-align: center; margin: 40px 0;
+            letter-spacing: 2px; text-shadow: 0 0 15px var(--green); text-align: center; margin: 30px 0; color: white;
         }
 
         #app-container {
-            width: 90%; max-width: 600px;
-            display: flex; flex-direction: column; align-items: center;
+            width: 90%; max-width: 700px; display: flex; flex-direction: column; align-items: center;
             z-index: 10; padding-bottom: 60px;
         }
 
         /* ========== MENU ========== */
-        #menu-screen { display: flex; flex-direction: column; gap: 25px; width: 100%; }
+        #menu-screen { display: flex; flex-direction: column; gap: 20px; width: 100%; }
 
         .mode-btn {
-            position: relative;
-            background: rgba(10,15,30,0.6);
-            backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
-            border-radius: 20px; padding: 25px;
-            color: white; font-size: 1.2rem; font-weight: bold;
-            text-transform: uppercase; letter-spacing: 1px;
-            cursor: pointer; display: flex; align-items: center;
-            justify-content: center; gap: 15px; transition: 0.3s;
+            background: rgba(10,15,30,0.6); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+            border: 2px dashed var(--green); border-radius: 20px; padding: 20px;
+            color: white; font-size: 1.2rem; font-weight: bold; text-transform: uppercase; letter-spacing: 1px;
+            cursor: pointer; display: flex; align-items: center; justify-content: flex-start; gap: 20px;
+            transition: 0.3s; box-shadow: 0 0 15px rgba(84,255,58,0.2);
         }
-        .mode-q  { border: 2px dashed var(--magenta); box-shadow: 0 0 15px rgba(217,44,255,0.3); }
-        .mode-lc { border: 2px dashed var(--green);   box-shadow: 0 0 15px rgba(84,255,58,0.3);  }
-        .mode-d  { border: 2px dashed var(--cyan);    box-shadow: 0 0 15px rgba(0,243,255,0.3);  }
-        .mode-btn:hover { transform: scale(1.02); }
-        .mode-btn .icon { font-size: 2rem; }
+        .mode-btn:hover { transform: scale(1.02); box-shadow: 0 0 25px rgba(84,255,58,0.4); }
+        .mode-btn .icon { font-size: 2.5rem; filter: drop-shadow(0 0 10px var(--green)); }
+        
+        .mode-btn.cyan-theme { border-color: var(--cyan); box-shadow: 0 0 15px rgba(0,243,255,0.2); }
+        .mode-btn.cyan-theme .icon { filter: drop-shadow(0 0 10px var(--cyan)); }
+        
+        .mode-btn.magenta-theme { border-color: var(--magenta); box-shadow: 0 0 15px rgba(217,44,255,0.2); }
+        .mode-btn.magenta-theme .icon { filter: drop-shadow(0 0 10px var(--magenta)); }
 
-        /* ========== TIMER OPTIONAL TOGGLE ========== */
-        .timer-toggle-btn {
-            background: rgba(10,15,30,0.8);
-            border: 2px solid rgba(255,255,255,0.3);
-            color: white; padding: 10px 20px; border-radius: 50px;
-            font-size: 0.9rem; font-weight: bold; cursor: pointer;
-            margin-bottom: 20px; transition: 0.3s;
-        }
-        .timer-toggle-btn:hover { background: rgba(255,255,255,0.1); }
-        .timer-toggle-btn.active { border-color: var(--magenta); box-shadow: 0 0 10px rgba(217,44,255,0.4); }
-
-        /* ========== TIMER ========== */
-        .timer-container {
-            display: none; /* Сховано за замовчуванням */
-            align-items: center; justify-content: center;
-            gap: 12px; margin-bottom: 20px; flex-wrap: wrap;
-            animation: fadeIn 0.3s ease-in-out;
+        /* ========== SHARED CONTENT SCREEN ========== */
+        .content-screen { display: none; width: 100%; flex-direction: column; align-items: center; }
+        
+        .card {
+            background: rgba(10,15,30,0.85); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(84,255,58,0.3); border-radius: 20px; padding: 30px; width: 100%;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5); margin-bottom: 25px; box-sizing: border-box;
         }
 
-        .timer-ring {
-            position: relative;
-            width: 100px; height: 100px;
-        }
-
-        .timer-ring svg {
-            width: 100%; height: 100%;
-            transform: rotate(-90deg);
-        }
-
-        .timer-ring .ring-bg {
-            fill: none; stroke: rgba(255,255,255,0.1); stroke-width: 6;
-        }
-
-        .timer-ring .ring-progress {
-            fill: none; stroke: var(--magenta); stroke-width: 6;
-            stroke-linecap: round;
-            stroke-dasharray: 283; /* 2 * PI * 45 */
-            stroke-dashoffset: 0;
-            transition: stroke-dashoffset 1s linear, stroke 0.3s;
-        }
-
-        .timer-ring .ring-progress.warning { stroke: #ff6b35; }
-        .timer-ring .ring-progress.danger  { stroke: #ff2244; }
-
-        .timer-text {
-            position: absolute;
-            top: 50%; left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 1.8rem; font-weight: 800;
-            font-variant-numeric: tabular-nums;
-        }
-
-        .timer-presets {
-            display: flex; flex-direction: column; gap: 8px;
-        }
-
-        .preset-btn {
-            background: rgba(255,255,255,0.08);
-            border: 1px solid rgba(255,255,255,0.2);
-            color: white; padding: 8px 16px; border-radius: 12px;
-            font-size: 0.9rem; font-weight: bold; cursor: pointer;
-            transition: 0.2s; white-space: nowrap;
-        }
-        .preset-btn:hover { background: rgba(255,255,255,0.15); }
-        .preset-btn.active { border-color: var(--magenta); box-shadow: 0 0 10px rgba(217,44,255,0.4); }
-
-        .timer-controls {
-            display: flex; gap: 10px; margin-top: 10px;
-        }
-
-        .timer-ctrl-btn {
-            background: rgba(10,15,30,0.8);
-            border: 2px solid rgba(255,255,255,0.3);
-            color: white; padding: 10px 20px; border-radius: 50px;
-            font-size: 1rem; font-weight: bold; cursor: pointer;
-            transition: 0.3s;
-        }
-        .timer-ctrl-btn:hover { background: rgba(255,255,255,0.1); }
-
-        /* ========== GAME ========== */
-        #game-screen {
-            display: none; width: 100%;
-            flex-direction: column; align-items: center;
-        }
-
-        .game-card {
-            background: rgba(10,15,30,0.8);
-            backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
-            border: 1px solid rgba(255,255,255,0.1); border-radius: 20px;
-            padding: 30px; width: 100%; text-align: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            margin-bottom: 25px; min-height: 200px;
-            display: flex; flex-direction: column; justify-content: center;
-        }
-
-        .game-text { font-size: 1.4rem; line-height: 1.5; margin-bottom: 20px; }
-
-        .chain-step {
-            margin: 10px 0; padding: 15px;
-            background: rgba(255,255,255,0.05);
-            border-left: 4px solid var(--green);
-            border-radius: 0 10px 10px 0;
-            text-align: left; font-size: 1.1rem;
-            animation: fadeIn 0.5s ease-in-out;
-        }
-
-        .deduction-clue { color: var(--cyan); font-style: italic; margin-top: 15px; }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to   { opacity: 1; transform: translateY(0); }
-        }
-
-        .action-btn {
-            background: rgba(255,255,255,0.1);
-            border: 2px solid white; color: white;
-            padding: 15px 30px; border-radius: 50px;
-            font-size: 1.1rem; font-weight: bold;
-            cursor: pointer; transition: 0.3s; text-transform: uppercase;
-        }
-        .action-btn:hover { background: white; color: var(--bg); }
-
-        .controls { display: flex; gap: 15px; width: 100%; justify-content: center; flex-wrap: wrap; }
+        h2.screen-title { color: var(--green); margin-top: 0; text-transform: uppercase; letter-spacing: 1px; text-align: center; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 15px; }
 
         .back-to-menu {
-            margin-top: 30px; color: rgba(255,255,255,0.5);
-            text-decoration: underline; cursor: pointer;
+            margin-top: 20px; color: rgba(255,255,255,0.5); text-decoration: underline; cursor: pointer; font-size: 1.1rem;
         }
 
-        /* Shake animation when timer ends */
-        @keyframes shake {
-            0%, 100% { transform: translateX(0); }
-            10%, 30%, 50%, 70%, 90% { transform: translateX(-4px); }
-            20%, 40%, 60%, 80% { transform: translateX(4px); }
+        /* ========== TOOLS EXPLAINER ========== */
+        .tool-selector { display: flex; gap: 10px; overflow-x: auto; padding-bottom: 15px; margin-bottom: 20px; width: 100%; }
+        .tool-tab {
+            background: rgba(255,255,255,0.1); border: 1px solid transparent; color: white; padding: 10px 20px;
+            border-radius: 50px; cursor: pointer; white-space: nowrap; font-weight: bold; transition: 0.3s;
         }
-        .timer-shake { animation: shake 0.6s; }
+        .tool-tab.active { background: rgba(84,255,58,0.2); border-color: var(--green); color: var(--green); box-shadow: 0 0 10px rgba(84,255,58,0.3); }
+        
+        .tool-display h3 { color: white; font-size: 1.5rem; margin-top: 0; }
+        .tool-display .example { background: rgba(0,243,255,0.1); border-left: 4px solid var(--cyan); padding: 15px; margin-top: 20px; border-radius: 0 10px 10px 0; }
 
-        /* Pulse glow when timer is running */
-        @keyframes pulseGlow {
-            0%, 100% { filter: drop-shadow(0 0 4px currentColor); }
-            50% { filter: drop-shadow(0 0 12px currentColor); }
+        /* ========== OBSERVATION CALENDAR ========== */
+        .calendar-grid {
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(60px, 1fr)); gap: 10px; width: 100%; margin-bottom: 25px;
         }
-        .timer-ring.running svg { animation: pulseGlow 2s infinite; }
+        .day-node {
+            background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.2); border-radius: 12px;
+            aspect-ratio: 1; display: flex; align-items: center; justify-content: center;
+            font-size: 1.2rem; font-weight: bold; cursor: pointer; transition: 0.3s;
+        }
+        .day-node:hover { background: rgba(0,243,255,0.2); transform: scale(1.1); }
+        .day-node.active { background: var(--cyan); color: var(--bg); box-shadow: 0 0 15px var(--cyan); border-color: var(--cyan); }
+        
+        .challenge-display {
+            background: rgba(255,255,255,0.05); padding: 20px; border-radius: 15px; text-align: center; border: 1px dashed var(--cyan);
+        }
+
+        /* ========== MISSIONS ========== */
+        .mission-text { font-size: 1.5rem; font-weight: bold; text-align: center; margin: 30px 0; color: var(--magenta); line-height: 1.4; }
+        .generate-btn {
+            background: transparent; border: 2px solid var(--magenta); color: white; padding: 15px 30px;
+            border-radius: 50px; font-size: 1.2rem; font-weight: bold; cursor: pointer; transition: 0.3s; text-transform: uppercase;
+            box-shadow: 0 0 15px rgba(217,44,255,0.3); margin: 0 auto; display: block;
+        }
+        .generate-btn:hover { background: var(--magenta); color: white; box-shadow: 0 0 25px rgba(217,44,255,0.6); }
 
     </style>
 </head>
@@ -237,346 +127,246 @@
         <div id="lang-display" style="font-weight:bold; opacity:0.7;">🇺🇸 EN</div>
     </header>
 
-    <h1>WHAT IF?</h1>
+    <h1>INVENTOR LAB</h1>
 
     <div id="app-container">
 
         <!-- MENU -->
         <div id="menu-screen">
-            <button class="mode-btn mode-q" onclick="startGame('question')">
-                <span class="icon">❓</span> <span id="lbl-q">Single Question</span>
-            </button>
-            <button class="mode-btn mode-lc" onclick="startGame('chain')">
-                <span class="icon">🔗</span> <span id="lbl-lc">Logical Chain</span>
-            </button>
-            <button class="mode-btn mode-d" onclick="startGame('deduction')">
-                <span class="icon">🕵️</span> <span id="lbl-d">Deduction</span>
-            </button>
+            <div class="mode-btn" onclick="openScreen('tools')">
+                <div class="icon">🛠️</div> <span id="lbl-m1">Tools & Examples</span>
+            </div>
+            <div class="mode-btn cyan-theme" onclick="openScreen('calendar')">
+                <div class="icon">📅</div> <span id="lbl-m2">Observation Calendar</span>
+            </div>
+            <div class="mode-btn" onclick="openScreen('tool-challenges')">
+                <div class="icon">🎯</div> <span id="lbl-m3">Challenges per Tool</span>
+            </div>
+            <div class="mode-btn magenta-theme" onclick="openScreen('missions')">
+                <div class="icon">🚀</div> <span id="lbl-m4">Mission Possible</span>
+            </div>
         </div>
 
-        <!-- GAME -->
-        <div id="game-screen">
+        <!-- 1. TOOLS EXPLAINER -->
+        <div id="scr-tools" class="content-screen">
+            <div class="card">
+                <h2 class="screen-title" id="t-scr-tools">Tools & Examples</h2>
+                <div class="tool-selector" id="tool-tabs"></div>
+                <div class="tool-display" id="tool-content"></div>
+            </div>
+            <div class="back-to-menu" onclick="showMenu()" id="lbl-b1">← Back</div>
+        </div>
 
-            <!-- КНОПКА ПОКАЗАТИ/СХОВАТИ ТАЙМЕР -->
-            <button class="timer-toggle-btn" id="timer-toggle" onclick="toggleTimerVisibility()">⏱ Show Timer</button>
-
-            <!-- TIMER -->
-            <div class="timer-container" id="timer-container">
-                <div class="timer-ring" id="timer-ring">
-                    <svg viewBox="0 0 100 100">
-                        <circle class="ring-bg" cx="50" cy="50" r="45"/>
-                        <circle class="ring-progress" id="ring-progress" cx="50" cy="50" r="45"/>
-                    </svg>
-                    <div class="timer-text" id="timer-text">--</div>
-                </div>
-                <div>
-                    <div class="timer-presets">
-                        <button class="preset-btn" onclick="setTimer(30)">30s</button>
-                        <button class="preset-btn active" onclick="setTimer(60)">1 min</button>
-                        <button class="preset-btn" onclick="setTimer(120)">2 min</button>
-                    </div>
-                    <div class="timer-controls">
-                        <button class="timer-ctrl-btn" id="timer-start-btn" onclick="toggleTimer()">▶</button>
-                        <button class="timer-ctrl-btn" onclick="resetTimer()">↺</button>
-                    </div>
+        <!-- 2. OBSERVATION CALENDAR -->
+        <div id="scr-calendar" class="content-screen">
+            <div class="card" style="border-color: var(--cyan);">
+                <h2 class="screen-title" style="color: var(--cyan);" id="t-scr-cal">30-Day Observation</h2>
+                <div class="calendar-grid" id="cal-grid"></div>
+                <div class="challenge-display" id="cal-display">
+                    <div style="opacity:0.5; font-style:italic;" id="lbl-cal-hint">Select a day to reveal your observation challenge.</div>
                 </div>
             </div>
+            <div class="back-to-menu" onclick="showMenu()" id="lbl-b2">← Back</div>
+        </div>
 
-            <div class="game-card" id="game-card-content"></div>
+        <!-- 3. CHALLENGES PER TOOL -->
+        <div id="scr-tool-challenges" class="content-screen">
+            <div class="card">
+                <h2 class="screen-title" id="t-scr-tc">Challenge per Tool</h2>
+                <div class="tool-selector" id="tc-tabs"></div>
+                <div class="tool-display">
+                    <div id="tc-content" style="font-size:1.2rem; line-height:1.5;"></div>
+                </div>
+            </div>
+            <div class="back-to-menu" onclick="showMenu()" id="lbl-b3">← Back</div>
+        </div>
 
-            <div class="controls" id="game-controls"></div>
-
-            <div class="back-to-menu" onclick="showMenu()" id="lbl-back">← Back to Modes</div>
+        <!-- 4. MISSION POSSIBLE -->
+        <div id="scr-missions" class="content-screen">
+            <div class="card" style="border-color: var(--magenta);">
+                <h2 class="screen-title" style="color: var(--magenta);" id="t-scr-miss">Mission Possible</h2>
+                <div class="mission-text" id="mission-content">Are you ready to accept your mission?</div>
+                <button class="generate-btn" onclick="generateMission()" id="btn-gen-miss">Give me a mission</button>
+            </div>
+            <div class="back-to-menu" onclick="showMenu()" id="lbl-b4">← Back</div>
         </div>
 
     </div>
 
-    <!-- Timer sound (short beep via Web Audio API, no files needed) -->
     <script>
-        // ====== TIMER VISIBILITY ======
-        let timerVisible = false;
-
-        function toggleTimerVisibility() {
-            const container = document.getElementById('timer-container');
-            const btn = document.getElementById('timer-toggle');
-            
-            if (timerVisible) {
-                container.style.display = 'none';
-                btn.classList.remove('active');
-                btn.innerText = '⏱ Show Timer';
-                pauseTimer(); // зупиняємо, якщо ховаємо
-                timerVisible = false;
-            } else {
-                container.style.display = 'flex';
-                btn.classList.add('active');
-                btn.innerText = '⏱ Hide Timer';
-                resetTimer(); // скидаємо на дефолт при відкритті
-                timerVisible = true;
-            }
-        }
-
-
-        // ====== TIMER LOGIC ======
-        let timerTotal = 60;
-        let timerLeft = 60;
-        let timerInterval = null;
-        let timerRunning = false;
-
-        function setTimer(sec) {
-            clearInterval(timerInterval);
-            timerRunning = false;
-            timerTotal = sec;
-            timerLeft = sec;
-            document.getElementById('timer-start-btn').innerText = '▶';
-            document.getElementById('timer-ring').classList.remove('running');
-            updateTimerDisplay();
-            // highlight active preset
-            document.querySelectorAll('.preset-btn').forEach(b => b.classList.remove('active'));
-            event.target.classList.add('active');
-        }
-
-        function toggleTimer() {
-            if (timerRunning) {
-                pauseTimer();
-            } else {
-                startTimer();
-            }
-        }
-
-        function startTimer() {
-            if (timerLeft <= 0) { timerLeft = timerTotal; }
-            timerRunning = true;
-            document.getElementById('timer-start-btn').innerText = '⏸';
-            document.getElementById('timer-ring').classList.add('running');
-            timerInterval = setInterval(() => {
-                timerLeft--;
-                updateTimerDisplay();
-                if (timerLeft <= 0) {
-                    clearInterval(timerInterval);
-                    timerRunning = false;
-                    document.getElementById('timer-start-btn').innerText = '▶';
-                    document.getElementById('timer-ring').classList.remove('running');
-                    timerBuzz();
-                }
-            }, 1000);
-        }
-
-        function pauseTimer() {
-            clearInterval(timerInterval);
-            timerRunning = false;
-            document.getElementById('timer-start-btn').innerText = '▶';
-            document.getElementById('timer-ring').classList.remove('running');
-        }
-
-        function resetTimer() {
-            clearInterval(timerInterval);
-            timerRunning = false;
-            timerLeft = timerTotal;
-            document.getElementById('timer-start-btn').innerText = '▶';
-            document.getElementById('timer-ring').classList.remove('running');
-            updateTimerDisplay();
-        }
-
-        function updateTimerDisplay() {
-            const m = Math.floor(timerLeft / 60);
-            const s = timerLeft % 60;
-            const txt = m > 0 ? `${m}:${s.toString().padStart(2,'0')}` : `${s}`;
-            document.getElementById('timer-text').innerText = txt;
-
-            // Progress ring
-            const pct = timerLeft / timerTotal;
-            const offset = 283 * (1 - pct);
-            const ring = document.getElementById('ring-progress');
-            ring.style.strokeDashoffset = offset;
-
-            // Color shift
-            ring.classList.remove('warning', 'danger');
-            if (pct <= 0.15) ring.classList.add('danger');
-            else if (pct <= 0.33) ring.classList.add('warning');
-        }
-
-        function timerBuzz() {
-            // Shake animation
-            const ring = document.getElementById('timer-ring');
-            ring.classList.add('timer-shake');
-            setTimeout(() => ring.classList.remove('timer-shake'), 700);
-
-            // Beep via Web Audio API
-            try {
-                const ctx = new (window.AudioContext || window.webkitAudioContext)();
-                for (let i = 0; i < 3; i++) {
-                    const osc = ctx.createOscillator();
-                    const gain = ctx.createGain();
-                    osc.connect(gain); gain.connect(ctx.destination);
-                    osc.frequency.value = 880;
-                    osc.type = 'sine';
-                    gain.gain.value = 0.3;
-                    const t = ctx.currentTime + i * 0.25;
-                    osc.start(t);
-                    osc.stop(t + 0.15);
-                }
-            } catch(e) { /* no audio support */ }
-        }
-
-        // ====== GAME DATA ======
         const db = {
             en: {
-                labels: { q: "Single Question", lc: "Logical Chain", d: "Deduction", next: "Next", reveal: "Reveal Step", cause: "Reveal Cause", back: "← Back to Modes" },
-                questions: [
-                    "What if gravity turned off for exactly 1 minute every day?",
-                    "What if humans didn't need sleep at all?",
-                    "What if animals could talk, but only complained about the weather?",
-                    "What if all the oceans were replaced with orange juice?",
-                    "What if you could only move by jumping?",
-                    "What if every lie made your nose literally grow?"
+                menu: { m1: "Tools & Examples", m2: "Observation Calendar", m3: "Challenges per Tool", m4: "Mission Possible", back: "← Back to Menu", calHint: "Select a day to reveal your observation challenge.", genBtn: "Generate Mission" },
+                tools: [
+                    { name: "Segmentation", desc: "Divide an object into independent parts to make it flexible or easy to replace.", ex: "Instead of one giant window blind, vertical blinds use many thin strips." },
+                    { name: "Inversion", desc: "Do it exactly the opposite way. Turn the object upside down or reverse the action.", ex: "Instead of running outside (you move, ground stays), use a treadmill (ground moves, you stay)." },
+                    { name: "Copying", desc: "Use a cheap or simple copy instead of a fragile or expensive original.", ex: "A scarecrow in a field copies a human to scare away birds." },
+                    { name: "Nesting", desc: "Place one object inside another, which is inside another.", ex: "A measuring cup set where smaller cups fit inside larger ones to save space." }
                 ],
-                chains: [
-                    { start: "A boy drops his ice cream cone.", steps: ["A pigeon swoops down to eat it.", "The pigeon gets a brain freeze and drops the cone on a car's windshield.", "The driver gets scared, swerves, and hits a fire hydrant.", "The street floods and a local surfing competition begins."] },
-                    { start: "A butterfly flaps its wings in Brazil.", steps: ["The tiny wind tickles a sleeping monkey.", "The monkey sneezes and drops a coconut.", "The coconut rolls onto a boat heading to Europe.", "The coconut is discovered in Paris and sold as modern art for $500,000."] },
-                    { start: "A girl sneezes during a music lesson.", steps: ["Her sneeze accidentally hits a perfect high C note.", "The school choir director hears it and recruits her immediately.", "She becomes the lead singer and the choir goes viral on TikTok.", "A Hollywood producer signs them for a movie soundtrack."] }
+                calendar: [
+                    "Find 3 things in your house that use 'Nesting' (things inside things).",
+                    "Look at a door. Find the mechanism that connects it to the wall.",
+                    "Find an object that used to be one solid piece but is now made of many parts.",
+                    "Observe a bird or insect for 3 minutes. How does it solve the problem of getting food?",
+                    "Find something that is asymmetrical (not the same on both sides). Why is it designed that way?",
+                    "Look at your shoes. Find 3 different materials used and guess why they were chosen.",
+                    "Find something in the kitchen that uses 'Inversion' (does the opposite of what you expect)."
                 ],
-                deductions: [
-                    { end: "Result: The entire school is filled with pink bubbles.", clue: "Someone brought a washing machine to the science fair.", cause: "They tried to make a volcano using industrial soap and a leaf blower." },
-                    { end: "Result: A cat is elected as the city mayor.", clue: "The voting machines had a laser pointer malfunction.", cause: "The cat chased the laser over the 'Submit' buttons of 5,000 unattended machines." },
-                    { end: "Result: All the pigeons in the park are wearing tiny hats.", clue: "A fashion student lost her final project in the park.", cause: "Her bag of 200 miniature hats ripped open. The pigeons thought they were nests and refused to take them off." }
+                toolChallenges: [
+                    { name: "Segmentation", task: "Take an empty cardboard box. How many different ways can you cut it to make a new useful object?" },
+                    { name: "Inversion", task: "How do you water a plant without pouring water on top of the soil? Invent a bottom-up watering system." },
+                    { name: "Copying", task: "You need to measure how tall your dog is, but the dog won't stand still. How do you use a 'copy' to measure it?" },
+                    { name: "Nesting", task: "Design a backpack for an astronaut where all tools fit inside each other perfectly." }
+                ],
+                missions: [
+                    "Move a glass of water from the table to the floor without using your hands or arms.",
+                    "Build a bridge between two chairs using only 5 sheets of paper and no tape. It must hold a book.",
+                    "Create a system to turn off your bedroom light switch from your bed using only string and household objects.",
+                    "Design a paper airplane that flies in a circle instead of straight."
                 ]
             },
             uk: {
-                labels: { q: "Одне Питання", lc: "Логічний Ланцюжок", d: "Дедукція", next: "Далі", reveal: "Наступний крок", cause: "Показати причину", back: "← Назад до вибору" },
-                questions: [
-                    "Що, якби гравітація вимикалася рівно на 1 хвилину щодня?",
-                    "Що, якби людям взагалі не потрібно було спати?",
-                    "Що, якби тварини вміли говорити, але скаржилися лише на погоду?",
-                    "Що, якби всі океани раптом стали апельсиновим соком?",
-                    "Що, якби рухатися можна було лише стрибками?",
-                    "Що, якби від кожної брехні ніс реально ріс?"
+                menu: { m1: "Інструменти та Приклади", m2: "Календар Спостережень", m3: "Виклики для Інструментів", m4: "Місія Здійсненна", back: "← Назад до меню", calHint: "Обери день, щоб отримати завдання для спостереження.", genBtn: "Отримати місію" },
+                tools: [
+                    { name: "Дроблення", desc: "Розділи об'єкт на незалежні частини, щоб зробити його гнучким або легким для заміни.", ex: "Замість однієї суцільної штори використовують жалюзі з багатьох смужок." },
+                    { name: "Навпаки", desc: "Зроби все з точністю до навпаки. Переверни об'єкт або зміни дію на зворотну.", ex: "Замість того, щоб бігати по вулиці (ти рухаєшся, земля стоїть), використовують бігову доріжку (земля рухається, ти стоїш)." },
+                    { name: "Копіювання", desc: "Використай дешеву копію замість крихкого або дорогого оригіналу.", ex: "Опудало на полі копіює людину, щоб відлякувати птахів." },
+                    { name: "Матрьошка", desc: "Помісти один об'єкт всередину іншого, а той — ще в інший.", ex: "Набір мірних чашок, де менші чашки ховаються у більші для економії місця." }
                 ],
-                chains: [
-                    { start: "Хлопчик впускає на асфальт морозиво.", steps: ["Голуб злітає вниз, щоб його з'їсти.", "Голуб отримує 'замороження мозку' і губить ріжок на лобове скло авто.", "Водій лякається, різко повертає і збиває пожежний гідрант.", "Вулицю затоплює, і місцеві влаштовують змагання з серфінгу."] },
-                    { start: "Метелик змахує крилами у Бразилії.", steps: ["Легенький вітерець лоскоче сплячу мавпу.", "Мавпа чхає і випускає з лап кокос.", "Кокос котиться на корабель, що прямує до Європи.", "Кокос знаходять у Парижі і продають як об'єкт сучасного мистецтва за $500,000."] },
-                    { start: "Дівчинка чхнула під час уроку музики.", steps: ["Її чхання випадково потрапило на ідеальну ноту До.", "Керівник хору почув і одразу взяв її до складу.", "Вона стала солісткою, а хор зірвав TikTok.", "Голлівудський продюсер підписав їх для саундтреку до фільму."] }
+                calendar: [
+                    "Знайди 3 речі вдома, які використовують принцип 'Матрьошки' (речі всередині речей).",
+                    "Подивись на двері. Знайди механізм, який з'єднує їх зі стіною.",
+                    "Знайди предмет, який раніше був суцільним, а тепер складається з багатьох частин.",
+                    "Спостерігай за птахом або комахою 3 хвилини. Як вони вирішують проблему пошуку їжі?",
+                    "Знайди щось асиметричне (неоднакове з обох боків). Чому воно так створено?",
+                    "Подивись на своє взуття. Знайди 3 різні матеріали і вгадай, чому обрали саме їх.",
+                    "Знайди на кухні річ, яка використовує принцип 'Навпаки'."
                 ],
-                deductions: [
-                    { end: "Наслідок: Вся школа заповнена рожевими мильними бульбашками.", clue: "Хтось приніс пральну машину на науковий ярмарок.", cause: "Вони намагалися зробити вулкан, використовуючи промислове мило та повітродувку для листя." },
-                    { end: "Наслідок: Кота обрали мером міста.", clue: "У машин для голосування сталася несправність з лазерною указкою.", cause: "Кіт ганявся за лазером по кнопках 'Підтвердити' на 5000 залишених без нагляду апаратах." },
-                    { end: "Наслідок: Усі голуби в парку ходять у крихітних капелюшках.", clue: "Студентка-модельєр загубила свій дипломний проект у парку.", cause: "Її сумка з 200 мініатюрних капелюшків розірвалася. Голуби вирішили, що це гнізда, і відмовилися їх знімати." }
+                toolChallenges: [
+                    { name: "Дроблення", task: "Візьми порожню картонну коробку. Скількома способами ти можеш розрізати її, щоб зробити новий корисний предмет?" },
+                    { name: "Навпаки", task: "Як полити рослину, не наливаючи воду зверху на землю? Винайди систему поливу 'знизу-вверх'." },
+                    { name: "Копіювання", task: "Тобі треба виміряти зріст собаки, але собака не стоїть на місці. Як використати 'копію' для вимірювання?" },
+                    { name: "Матрьошка", task: "Спроектуй рюкзак для астронавта, де всі інструменти ідеально ховаються один в один." }
+                ],
+                missions: [
+                    "Перемісти склянку з водою зі столу на підлогу, не використовуючи руки.",
+                    "Побудуй міст між двома стільцями, використовуючи лише 5 аркушів паперу і жодного скотчу. Він має витримати книгу.",
+                    "Створи систему, щоб вимикати світло в кімнаті прямо з ліжка, використовуючи лише нитки та побутові речі.",
+                    "Зроби паперовий літачок, який літає по колу, а не прямо."
                 ]
             }
         };
 
         let currentLang = 'en';
-        let currentMode = '';
-        let currentItem = 0;
-        let chainStepIndex = 0;
 
         window.onload = () => {
             currentLang = localStorage.getItem('prybambas_lang') || 'en';
             if (!db[currentLang]) currentLang = 'en';
             const flags = { en:"🇺🇸 EN", uk:"🇺🇦 UK", es:"🇪🇸 ES", de:"🇩🇪 DE", fr:"🇫🇷 FR", nl:"🇳🇱 NL", ro:"🇷🇴 RO", pl:"🇵🇱 PL", pt:"🇧🇷 PT", da:"🇩🇰 DA", sv:"🇸🇪 SV" };
             document.getElementById('lang-display').innerText = flags[currentLang] || currentLang.toUpperCase();
+            
             applyTranslations();
-            updateTimerDisplay();
+            initScreens();
         };
 
         function applyTranslations() {
-            const t = db[currentLang].labels;
-            document.getElementById('lbl-q').innerText = t.q;
-            document.getElementById('lbl-lc').innerText = t.lc;
-            document.getElementById('lbl-d').innerText = t.d;
-            document.getElementById('lbl-back').innerText = t.back;
+            const t = db[currentLang].menu;
+            document.getElementById('lbl-m1').innerText = t.m1; document.getElementById('t-scr-tools').innerText = t.m1;
+            document.getElementById('lbl-m2').innerText = t.m2; document.getElementById('t-scr-cal').innerText = t.m2;
+            document.getElementById('lbl-m3').innerText = t.m3; document.getElementById('t-scr-tc').innerText = t.m3;
+            document.getElementById('lbl-m4').innerText = t.m4; document.getElementById('t-scr-miss').innerText = t.m4;
+            
+            document.getElementById('lbl-b1').innerText = t.back;
+            document.getElementById('lbl-b2').innerText = t.back;
+            document.getElementById('lbl-b3').innerText = t.back;
+            document.getElementById('lbl-b4').innerText = t.back;
+            
+            document.getElementById('lbl-cal-hint').innerText = t.calHint;
+            document.getElementById('btn-gen-miss').innerText = t.genBtn;
         }
 
         function showMenu() {
-            pauseTimer(); resetTimer();
-            document.getElementById('game-screen').style.display = 'none';
+            document.querySelectorAll('.content-screen').forEach(s => s.style.display = 'none');
             document.getElementById('menu-screen').style.display = 'flex';
         }
 
-        function startGame(mode) {
-            currentMode = mode;
-            currentItem = 0;
-            
-            // Якщо таймер відкритий — скидаємо його на нуль
-            if (timerVisible) resetTimer();
-
+        function openScreen(id) {
             document.getElementById('menu-screen').style.display = 'none';
-            document.getElementById('game-screen').style.display = 'flex';
-            const card = document.getElementById('game-card-content');
+            document.getElementById('scr-' + id).style.display = 'flex';
+        }
+
+        function initScreens() {
+            // 1. Tools Setup
+            const toolsTabs = document.getElementById('tool-tabs');
+            toolsTabs.innerHTML = '';
+            db[currentLang].tools.forEach((tool, i) => {
+                const btn = document.createElement('div');
+                btn.className = 'tool-tab' + (i===0?' active':'');
+                btn.innerText = tool.name;
+                btn.onclick = () => {
+                    document.querySelectorAll('#tool-tabs .tool-tab').forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    showToolContent(i);
+                };
+                toolsTabs.appendChild(btn);
+            });
+            showToolContent(0);
+
+            // 2. Calendar Setup (30 days)
+            const calGrid = document.getElementById('cal-grid');
+            calGrid.innerHTML = '';
+            for(let i=1; i<=30; i++) {
+                const day = document.createElement('div');
+                day.className = 'day-node';
+                day.innerText = i;
+                day.onclick = () => {
+                    document.querySelectorAll('.day-node').forEach(d => d.classList.remove('active'));
+                    day.classList.add('active');
+                    const obsList = db[currentLang].calendar;
+                    const challenge = obsList[(i-1) % obsList.length];
+                    document.getElementById('cal-display').innerHTML = `<strong>Day ${i}:</strong><br><br>${challenge}`;
+                };
+                calGrid.appendChild(day);
+            }
+
+            // 3. Tool Challenges Setup
+            const tcTabs = document.getElementById('tc-tabs');
+            tcTabs.innerHTML = '';
+            db[currentLang].toolChallenges.forEach((tc, i) => {
+                const btn = document.createElement('div');
+                btn.className = 'tool-tab' + (i===0?' active':'');
+                btn.innerText = tc.name;
+                btn.onclick = () => {
+                    document.querySelectorAll('#tc-tabs .tool-tab').forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    document.getElementById('tc-content').innerText = tc.task;
+                };
+                tcTabs.appendChild(btn);
+            });
+            document.getElementById('tc-content').innerText = db[currentLang].toolChallenges[0].task;
+        }
+
+        function showToolContent(index) {
+            const tool = db[currentLang].tools[index];
+            document.getElementById('tool-content').innerHTML = `
+                <h3>${tool.name}</h3>
+                <p>${tool.desc}</p>
+                <div class="example"><strong>Example:</strong><br>${tool.ex}</div>
+            `;
+        }
+
+        function generateMission() {
+            const missions = db[currentLang].missions;
+            const random = missions[Math.floor(Math.random() * missions.length)];
+            const el = document.getElementById('mission-content');
             
-            // Зміна кольору неонової рамки
-            if(mode === 'question') {
-                card.style.borderColor = 'var(--magenta)';
-                card.style.boxShadow = '0 10px 30px rgba(217,44,255,0.2)';
-            } else if (mode === 'chain') {
-                card.style.borderColor = 'var(--green)';
-                card.style.boxShadow = '0 10px 30px rgba(84,255,58,0.2)';
-            } else {
-                card.style.borderColor = 'var(--cyan)';
-                card.style.boxShadow = '0 10px 30px rgba(0,243,255,0.2)';
-            }
-            
-            renderGame();
-        }
-
-        function renderGame() {
-            const card = document.getElementById('game-card-content');
-            const controls = document.getElementById('game-controls');
-            const data = db[currentLang];
-            const t = data.labels;
-
-            if (currentMode === 'question') {
-                const item = data.questions[currentItem % data.questions.length];
-                card.innerHTML = '<div class="game-text" style="color:var(--magenta);font-weight:bold;font-size:1.8rem;">' + item + '</div>';
-                controls.innerHTML = '<button class="action-btn" onclick="nextItem()" style="border-color:var(--magenta)">' + t.next + '</button>';
-            }
-            else if (currentMode === 'chain') {
-                chainStepIndex = 0;
-                const item = data.chains[currentItem % data.chains.length];
-                card.innerHTML = '<div class="game-text" style="text-align:left;"><strong>Start:</strong> ' + item.start + '</div><div id="chain-steps"></div>';
-                controls.innerHTML = '<button class="action-btn" onclick="revealChain()" style="border-color:var(--green)">' + t.reveal + '</button>';
-            }
-            else if (currentMode === 'deduction') {
-                const item = data.deductions[currentItem % data.deductions.length];
-                card.innerHTML = '<div class="game-text" style="color:var(--cyan);font-weight:bold;">' + item.end + '</div><div id="deduction-reveal"></div>';
-                controls.innerHTML = '<button class="action-btn" onclick="revealDeduction(\'clue\')" style="border-color:var(--cyan)">Clue</button>' +
-                    '<button class="action-btn" onclick="revealDeduction(\'cause\')" style="border-color:white;color:var(--bg);background:white;">' + t.cause + '</button>';
-            }
-        }
-
-        function nextItem() {
-            currentItem++;
-            if(timerVisible) resetTimer(); // Авто-скидання таймера при переході до наступного питання
-            renderGame();
-        }
-
-        function revealChain() {
-            const data = db[currentLang];
-            const item = data.chains[currentItem % data.chains.length];
-            const sc = document.getElementById('chain-steps');
-            const t = data.labels;
-            if (chainStepIndex < item.steps.length) {
-                const d = document.createElement('div');
-                d.className = 'chain-step';
-                d.innerText = item.steps[chainStepIndex];
-                sc.appendChild(d);
-                chainStepIndex++;
-            }
-            if (chainStepIndex >= item.steps.length) {
-                document.getElementById('game-controls').innerHTML = '<button class="action-btn" onclick="nextItem()" style="border-color:var(--green)">' + t.next + '</button>';
-            }
-        }
-
-        function revealDeduction(type) {
-            const data = db[currentLang];
-            const item = data.deductions[currentItem % data.deductions.length];
-            const rc = document.getElementById('deduction-reveal');
-            const t = data.labels;
-            if (type === 'clue') {
-                rc.innerHTML = '<div class="deduction-clue">💡 Clue: ' + item.clue + '</div>';
-            } else {
-                rc.innerHTML += '<div class="chain-step" style="border-color:var(--cyan);margin-top:20px;"><strong>Cause:</strong> ' + item.cause + '</div>';
-                document.getElementById('game-controls').innerHTML = '<button class="action-btn" onclick="nextItem()" style="border-color:var(--cyan)">' + t.next + '</button>';
-            }
+            // Animation effect
+            el.style.opacity = '0';
+            setTimeout(() => {
+                el.innerText = random;
+                el.style.opacity = '1';
+                el.style.transition = 'opacity 0.5s';
+            }, 200);
         }
     </script>
 </body>
