@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>What If? | Prybambas</title>
+    <style>
+        :root {
+            --magenta: #d92cff;
+            --green: #54ff3a;
+            --cyan: #00f3ff;
+            --bg: #0b1224;
+        }
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            background-color: var(--bg);
+            color: white;
+            font-family: 'Segoe UI', Roboto, Helvetica, sans-serif;
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .fixed-bg {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100vw; height: 100vh;
+            background-image: url('../bg-image.jpg');
+            background-size: cover;
+            background-position: center center;
+            z-index: -1;
+        }
+
+        header {
+            width: 90%; max-width: 800px;
+            display: flex; justify-content: space-between; align-items: center;
+            margin-top: 20px; z-index: 10;
+        }
+
+        .back-btn {
+            background: rgba(10,15,30,0.7);
+            backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(255,255,255,0.2);
+            color: white; padding: 10px 20px; border-radius: 50px;
+            text-decoration: none; font-weight: bold;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3); transition: 0.3s;
+        }
+        .back-btn:hover { background: rgba(255,255,255,0.1); }
+
+        h1 {
+            letter-spacing: 2px;
+            text-shadow: 0 0 15px var(--magenta);
+            text-align: center; margin: 40px 0;
+        }
+
+        #app-container {
+            width: 90%; max-width: 600px;
+            display: flex; flex-direction: column; align-items: center;
+            z-index: 10; padding-bottom: 60px;
+        }
+
+        /* ========== MENU ========== */
+        #menu-screen { display: flex; flex-direction: column; gap: 25px; width: 100%; }
+
+        .mode-btn {
+            position: relative;
+            background: rgba(10,15,30,0.6);
+            backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+            border-radius: 20px; padding: 25px;
+            color: white; font-size: 1.2rem; font-weight: bold;
+            text-transform: uppercase; letter-spacing: 1px;
+            cursor: pointer; display: flex; align-items: center;
+            justify-content: center; gap: 15px; transition: 0.3s;
+        }
+        .mode-q  { border: 2px dashed var(--magenta); box-shadow: 0 0 15px rgba(217,44,255,0.3); }
+        .mode-lc { border: 2px dashed var(--green);   box-shadow: 0 0 15px rgba(84,255,58,0.3);  }
+        .mode-d  { border: 2px dashed var(--cyan);    box-shadow: 0 0 15px rgba(0,243,255,0.3);  }
+        .mode-btn:hover { transform: scale(1.02); }
+        .mode-btn .icon { font-size: 2rem; }
+
+        /* ========== TIMER OPTIONAL TOGGLE ========== */
+        .timer-toggle-btn {
+            background: rgba(10,15,30,0.8);
+            border: 2px solid rgba(255,255,255,0.3);
+            color: white; padding: 10px 20px; border-radius: 50px;
+            font-size: 0.9rem; font-weight: bold; cursor: pointer;
+            margin-bottom: 20px; transition: 0.3s;
+        }
+        .timer-toggle-btn:hover { background: rgba(255,255,255,0.1); }
+        .timer-toggle-btn.active { border-color: var(--magenta); box-shadow: 0 0 10px rgba(217,44,255,0.4); }
+
+        /* ========== TIMER ========== */
+        .timer-container {
+            display: none; /* Сховано за замовчуванням */
+            align-items: center; justify-content: center;
+            gap: 12px; margin-bottom: 20px; flex-wrap: wrap;
+            animation: fadeIn 0.3s ease-in-out;
+        }
+
+        .timer-ring {
+            position: relative;
+            width: 100px; height: 100px;
+        }
+
+        .timer-ring svg {
+            width: 100%; height: 100%;
+            transform: rotate(-90deg);
+        }
+
+        .timer-ring .ring-bg {
+            fill: none; stroke: rgba(255,255,255,0.1); stroke-width: 6;
+        }
+
+        .timer-ring .ring-progress {
+            fill: none; stroke: var(--magenta); stroke-width: 6;
+            stroke-linecap: round;
+            stroke-dasharray: 283; /* 2 * PI * 45 */
+            stroke-dashoffset: 0;
+            transition: stroke-dashoffset 1s linear, stroke 0.3s;
+        }
+
+        .timer-ring .ring-progress.warning { stroke: #ff6b35; }
+        .timer-ring .ring-progress.danger  { stroke: #ff2244; }
+
+        .timer-text {
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 1.8rem; font-weight: 800;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .timer-presets {
+            display: flex; flex-direction: column; gap: 8px;
+        }
+
+        .preset-btn {
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.2);
+            color: white; padding: 8px 16px; border-radius: 12px;
+            font-size: 0.9rem; font-weight: bold; cursor: pointer;
+            transition: 0.2s; white-space: nowrap;
+        }
+        .preset-btn:hover { background: rgba(255,255,255,0.15); }
+        .preset-btn.active { border-color: var(--magenta); box-shadow: 0 0 10px rgba(217,44,255,0.4); }
+
+        .timer-controls {
+            display: flex; gap: 10px; margin-top: 10px;
+        }
+
+        .timer-ctrl-btn {
+            background: rgba(10,15,30,0.8);
+            border: 2px solid rgba(255,255,255,0.3);
+            color: white; padding: 10px 20px; border-radius: 50px;
+            font-size: 1rem; font-weight: bold; cursor: pointer;
+            transition: 0.3s;
+        }
+        .timer-ctrl-btn:hover { background: rgba(255,255,255,0.1); }
+
+        /* ========== GAME ========== */
+        #game-screen {
+            display: none; width: 100%;
+            flex-direction: column; align-items: center;
+        }
+
+        .game-card {
+            background: rgba(10,15,30,0.8);
+            backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(255,255,255,0.1); border-radius: 20px;
+            padding: 30px; width: 100%; text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            margin-bottom: 25px; min-height: 200px;
+            display: flex; flex-direction: column; justify-content: center;
+        }
+
+        .game-text { font-size: 1.4rem; line-height: 1.5; margin-bottom: 20px; }
+
+        .chain-step {
+            margin: 10px 0; padding: 15px;
+            background: rgba(255,255,255,0.05);
+            border-left: 4px solid var(--green);
+            border-radius: 0 10px 10px 0;
+            text-align: left; font-size: 1.1rem;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        .deduction-clue { color: var(--cyan); font-style: italic; margin-top: 15px; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        .action-btn {
+            background: rgba(255,255,255,0.1);
+            border: 2px solid white; color: white;
+            padding: 15px 30px; border-radius: 50px;
+            font-size: 1.1rem; font-weight: bold;
+            cursor: pointer; transition: 0.3s; text-transform: uppercase;
+        }
+        .action-btn:hover { background: white; color: var(--bg); }
+
+        .controls { display: flex; gap: 15px; width: 100%; justify-content: center; flex-wrap: wrap; }
+
+        .back-to-menu {
+            margin-top: 30px; color: rgba(255,255,255,0.5);
+            text-decoration: underline; cursor: pointer;
+        }
+
+        /* Shake animation when timer ends */
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            10%, 30%, 50%, 70%, 90% { transform: translateX(-4px); }
+            20%, 40%, 60%, 80% { transform: translateX(4px); }
+        }
+        .timer-shake { animation: shake 0.6s; }
+
+        /* Pulse glow when timer is running */
+        @keyframes pulseGlow {
+            0%, 100% { filter: drop-shadow(0 0 4px currentColor); }
+            50% { filter: drop-shadow(0 0 12px currentColor); }
+        }
+        .timer-ring.running svg { animation: pulseGlow 2s infinite; }
+
+    </style>
+</head>
+<body>
+
+    <div class="fixed-bg"></div>
+
+    <header>
+        <a href="../index.html" class="back-btn">← Hub</a>
+        <div id="lang-display" style="font-weight:bold; opacity:0.7;">🇺🇸 EN</div>
+    </header>
+
+    <h1>WHAT IF?</h1>
+
+    <div id="app-container">
+
+        <!-- MENU -->
+        <div id="menu-screen">
+            <button class="mode-btn mode-q" onclick="startGame('question')">
+                <span class="icon">❓</span> <span id="lbl-q">Single Question</span>
+            </button>
+            <button class="mode-btn mode-lc" onclick="startGame('chain')">
+                <span class="icon">🔗</span> <span id="lbl-lc">Logical Chain</span>
+            </button>
+            <button class="mode-btn mode-d" onclick="startGame('deduction')">
+                <span class="icon">🕵️</span> <span id="lbl-d">Deduction</span>
+            </button>
+        </div>
+
+        <!-- GAME -->
+        <div id="game-screen">
+
+            <!-- КНОПКА ПОКАЗАТИ/СХОВАТИ ТАЙМЕР -->
+            <button class="timer-toggle-btn" id="timer-toggle" onclick="toggleTimerVisibility()">⏱ Show Timer</button>
+
+            <!-- TIMER -->
+            <div class="timer-container" id="timer-container">
+                <div class="timer-ring" id="timer-ring">
+                    <svg viewBox="0 0 100 100">
+                        <circle class="ring-bg" cx="50" cy="50" r="45"/>
+                        <circle class="ring-progress" id="ring-progress" cx="50" cy="50" r="45"/>
+                    </svg>
+                    <div class="timer-text" id="timer-text">--</div>
+                </div>
+                <div>
+                    <div class="timer-presets">
+                        <button class="preset-btn" onclick="setTimer(30)">30s</button>
+                        <button class="preset-btn active" onclick="setTimer(60)">1 min</button>
+                        <button class="preset-btn" onclick="setTimer(120)">2 min</button>
+                    </div>
+                    <div class="timer-controls">
+                        <button class="timer-ctrl-btn" id="timer-start-btn" onclick="toggleTimer()">▶</button>
+                        <button class="timer-ctrl-btn" onclick="resetTimer()">↺</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="game-card" id="game-card-content"></div>
+
+            <div class="controls" id="game-controls"></div>
+
+            <div class="back-to-menu" onclick="showMenu()" id="lbl-back">← Back to Modes</div>
+        </div>
+
+    </div>
+
+    <!-- Timer sound (short beep via Web Audio API, no files needed) -->
+    <script>
+        // ====== TIMER VISIBILITY ======
+        let timerVisible = false;
+
+        function toggleTimerVisibility() {
+            const container = document.getElementById('timer-container');
+            const btn = document.getElementById('timer-toggle');
+            
+            if (timerVisible) {
+                container.style.display = 'none';
+                btn.classList.remove('active');
+                btn.innerText = '⏱ Show Timer';
+                pauseTimer(); // зупиняємо, якщо ховаємо
+                timerVisible = false;
+            } else {
+                container.style.display = 'flex';
+                btn.classList.add('active');
+                btn.innerText = '⏱ Hide Timer';
+                resetTimer(); // скидаємо на дефолт при відкритті
+                timerVisible = true;
+            }
+        }
+
+
+        // ====== TIMER LOGIC ======
+        let timerTotal = 60;
+        let timerLeft = 60;
+        let timerInterval = null;
+        let timerRunning = false;
+
+        function setTimer(sec) {
+            clearInterval(timerInterval);
+            timerRunning = false;
+            timerTotal = sec;
+            timerLeft = sec;
+            document.getElementById('timer-start-btn').innerText = '▶';
+            document.getElementById('timer-ring').classList.remove('running');
+            updateTimerDisplay();
+            // highlight active preset
+            document.querySelectorAll('.preset-btn').forEach(b => b.classList.remove('active'));
+            event.target.classList.add('active');
+        }
+
+        function toggleTimer() {
+            if (timerRunning) {
+                pauseTimer();
+            } else {
+                startTimer();
+            }
+        }
+
+        function startTimer() {
+            if (timerLeft <= 0) { timerLeft = timerTotal; }
+            timerRunning = true;
+            document.getElementById('timer-start-btn').innerText = '⏸';
+            document.getElementById('timer-ring').classList.add('running');
+            timerInterval = setInterval(() => {
+                timerLeft--;
+                updateTimerDisplay();
+                if (timerLeft <= 0) {
+                    clearInterval(timerInterval);
+                    timerRunning = false;
+                    document.getElementById('timer-start-btn').innerText = '▶';
+                    document.getElementById('timer-ring').classList.remove('running');
+                    timerBuzz();
+                }
+            }, 1000);
+        }
+
+        function pauseTimer() {
+            clearInterval(timerInterval);
+            timerRunning = false;
+            document.getElementById('timer-start-btn').innerText = '▶';
+            document.getElementById('timer-ring').classList.remove('running');
+        }
+
+        function resetTimer() {
+            clearInterval(timerInterval);
+            timerRunning = false;
+            timerLeft = timerTotal;
+            document.getElementById('timer-start-btn').innerText = '▶';
+            document.getElementById('timer-ring').classList.remove('running');
+            updateTimerDisplay();
+        }
+
+        function updateTimerDisplay() {
+            const m = Math.floor(timerLeft / 60);
+            const s = timerLeft % 60;
+            const txt = m > 0 ? `${m}:${s.toString().padStart(2,'0')}` : `${s}`;
+            document.getElementById('timer-text').innerText = txt;
+
+            // Progress ring
+            const pct = timerLeft / timerTotal;
+            const offset = 283 * (1 - pct);
+            const ring = document.getElementById('ring-progress');
+            ring.style.strokeDashoffset = offset;
+
+            // Color shift
+            ring.classList.remove('warning', 'danger');
+            if (pct <= 0.15) ring.classList.add('danger');
+            else if (pct <= 0.33) ring.classList.add('warning');
+        }
+
+        function timerBuzz() {
+            // Shake animation
+            const ring = document.getElementById('timer-ring');
+            ring.classList.add('timer-shake');
+            setTimeout(() => ring.classList.remove('timer-shake'), 700);
+
+            // Beep via Web Audio API
+            try {
+                const ctx = new (window.AudioContext || window.webkitAudioContext)();
+                for (let i = 0; i < 3; i++) {
+                    const osc = ctx.createOscillator();
+                    const gain = ctx.createGain();
+                    osc.connect(gain); gain.connect(ctx.destination);
+                    osc.frequency.value = 880;
+                    osc.type = 'sine';
+                    gain.gain.value = 0.3;
+                    const t = ctx.currentTime + i * 0.25;
+                    osc.start(t);
+                    osc.stop(t + 0.15);
+                }
+            } catch(e) { /* no audio support */ }
+        }
+
+        // ====== GAME DATA ======
+        const db = {
+            en: {
+                labels: { q: "Single Question", lc: "Logical Chain", d: "Deduction", next: "Next", reveal: "Reveal Step", cause: "Reveal Cause", back: "← Back to Modes" },
+                questions: [
+                    "What if gravity turned off for exactly 1 minute every day?",
+                    "What if humans didn't need sleep at all?",
+                    "What if animals could talk, but only complained about the weather?",
+                    "What if all the oceans were replaced with orange juice?",
+                    "What if you could only move by jumping?",
+                    "What if every lie made your nose literally grow?"
+                ],
+                chains: [
+                    { start: "A boy drops his ice cream cone.", steps: ["A pigeon swoops down to eat it.", "The pigeon gets a brain freeze and drops the cone on a car's windshield.", "The driver gets scared, swerves, and hits a fire hydrant.", "The street floods and a local surfing competition begins."] },
+                    { start: "A butterfly flaps its wings in Brazil.", steps: ["The tiny wind tickles a sleeping monkey.", "The monkey sneezes and drops a coconut.", "The coconut rolls onto a boat heading to Europe.", "The coconut is discovered in Paris and sold as modern art for $500,000."] },
+                    { start: "A girl sneezes during a music lesson.", steps: ["Her sneeze accidentally hits a perfect high C note.", "The school choir director hears it and recruits her immediately.", "She becomes the lead singer and the choir goes viral on TikTok.", "A Hollywood producer signs them for a movie soundtrack."] }
+                ],
+                deductions: [
+                    { end: "Result: The entire school is filled with pink bubbles.", clue: "Someone brought a washing machine to the science fair.", cause: "They tried to make a volcano using industrial soap and a leaf blower." },
+                    { end: "Result: A cat is elected as the city mayor.", clue: "The voting machines had a laser pointer malfunction.", cause: "The cat chased the laser over the 'Submit' buttons of 5,000 unattended machines." },
+                    { end: "Result: All the pigeons in the park are wearing tiny hats.", clue: "A fashion student lost her final project in the park.", cause: "Her bag of 200 miniature hats ripped open. The pigeons thought they were nests and refused to take them off." }
+                ]
+            },
+            uk: {
+                labels: { q: "Одне Питання", lc: "Логічний Ланцюжок", d: "Дедукція", next: "Далі", reveal: "Наступний крок", cause: "Показати причину", back: "← Назад до вибору" },
+                questions: [
+                    "Що, якби гравітація вимикалася рівно на 1 хвилину щодня?",
+                    "Що, якби людям взагалі не потрібно було спати?",
+                    "Що, якби тварини вміли говорити, але скаржилися лише на погоду?",
+                    "Що, якби всі океани раптом стали апельсиновим соком?",
+                    "Що, якби рухатися можна було лише стрибками?",
+                    "Що, якби від кожної брехні ніс реально ріс?"
+                ],
+                chains: [
+                    { start: "Хлопчик впускає на асфальт морозиво.", steps: ["Голуб злітає вниз, щоб його з'їсти.", "Голуб отримує 'замороження мозку' і губить ріжок на лобове скло авто.", "Водій лякається, різко повертає і збиває пожежний гідрант.", "Вулицю затоплює, і місцеві влаштовують змагання з серфінгу."] },
+                    { start: "Метелик змахує крилами у Бразилії.", steps: ["Легенький вітерець лоскоче сплячу мавпу.", "Мавпа чхає і випускає з лап кокос.", "Кокос котиться на корабель, що прямує до Європи.", "Кокос знаходять у Парижі і продають як об'єкт сучасного мистецтва за $500,000."] },
+                    { start: "Дівчинка чхнула під час уроку музики.", steps: ["Її чхання випадково потрапило на ідеальну ноту До.", "Керівник хору почув і одразу взяв її до складу.", "Вона стала солісткою, а хор зірвав TikTok.", "Голлівудський продюсер підписав їх для саундтреку до фільму."] }
+                ],
+                deductions: [
+                    { end: "Наслідок: Вся школа заповнена рожевими мильними бульбашками.", clue: "Хтось приніс пральну машину на науковий ярмарок.", cause: "Вони намагалися зробити вулкан, використовуючи промислове мило та повітродувку для листя." },
+                    { end: "Наслідок: Кота обрали мером міста.", clue: "У машин для голосування сталася несправність з лазерною указкою.", cause: "Кіт ганявся за лазером по кнопках 'Підтвердити' на 5000 залишених без нагляду апаратах." },
+                    { end: "Наслідок: Усі голуби в парку ходять у крихітних капелюшках.", clue: "Студентка-модельєр загубила свій дипломний проект у парку.", cause: "Її сумка з 200 мініатюрних капелюшків розірвалася. Голуби вирішили, що це гнізда, і відмовилися їх знімати." }
+                ]
+            }
+        };
+
+        let currentLang = 'en';
+        let currentMode = '';
+        let currentItem = 0;
+        let chainStepIndex = 0;
+
+        window.onload = () => {
+            currentLang = localStorage.getItem('prybambas_lang') || 'en';
+            if (!db[currentLang]) currentLang = 'en';
+            const flags = { en:"🇺🇸 EN", uk:"🇺🇦 UK", es:"🇪🇸 ES", de:"🇩🇪 DE", fr:"🇫🇷 FR", nl:"🇳🇱 NL", ro:"🇷🇴 RO", pl:"🇵🇱 PL", pt:"🇧🇷 PT", da:"🇩🇰 DA", sv:"🇸🇪 SV" };
+            document.getElementById('lang-display').innerText = flags[currentLang] || currentLang.toUpperCase();
+            applyTranslations();
+            updateTimerDisplay();
+        };
+
+        function applyTranslations() {
+            const t = db[currentLang].labels;
+            document.getElementById('lbl-q').innerText = t.q;
+            document.getElementById('lbl-lc').innerText = t.lc;
+            document.getElementById('lbl-d').innerText = t.d;
+            document.getElementById('lbl-back').innerText = t.back;
+        }
+
+        function showMenu() {
+            pauseTimer(); resetTimer();
+            document.getElementById('game-screen').style.display = 'none';
+            document.getElementById('menu-screen').style.display = 'flex';
+        }
+
+        function startGame(mode) {
+            currentMode = mode;
+            currentItem = 0;
+            
+            // Якщо таймер відкритий — скидаємо його на нуль
+            if (timerVisible) resetTimer();
+
+            document.getElementById('menu-screen').style.display = 'none';
+            document.getElementById('game-screen').style.display = 'flex';
+            const card = document.getElementById('game-card-content');
+            
+            // Зміна кольору неонової рамки
+            if(mode === 'question') {
+                card.style.borderColor = 'var(--magenta)';
+                card.style.boxShadow = '0 10px 30px rgba(217,44,255,0.2)';
+            } else if (mode === 'chain') {
+                card.style.borderColor = 'var(--green)';
+                card.style.boxShadow = '0 10px 30px rgba(84,255,58,0.2)';
+            } else {
+                card.style.borderColor = 'var(--cyan)';
+                card.style.boxShadow = '0 10px 30px rgba(0,243,255,0.2)';
+            }
+            
+            renderGame();
+        }
+
+        function renderGame() {
+            const card = document.getElementById('game-card-content');
+            const controls = document.getElementById('game-controls');
+            const data = db[currentLang];
+            const t = data.labels;
+
+            if (currentMode === 'question') {
+                const item = data.questions[currentItem % data.questions.length];
+                card.innerHTML = '<div class="game-text" style="color:var(--magenta);font-weight:bold;font-size:1.8rem;">' + item + '</div>';
+                controls.innerHTML = '<button class="action-btn" onclick="nextItem()" style="border-color:var(--magenta)">' + t.next + '</button>';
+            }
+            else if (currentMode === 'chain') {
+                chainStepIndex = 0;
+                const item = data.chains[currentItem % data.chains.length];
+                card.innerHTML = '<div class="game-text" style="text-align:left;"><strong>Start:</strong> ' + item.start + '</div><div id="chain-steps"></div>';
+                controls.innerHTML = '<button class="action-btn" onclick="revealChain()" style="border-color:var(--green)">' + t.reveal + '</button>';
+            }
+            else if (currentMode === 'deduction') {
+                const item = data.deductions[currentItem % data.deductions.length];
+                card.innerHTML = '<div class="game-text" style="color:var(--cyan);font-weight:bold;">' + item.end + '</div><div id="deduction-reveal"></div>';
+                controls.innerHTML = '<button class="action-btn" onclick="revealDeduction(\'clue\')" style="border-color:var(--cyan)">Clue</button>' +
+                    '<button class="action-btn" onclick="revealDeduction(\'cause\')" style="border-color:white;color:var(--bg);background:white;">' + t.cause + '</button>';
+            }
+        }
+
+        function nextItem() {
+            currentItem++;
+            if(timerVisible) resetTimer(); // Авто-скидання таймера при переході до наступного питання
+            renderGame();
+        }
+
+        function revealChain() {
+            const data = db[currentLang];
+            const item = data.chains[currentItem % data.chains.length];
+            const sc = document.getElementById('chain-steps');
+            const t = data.labels;
+            if (chainStepIndex < item.steps.length) {
+                const d = document.createElement('div');
+                d.className = 'chain-step';
+                d.innerText = item.steps[chainStepIndex];
+                sc.appendChild(d);
+                chainStepIndex++;
+            }
+            if (chainStepIndex >= item.steps.length) {
+                document.getElementById('game-controls').innerHTML = '<button class="action-btn" onclick="nextItem()" style="border-color:var(--green)">' + t.next + '</button>';
+            }
+        }
+
+        function revealDeduction(type) {
+            const data = db[currentLang];
+            const item = data.deductions[currentItem % data.deductions.length];
+            const rc = document.getElementById('deduction-reveal');
+            const t = data.labels;
+            if (type === 'clue') {
+                rc.innerHTML = '<div class="deduction-clue">💡 Clue: ' + item.clue + '</div>';
+            } else {
+                rc.innerHTML += '<div class="chain-step" style="border-color:var(--cyan);margin-top:20px;"><strong>Cause:</strong> ' + item.cause + '</div>';
+                document.getElementById('game-controls').innerHTML = '<button class="action-btn" onclick="nextItem()" style="border-color:var(--cyan)">' + t.next + '</button>';
+            }
+        }
+    </script>
+</body>
+</html>
