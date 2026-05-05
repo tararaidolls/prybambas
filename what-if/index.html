@@ -233,7 +233,7 @@
     <div class="fixed-bg"></div>
 
     <header>
-        <a href="../index.html" class="back-btn">← Hub</a>
+        <a href="https://tararaidolls.github.io/prybambas/index.html" class="back-btn">← Hub</a>
         <div id="lang-display" style="font-weight:bold; opacity:0.7;">🇺🇸 EN</div>
     </header>
 
@@ -418,53 +418,116 @@
             } catch(e) { /* no audio support */ }
         }
 
+        
+        
         // ====== GAME DATA ======
         const db = {
             en: {
-                labels: { q: "Single Question", lc: "Logical Chain", d: "Deduction", next: "Next", reveal: "Reveal Step", cause: "Reveal Cause", back: "← Back to Modes" },
+                labels: { q: "Single Question", lc: "Logical Chain", d: "Deduction", next: "Next", reveal: "Reveal Path", cause: "Reveal Cause", back: "← Back to Modes" },
                 questions: [
                     "What if gravity turned off for exactly 1 minute every day?",
                     "What if humans didn't need sleep at all?",
                     "What if animals could talk, but only complained about the weather?",
                     "What if all the oceans were replaced with orange juice?",
                     "What if you could only move by jumping?",
-                    "What if every lie made your nose literally grow?"
+                    "What if every lie made your nose literally grow?",
+                    "What if clouds were made of cotton candy?",
+                    "What if people glowed in the dark when they were happy?",
+                    "What if shadows had a mind of their own?",
+                    "What if money grew on trees, but the trees only grew in Antarctica?",
+                    "What if every time you sneezed, you teleported 10 feet away?",
+                    "What if insects were the size of dogs, and dogs were the size of insects?",
+                    "What if water wasn't wet, but felt like dry sand?"
                 ],
                 chains: [
-                    { start: "A boy drops his ice cream cone.", steps: ["A pigeon swoops down to eat it.", "The pigeon gets a brain freeze and drops the cone on a car's windshield.", "The driver gets scared, swerves, and hits a fire hydrant.", "The street floods and a local surfing competition begins."] },
-                    { start: "A butterfly flaps its wings in Brazil.", steps: ["The tiny wind tickles a sleeping monkey.", "The monkey sneezes and drops a coconut.", "The coconut rolls onto a boat heading to Europe.", "The coconut is discovered in Paris and sold as modern art for $500,000."] },
-                    { start: "A girl sneezes during a music lesson.", steps: ["Her sneeze accidentally hits a perfect high C note.", "The school choir director hears it and recruits her immediately.", "She becomes the lead singer and the choir goes viral on TikTok.", "A Hollywood producer signs them for a movie soundtrack."] }
+                    { 
+                        start: "A boy drops his ice cream cone.", 
+                        end: "A local surfing competition begins.",
+                        steps: ["A pigeon swoops down to eat it.", "The pigeon gets a brain freeze and drops the cone on a car's windshield.", "The driver gets scared, swerves, and hits a fire hydrant.", "The street floods and a local surfing competition begins."] 
+                    },
+                    { 
+                        start: "A butterfly flaps its wings in Brazil.", 
+                        end: "A coconut is sold in Paris for $500,000.",
+                        steps: ["The tiny wind tickles a sleeping monkey.", "The monkey sneezes and drops a coconut.", "The coconut rolls onto a boat heading to Europe.", "The coconut is discovered in Paris and sold as modern art for $500,000."] 
+                    },
+                    { 
+                        start: "A girl sneezes during a music lesson.", 
+                        end: "A Hollywood producer signs them for a movie.",
+                        steps: ["Her sneeze accidentally hits a perfect high C note.", "The school choir director hears it and recruits her immediately.", "She becomes the lead singer and the choir goes viral on TikTok.", "A Hollywood producer signs them for a movie soundtrack."] 
+                    },
+                    { 
+                        start: "A cat learns how to use a microwave.", 
+                        end: "The city runs out of tuna cans.",
+                        steps: ["The cat heats up a frozen tuna dinner.", "Other cats smell it and form an alliance.", "They break into the supermarket at night.", "The city runs out of tuna cans by morning."] 
+                    },
+                    { 
+                        start: "Someone drops a penny off a skyscraper.", 
+                        end: "A man discovers an ancient underground temple.",
+                        steps: ["The penny lands exactly in a small crack in the pavement.", "The crack widens and the sidewalk collapses.", "A city worker climbs down to fix the pipe.", "A man discovers an ancient underground temple."] 
+                    }
                 ],
                 deductions: [
                     { end: "Result: The entire school is filled with pink bubbles.", clue: "Someone brought a washing machine to the science fair.", cause: "They tried to make a volcano using industrial soap and a leaf blower." },
                     { end: "Result: A cat is elected as the city mayor.", clue: "The voting machines had a laser pointer malfunction.", cause: "The cat chased the laser over the 'Submit' buttons of 5,000 unattended machines." },
-                    { end: "Result: All the pigeons in the park are wearing tiny hats.", clue: "A fashion student lost her final project in the park.", cause: "Her bag of 200 miniature hats ripped open. The pigeons thought they were nests and refused to take them off." }
+                    { end: "Result: All the pigeons in the park are wearing tiny hats.", clue: "A fashion student lost her final project in the park.", cause: "Her bag of 200 miniature hats ripped open. The pigeons thought they were nests and refused to take them off." },
+                    { end: "Result: A river suddenly turned neon green.", clue: "A truck carrying food coloring had a flat tire on a bridge.", cause: "The truck hit a bump, the back opened, and 50 barrels of green icing dye fell into the water." },
+                    { end: "Result: Everyone in the office is speaking backwards.", clue: "A programmer tried to fix the company's autocorrect software.", cause: "He accidentally installed a virus that reverses all text on screens, and people are just reading it aloud." }
                 ]
             },
             uk: {
-                labels: { q: "Одне Питання", lc: "Логічний Ланцюжок", d: "Дедукція", next: "Далі", reveal: "Наступний крок", cause: "Показати причину", back: "← Назад до вибору" },
+                labels: { q: "Одне Питання", lc: "Логічний Ланцюжок", d: "Дедукція", next: "Далі", reveal: "Показати наш шлях", cause: "Показати причину", back: "← Назад до вибору" },
                 questions: [
                     "Що, якби гравітація вимикалася рівно на 1 хвилину щодня?",
                     "Що, якби людям взагалі не потрібно було спати?",
                     "Що, якби тварини вміли говорити, але скаржилися лише на погоду?",
                     "Що, якби всі океани раптом стали апельсиновим соком?",
                     "Що, якби рухатися можна було лише стрибками?",
-                    "Що, якби від кожної брехні ніс реально ріс?"
+                    "Що, якби від кожної брехні ніс реально ріс?",
+                    "Що, якби хмари були з цукрової вати?",
+                    "Що, якби люди світилися в темряві, коли вони щасливі?",
+                    "Що, якби тіні мали власний розум і робили, що хочуть?",
+                    "Що, якби гроші росли на деревах, але ці дерева росли тільки в Антарктиді?",
+                    "Що, якби щоразу, коли ти чхаєш, ти телепортувався на 3 метри?",
+                    "Що, якби комахи були розміром із собак, а собаки розміром із комах?",
+                    "Що, якби вода не була мокрою, а відчувалася як сухий пісок?"
                 ],
                 chains: [
-                    { start: "Хлопчик впускає на асфальт морозиво.", steps: ["Голуб злітає вниз, щоб його з'їсти.", "Голуб отримує 'замороження мозку' і губить ріжок на лобове скло авто.", "Водій лякається, різко повертає і збиває пожежний гідрант.", "Вулицю затоплює, і місцеві влаштовують змагання з серфінгу."] },
-                    { start: "Метелик змахує крилами у Бразилії.", steps: ["Легенький вітерець лоскоче сплячу мавпу.", "Мавпа чхає і випускає з лап кокос.", "Кокос котиться на корабель, що прямує до Європи.", "Кокос знаходять у Парижі і продають як об'єкт сучасного мистецтва за $500,000."] },
-                    { start: "Дівчинка чхнула під час уроку музики.", steps: ["Її чхання випадково потрапило на ідеальну ноту До.", "Керівник хору почув і одразу взяв її до складу.", "Вона стала солісткою, а хор зірвав TikTok.", "Голлівудський продюсер підписав їх для саундтреку до фільму."] }
+                    { 
+                        start: "Хлопчик впускає на асфальт морозиво.", 
+                        end: "Місцеві влаштовують змагання з серфінгу.",
+                        steps: ["Голуб злітає вниз, щоб його з'їсти.", "Голуб отримує 'замороження мозку' і губить ріжок на лобове скло авто.", "Водій лякається, різко повертає і збиває пожежний гідрант.", "Вулицю затоплює, і місцеві влаштовують змагання з серфінгу."] 
+                    },
+                    { 
+                        start: "Метелик змахує крилами у Бразилії.", 
+                        end: "Кокос продають у Парижі за $500,000.",
+                        steps: ["Легенький вітерець лоскоче сплячу мавпу.", "Мавпа чхає і випускає з лап кокос.", "Кокос котиться на корабель, що прямує до Європи.", "Кокос знаходять у Парижі і продають як об'єкт сучасного мистецтва за $500,000."] 
+                    },
+                    { 
+                        start: "Дівчинка чхнула під час уроку музики.", 
+                        end: "Голлівудський продюсер підписує з ними контракт.",
+                        steps: ["Її чхання випадково потрапило на ідеальну ноту До.", "Керівник хору почув і одразу взяв її до складу.", "Вона стала солісткою, а хор зірвав TikTok.", "Голлівудський продюсер підписав їх для саундтреку до фільму."] 
+                    },
+                    { 
+                        start: "Кіт навчився користуватися мікрохвильовкою.", 
+                        end: "У місті закінчилися консерви з тунцем.",
+                        steps: ["Кіт розігрів заморожену вечерю з тунцем.", "Інші коти відчули запах і об'єдналися в банду.", "Вночі вони зламали супермаркет.", "У місті закінчилися консерви з тунцем до ранку."] 
+                    },
+                    { 
+                        start: "Хтось впустив монетку з даху хмарочоса.", 
+                        end: "Чоловік знаходить стародавній підземний храм.",
+                        steps: ["Монетка падає рівно в маленьку тріщину на тротуарі.", "Тріщина розширюється, і тротуар провалюється.", "Робітник спускається вниз, щоб полагодити трубу.", "Чоловік знаходить стародавній підземний храм."] 
+                    }
                 ],
                 deductions: [
                     { end: "Наслідок: Вся школа заповнена рожевими мильними бульбашками.", clue: "Хтось приніс пральну машину на науковий ярмарок.", cause: "Вони намагалися зробити вулкан, використовуючи промислове мило та повітродувку для листя." },
                     { end: "Наслідок: Кота обрали мером міста.", clue: "У машин для голосування сталася несправність з лазерною указкою.", cause: "Кіт ганявся за лазером по кнопках 'Підтвердити' на 5000 залишених без нагляду апаратах." },
-                    { end: "Наслідок: Усі голуби в парку ходять у крихітних капелюшках.", clue: "Студентка-модельєр загубила свій дипломний проект у парку.", cause: "Її сумка з 200 мініатюрних капелюшків розірвалася. Голуби вирішили, що це гнізда, і відмовилися їх знімати." }
+                    { end: "Наслідок: Усі голуби в парку ходять у крихітних капелюшках.", clue: "Студентка-модельєр загубила свій дипломний проект у парку.", cause: "Її сумка з 200 мініатюрних капелюшків розірвалася. Голуби вирішили, що це гнізда, і відмовилися їх знімати." },
+                    { end: "Наслідок: Річка раптом стала неоново-зеленою.", clue: "У вантажівки, яка везла харчовий барвник, спустило колесо на мосту.", cause: "Вантажівка підскочила, двері відчинилися, і 50 бочок із зеленим барвником для тортів впали у воду." },
+                    { end: "Наслідок: Усі в офісі розмовляють задом наперед.", clue: "Програміст намагався полагодити автовиправлення текстів компанії.", cause: "Він випадково встановив вірус, який розвертає весь текст на екранах, а люди просто читають його вголос." }
                 ]
             }
         };
-
-        let currentLang = 'en';
+let currentLang = 'en';
         let currentMode = '';
         let currentItem = 0;
         let chainStepIndex = 0;
@@ -529,13 +592,22 @@
                 card.innerHTML = '<div class="game-text" style="color:var(--magenta);font-weight:bold;font-size:1.8rem;">' + item + '</div>';
                 controls.innerHTML = '<button class="action-btn" onclick="nextItem()" style="border-color:var(--magenta)">' + t.next + '</button>';
             }
+            
             else if (currentMode === 'chain') {
                 chainStepIndex = 0;
                 const item = data.chains[currentItem % data.chains.length];
-                card.innerHTML = '<div class="game-text" style="text-align:left;"><strong>Start:</strong> ' + item.start + '</div><div id="chain-steps"></div>';
+                card.innerHTML = `
+                    <div class="game-text" style="text-align:left;">
+                        <span style="color:var(--green);font-weight:bold;">Start:</span> ${item.start}
+                    </div>
+                    <div class="game-text" style="text-align:left; border-top:1px dashed rgba(255,255,255,0.2); padding-top:15px;">
+                        <span style="color:var(--magenta);font-weight:bold;">End:</span> ${item.end}
+                    </div>
+                    <div id="chain-steps" style="margin-top:20px;"></div>
+                `;
                 controls.innerHTML = '<button class="action-btn" onclick="revealChain()" style="border-color:var(--green)">' + t.reveal + '</button>';
             }
-            else if (currentMode === 'deduction') {
+else if (currentMode === 'deduction') {
                 const item = data.deductions[currentItem % data.deductions.length];
                 card.innerHTML = '<div class="game-text" style="color:var(--cyan);font-weight:bold;">' + item.end + '</div><div id="deduction-reveal"></div>';
                 controls.innerHTML = '<button class="action-btn" onclick="revealDeduction(\'clue\')" style="border-color:var(--cyan)">Clue</button>' +
@@ -549,24 +621,25 @@
             renderGame();
         }
 
+        
         function revealChain() {
             const data = db[currentLang];
             const item = data.chains[currentItem % data.chains.length];
             const sc = document.getElementById('chain-steps');
             const t = data.labels;
-            if (chainStepIndex < item.steps.length) {
+            
+            // Show all steps at once for comparison
+            sc.innerHTML = '<div style="margin-bottom:10px;font-weight:bold;color:var(--cyan);">Our path:</div>';
+            item.steps.forEach(step => {
                 const d = document.createElement('div');
                 d.className = 'chain-step';
-                d.innerText = item.steps[chainStepIndex];
+                d.innerText = step;
                 sc.appendChild(d);
-                chainStepIndex++;
-            }
-            if (chainStepIndex >= item.steps.length) {
-                document.getElementById('game-controls').innerHTML = '<button class="action-btn" onclick="nextItem()" style="border-color:var(--green)">' + t.next + '</button>';
-            }
+            });
+            
+            document.getElementById('game-controls').innerHTML = '<button class="action-btn" onclick="nextItem()" style="border-color:var(--green)">' + t.next + '</button>';
         }
-
-        function revealDeduction(type) {
+function revealDeduction(type) {
             const data = db[currentLang];
             const item = data.deductions[currentItem % data.deductions.length];
             const rc = document.getElementById('deduction-reveal');
