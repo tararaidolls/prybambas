@@ -83,11 +83,23 @@
         }
 
         /* ========== TOOLS EXPLAINER ========== */
-        .tool-selector { display: flex; gap: 10px; overflow-x: auto; padding-bottom: 15px; margin-bottom: 20px; width: 100%; }
+        
+        .tool-selector { 
+            display: flex; 
+            gap: 10px; 
+            padding-bottom: 15px; 
+            margin-bottom: 20px; 
+            width: 100%; 
+            flex-wrap: wrap; /* Додано wrap, щоб кнопки падали на наступний рядок */
+            justify-content: center; /* Центруємо їх красиво */
+        }
         .tool-tab {
             background: rgba(255,255,255,0.1); border: 1px solid transparent; color: white; padding: 10px 20px;
             border-radius: 50px; cursor: pointer; white-space: nowrap; font-weight: bold; transition: 0.3s;
+            margin-bottom: 5px; /* Відступ знизу, якщо вони впали на наступний рядок */
         }
+
+        
         .tool-tab.active { background: rgba(84,255,58,0.2); border-color: var(--green); color: var(--green); box-shadow: 0 0 10px rgba(84,255,58,0.3); }
         
         .tool-display h3 { color: white; font-size: 1.5rem; margin-top: 0; }
@@ -123,7 +135,7 @@
         @media (max-width: 600px) {
             #app-container { width: 95%; }
             .card { padding: 15px; width: 100%; max-width: 100vw; overflow-x: hidden; }
-            .tool-selector { padding-bottom: 10px; width: 100%; overflow-x: auto; }
+            
             h2.screen-title { font-size: 1.2rem; }
             .mode-btn { padding: 15px; font-size: 1rem; }
             .mode-btn .icon { font-size: 2rem; }
@@ -131,6 +143,48 @@
             .tool-display h3 { font-size: 1.2rem; }
             .tool-display p, .tool-display .example { font-size: 0.95rem; }
         }
+    
+        .day-node.done {
+            background: rgba(0,243,255,0.1);
+            border-color: var(--cyan);
+            color: var(--cyan);
+        }
+        .day-node.done::after {
+            content: "✓";
+            position: absolute;
+            font-size: 1.5rem;
+            opacity: 0.3;
+        }
+        .action-btn.done-btn:hover { background: var(--cyan); color: var(--bg); }
+
+    
+        /* LEVEL BUTTONS */
+        .level-container { display: flex; flex-direction: column; gap: 15px; width: 100%; margin-bottom: 25px; }
+        .lvl-btn {
+            background: rgba(10,15,30,0.8); backdrop-filter: blur(10px); border-radius: 15px; padding: 20px;
+            color: white; font-size: 1.2rem; font-weight: bold; cursor: pointer; text-align: left;
+            transition: 0.3s; display: flex; align-items: center; justify-content: space-between;
+        }
+        .lvl-btn:hover { transform: scale(1.02); }
+        .lvl-1 { border-left: 8px solid var(--green); box-shadow: 0 5px 15px rgba(84,255,58,0.1); }
+        .lvl-2 { border-left: 8px solid #ffcc00; box-shadow: 0 5px 15px rgba(255,204,0,0.1); }
+        .lvl-3 { border-left: 8px solid var(--magenta); box-shadow: 0 5px 15px rgba(217,44,255,0.1); }
+        
+        /* NEW TOOL DISPLAY */
+        .tool-grid { display: none; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px; margin-bottom: 20px; }
+        .tool-mini-btn {
+            background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px;
+            padding: 15px 10px; text-align: center; cursor: pointer; transition: 0.3s;
+        }
+        .tool-mini-btn:hover { background: rgba(255,255,255,0.1); }
+        .tool-mini-btn.active { background: rgba(84,255,58,0.2); border-color: var(--green); }
+        .tool-icon { font-size: 2rem; margin-bottom: 5px; }
+        .tool-name-mini { font-size: 0.9rem; font-weight: bold; }
+
+        .ex-block { margin-top: 15px; background: rgba(0,0,0,0.3); border-radius: 10px; padding: 15px; }
+        .ex-item { margin-bottom: 10px; font-size: 1rem; line-height: 1.4; display: flex; gap: 10px; }
+        .ex-icon { font-size: 1.2rem; }
+
     </style>
 
 </head>
@@ -139,7 +193,7 @@
     <div class="fixed-bg"></div>
 
     <header>
-        <a href="https://tararaidolls.github.io/prybambas/index.html" class="back-btn">← Hub</a>
+        <a href="../index.html" class="back-btn">← Hub</a>
         <div id="lang-display" style="font-weight:bold; opacity:0.7;">🇺🇸 EN</div>
     </header>
 
@@ -163,12 +217,35 @@
             </div>
         </div>
 
+        
         <!-- 1. TOOLS EXPLAINER -->
         <div id="scr-tools" class="content-screen">
             <div class="card">
                 <h2 class="screen-title" id="t-scr-tools">Tools & Examples</h2>
-                <div class="tool-selector" id="tool-tabs"></div>
-                <div class="tool-display" id="tool-content"></div>
+                
+                <div id="levels-view">
+                    <div class="level-container">
+                        <button class="lvl-btn lvl-1" onclick="openLevel(1)">
+                            <div>🟢 <span id="lbl-l1">Level 1: Beginner</span><div style="font-size:0.8rem; opacity:0.7; font-weight:normal; margin-top:5px;" id="lbl-l1-sub">The basics of invention</div></div>
+                            <span>→</span>
+                        </button>
+                        <button class="lvl-btn lvl-2" onclick="openLevel(2)">
+                            <div>🟡 <span id="lbl-l2">Level 2: Smart Thinker</span><div style="font-size:0.8rem; opacity:0.7; font-weight:normal; margin-top:5px;" id="lbl-l2-sub">Tricky ways to solve problems</div></div>
+                            <span>→</span>
+                        </button>
+                        <button class="lvl-btn lvl-3" onclick="openLevel(3)">
+                            <div>🔴 <span id="lbl-l3">Level 3: Master Inventor</span><div style="font-size:0.8rem; opacity:0.7; font-weight:normal; margin-top:5px;" id="lbl-l3-sub">Space & Time manipulation</div></div>
+                            <span>→</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div id="tools-view" style="display:none;">
+                    <div style="margin-bottom:15px; cursor:pointer; color:var(--green); text-decoration:underline;" onclick="closeLevel()" id="lbl-back-lvl">← Back to Levels</div>
+                    <div class="tool-grid" id="tool-grid" style="display:grid;"></div>
+                    <div class="tool-display" id="tool-content"></div>
+                </div>
+
             </div>
             <div class="back-to-menu" onclick="showMenu()" id="lbl-b1">← Back</div>
         </div>
@@ -177,24 +254,19 @@
         <div id="scr-calendar" class="content-screen">
             <div class="card" style="border-color: var(--cyan);">
                 <h2 class="screen-title" style="color: var(--cyan);" id="t-scr-cal">30-Day Observation</h2>
-                <div class="calendar-grid" id="cal-grid"></div>
-                <div class="challenge-display" id="cal-display">
-                    <div style="opacity:0.5; font-style:italic;" id="lbl-cal-hint">Select a day to reveal your observation challenge.</div>
+                
+                <!-- Завдання ЗВЕРХУ -->
+                <div class="challenge-display" id="cal-display" style="margin-bottom: 20px; font-size: 1.2rem; min-height: 80px; display: flex; align-items: center; justify-content: center;">
+                    <div style="opacity:0.5; font-style:italic;" id="lbl-cal-hint">Select a day below to reveal your mission.</div>
                 </div>
+
+                <!-- Кнопка "ЗРОБЛЕНО" -->
+                <button id="btn-mark-done" class="action-btn" style="display:none; border-color: var(--cyan); margin: 0 auto 25px auto;" onclick="markDayDone()">Mark as Done ✓</button>
+                
+                <!-- Сітка-календар ЗНИЗУ -->
+                <div class="calendar-grid" id="cal-grid"></div>
             </div>
             <div class="back-to-menu" onclick="showMenu()" id="lbl-b2">← Back</div>
-        </div>
-
-        <!-- 3. CHALLENGES PER TOOL -->
-        <div id="scr-tool-challenges" class="content-screen">
-            <div class="card">
-                <h2 class="screen-title" id="t-scr-tc">Challenge per Tool</h2>
-                <div class="tool-selector" id="tc-tabs"></div>
-                <div class="tool-display">
-                    <div id="tc-content" style="font-size:1.2rem; line-height:1.5;"></div>
-                </div>
-            </div>
-            <div class="back-to-menu" onclick="showMenu()" id="lbl-b3">← Back</div>
         </div>
 
         <!-- 4. MISSION POSSIBLE -->
@@ -211,119 +283,92 @@
 
     <script>
         
+        
         const db = {
             en: {
-                menu: { m1: "Tools & Examples", m2: "Observation Calendar", m3: "Challenges per Tool", m4: "Mission Possible", back: "← Back to Menu", calHint: "Select a day to reveal your observation challenge.", genBtn: "Generate Mission" },
+                menu: { m1: "Tools & Examples", m2: "Observation Calendar", m3: "Challenges per Tool", m4: "Mission Possible", back: "← Back to Menu", calHint: "Select a day below to reveal your mission.", genBtn: "Generate Mission" },
+                levels: { l1: "Level 1: Beginner", l1s: "The basics of invention", l2: "Level 2: Smart Thinker", l2s: "Tricky ways to solve problems", l3: "Level 3: Master Inventor", l3s: "Space & Time manipulation", backLvl: "← Back to Levels" },
                 tools: [
-                    { name: "1. Segmentation", desc: "Divide an object into independent parts to make it flexible or easy to replace.", ex: "Instead of one giant window blind, vertical blinds use many thin strips." },
-                    { name: "2. Inversion", desc: "Do it exactly the opposite way. Turn the object upside down or reverse the action.", ex: "Instead of running outside (you move, ground stays), use a treadmill (ground moves, you stay)." },
-                    { name: "3. Copying", desc: "Use a cheap or simple copy instead of a fragile or expensive original.", ex: "A scarecrow in a field copies a human to scare away birds." },
-                    { name: "4. Nesting", desc: "Place one object inside another, which is inside another.", ex: "A measuring cup set where smaller cups fit inside larger ones to save space." },
-                    { name: "5. Asymmetry", desc: "Change the shape of an object from symmetrical to asymmetrical.", ex: "Scissors have one larger loop for multiple fingers and one smaller loop for the thumb." },
-                    { name: "6. Merging", desc: "Bring closer together (or merge) identical or similar objects.", ex: "A Swiss Army Knife combines many tools into one handle." },
-                    { name: "7. Spheroidality", desc: "Replace linear parts with curved parts, flat surfaces with spherical ones.", ex: "Adding wheels to a heavy suitcase instead of carrying it." },
-                    { name: "8. Prior Action", desc: "Perform the required change of an object in advance.", ex: "Tea bags or pre-sliced bread in the supermarket." },
-                    { name: "9. Pneumatics", desc: "Use gas or liquid parts of an object instead of solid parts.", ex: "Inflatable mattresses or airbags in a car." },
-                    { name: "10. Feedback", desc: "Introduce feedback (referring back) to improve a process or action.", ex: "A whistling tea kettle tells you when the water is boiling." },
-                    { name: "11. Color Changes", desc: "Change the color of an object or its environment.", ex: "A glass lid on a pot to see inside without opening it." },
-                    { name: "12. Dynamization", desc: "Make an object or its environment automatically adjust for optimal performance.", ex: "A folding chair or a flexible drinking straw." },
-                    { name: "13. Extraction", desc: "Extract the 'disturbing' part or property from an object.", ex: "An air conditioner places the noisy motor outside the house." },
-                    { name: "14. Self-Service", desc: "Make an object serve itself by performing auxiliary helpful functions.", ex: "A robot vacuum cleaner that returns to its base to charge." },
-                    { name: "15. Local Quality", desc: "Change an object's structure from uniform to non-uniform.", ex: "A shovel with a rubber grip only where your hands touch it." },
-                    { name: "16. Cushion in Advance", desc: "Prepare emergency means beforehand to compensate for low reliability.", ex: "A phone case or a safety net under a circus acrobat." },
-                    { name: "17. Another Dimension", desc: "Move an object into two- or three-dimensional space.", ex: "A bunk bed or a multi-level parking garage." },
-                    { name: "18. Porous Materials", desc: "Make an object porous or add porous elements (inserts, coatings).", ex: "Styrofoam is light but bulky; a kitchen sponge absorbs water." },
-                    { name: "19. Equipotentiality", desc: "Limit position changes (e.g. avoid lifting or lowering).", ex: "Using ramps instead of stairs for wheelchairs." },
-                    { name: "20. Discarding", desc: "Make portions of an object that have fulfilled their functions go away.", ex: "Space rocket boosters falling off in space after using their fuel." }
+                    // LEVEL 1 (0-4)
+                    { name: "Segmentation", sub: "Cut into pieces", icon: "✂️", desc: "Divide an object into independent parts to make it flexible or easy to replace.", exHome: "Vertical window blinds instead of one giant curtain.", exNature: "A centipede's body is divided into many segments to move easily.", exTech: "Modular smartphones where you can replace just the camera or battery." },
+                    { name: "Inversion", sub: "Do it backward", icon: "🙃", desc: "Do exactly the opposite. Turn the object upside down or reverse the action.", exHome: "A treadmill (you stay, the ground moves).", exNature: "Bats sleep upside down to launch into flight instantly.", exTech: "A vacuum cleaner that blows air OUT to dry hair (a hairdryer)." },
+                    { name: "Copying", sub: "Use a fake", icon: "🎭", desc: "Use a cheap, safe, or virtual copy instead of a fragile or expensive original.", exHome: "A scarecrow in a garden copies a human.", exNature: "Butterflies with 'eye' spots on their wings to scare predators.", exTech: "Virtual flight simulators for pilots." },
+                    { name: "Nesting", sub: "Hide inside", icon: "🪆", desc: "Place one object inside another, which is inside another.", exHome: "Measuring cups that fit inside each other.", exNature: "A kangaroo carrying its baby in a pouch.", exTech: "Telescopic radio antennas." },
+                    { name: "Merging", sub: "Two in one", icon: "🤝", desc: "Bring closer together (or merge) identical or similar objects.", exHome: "A pencil with an eraser on the end.", exNature: "A flock of fish swimming together to look like one giant fish.", exTech: "A Swiss Army Knife combining 10 tools in one handle." },
+                    
+                    // LEVEL 2 (5-9)
+                    { name: "Prior Action", sub: "Time Machine", icon: "⏳", desc: "Perform the required change of an object in advance to save time later.", exHome: "Pre-sliced bread or tea bags.", exNature: "Squirrels burying nuts in autumn for winter.", exTech: "Sticky notes with glue already on them." },
+                    { name: "Asymmetry", sub: "Make it uneven", icon: "⚖️", desc: "Change the shape of an object from symmetrical to asymmetrical.", exHome: "Scissors (one big loop, one small loop).", exNature: "Fiddler crabs have one giant claw for defense.", exTech: "Ergonomic computer mice shaped for the right hand." },
+                    { name: "Spheroidality", sub: "Make it round", icon: "⚽", desc: "Replace linear parts with curved parts, flat surfaces with spherical ones.", exHome: "Adding wheels to a heavy suitcase.", exNature: "Armadillos rolling into a ball to protect themselves.", exTech: "Ballpoint pens instead of sharp ink quills." },
+                    { name: "Color Changes", sub: "Chameleon", icon: "🎨", desc: "Change the color of an object or make it transparent to see inside.", exHome: "A glass lid on a cooking pot.", exNature: "Chameleons changing color to hide.", exTech: "Batteries that change color when they are dead." },
+                    { name: "Porous Materials", sub: "Make holes", icon: "🧽", desc: "Make an object porous or add porous elements to absorb or make it lighter.", exHome: "A kitchen sponge.", exNature: "Bones are porous inside to be strong but lightweight.", exTech: "Styrofoam packaging." },
+                    
+                    // LEVEL 3 (10-14)
+                    { name: "Extraction", sub: "Kick it out", icon: "🚪", desc: "Extract the 'disturbing' part or property from an object.", exHome: "An air conditioner (noisy hot motor is outside).", exNature: "Lizards shedding their tail when caught.", exTech: "Wireless headphones (extracting the wire)." },
+                    { name: "Dynamization", sub: "Make it bend", icon: "🐍", desc: "Make a rigid object flexible or able to change shape.", exHome: "A folding chair or a flexible drinking straw.", exNature: "An elephant's trunk.", exTech: "Foldable smartphone screens." },
+                    { name: "Self-Service", sub: "Do it yourself", icon: "🤖", desc: "Make an object serve itself or repair itself.", exHome: "A robot vacuum returning to its charging base.", exNature: "Cats cleaning their own fur.", exTech: "Self-healing concrete that seals its own cracks when it rains." },
+                    { name: "Feedback", sub: "Smart reaction", icon: "🔔", desc: "Introduce feedback (referring back) to improve a process.", exHome: "A whistling tea kettle.", exNature: "Pain in your hand when you touch something hot.", exTech: "A thermostat that turns off the heater when the room is warm." },
+                    { name: "Discarding", sub: "Use and drop", icon: "🚀", desc: "Make portions of an object fall away after they have done their job.", exHome: "Popsicle wrappers.", exNature: "Trees dropping their leaves in winter.", exTech: "Space rocket boosters falling off in space." }
                 ],
                 calendar: [
-                    "Find 3 things in your house that use 'Nesting' (things inside things).",
-                    "Look at a door. Find the mechanism that connects it to the wall.",
-                    "Find an object that used to be one solid piece but is now made of many parts.",
-                    "Observe a bird or insect for 3 minutes. How does it solve the problem of getting food?",
-                    "Find something that is asymmetrical (not the same on both sides). Why is it designed that way?",
-                    "Look at your shoes. Find 3 different materials used and guess why they were chosen.",
-                    "Find something in the kitchen that uses 'Inversion' (does the opposite of what you expect).",
-                    "Find an object that uses 'Color Changes' to give a signal.",
-                    "Where do you see 'Merging' (two tools in one) in the bathroom?",
-                    "Find a 'Self-Service' object that turns itself off automatically."
-                ],
-                toolChallenges: [
-                    { name: "Segmentation", task: "Take an empty cardboard box. How many different ways can you cut it to make a new useful object?" },
-                    { name: "Inversion", task: "How do you water a plant without pouring water on top of the soil? Invent a bottom-up watering system." },
-                    { name: "Copying", task: "You need to measure how tall your dog is, but the dog won't stand still. How do you use a 'copy' to measure it?" },
-                    { name: "Nesting", task: "Design a backpack for an astronaut where all tools fit inside each other perfectly." },
-                    { name: "Asymmetry", task: "Design a cup that is impossible to knock over. What shape is it?" },
-                    { name: "Merging", task: "Invent a toothbrush that also dispenses toothpaste. How does it work?" },
-                    { name: "Dynamization", task: "Design a table that grows taller as you grow up." },
-                    { name: "Extraction", task: "How can you eat a watermelon without getting your hands dirty?" },
-                    { name: "Pneumatics", task: "Invent a shoe that uses air to make you jump higher." },
-                    { name: "Discarding", task: "Design a wrapper for a candy that you can eat so there's no trash." }
-                ],
-                missions: [
-                    "Move a glass of water from the table to the floor without using your hands or arms.",
-                    "Build a bridge between two chairs using only 5 sheets of paper and no tape. It must hold a book.",
-                    "Create a system to turn off your bedroom light switch from your bed using only string and household objects.",
-                    "Design a paper airplane that flies in a circle instead of straight."
+                    { t: "Segmentation ✂️", task: "Mission: Find something in your room made of many small identical pieces instead of one solid block. (Hint: Lego or a zipper)." },
+                    { t: "Nesting 🪆", task: "Mission: Explore the kitchen. Find tools or dishes that hide inside each other to save space in the cabinet." },
+                    { t: "Asymmetry ⚖️", task: "Mission: Find an object that is purposely made uneven or different on both sides. Why is it designed that way? (Hint: scissors or a mouse)." },
+                    { t: "Inversion 🙃", task: "Mission: Find something that does the exact opposite of what you expect. (Hint: something that moves the floor instead of you)." },
+                    { t: "Merging 🤝", task: "Mission: Find a tool in the bathroom that combines two different things into one." },
+                    { t: "Color Changes 🎨", task: "Mission: Find an object that uses color (or transparency) to send a signal or show you what's inside." },
+                    { t: "Spheroidality ⚽", task: "Mission: Observe a car or a heavy bag. Where are circles or rollers used to make life easier?" },
+                    { t: "Prior Action ⏳", task: "Mission: Find something in the kitchen that was prepared in advance so you don't have to waste time now." },
+                    { t: "Self-Service 🤖", task: "Mission: Find an object in your house that turns itself off or cleans itself automatically." },
+                    { t: "Dynamization 🐍", task: "Mission: Find something that is normally rigid, but was designed to fold, bend, or collapse." },
+                    { t: "Extraction 🚪", task: "Mission: Find an appliance where the noisy or hot part is placed outside or far away from the user." },
+                    { t: "Porous Materials 🧽", task: "Mission: Find an object that is full of holes or air pockets to make it lighter or able to absorb liquids." },
+                    { t: "Discarding 🚀", task: "Mission: Find something that you throw away immediately after it does its one specific job." },
+                    { t: "Copying 🎭", task: "Mission: Find a cheap or safe copy of a dangerous/expensive real-world thing. (Hint: toys or simulators)." },
+                    { t: "Feedback 🔔", task: "Mission: Find a device that 'talks' to you (beeps, clicks, or lights up) when it finishes a task." }
                 ]
             },
             uk: {
-                menu: { m1: "Інструменти та Приклади", m2: "Календар Спостережень", m3: "Виклики для Інструментів", m4: "Місія Здійсненна", back: "← Назад до меню", calHint: "Обери день, щоб отримати завдання.", genBtn: "Отримати місію" },
+                menu: { m1: "Інструменти та Приклади", m2: "Календар Спостережень", m3: "Виклики", m4: "Місія Здійсненна", back: "← Назад до меню", calHint: "Обери день, щоб отримати місію.", genBtn: "Отримати місію" },
+                levels: { l1: "Рівень 1: Початківець", l1s: "Основи винахідництва", l2: "Рівень 2: Розумник", l2s: "Хитрі способи вирішення", l3: "Рівень 3: Майстер", l3s: "Магія простору і часу", backLvl: "← Назад до рівнів" },
                 tools: [
-                    { name: "1. Дроблення", desc: "Розділи об'єкт на незалежні частини, щоб зробити його гнучким або легким для заміни.", ex: "Замість однієї суцільної штори використовують жалюзі з багатьох смужок." },
-                    { name: "2. Навпаки", desc: "Зроби все з точністю до навпаки. Переверни об'єкт або зміни дію на зворотну.", ex: "Замість того, щоб бігати по вулиці (ти рухаєшся, земля стоїть), використовують бігову доріжку (земля рухається, ти стоїш)." },
-                    { name: "3. Копіювання", desc: "Використай дешеву копію замість крихкого або дорогого оригіналу.", ex: "Опудало на полі копіює людину, щоб відлякувати птахів." },
-                    { name: "4. Матрьошка", desc: "Помісти один об'єкт всередину іншого, а той — ще в інший.", ex: "Набір мірних чашок, де менші чашки ховаються у більші для економії місця." },
-                    { name: "5. Асиметрія", desc: "Зроби симетричний об'єкт нерівним (одна сторона більша або іншої форми).", ex: "Ножиці (одне кільце більше для кількох пальців, інше менше для великого)." },
-                    { name: "6. Об'єднання", desc: "З'єднай дві різні речі в одну, щоб вони працювали разом і займали менше місця.", ex: "Швейцарський ніж (багато інструментів у ручці); олівець із гумкою." },
-                    { name: "7. Округлення", desc: "Заміни прямі кути на кола, ролики або кулі. Кругле краще котиться!", ex: "Коліщатка на важкій валізі замість ніжок." },
-                    { name: "8. Заздалегідь", desc: "Зроби частину роботи наперед, щоб у потрібний момент зекономити час.", ex: "Пакетик чаю; нарізаний хліб у магазині." },
-                    { name: "9. Повітря і Вода", desc: "Використовуй газ або рідину замість твердих частин.", ex: "Надувний матрац; подушки безпеки в автомобілі." },
-                    { name: "10. Зворотний зв'язок", desc: "Зроби так, щоб річ сама 'бачила', що відбувається, і реагувала на це.", ex: "Чайник зі свистком (повідомляє, коли вода кипить)." },
-                    { name: "11. Зміна кольору", desc: "Зміни колір об'єкта або зроби його прозорим.", ex: "Прозора кришка на каструлі, щоб бачити їжу." },
-                    { name: "12. Динамічність", desc: "Зроби жорстку річ гнучкою, щоб вона могла складатися або змінювати форму.", ex: "Складаний стілець; гнучка трубочка для соку." },
-                    { name: "13. Винесення", desc: "Відірви від об'єкта тільки ту частину, яка шкодить або заважає.", ex: "Кондиціонер (шумний мотор винесли на вулицю)." },
-                    { name: "14. Самообслуговування", desc: "Примусь систему саму себе обслуговувати.", ex: "Робот-пилосос, який сам їде на зарядку." },
-                    { name: "15. Місцева якість", desc: "Зміни умови або матеріал тільки в ОДНОМУ конкретному місці.", ex: "Лопата з гумовою накладкою лише на ручці, щоб не мерзли руки." },
-                    { name: "16. Захист наперед", desc: "Підготуй м'яке місце або захист заздалегідь.", ex: "Чохол для телефона; сітка під гімнастом у цирку." },
-                    { name: "17. Інший вимір", desc: "Якщо об'єкт не влазить по горизонталі (у 2D), підніми його вгору (у 3D).", ex: "Двоповерхове ліжко; багаторівнева парковка." },
-                    { name: "18. Пористість", desc: "Зроби предмет пористим (з дірочками), щоб вбирати рідину чи зробити легшим.", ex: "Пінопласт (легкий, але об'ємний); губка для посуду." },
-                    { name: "19. Рівновага", desc: "Зроби так, щоб не треба було піднімати важкі речі.", ex: "Пандуси замість сходинок для візків." },
-                    { name: "20. Відкидання", desc: "Частина об'єкта має відпасти після того, як виконала роботу.", ex: "Ступені космічної ракети, які відпадають у космосі." }
+                    { name: "Дроблення", sub: "Розріж на шматки", icon: "✂️", desc: "Розділи об'єкт на незалежні частини, щоб його було легше скласти або замінити.", exHome: "Жалюзі замість однієї суцільної штори.", exNature: "Тіло соконіжки поділене на сегменти, щоб легко згинатися.", exTech: "Модульні телефони, де можна замінити лише батарею." },
+                    { name: "Навпаки", sub: "Світ догори дриґом", icon: "🙃", desc: "Зроби все з точністю до навпаки. Переверни або зміни дію на зворотну.", exHome: "Бігова доріжка (ти стоїш, а підлога біжить).", exNature: "Кажани сплять догори дриґом, щоб миттєво злетіти.", exTech: "Пилосос, який видуває повітря, щоб сушити волосся (фен)." },
+                    { name: "Копіювання", sub: "Використай фейк", icon: "🎭", desc: "Використай дешеву або віртуальну копію замість крихкого оригіналу.", exHome: "Опудало на городі копіює людину.", exNature: "Метелики з 'очима' на крилах лякають птахів.", exTech: "Віртуальні симулятори польотів для пілотів." },
+                    { name: "Матрьошка", sub: "Ховай одне в одне", icon: "🪆", desc: "Помісти один об'єкт всередину іншого, а той — ще в інший.", exHome: "Набір мірних ложечок.", exNature: "Кенгуру носить малюка в сумці на животі.", exTech: "Телескопічні радіоантени." },
+                    { name: "Об'єднання", sub: "Два в одному", icon: "🤝", desc: "З'єднай дві різні речі в одну, щоб вони працювали разом.", exHome: "Олівець із гумкою на кінці.", exNature: "Зграя риб пливе разом, щоб здаватися однією великою рибою.", exTech: "Швейцарський ніж (багато інструментів у ручці)." },
+                    
+                    { name: "Заздалегідь", sub: "Машина часу", icon: "⏳", desc: "Зроби частину роботи наперед, щоб у потрібний момент зекономити час.", exHome: "Нарізаний хліб або пакетик чаю.", exNature: "Білки ховають горіхи восени на зиму.", exTech: "Стікери з уже нанесеним клеєм." },
+                    { name: "Асиметрія", sub: "Зроби кривим", icon: "⚖️", desc: "Зроби симетричний об'єкт нерівним, щоб додати нову функцію.", exHome: "Ножиці (одне кільце велике, інше мале).", exNature: "Краби-скрипалі мають одну гігантську клешню для захисту.", exTech: "Комп'ютерні мишки, вигнуті під праву руку." },
+                    { name: "Округлення", sub: "Хай котиться", icon: "⚽", desc: "Заміни прямі кути на кола або ролики.", exHome: "Коліщатка на важкій валізі.", exNature: "Броненосець згортається в кулю для захисту.", exTech: "Кулькова ручка замість гострого пера." },
+                    { name: "Зміна кольору", sub: "Хамелеон", icon: "🎨", desc: "Зміни колір об'єкта або зроби його прозорим, щоб бачити що всередині.", exHome: "Прозора кришка на каструлі.", exNature: "Хамелеон змінює колір, щоб сховатися.", exTech: "Батарейки, які змінюють колір, коли розряджаються." },
+                    { name: "Пористість", sub: "Зроби дірки", icon: "🧽", desc: "Зроби предмет пористим (з дірочками), щоб вбирати рідину чи зробити легшим.", exHome: "Губка для миття посуду.", exNature: "Кістки всередині пористі: так вони міцні, але легкі.", exTech: "Пінопласт для пакування." },
+                    
+                    { name: "Винесення", sub: "Викинь зайве", icon: "🚪", desc: "Відірви від об'єкта тільки ту частину, яка шкодить або заважає.", exHome: "Кондиціонер (шумний мотор винесли на вулицю).", exNature: "Ящірка відкидає хвіст, коли її ловлять.", exTech: "Бездротові навушники (винесли дріт)." },
+                    { name: "Динамічність", sub: "Зроби гнучким", icon: "🐍", desc: "Зроби жорстку річ гнучкою, щоб вона могла складатися.", exHome: "Складаний стілець або розкладна парасолька.", exNature: "Хобот слона.", exTech: "Гнучкі екрани смартфонів." },
+                    { name: "Самообслуговування", sub: "Зроби сам", icon: "🤖", desc: "Примусь систему саму себе обслуговувати або ремонтувати.", exHome: "Робот-пилосос, який сам їде на зарядку.", exNature: "Коти самі вмиваються язиком.", exTech: "Розумний бетон, який сам затягує свої тріщини під час дощу." },
+                    { name: "Зворотний зв'язок", sub: "Розумна реакція", icon: "🔔", desc: "Зроби так, щоб річ сама реагувала на події.", exHome: "Чайник зі свистком (каже, що вода кипить).", exNature: "Біль у руці, коли торкаєшся гарячого.", exTech: "Термостат, який сам вимикає батарею, коли стає тепло." },
+                    { name: "Відкидання", sub: "Використай і кинь", icon: "🚀", desc: "Частина об'єкта має відпасти після того, як виконала свою роботу.", exHome: "Обгортка від морозива.", exNature: "Дерева скидають листя на зиму.", exTech: "Ступені космічної ракети, що відпадають у космосі." }
                 ],
                 calendar: [
-                    "Знайди 3 речі вдома, які використовують принцип 'Матрьошки' (речі всередині речей).",
-                    "Подивись на двері. Знайди механізм, який з'єднує їх зі стіною.",
-                    "Знайди предмет, який раніше був суцільним, а тепер складається з багатьох частин.",
-                    "Спостерігай за птахом або комахою 3 хвилини. Як вони вирішують проблему пошуку їжі?",
-                    "Знайди щось асиметричне (неоднакове з обох боків). Чому воно так створено?",
-                    "Подивись на своє взуття. Знайди 3 різні матеріали і вгадай, чому обрали саме їх.",
-                    "Знайди на кухні річ, яка використовує принцип 'Навпаки'.",
-                    "Знайди предмет, який використовує 'Зміну кольору', щоб подати сигнал.",
-                    "Де у ванній кімнаті є 'Об'єднання' (два інструменти в одному)?",
-                    "Знайди річ 'Самообслуговування', яка сама вимикається."
-                ],
-                toolChallenges: [
-                    { name: "Дроблення", task: "Візьми порожню картонну коробку. Скількома способами ти можеш розрізати її, щоб зробити новий корисний предмет?" },
-                    { name: "Навпаки", task: "Як полити рослину, не наливаючи воду зверху на землю? Винайди систему поливу 'знизу-вверх'." },
-                    { name: "Копіювання", task: "Тобі треба виміряти зріст собаки, але собака не стоїть на місці. Як використати 'копію' для вимірювання?" },
-                    { name: "Матрьошка", task: "Спроектуй рюкзак для астронавта, де всі інструменти ідеально ховаються один в один." },
-                    { name: "Асиметрія", task: "Спроектуй чашку, яку неможливо перекинути. Яку форму вона має?" },
-                    { name: "Об'єднання", task: "Винайди зубну щітку, яка сама видає пасту. Як вона працює?" },
-                    { name: "Динамічність", task: "Спроектуй стіл, який росте разом з тобою." },
-                    { name: "Винесення", task: "Як з'їсти кавун, не забруднивши руки?" },
-                    { name: "Повітря", task: "Винайди взуття, яке використовує повітря, щоб стрибати вище." },
-                    { name: "Відкидання", task: "Спроектуй обгортку для цукерки, яку можна з'їсти, щоб не лишалося сміття." }
-                ],
-                missions: [
-                    "Перемісти склянку з водою зі столу на підлогу, не використовуючи руки.",
-                    "Побудуй міст між двома стільцями, використовуючи лише 5 аркушів паперу і жодного скотчу. Він має витримати книгу.",
-                    "Створи систему, щоб вимикати світло в кімнаті прямо з ліжка, використовуючи лише нитки та побутові речі.",
-                    "Зроби паперовий літачок, який літає по колу, а не прямо."
+                    { t: "Дроблення ✂️", task: "Місія: Знайди у своїй кімнаті річ, яка зроблена з багатьох дрібних шматочків замість одного суцільного. (Підказка: Lego або блискавка на куртці)." },
+                    { t: "Матрьошка 🪆", task: "Місія: Досліди кухню. Знайди інструменти або посуд, які ховаються один в один, щоб займати менше місця." },
+                    { t: "Асиметрія ⚖️", task: "Місія: Знайди предмет, який спеціально зроблений кривим або неоднаковим з обох сторін. (Підказка: ножиці)." },
+                    { t: "Навпаки 🙃", task: "Місія: Знайди річ, яка робить точнісінько протилежне тому, що ти очікуєш. (Підказка: рухає підлогу замість тебе)." },
+                    { t: "Об'єднання 🤝", task: "Місія: Знайди у ванній кімнаті інструмент, який поєднує дві різні речі в одну." },
+                    { t: "Зміна кольору 🎨", task: "Місія: Знайди об'єкт, який використовує колір (або прозорість), щоб подати сигнал або показати, що всередині." },
+                    { t: "Округлення ⚽", task: "Місія: Подивись на машину або важку сумку. Де там використані кола, щоб полегшити життя?" },
+                    { t: "Заздалегідь ⏳", task: "Місія: Знайди на кухні щось, що було підготовлено наперед, щоб ти не витрачав час зараз." },
+                    { t: "Самообслуговування 🤖", task: "Місія: Знайди вдома річ, яка сама себе вимикає або чистить." },
+                    { t: "Динамічність 🐍", task: "Місія: Знайди щось, що зазвичай тверде, але його зробили так, щоб воно складалося чи гнулося." },
+                    { t: "Винесення 🚪", task: "Місія: Знайди прилад, де найгучніша або найгарячіша частина винесена на вулицю чи далеко." },
+                    { t: "Пористість 🧽", task: "Місія: Знайди об'єкт, який весь у дірочках, щоб вбирати воду або бути легким." },
+                    { t: "Відкидання 🚀", task: "Місія: Знайди річ, яку ти викидаєш одразу після того, як вона виконала свою єдину задачу." },
+                    { t: "Копіювання 🎭", task: "Місія: Знайди дешеву або безпечну копію небезпечної реальної речі. (Підказка: іграшки)." },
+                    { t: "Зворотний зв'язок 🔔", task: "Місія: Знайди пристрій, який 'розмовляє' з тобою (пікає, клацає або світиться), коли закінчує роботу." }
                 ]
             }
         };
-
 
         let currentLang = 'en';
 
@@ -339,18 +384,23 @@
 
         function applyTranslations() {
             const t = db[currentLang].menu;
+            const l = db[currentLang].levels;
+            
             document.getElementById('lbl-m1').innerText = t.m1; document.getElementById('t-scr-tools').innerText = t.m1;
             document.getElementById('lbl-m2').innerText = t.m2; document.getElementById('t-scr-cal').innerText = t.m2;
-            document.getElementById('lbl-m3').innerText = t.m3; document.getElementById('t-scr-tc').innerText = t.m3;
             document.getElementById('lbl-m4').innerText = t.m4; document.getElementById('t-scr-miss').innerText = t.m4;
             
             document.getElementById('lbl-b1').innerText = t.back;
             document.getElementById('lbl-b2').innerText = t.back;
-            document.getElementById('lbl-b3').innerText = t.back;
             document.getElementById('lbl-b4').innerText = t.back;
             
             document.getElementById('lbl-cal-hint').innerText = t.calHint;
             document.getElementById('btn-gen-miss').innerText = t.genBtn;
+            
+            document.getElementById('lbl-l1').innerText = l.l1; document.getElementById('lbl-l1-sub').innerText = l.l1s;
+            document.getElementById('lbl-l2').innerText = l.l2; document.getElementById('lbl-l2-sub').innerText = l.l2s;
+            document.getElementById('lbl-l3').innerText = l.l3; document.getElementById('lbl-l3-sub').innerText = l.l3s;
+            document.getElementById('lbl-back-lvl').innerText = l.backLvl;
         }
 
         function showMenu() {
@@ -363,72 +413,109 @@
             document.getElementById('scr-' + id).style.display = 'flex';
         }
 
-        function initScreens() {
-            // 1. Tools Setup
-            const toolsTabs = document.getElementById('tool-tabs');
-            toolsTabs.innerHTML = '';
-            db[currentLang].tools.forEach((tool, i) => {
+        let currentLevelTools = [];
+
+        function openLevel(lvl) {
+            document.getElementById('levels-view').style.display = 'none';
+            document.getElementById('tools-view').style.display = 'block';
+            
+            const grid = document.getElementById('tool-grid');
+            grid.innerHTML = '';
+            
+            // Slice tools array based on level
+            const allTools = db[currentLang].tools;
+            if (lvl === 1) currentLevelTools = allTools.slice(0, 5);
+            else if (lvl === 2) currentLevelTools = allTools.slice(5, 10);
+            else currentLevelTools = allTools.slice(10, 15);
+            
+            currentLevelTools.forEach((tool, i) => {
                 const btn = document.createElement('div');
-                btn.className = 'tool-tab' + (i===0?' active':'');
-                btn.innerText = tool.name;
+                btn.className = 'tool-mini-btn' + (i===0?' active':'');
+                btn.innerHTML = `<div class="tool-icon">${tool.icon}</div><div class="tool-name-mini">${tool.name}</div><div style="font-size:0.75rem; opacity:0.7;">${tool.sub}</div>`;
                 btn.onclick = () => {
-                    document.querySelectorAll('#tool-tabs .tool-tab').forEach(b => b.classList.remove('active'));
+                    document.querySelectorAll('.tool-mini-btn').forEach(b => b.classList.remove('active'));
                     btn.classList.add('active');
                     showToolContent(i);
                 };
-                toolsTabs.appendChild(btn);
+                grid.appendChild(btn);
             });
             showToolContent(0);
+        }
 
-            // 2. Calendar Setup (30 days)
+        function closeLevel() {
+            document.getElementById('tools-view').style.display = 'none';
+            document.getElementById('levels-view').style.display = 'block';
+        }
+
+        function showToolContent(index) {
+            const tool = currentLevelTools[index];
+            document.getElementById('tool-content').innerHTML = `
+                <h3 style="color:white; margin-bottom:5px;">${tool.icon} ${tool.name}</h3>
+                <div style="color:var(--cyan); font-weight:bold; margin-bottom:15px; font-size:0.9rem;">"${tool.sub}"</div>
+                <p style="font-size:1.1rem;">${tool.desc}</p>
+                <div class="ex-block">
+                    <div class="ex-item"><span class="ex-icon">🏠</span> <div><strong>Home:</strong> ${tool.exHome}</div></div>
+                    <div class="ex-item"><span class="ex-icon">🌿</span> <div><strong>Nature:</strong> ${tool.exNature}</div></div>
+                    <div class="ex-item"><span class="ex-icon">🚀</span> <div><strong>Tech:</strong> ${tool.exTech}</div></div>
+                </div>
+            `;
+        }
+
+        let currentDay = 0;
+        let progressData = JSON.parse(localStorage.getItem('prybambas_cal_progress')) || {};
+
+        function initScreens() {
+            // Calendar Setup (15 days for deep learning)
             const calGrid = document.getElementById('cal-grid');
             calGrid.innerHTML = '';
-            for(let i=1; i<=30; i++) {
+            for(let i=1; i<=15; i++) {
                 const day = document.createElement('div');
                 day.className = 'day-node';
+                if(progressData[i]) day.classList.add('done');
+                
                 day.innerText = i;
                 day.onclick = () => {
                     document.querySelectorAll('.day-node').forEach(d => d.classList.remove('active'));
                     day.classList.add('active');
+                    currentDay = i;
+                    
                     const obsList = db[currentLang].calendar;
-                    const challenge = obsList[(i-1) % obsList.length];
-                    document.getElementById('cal-display').innerHTML = `<strong>Day ${i}:</strong><br><br>${challenge}`;
+                    const challenge = obsList[(i-1)];
+                    
+                    document.getElementById('cal-display').innerHTML = `
+                        <div style="color:var(--cyan); font-weight:bold; margin-bottom:10px;">DAY ${i}: Hunt for ${challenge.t}</div>
+                        <div style="font-size:1.1rem; line-height:1.4;">${challenge.task}</div>
+                    `;
+                    
+                    const doneBtn = document.getElementById('btn-mark-done');
+                    doneBtn.style.display = 'block';
+                    if(progressData[i]) {
+                        doneBtn.innerText = currentLang === 'uk' ? "Виконано ✓" : "Done ✓";
+                        doneBtn.style.background = "var(--cyan)";
+                        doneBtn.style.color = "var(--bg)";
+                    } else {
+                        doneBtn.innerText = currentLang === 'uk' ? "Відмітити як виконане" : "Mark as Done";
+                        doneBtn.style.background = "transparent";
+                        doneBtn.style.color = "white";
+                    }
                 };
                 calGrid.appendChild(day);
             }
-
-            // 3. Tool Challenges Setup
-            const tcTabs = document.getElementById('tc-tabs');
-            tcTabs.innerHTML = '';
-            db[currentLang].toolChallenges.forEach((tc, i) => {
-                const btn = document.createElement('div');
-                btn.className = 'tool-tab' + (i===0?' active':'');
-                btn.innerText = tc.name;
-                btn.onclick = () => {
-                    document.querySelectorAll('#tc-tabs .tool-tab').forEach(b => b.classList.remove('active'));
-                    btn.classList.add('active');
-                    document.getElementById('tc-content').innerText = tc.task;
-                };
-                tcTabs.appendChild(btn);
-            });
-            document.getElementById('tc-content').innerText = db[currentLang].toolChallenges[0].task;
         }
 
-        function showToolContent(index) {
-            const tool = db[currentLang].tools[index];
-            document.getElementById('tool-content').innerHTML = `
-                <h3>${tool.name}</h3>
-                <p>${tool.desc}</p>
-                <div class="example"><strong>Example:</strong><br>${tool.ex}</div>
-            `;
+        function markDayDone() {
+            if(currentDay === 0) return;
+            progressData[currentDay] = true;
+            localStorage.setItem('prybambas_cal_progress', JSON.stringify(progressData));
+            initScreens(); // re-render grid
+            const days = document.querySelectorAll('.day-node');
+            days[currentDay-1].click();
         }
 
         function generateMission() {
             const missions = db[currentLang].missions;
             const random = missions[Math.floor(Math.random() * missions.length)];
             const el = document.getElementById('mission-content');
-            
-            // Animation effect
             el.style.opacity = '0';
             setTimeout(() => {
                 el.innerText = random;
@@ -436,6 +523,7 @@
                 el.style.transition = 'opacity 0.5s';
             }, 200);
         }
+
     </script>
 </body>
 </html>
