@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Books | Prybambas</title>
+    <style>
+        :root {
+            --magenta: #d92cff;
+            --green: #54ff3a;
+            --cyan: #00f3ff;
+            --yellow: #ffcc00;
+            --bg: #0b1224;
+        }
+
+        * { box-sizing: border-box; }
+
+        body, html {
+            margin: 0; padding: 0; min-height: 100vh;
+            background-color: var(--bg); color: white;
+            font-family: 'Segoe UI', Roboto, Helvetica, sans-serif;
+            overflow-x: hidden; display: flex; flex-direction: column; align-items: center;
+        }
+
+        .fixed-bg {
+            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+            background-image: url('../bg-image.jpg'); 
+            background-size: cover; background-position: center center; z-index: -1;
+        }
+
+        header {
+            width: 90%; max-width: 800px; display: flex; justify-content: space-between; align-items: center;
+            margin-top: 20px; z-index: 10;
+        }
+
+        .back-btn {
+            background: rgba(10,15,30,0.7); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(255,255,255,0.2); color: white; padding: 10px 20px; border-radius: 50px;
+            text-decoration: none; font-weight: bold; box-shadow: 0 4px 15px rgba(0,0,0,0.3); transition: 0.3s;
+        }
+        .back-btn:hover { background: rgba(255,255,255,0.1); }
+
+        h1 {
+            letter-spacing: 2px; text-shadow: 0 0 15px var(--yellow); text-align: center; margin: 30px 0 10px 0; color: white;
+        }
+        
+        .subtitle {
+            text-align: center; color: rgba(255,255,255,0.7); font-size: 1.1rem; margin-bottom: 40px; z-index: 10; padding: 0 20px;
+        }
+
+        #app-container {
+            width: 90%; max-width: 800px; display: flex; flex-direction: column; align-items: center;
+            z-index: 10; padding-bottom: 60px;
+        }
+
+        .books-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            width: 100%;
+        }
+
+        .book-card {
+            background: rgba(10,15,30,0.7); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(255,204,0,0.3); border-radius: 20px; padding: 25px;
+            display: flex; flex-direction: column; align-items: center; text-align: center; gap: 15px;
+            transition: 0.3s; box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+        }
+        
+        .book-card:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(255,204,0,0.2); border-color: var(--yellow); }
+        
+        .book-icon { font-size: 4rem; filter: drop-shadow(0 0 10px rgba(255,255,255,0.2)); margin-bottom: 10px; }
+        
+        .book-title { font-size: 1.3rem; font-weight: bold; color: var(--yellow); line-height: 1.3; }
+        .book-desc { font-size: 0.95rem; color: rgba(255,255,255,0.8); line-height: 1.4; flex-grow: 1; }
+        
+        .buy-btn {
+            background: rgba(255,204,0,0.1); border: 2px solid var(--yellow); color: white;
+            padding: 12px 25px; border-radius: 50px; text-decoration: none; font-weight: bold;
+            text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; width: 100%;
+        }
+        .buy-btn:hover { background: var(--yellow); color: var(--bg); }
+        
+        .buy-btn-alt {
+            background: transparent; border: 1px solid rgba(255,255,255,0.3); color: rgba(255,255,255,0.7);
+            padding: 10px 20px; border-radius: 50px; text-decoration: none; font-size: 0.9rem;
+            transition: 0.3s; width: 100%; margin-top: -5px;
+        }
+        .buy-btn-alt:hover { border-color: white; color: white; }
+
+        @media (max-width: 600px) {
+            #app-container { width: 95%; }
+            .book-card { padding: 20px; }
+            .books-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="fixed-bg"></div>
+
+    <header>
+        <a href="https://tararaidolls.github.io/prybambas/index.html" class="back-btn" id="lbl-back">← Hub</a>
+        <div id="lang-display" style="font-weight:bold; opacity:0.7;">🇺🇸 EN</div>
+    </header>
+
+    <h1 id="lbl-title">BOOKS & WORKBOOKS</h1>
+    <div class="subtitle" id="lbl-sub">Continue the journey offline with our physical workbooks.</div>
+
+    <div id="app-container">
+        <div class="books-grid">
+            
+            <!-- Book 1: TRIZ -->
+            <div class="book-card">
+                <div class="book-icon">⚙️📘</div>
+                <div class="book-title" id="t-triz">Think Like an Inventor (TRIZ)</div>
+                <div class="book-desc" id="d-triz">A 4-volume curriculum of screen-free engineering challenges. Teach your child to solve impossible problems.</div>
+                <a href="https://www.amazon.com/dp/YOUR_ASIN_HERE" target="_blank" class="buy-btn" id="btn-triz">Amazon (Paperback)</a>
+                <a href="https://www.teacherspayteachers.com/Store/Your-Store" target="_blank" class="buy-btn-alt" id="btn-triz-pdf">Get PDF (TPT)</a>
+            </div>
+
+            <!-- Book 2: One Verb a Day -->
+            <div class="book-card">
+                <div class="book-icon">🗣️📗</div>
+                <div class="book-title" id="t-verb">One Verb a Day Workbooks</div>
+                <div class="book-desc" id="d-verb">Master 400 essential verbs in Spanish, French, German, or English in just 5 minutes a day.</div>
+                <a href="https://www.amazon.com/dp/YOUR_ASIN_HERE" target="_blank" class="buy-btn" id="btn-verb">Amazon (Paperback)</a>
+            </div>
+
+            <!-- Book 3: Ukrainian / Digital Hub -->
+            <div class="book-card">
+                <div class="book-icon">🇺🇦📒</div>
+                <div class="book-title" id="t-ua">Ukrainian Editions & Printables</div>
+                <div class="book-desc" id="d-ua">Get localized Ukrainian PDF versions of our games and workbooks directly from our store.</div>
+                <a href="https://vseosvita.ua/user/idXXXXX" target="_blank" class="buy-btn" id="btn-ua">Vseosvita (PDF)</a>
+                <a href="https://t.me/mas_sandra" target="_blank" class="buy-btn-alt" id="btn-ua-tg">Contact Author</a>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        const db = {
+            en: {
+                back: "← Hub", title: "BOOKS & WORKBOOKS", sub: "Continue the journey offline with our physical workbooks.",
+                tTriz: "Think Like an Inventor (TRIZ)", dTriz: "A 4-volume curriculum of screen-free engineering challenges. Teach your child to solve impossible problems.", btnAmz: "Amazon (Paperback)", btnPdf: "Get PDF (TPT)",
+                tVerb: "One Verb a Day Workbooks", dVerb: "Master 400 essential verbs in Spanish, French, German, or English in just 5 minutes a day.",
+                tUa: "Ukrainian Editions", dUa: "Get localized Ukrainian PDF versions of our games and workbooks directly from our store.", btnUa: "Vseosvita (PDF)", btnTg: "Contact Author"
+            },
+            uk: {
+                back: "← Назад", title: "КНИГИ ТА ЗОШИТИ", sub: "Продовжте навчання офлайн з нашими робочими зошитами.",
+                tTriz: "Думай як Винахідник (ТВВЗ)", dTriz: "Курс із 4 томів інженерних завдань без екранів. Навчіть дитину вирішувати неможливі проблеми.", btnAmz: "Amazon (Книга)", btnPdf: "Завантажити PDF (TPT)",
+                tVerb: "Одне дієслово на день", dVerb: "Вивчи 400 найважливіших дієслів іноземної мови всього за 5 хвилин на день.",
+                tUa: "Українські версії", dUa: "Завантажуй україномовні PDF-версії наших зошитів, ігор та плакатів.", btnUa: "Всеосвіта (PDF)", btnTg: "Написати автору"
+            }
+        };
+
+        window.onload = () => {
+            let currentLang = localStorage.getItem('prybambas_lang') || 'en';
+            if (!db[currentLang]) currentLang = 'en';
+            
+            const flags = { en:"🇺🇸 EN", uk:"🇺🇦 UK", es:"🇪🇸 ES", de:"🇩🇪 DE", fr:"🇫🇷 FR", nl:"🇳🇱 NL", ro:"🇷🇴 RO", pl:"🇵🇱 PL", pt:"🇧🇷 PT", da:"🇩🇰 DA", sv:"🇸🇪 SV" };
+            document.getElementById('lang-display').innerText = flags[currentLang] || currentLang.toUpperCase();
+            
+            const t = db[currentLang];
+            document.getElementById('lbl-back').innerText = t.back;
+            document.getElementById('lbl-title').innerText = t.title;
+            document.getElementById('lbl-sub').innerText = t.sub;
+            
+            document.getElementById('t-triz').innerText = t.tTriz; document.getElementById('d-triz').innerText = t.dTriz;
+            document.getElementById('btn-triz').innerText = t.btnAmz; document.getElementById('btn-triz-pdf').innerText = t.btnPdf;
+            
+            document.getElementById('t-verb').innerText = t.tVerb; document.getElementById('d-verb').innerText = t.dVerb;
+            document.getElementById('btn-verb').innerText = t.btnAmz;
+            
+            document.getElementById('t-ua').innerText = t.tUa; document.getElementById('d-ua').innerText = t.dUa;
+            document.getElementById('btn-ua').innerText = t.btnUa; document.getElementById('btn-ua-tg').innerText = t.btnTg;
+        };
+    </script>
+</body>
+</html>
