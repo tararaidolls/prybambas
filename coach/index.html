@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Coach | Prybambas</title>
+    <style>
+        :root {
+            --magenta: #d92cff;
+            --green: #54ff3a;
+            --cyan: #00f3ff;
+            --bg: #0b1224;
+        }
+
+        * { box-sizing: border-box; }
+
+        body, html {
+            margin: 0; padding: 0; min-height: 100vh;
+            background-color: var(--bg); color: white;
+            font-family: 'Segoe UI', Roboto, Helvetica, sans-serif;
+            overflow-x: hidden; display: flex; flex-direction: column; align-items: center;
+        }
+
+        .fixed-bg {
+            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+            background-image: url('../bg-image.jpg'); 
+            background-size: cover; background-position: center center; z-index: -1;
+        }
+
+        header {
+            width: 90%; max-width: 800px; display: flex; justify-content: space-between; align-items: center;
+            margin-top: 20px; z-index: 10;
+        }
+
+        .back-btn {
+            background: rgba(10,15,30,0.7); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(255,255,255,0.2); color: white; padding: 10px 20px; border-radius: 50px;
+            text-decoration: none; font-weight: bold; box-shadow: 0 4px 15px rgba(0,0,0,0.3); transition: 0.3s;
+        }
+        .back-btn:hover { background: rgba(255,255,255,0.1); }
+
+        h1 {
+            letter-spacing: 2px; text-shadow: 0 0 15px var(--cyan); text-align: center; margin: 30px 0 10px 0; color: white;
+        }
+        
+        .subtitle {
+            text-align: center; color: rgba(255,255,255,0.7); font-size: 1.1rem; margin-bottom: 40px; z-index: 10; padding: 0 20px;
+        }
+
+        #app-container {
+            width: 90%; max-width: 600px; display: flex; flex-direction: column; align-items: center;
+            z-index: 10; padding-bottom: 60px;
+        }
+
+        /* ========== MENU ========== */
+        #menu-screen { display: flex; flex-direction: column; gap: 20px; width: 100%; }
+
+        .bot-card {
+            background: rgba(10,15,30,0.7); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
+            border: 2px dashed var(--cyan); border-radius: 20px; padding: 25px;
+            color: white; text-decoration: none; display: flex; align-items: center; justify-content: flex-start; gap: 20px;
+            transition: 0.3s; box-shadow: 0 0 15px rgba(0,243,255,0.2); position: relative; overflow: hidden;
+        }
+        
+        .bot-card:hover { transform: scale(1.02); box-shadow: 0 0 25px rgba(0,243,255,0.4); }
+        .bot-card .icon { font-size: 3rem; filter: drop-shadow(0 0 10px var(--cyan)); flex-shrink: 0; }
+        
+        .bot-info { display: flex; flex-direction: column; gap: 5px; }
+        .bot-title { font-size: 1.3rem; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; color: var(--cyan); }
+        .bot-desc { font-size: 0.95rem; color: rgba(255,255,255,0.8); line-height: 1.4; }
+        
+        .external-icon { position: absolute; top: 15px; right: 15px; opacity: 0.5; font-size: 1.2rem; }
+
+        @media (max-width: 600px) {
+            #app-container { width: 95%; }
+            .bot-card { padding: 20px; flex-direction: column; text-align: center; gap: 10px; }
+            .bot-card .icon { font-size: 2.5rem; }
+            .bot-title { font-size: 1.1rem; }
+            .external-icon { top: 10px; right: 10px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="fixed-bg"></div>
+
+    <header>
+        <a href="https://tararaidolls.github.io/prybambas/index.html" class="back-btn" id="lbl-back">← Hub</a>
+        <div id="lang-display" style="font-weight:bold; opacity:0.7;">🇺🇸 EN</div>
+    </header>
+
+    <h1 id="lbl-title">AI COACH</h1>
+    <div class="subtitle" id="lbl-sub">Choose your mentor. Opens securely in ChatGPT.</div>
+
+    <div id="app-container">
+        <div id="menu-screen">
+            
+            <!-- Polyglot Coach -->
+            <a href="https://chatgpt.com/g/g-xxxxxx" target="_blank" class="bot-card">
+                <div class="external-icon">↗</div>
+                <div class="icon">🦉</div>
+                <div class="bot-info">
+                    <div class="bot-title" id="t-lang">Polyglot Language Coach</div>
+                    <div class="bot-desc" id="d-lang">Practice sentences from the "One Verb a Day" workbook. Get grammar corrections and tips.</div>
+                </div>
+            </a>
+
+            <!-- Inventor Coach -->
+            <a href="https://chatgpt.com/g/g-yyyyyy" target="_blank" class="bot-card">
+                <div class="external-icon">↗</div>
+                <div class="icon">💡</div>
+                <div class="bot-info">
+                    <div class="bot-title" id="t-inv">Inventor's Sidekick</div>
+                    <div class="bot-desc" id="d-inv">Stuck on a TRIZ challenge? Brainstorm ideas and learn how to think like an engineer.</div>
+                </div>
+            </a>
+
+        </div>
+    </div>
+
+    <script>
+        const db = {
+            en: {
+                back: "← Hub",
+                title: "AI COACH",
+                sub: "Choose your mentor. Opens securely in ChatGPT.",
+                langT: "Polyglot Language Coach",
+                langD: "Practice sentences from the 'One Verb a Day' workbook. Get grammar corrections and tips.",
+                invT: "Inventor's Sidekick",
+                invD: "Stuck on a TRIZ challenge? Brainstorm ideas and learn how to think like an engineer."
+            },
+            uk: {
+                back: "← Назад",
+                title: "AI ТРЕНЕР",
+                sub: "Обери свого ментора. Безпечно відкривається у ChatGPT.",
+                langT: "Мовний Тренер Поліглот",
+                langD: "Практикуй речення із зошита 'One Verb a Day'. Отримуй виправлення граматики та поради.",
+                invT: "Помічник Винахідника",
+                invD: "Застряг на завданні ТВВЗ? Генеруй ідеї та навчися мислити як справжній інженер."
+            },
+            es: {
+                back: "← Volver",
+                title: "COACH IA",
+                sub: "Elige tu mentor. Se abre de forma segura en ChatGPT.",
+                langT: "Coach de Idiomas Políglota",
+                langD: "Practica oraciones del libro 'Un verbo al día'. Recibe correcciones gramaticales.",
+                invT: "Compañero Inventor",
+                invD: "¿Atascado en un desafío TRIZ? Genera ideas y aprende a pensar como un ingeniero."
+            },
+            de: {
+                back: "← Zurück",
+                title: "KI-COACH",
+                sub: "Wähle deinen Mentor. Öffnet sich sicher in ChatGPT.",
+                langT: "Polyglotter Sprachcoach",
+                langD: "Übe Sätze aus dem 'Ein Verb pro Tag'-Arbeitsbuch. Erhalte Grammatikkorrekturen.",
+                invT: "Erfinder-Assistent",
+                invD: "Steckst du bei einer TRIZ-Herausforderung fest? Finde Ideen und denke wie ein Ingenieur."
+            }
+        };
+
+        window.onload = () => {
+            let currentLang = localStorage.getItem('prybambas_lang') || 'en';
+            if (!db[currentLang]) currentLang = 'en'; // fallback
+            
+            const flags = { en:"🇺🇸 EN", uk:"🇺🇦 UK", es:"🇪🇸 ES", de:"🇩🇪 DE", fr:"🇫🇷 FR", nl:"🇳🇱 NL", ro:"🇷🇴 RO", pl:"🇵🇱 PL", pt:"🇧🇷 PT", da:"🇩🇰 DA", sv:"🇸🇪 SV", he:"🇮🇱 HE", ja:"🇯🇵 JA", fi:"🇫🇮 FI" };
+            document.getElementById('lang-display').innerText = flags[currentLang] || currentLang.toUpperCase();
+            
+            const t = db[currentLang];
+            document.getElementById('lbl-back').innerText = t.back;
+            document.getElementById('lbl-title').innerText = t.title;
+            document.getElementById('lbl-sub').innerText = t.sub;
+            
+            document.getElementById('t-lang').innerText = t.langT;
+            document.getElementById('d-lang').innerText = t.langD;
+            
+            document.getElementById('t-inv').innerText = t.invT;
+            document.getElementById('d-inv').innerText = t.invD;
+        };
+    </script>
+</body>
+</html>
