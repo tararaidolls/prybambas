@@ -203,9 +203,13 @@
         }
 
         function startGame() {
-            if (currentMode === 1) alert("Routing to Single Question...");
-            else if (currentMode === 2) alert("Routing to Logical Chain...");
-            else if (currentMode === 3) alert("Routing to Deduction...");
+            if (currentMode === 1) {
+                window.location.href = "single.html";
+            } else if (currentMode === 2) {
+                window.location.href = "chain.html";
+            } else if (currentMode === 3) {
+                window.location.href = "deduction.html";
+            }
         }
     </script>
 </body>
