@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logical Chain | What If?</title>
+    <style>
+        :root { --color: #54ff3a; --bg: #0b1224; }
+        body { margin: 0; min-height: 100vh; background-color: var(--bg); color: white; font-family: sans-serif; display: flex; flex-direction: column; align-items: center; }
+        .fixed-bg { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background-image: url('../bg-image.jpg'); background-size: cover; z-index: -1; }
+        header { width: 90%; max-width: 600px; display: flex; justify-content: space-between; margin-top: 20px; z-index: 10; }
+        .back-btn { background: rgba(10,15,30,0.7); border: 1px solid white; color: white; padding: 10px 20px; border-radius: 50px; text-decoration: none; font-weight: bold; }
+        h1 { color: var(--color); text-shadow: 0 0 15px var(--color); z-index: 10; margin-top: 20px;}
+        
+        #game-area { width: 90%; max-width: 500px; display: flex; flex-direction: column; gap: 15px; z-index: 10; margin-top: 20px; padding-bottom: 50px;}
+        
+        .box { background: rgba(10,15,30,0.8); border: 2px solid white; border-radius: 15px; padding: 20px; text-align: center; font-weight: bold; font-size: 1.1rem; }
+        .box.start { border-color: yellow; color: yellow; }
+        .box.end { border-color: red; color: #ff6b6b; }
+        .box.step { border-color: var(--color); display: none; animation: popIn 0.5s; }
+        
+        @keyframes popIn { from { transform: scale(0.8); opacity: 0;} to { transform: scale(1); opacity: 1;} }
+        
+        .arrow { text-align: center; color: rgba(255,255,255,0.5); font-size: 1.5rem; display: none; }
+        
+        .btn-group { display: flex; flex-direction: column; gap: 15px; margin-top: 20px; width: 100%; }
+        .action-btn { background: transparent; border: 2px solid var(--color); color: white; padding: 15px; border-radius: 50px; font-weight: bold; cursor: pointer; transition: 0.3s; width: 100%; font-size: 1.1rem;}
+        .action-btn:hover { background: var(--color); color: var(--bg); }
+    </style>
+</head>
+<body>
+    <div class="fixed-bg"></div>
+    <header><a href="index.html" class="back-btn">← Menu</a></header>
+    <h1>LOGICAL CHAIN</h1>
+    
+    <div id="game-area">
+        <div class="box start" id="b-start">START</div>
+        
+        <div class="arrow" id="arr1">↓</div>
+        <div class="box step" id="s1">Step 1</div>
+        <div class="arrow" id="arr2">↓</div>
+        <div class="box step" id="s2">Step 2</div>
+        <div class="arrow" id="arr3">↓</div>
+        <div class="box step" id="s3">Step 3</div>
+        
+        <div class="arrow" style="display:block;" id="arr-final">↓</div>
+        <div class="box end" id="b-end">END</div>
+        
+        <div class="btn-group">
+            <button class="action-btn" onclick="revealLogic()" id="btn-reveal">REVEAL LOGIC</button>
+            <button class="action-btn" onclick="nextRound()" style="border-color:white;">NEXT ROUND ➔</button>
+        </div>
+    </div>
+
+    <script>
+        const gamesData = [{"q": "What if gravity turned off for exactly 1 minute every day?", "start": "Gravity turns off for 1 minute.", "steps": ["People and objects float up.", "Everyone hits their head on the ceiling.", "Helmets become mandatory indoor fashion."], "end": "Helmets become mandatory indoor fashion."}, {"q": "What if animals could talk, but only complained about the weather?", "start": "Animals complain about weather.", "steps": ["Dogs refuse to walk in the rain and complain loudly.", "Umbrella sales for pets skyrocket.", "Weather forecasting is now done by asking the local pigeons."], "end": "Weather forecasting is done by asking pigeons."}, {"q": "What if all the oceans were replaced with orange juice?", "start": "Oceans become orange juice.", "steps": ["The ocean becomes highly acidic.", "Fish mutate to survive the acid.", "Sharks become addicted to sugar and swim faster."], "end": "Sharks become addicted to sugar and swim faster."}, {"q": "What if you could only move by jumping?", "start": "People can only move by jumping.", "steps": ["Walking is impossible.", "Ceilings in houses are built 3x higher.", "Trampolines replace sidewalks."], "end": "Trampolines replace all sidewalks."}, {"q": "What if every lie made your nose literally grow?", "start": "Noses grow when lying.", "steps": ["Politicians have 10-foot long noses.", "Doors have to be widened.", "Nose-trimming becomes a daily morning routine like shaving."], "end": "Nose-trimming becomes a daily morning routine."}, {"q": "What if clouds were made of cotton candy?", "start": "Clouds are cotton candy.", "steps": ["It rains sugar water.", "Cars and streets get incredibly sticky.", "Car washes are replaced by giant tongue-licking machines."], "end": "Car washes are replaced by giant tongue-licking machines."}, {"q": "What if people glowed in the dark when they were happy?", "start": "Happy people glow in the dark.", "steps": ["Movie theaters ban happy people.", "Sad people are hired as stealth ninjas.", "Streetlights are removed because happy crowds light the city."], "end": "Streetlights are removed to save electricity."}, {"q": "What if money grew on trees?", "start": "Money grows on trees.", "steps": ["Everyone becomes rich instantly.", "Money loses its value (hyperinflation).", "People start trading rare rocks instead of money."], "end": "People start trading rare rocks to buy groceries."}, {"q": "What if humans didn't need sleep?", "start": "Humans don't need sleep.", "steps": ["Beds become obsolete.", "Houses are built without bedrooms.", "Schools and jobs run 24 hours a day."], "end": "Schools and jobs run 24 hours a day."}, {"q": "What if all insects were the size of dogs?", "start": "Insects are dog-sized.", "steps": ["Picnics become extreme survival sports.", "Ants are trained to carry groceries.", "Mosquito nets are replaced by steel cages."], "end": "Mosquito nets are replaced by steel cages."}, {"q": "What if laughing made you float?", "start": "Laughing makes you float.", "steps": ["Comedy clubs have padded ceilings.", "Tickling someone is considered attempted murder.", "Heavy boots become the hottest fashion trend."], "end": "Heavy lead boots become the hottest fashion trend."}, {"q": "What if we could only eat crayons?", "start": "Humans only eat crayons.", "steps": ["Food disappears from supermarkets.", "People poop rainbows.", "Restaurants are replaced by giant art supply stores."], "end": "People poop rainbows."}];
+        let currentItem = null;
+        
+        function nextRound() {
+            currentItem = gamesData[Math.floor(Math.random() * gamesData.length)];
+            
+            document.getElementById('b-start').innerText = "START: " + currentItem.start;
+            document.getElementById('b-end').innerText = "RESULT: " + currentItem.end;
+            
+            document.getElementById('s1').innerText = currentItem.steps[0];
+            document.getElementById('s2').innerText = currentItem.steps[1];
+            document.getElementById('s3').innerText = currentItem.steps[2];
+            
+            // Hide steps
+            document.querySelectorAll('.step, .arrow').forEach(el => el.style.display = 'none');
+            document.getElementById('arr-final').style.display = 'block';
+            document.getElementById('btn-reveal').style.display = 'block';
+        }
+        
+        function revealLogic() {
+            document.getElementById('btn-reveal').style.display = 'none';
+            document.getElementById('arr-final').style.display = 'none';
+            
+            // Sequential reveal
+            setTimeout(() => { document.getElementById('arr1').style.display = 'block'; document.getElementById('s1').style.display = 'block'; }, 500);
+            setTimeout(() => { document.getElementById('arr2').style.display = 'block'; document.getElementById('s2').style.display = 'block'; }, 1500);
+            setTimeout(() => { document.getElementById('arr3').style.display = 'block'; document.getElementById('s3').style.display = 'block'; }, 2500);
+            setTimeout(() => { document.getElementById('arr-final').style.display = 'block'; }, 3500);
+        }
+        
+        nextRound();
+    </script>
+</body>
+</html>

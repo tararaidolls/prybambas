@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Single Question | What If?</title>
+    <style>
+        :root { --color: #d92cff; --bg: #0b1224; }
+        body { margin: 0; min-height: 100vh; background-color: var(--bg); color: white; font-family: sans-serif; display: flex; flex-direction: column; align-items: center; }
+        .fixed-bg { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background-image: url('../bg-image.jpg'); background-size: cover; z-index: -1; }
+        header { width: 90%; max-width: 600px; display: flex; justify-content: space-between; margin-top: 20px; z-index: 10; }
+        .back-btn { background: rgba(10,15,30,0.7); border: 1px solid white; color: white; padding: 10px 20px; border-radius: 50px; text-decoration: none; font-weight: bold; }
+        h1 { color: var(--color); text-shadow: 0 0 15px var(--color); z-index: 10; margin-top: 40px;}
+        
+        .card { background: rgba(10,15,30,0.8); border: 2px solid var(--color); border-radius: 20px; padding: 40px; width: 90%; max-width: 500px; text-align: center; box-shadow: 0 0 25px rgba(217,44,255,0.3); z-index: 10; margin-top: 20px; min-height: 200px; display: flex; align-items: center; justify-content: center; }
+        .question { font-size: 1.5rem; font-weight: bold; line-height: 1.4; }
+        
+        .btn-group { display: flex; gap: 20px; margin-top: 40px; z-index: 10; }
+        .action-btn { background: transparent; border: 2px solid var(--color); color: white; padding: 15px 30px; border-radius: 50px; font-weight: bold; cursor: pointer; transition: 0.3s; }
+        .action-btn:hover { background: var(--color); color: var(--bg); }
+        
+        /* Simple timer overlay */
+        #timer-display { display: none; position: fixed; top: 20%; font-size: 5rem; font-weight: bold; color: var(--color); text-shadow: 0 0 20px var(--color); z-index: 100; }
+    </style>
+</head>
+<body>
+    <div class="fixed-bg"></div>
+    <header>
+        <a href="index.html" class="back-btn">← Menu</a>
+    </header>
+    <h1>SINGLE QUESTION</h1>
+    
+    <div class="card">
+        <div class="question" id="q-text">Tap 'Next' to start!</div>
+    </div>
+    
+    <div class="btn-group">
+        <button class="action-btn" onclick="startTimer()">⏳ 60s</button>
+        <button class="action-btn" onclick="nextQuestion()">NEXT ➔</button>
+    </div>
+    
+    <div id="timer-display">60</div>
+
+    <script>
+        const gamesData = [{"q": "What if gravity turned off for exactly 1 minute every day?", "start": "Gravity turns off for 1 minute.", "steps": ["People and objects float up.", "Everyone hits their head on the ceiling.", "Helmets become mandatory indoor fashion."], "end": "Helmets become mandatory indoor fashion."}, {"q": "What if animals could talk, but only complained about the weather?", "start": "Animals complain about weather.", "steps": ["Dogs refuse to walk in the rain and complain loudly.", "Umbrella sales for pets skyrocket.", "Weather forecasting is now done by asking the local pigeons."], "end": "Weather forecasting is done by asking pigeons."}, {"q": "What if all the oceans were replaced with orange juice?", "start": "Oceans become orange juice.", "steps": ["The ocean becomes highly acidic.", "Fish mutate to survive the acid.", "Sharks become addicted to sugar and swim faster."], "end": "Sharks become addicted to sugar and swim faster."}, {"q": "What if you could only move by jumping?", "start": "People can only move by jumping.", "steps": ["Walking is impossible.", "Ceilings in houses are built 3x higher.", "Trampolines replace sidewalks."], "end": "Trampolines replace all sidewalks."}, {"q": "What if every lie made your nose literally grow?", "start": "Noses grow when lying.", "steps": ["Politicians have 10-foot long noses.", "Doors have to be widened.", "Nose-trimming becomes a daily morning routine like shaving."], "end": "Nose-trimming becomes a daily morning routine."}, {"q": "What if clouds were made of cotton candy?", "start": "Clouds are cotton candy.", "steps": ["It rains sugar water.", "Cars and streets get incredibly sticky.", "Car washes are replaced by giant tongue-licking machines."], "end": "Car washes are replaced by giant tongue-licking machines."}, {"q": "What if people glowed in the dark when they were happy?", "start": "Happy people glow in the dark.", "steps": ["Movie theaters ban happy people.", "Sad people are hired as stealth ninjas.", "Streetlights are removed because happy crowds light the city."], "end": "Streetlights are removed to save electricity."}, {"q": "What if money grew on trees?", "start": "Money grows on trees.", "steps": ["Everyone becomes rich instantly.", "Money loses its value (hyperinflation).", "People start trading rare rocks instead of money."], "end": "People start trading rare rocks to buy groceries."}, {"q": "What if humans didn't need sleep?", "start": "Humans don't need sleep.", "steps": ["Beds become obsolete.", "Houses are built without bedrooms.", "Schools and jobs run 24 hours a day."], "end": "Schools and jobs run 24 hours a day."}, {"q": "What if all insects were the size of dogs?", "start": "Insects are dog-sized.", "steps": ["Picnics become extreme survival sports.", "Ants are trained to carry groceries.", "Mosquito nets are replaced by steel cages."], "end": "Mosquito nets are replaced by steel cages."}, {"q": "What if laughing made you float?", "start": "Laughing makes you float.", "steps": ["Comedy clubs have padded ceilings.", "Tickling someone is considered attempted murder.", "Heavy boots become the hottest fashion trend."], "end": "Heavy lead boots become the hottest fashion trend."}, {"q": "What if we could only eat crayons?", "start": "Humans only eat crayons.", "steps": ["Food disappears from supermarkets.", "People poop rainbows.", "Restaurants are replaced by giant art supply stores."], "end": "People poop rainbows."}];
+        let timerInt;
+        
+        function nextQuestion() {
+            let rnd = Math.floor(Math.random() * gamesData.length);
+            document.getElementById('q-text').innerText = gamesData[rnd].q;
+        }
+        
+        function startTimer() {
+            let t = 60;
+            const display = document.getElementById('timer-display');
+            display.style.display = 'block';
+            display.innerText = t;
+            clearInterval(timerInt);
+            
+            timerInt = setInterval(() => {
+                t--;
+                display.innerText = t;
+                if(t <= 0) {
+                    clearInterval(timerInt);
+                    display.innerText = "TIME'S UP!";
+                    setTimeout(() => { display.style.display = 'none'; }, 2000);
+                }
+            }, 1000);
+        }
+        
+        // Load first question on start
+        nextQuestion();
+    </script>
+</body>
+</html>
