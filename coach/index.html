@@ -28,7 +28,7 @@
             display: flex;
             justify-content: space-between;
             width: 100%;
-            max-width: 500px;
+            max-width: 450px;
             padding: 15px 15px 0 15px;
             z-index: 100;
         }
@@ -72,8 +72,8 @@
             display: flex;
             align-items: center;
             gap: 10px;
-            margin-top: 25px;
-            margin-bottom: 25px;
+            margin-top: 15px;
+            margin-bottom: 15px;
         }
         
         .logo-svg {
@@ -111,6 +111,34 @@
         }
         .chat-header h2 { font-size: 1.1rem; font-weight: 800; color: var(--cyan); }
         .chat-header p { font-size: 0.75rem; color: #94a3b8; margin-top: 2px; }
+
+        /* ВЕЛИКА КНОПКА ЗАПУСКУ РЕАЛЬНОГО ЧАТУ (LAUNCH CUSTOM GPT) */
+        .launch-btn {
+            background: linear-gradient(135deg, #0f172a 0%, #0c4a6e 100%);
+            border: 2.5px solid var(--cyan);
+            border-radius: 16px;
+            color: white;
+            padding: 12px;
+            text-align: center;
+            font-weight: 800;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 15px;
+            box-shadow: 0 0 10px rgba(0, 243, 255, 0.2);
+            transition: 0.3s;
+        }
+        .launch-btn:hover {
+            transform: scale(1.02);
+            box-shadow: 0 0 15px rgba(0, 243, 255, 0.5);
+            background: rgba(0, 243, 255, 0.15);
+        }
 
         .chat-messages {
             flex-grow: 1;
@@ -193,6 +221,11 @@
             <p id="header-desc">Practice what you write with your virtual language coach!</p>
         </div>
 
+        <!-- КНОПКА ПЕРЕХОДУ НА CUSTOM GPT (Для перевірки по фотографії) -->
+        <a href="https://chatgpt.com/g/g-your-coach-id-here" class="launch-btn" target="_blank" id="launch-gpt-btn">
+            📸 Check Handwriting by Photo
+        </a>
+
         <div class="chat-messages" id="chat-box">
             <div class="msg bot" id="welcome-msg">Hi! I am your virtual language coach. Type a sentence using one of the verbs from your workbook, and I will correct any mistakes or practice with you!</div>
         </div>
@@ -212,6 +245,7 @@
                 welcome: "Hi! I am your virtual language coach. Type a sentence using one of the verbs from your workbook, and I will correct any mistakes or practice with you!",
                 placeholder: "Type a sentence...",
                 bot_thinking: "Thinking...",
+                launch: "📸 Check Handwriting by Photo",
                 bot_reply: "Excellent sentence! Your grammar is perfect. Keep practicing! 🚀"
             },
             uk: {
@@ -221,6 +255,7 @@
                 welcome: "Привіт! Я твій мовний тренер. Напиши речення, використовуючи будь-яке дієслово з твого зошита, і я перевірю твою граматику!",
                 placeholder: "Напиши речення...",
                 bot_thinking: "Думаю...",
+                launch: "📸 Перевірити зошит по фото",
                 bot_reply: "Чудове речення! Твоя граматика ідеальна. Продовжуй практикуватися! 🚀"
             }
         };
@@ -237,6 +272,7 @@
             document.getElementById('header-desc').innerText = t.desc;
             document.getElementById('welcome-msg').innerText = t.welcome;
             document.getElementById('user-input').placeholder = t.placeholder;
+            document.getElementById('launch-gpt-btn').innerText = t.launch;
         }
 
         function sendMessage() {
