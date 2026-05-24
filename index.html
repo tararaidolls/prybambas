@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Prybambas Educational Hub</title>
+    <link rel="manifest" href="./manifest.json">
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -194,6 +195,13 @@
             const savedLang = localStorage.getItem('prybambas_lang') || 'en';
             document.getElementById('lang-selector').value = savedLang;
             changeLang();
+
+            // Register PWA Service Worker
+            if ('serviceWorker' in navigator) {
+                navigator.serviceWorker.register('./sw.js')
+                    .then(reg => console.log('Service Worker Registered!', reg))
+                    .catch(err => console.log('Service Worker Failed!', err));
+            }
         }
     </script>
 </body>
