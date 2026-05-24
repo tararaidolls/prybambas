@@ -2,180 +2,253 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Books | Prybambas</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
             --magenta: #d92cff;
             --green: #54ff3a;
             --cyan: #00f3ff;
-            --yellow: #ffcc00;
-            --bg: #0b1224;
+            --yellow: #ff9f43;
+            --bg: #020617;
         }
 
-        * { box-sizing: border-box; }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
 
         body, html {
             margin: 0; padding: 0; min-height: 100vh;
-            background-color: var(--bg); color: white;
-            font-family: 'Segoe UI', Roboto, Helvetica, sans-serif;
+            background: radial-gradient(circle at center, #0f172a 0%, #020617 100%);
+            color: white;
+            font-family: 'Nunito', sans-serif;
             overflow-x: hidden; display: flex; flex-direction: column; align-items: center;
         }
 
-        .fixed-bg {
-            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
-            background-image: url('../bg-image.jpg'); 
-            background-size: cover; background-position: center center; z-index: -1;
-        }
-
-        header {
-            width: 90%; max-width: 800px; display: flex; justify-content: space-between; align-items: center;
-            margin-top: 20px; z-index: 10;
+        /* Уніфікована панель вгорі */
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            max-width: 500px;
+            padding: 15px 15px 0 15px;
+            z-index: 100;
         }
 
         .back-btn {
-            background: rgba(10,15,30,0.7); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
-            border: 1px solid rgba(255,255,255,0.2); color: white; padding: 10px 20px; border-radius: 50px;
-            text-decoration: none; font-weight: bold; box-shadow: 0 4px 15px rgba(0,0,0,0.3); transition: 0.3s;
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 2px solid var(--yellow);
+            color: white; 
+            padding: 8px 16px; 
+            border-radius: 50px;
+            text-decoration: none; 
+            font-weight: bold; 
+            box-shadow: 0 0 10px rgba(255, 159, 67, 0.3); 
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: 0.3s;
         }
-        .back-btn:hover { background: rgba(255,255,255,0.1); }
+        .back-btn:hover { background: rgba(255, 159, 67, 0.2); }
 
-        h1 {
-            letter-spacing: 2px; text-shadow: 0 0 15px var(--yellow); text-align: center; margin: 30px 0 10px 0; color: white;
+        .lang-switch {
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 2px solid var(--yellow);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            cursor: pointer;
+            outline: none;
+            box-shadow: 0 0 10px rgba(255, 159, 67, 0.3);
+            font-weight: bold;
+        }
+
+        /* Логотип серії */
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 25px;
+            margin-bottom: 25px;
         }
         
-        .subtitle {
-            text-align: center; color: rgba(255,255,255,0.7); font-size: 1.1rem; margin-bottom: 40px; z-index: 10; padding: 0 20px;
+        .logo-svg {
+            width: 35px;
+            height: 35px;
+            filter: drop-shadow(0 0 8px var(--yellow));
         }
 
-        #app-container {
-            width: 90%; max-width: 800px; display: flex; flex-direction: column; align-items: center;
-            z-index: 10; padding-bottom: 60px;
+        .logo-text {
+            color: white;
+            font-weight: 800;
+            letter-spacing: 2px;
+            font-size: 1.3rem;
+            text-shadow: 0 0 10px var(--yellow);
         }
 
-        .books-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-            width: 100%;
+        /* КАТАЛОГ КНИГ */
+        .books-container {
+            width: 90%; max-width: 450px;
+            display: flex; flex-direction: column; gap: 20px;
+            padding-bottom: 50px;
         }
 
         .book-card {
-            background: rgba(10,15,30,0.7); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
-            border: 1px solid rgba(255,204,0,0.3); border-radius: 20px; padding: 25px;
-            display: flex; flex-direction: column; align-items: center; text-align: center; gap: 15px;
-            transition: 0.3s; box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(12px);
+            border-radius: 20px;
+            border: 2px solid var(--yellow);
+            padding: 20px;
+            display: flex; gap: 15px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+            align-items: center;
+            transition: 0.3s;
+            text-decoration: none;
+            color: white;
         }
-        
-        .book-card:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(255,204,0,0.2); border-color: var(--yellow); }
-        
-        .book-icon { font-size: 4rem; filter: drop-shadow(0 0 10px rgba(255,255,255,0.2)); margin-bottom: 10px; }
-        
-        .book-title { font-size: 1.3rem; font-weight: bold; color: var(--yellow); line-height: 1.3; }
-        .book-desc { font-size: 0.95rem; color: rgba(255,255,255,0.8); line-height: 1.4; flex-grow: 1; }
-        
-        .buy-btn {
-            background: rgba(255,204,0,0.1); border: 2px solid var(--yellow); color: white;
-            padding: 12px 25px; border-radius: 50px; text-decoration: none; font-weight: bold;
-            text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; width: 100%;
+        .book-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 15px rgba(255, 159, 67, 0.3);
+            background: rgba(15, 23, 42, 0.8);
         }
-        .buy-btn:hover { background: var(--yellow); color: var(--bg); }
-        
-        .buy-btn-alt {
-            background: transparent; border: 1px solid rgba(255,255,255,0.3); color: rgba(255,255,255,0.7);
-            padding: 10px 20px; border-radius: 50px; text-decoration: none; font-size: 0.9rem;
-            transition: 0.3s; width: 100%; margin-top: -5px;
-        }
-        .buy-btn-alt:hover { border-color: white; color: white; }
 
-        @media (max-width: 600px) {
-            #app-container { width: 95%; }
-            .book-card { padding: 20px; }
-            .books-grid { grid-template-columns: 1fr; }
+        .book-cover {
+            width: 80px; height: 110px;
+            background: #1e293b;
+            border-radius: 8px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 2rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            border: 1px solid rgba(255,255,255,0.1);
+            flex-shrink: 0;
         }
+
+        .book-info h3 { font-size: 1.1rem; font-weight: 800; margin-bottom: 5px; color: var(--yellow); }
+        .book-info p { font-size: 0.85rem; color: #cbd5e1; line-height: 1.4; }
     </style>
 </head>
 <body>
 
-    <div class="fixed-bg"></div>
+    <!-- Уніфікована панель вгорі -->
+    <div class="top-bar">
+        <a href="../index.html" class="back-btn" id="btn-back">← Hub</a>
+        <select class="lang-switch" id="lang-selector" onchange="changeLang()">
+            <option value="en">🇺🇸 EN</option>
+            <option value="uk">🇺🇦 UK</option>
+            <option value="es">🇪🇸 ES</option>
+            <option value="de">🇩🇪 DE</option>
+            <option value="fr">🇫🇷 FR</option>
+            <option value="nl">🇳🇱 NL</option>
+            <option value="da">🇩🇰 DA</option>
+            <option value="sv">🇸🇪 SV</option>
+            <option value="ro">🇷🇴 RO</option>
+            <option value="pl">🇵🇱 PL</option>
+            <option value="pt">🇧🇷 PT</option>
+        </select>
+    </div>
 
-    <header>
-        <a href="https://tararaidolls.github.io/prybambas/index.html" class="back-btn" id="lbl-back">← Hub</a>
-        <div id="lang-display" style="font-weight:bold; opacity:0.7;">🇺🇸 EN</div>
-    </header>
+    <!-- Логотип серії -->
+    <div class="logo-container">
+        <svg class="logo-svg" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M30 20 H70 V80 H30 Z" stroke="var(--yellow)" stroke-width="4" />
+            <path d="M40 20 V80" stroke="white" stroke-width="2" />
+        </svg>
+        <span class="logo-text" id="header-title">Books Gym</span>
+    </div>
 
-    <h1 id="lbl-title">BOOKS & WORKBOOKS</h1>
-    <div class="subtitle" id="lbl-sub">Continue the journey offline with our physical workbooks.</div>
-
-    <div id="app-container">
-        <div class="books-grid">
-            
-            <!-- Book 1: TRIZ -->
-            <div class="book-card">
-                <div class="book-icon">⚙️📘</div>
-                <div class="book-title" id="t-triz">Think Like an Inventor (TRIZ)</div>
-                <div class="book-desc" id="d-triz">A 4-volume curriculum of screen-free engineering challenges. Teach your child to solve impossible problems.</div>
-                <a href="https://www.amazon.com/dp/YOUR_ASIN_HERE" target="_blank" class="buy-btn" id="btn-triz">Amazon (Paperback)</a>
-                <a href="https://www.teacherspayteachers.com/Store/Your-Store" target="_blank" class="buy-btn-alt" id="btn-triz-pdf">Get PDF (TPT)</a>
+    <div class="books-container">
+        <!-- Книга 1: What If -->
+        <a href="https://www.amazon.com/dp/B0BRC7Z2NW" class="book-card" target="_blank">
+            <div class="book-cover">🦋</div>
+            <div class="book-info">
+                <h3 id="b1-title">What If? Book</h3>
+                <p id="b1-desc">The physical workbook with 100+ logical chain puzzles. Turn science and cause-and-effect into a game!</p>
             </div>
+        </a>
 
-            <!-- Book 2: One Verb a Day -->
-            <div class="book-card">
-                <div class="book-icon">🗣️📗</div>
-                <div class="book-title" id="t-verb">One Verb a Day Workbooks</div>
-                <div class="book-desc" id="d-verb">Master 400 essential verbs in Spanish, French, German, or English in just 5 minutes a day.</div>
-                <a href="https://www.amazon.com/dp/YOUR_ASIN_HERE" target="_blank" class="buy-btn" id="btn-verb">Amazon (Paperback)</a>
+        <!-- Книга 2: Think Like an Inventor -->
+        <a href="https://www.amazon.com/dp/B0BRC7Z2NW" class="book-card" target="_blank">
+            <div class="book-cover">⚙️</div>
+            <div class="book-info">
+                <h3 id="b2-title">Think Like an Inventor</h3>
+                <p id="b2-desc">4 Volumes of hands-on TRIZ engineering missions for curious minds. Think outside the box.</p>
             </div>
+        </a>
 
-            <!-- Book 3: Ukrainian / Digital Hub -->
-            <div class="book-card">
-                <div class="book-icon">🇺🇦📒</div>
-                <div class="book-title" id="t-ua">Ukrainian Editions & Printables</div>
-                <div class="book-desc" id="d-ua">Get localized Ukrainian PDF versions of our games and workbooks directly from our store.</div>
-                <a href="https://vseosvita.ua/user/idXXXXX" target="_blank" class="buy-btn" id="btn-ua">Vseosvita (PDF)</a>
-                <a href="https://t.me/mas_sandra" target="_blank" class="buy-btn-alt" id="btn-ua-tg">Contact Author</a>
+        <!-- Книга 3: One Verb a Day -->
+        <a href="https://www.amazon.com/dp/B0BRC7Z2NW" class="book-card" target="_blank">
+            <div class="book-cover">🗣️</div>
+            <div class="book-info">
+                <h3 id="b3-title">One Verb a Day</h3>
+                <p id="b3-desc">The ultimate active recall language learning workbooks with built-in native audio smart codes.</p>
             </div>
+        </a>
 
-        </div>
+        <!-- Книга 4: Microscope Safari -->
+        <a href="https://www.amazon.com/dp/B0BRC7Z2NW" class="book-card" target="_blank">
+            <div class="book-cover">🔬</div>
+            <div class="book-info">
+                <h3 id="b4-title">Microscope Safari</h3>
+                <p id="b4-desc">A guided look-closer science journal for pocket microscopes. Real biomimicry and fun outdoor/indoor research.</p>
+            </div>
+        </a>
     </div>
 
     <script>
-        const db = {
+        const dict = {
             en: {
-                back: "← Hub", title: "BOOKS & WORKBOOKS", sub: "Continue the journey offline with our physical workbooks.",
-                tTriz: "Think Like an Inventor (TRIZ)", dTriz: "A 4-volume curriculum of screen-free engineering challenges. Teach your child to solve impossible problems.", btnAmz: "Amazon (Paperback)", btnPdf: "Get PDF (TPT)",
-                tVerb: "One Verb a Day Workbooks", dVerb: "Master 400 essential verbs in Spanish, French, German, or English in just 5 minutes a day.",
-                tUa: "Ukrainian Editions", dUa: "Get localized Ukrainian PDF versions of our games and workbooks directly from our store.", btnUa: "Vseosvita (PDF)", btnTg: "Contact Author"
+                back: "← Hub",
+                header: "Books Gym",
+                b1_t: "What If? Book",
+                b1_d: "The physical workbook with 100+ logical chain puzzles. Turn science and cause-and-effect into a game!",
+                b2_t: "Think Like an Inventor",
+                b2_d: "4 Volumes of hands-on TRIZ engineering missions for curious minds. Think outside the box.",
+                b3_t: "One Verb a Day",
+                b3_d: "The ultimate active recall language learning workbooks with built-in native audio smart codes.",
+                b4_t: "Microscope Safari",
+                b4_d: "A guided look-closer science journal for pocket microscopes. Real biomimicry and fun outdoor/indoor research."
             },
             uk: {
-                back: "← Назад", title: "КНИГИ ТА ЗОШИТИ", sub: "Продовжте навчання офлайн з нашими робочими зошитами.",
-                tTriz: "Думай як Винахідник (ТВВЗ)", dTriz: "Курс із 4 томів інженерних завдань без екранів. Навчіть дитину вирішувати неможливі проблеми.", btnAmz: "Amazon (Книга)", btnPdf: "Завантажити PDF (TPT)",
-                tVerb: "Одне дієслово на день", dVerb: "Вивчи 400 найважливіших дієслів іноземної мови всього за 5 хвилин на день.",
-                tUa: "Українські версії", dUa: "Завантажуй україномовні PDF-версії наших зошитів, ігор та плакатів.", btnUa: "Всеосвіта (PDF)", btnTg: "Написати автору"
+                back: "← Хаб",
+                header: "Зал Книг",
+                b1_t: "Книга 'Що, якби?'",
+                b1_d: "Паперовий робочий зошит із 100+ логічними ланцюжками. Перетвори науку та логіку на захоплюючу гру!",
+                b2_t: "Думай як винахідник",
+                b2_d: "4 томи практичних інженерних ТРВЗ-місій для допитливих розумників. Вчися думати нестандартно.",
+                b3_t: "Одне дієслово на день",
+                b3_d: "Найкращі зошити для вивчення мов за допомогою методу Active Recall та вбудованих аудіо-кодів вимови.",
+                b4_t: "Мікроскоп Сафарі",
+                b4_d: "Інтерактивний науковий журнал для кишенькових мікроскопів. Справжня біомімікрія та дослідження довкола нас."
             }
         };
 
-        window.onload = () => {
-            let currentLang = localStorage.getItem('prybambas_lang') || 'en';
-            if (!db[currentLang]) currentLang = 'en';
+        function changeLang() {
+            const lang = document.getElementById('lang-selector').value;
+            localStorage.setItem('prybambas_lang', lang);
             
-            const flags = { en:"🇺🇸 EN", uk:"🇺🇦 UK", es:"🇪🇸 ES", de:"🇩🇪 DE", fr:"🇫🇷 FR", nl:"🇳🇱 NL", ro:"🇷🇴 RO", pl:"🇵🇱 PL", pt:"🇧🇷 PT", da:"🇩🇰 DA", sv:"🇸🇪 SV" };
-            document.getElementById('lang-display').innerText = flags[currentLang] || currentLang.toUpperCase();
-            
-            const t = db[currentLang];
-            document.getElementById('lbl-back').innerText = t.back;
-            document.getElementById('lbl-title').innerText = t.title;
-            document.getElementById('lbl-sub').innerText = t.sub;
-            
-            document.getElementById('t-triz').innerText = t.tTriz; document.getElementById('d-triz').innerText = t.dTriz;
-            document.getElementById('btn-triz').innerText = t.btnAmz; document.getElementById('btn-triz-pdf').innerText = t.btnPdf;
-            
-            document.getElementById('t-verb').innerText = t.tVerb; document.getElementById('d-verb').innerText = t.dVerb;
-            document.getElementById('btn-verb').innerText = t.btnAmz;
-            
-            document.getElementById('t-ua').innerText = t.tUa; document.getElementById('d-ua').innerText = t.dUa;
-            document.getElementById('btn-ua').innerText = t.btnUa; document.getElementById('btn-ua-tg').innerText = t.btnTg;
-        };
+            const t = dict[lang] || dict['en'];
+            document.getElementById('btn-back').innerText = t.back;
+            document.getElementById('header-title').innerText = t.header;
+            document.getElementById('b1-title').innerText = t.b1_t;
+            document.getElementById('b1-desc').innerText = t.b1_d;
+            document.getElementById('b2-title').innerText = t.b2_t;
+            document.getElementById('b2-desc').innerText = t.b2_d;
+            document.getElementById('b3-title').innerText = t.b3_t;
+            document.getElementById('b3-desc').innerText = t.b3_d;
+            document.getElementById('b4-title').innerText = t.b4_t;
+            document.getElementById('b4-desc').innerText = t.b4_d;
+        }
+
+        window.onload = function() {
+            const savedLang = localStorage.getItem('prybambas_lang') || 'en';
+            document.getElementById('lang-selector').value = savedLang;
+            changeLang();
+        }
     </script>
 </body>
 </html>
