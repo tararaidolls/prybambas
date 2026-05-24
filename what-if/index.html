@@ -2,214 +2,562 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>What If? | Prybambas</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <title>The What If? Game</title>
+    <link rel="manifest" href="manifest.json">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --magenta: #d92cff;
-            --green: #54ff3a;
-            --cyan: #00f3ff;
-            --bg: #0b1224;
-        }
-
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-
-        body, html {
+        * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+        
+        /* 1. ФОН: Чистий темний радіальний градієнт БЕЗ сітки (чистий для гри) */
+        body {
+            font-family: 'Nunito', sans-serif;
+            background: radial-gradient(circle at center, #0f172a 0%, #020617 100%);
             min-height: 100vh;
-            background-color: var(--bg); color: white;
-            font-family: 'Segoe UI', Roboto, Helvetica, sans-serif;
-            overflow-x: hidden; display: flex; flex-direction: column; align-items: center;
+            display: flex; 
+            flex-direction: column; 
+            align-items: center;
+            overflow-x: hidden;
+            color: white;
         }
 
-        .fixed-bg {
-            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
-            background-image: url('../bg-image.jpg'); 
-            background-size: cover; background-position: center center; z-index: -1;
-        }
-
-        header {
-            width: 90%; max-width: 800px; display: flex; justify-content: space-between; align-items: center;
-            margin-top: 20px; z-index: 10;
+        /* Уніфікована панель вгорі */
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            max-width: 450px;
+            padding: 15px 15px 0 15px;
+            z-index: 100;
         }
 
         .back-btn {
-            background: rgba(10,15,30,0.7); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
-            border: 1px solid rgba(255,255,255,0.2); color: white; padding: 10px 20px; border-radius: 50px;
-            text-decoration: none; font-weight: bold; box-shadow: 0 4px 15px rgba(0,0,0,0.3); transition: 0.3s;
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 2px solid #d92cff;
+            color: white; 
+            padding: 8px 16px; 
+            border-radius: 50px;
+            text-decoration: none; 
+            font-weight: bold; 
+            box-shadow: 0 0 10px rgba(217, 44, 255, 0.3); 
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: 0.3s;
         }
-        .back-btn:hover { background: rgba(255,255,255,0.1); }
+        .back-btn:hover { background: rgba(217, 44, 255, 0.2); }
 
-        h1 {
-            letter-spacing: 2px; text-shadow: 0 0 15px var(--magenta); text-align: center; margin: 20px 0 5px 0; color: white;
-            z-index: 10;
-        }
-
-        .subtitle {
-            text-align: center; color: rgba(255,255,255,0.7); font-size: 1.1rem; margin-bottom: 30px; z-index: 10; padding: 0 20px;
-        }
-
-        #app-container {
-            width: 90%; max-width: 500px; display: flex; flex-direction: column; align-items: center;
-            z-index: 10; padding-bottom: 60px;
-        }
-
-        /* 3 ICONS SELECTOR */
-        .mode-selectors {
-            display: flex; justify-content: center; gap: 20px; margin-bottom: 30px; width: 100%;
-        }
-
-        .selector-btn {
-            width: 80px; height: 80px; border-radius: 20px; font-size: 2.5rem;
-            background: rgba(10,15,30,0.6); border: 2px solid rgba(255,255,255,0.2);
-            cursor: pointer; transition: 0.3s; display: flex; justify-content: center; align-items: center;
-            backdrop-filter: blur(5px); -webkit-backdrop-filter: blur(5px);
-        }
-
-        .selector-btn:hover { transform: translateY(-5px); background: rgba(255,255,255,0.1); }
-
-        /* ACTIVE STATES FOR ICONS */
-        .selector-btn.active.magenta { border-color: var(--magenta); box-shadow: 0 0 20px rgba(217,44,255,0.4); background: rgba(217,44,255,0.15); filter: drop-shadow(0 0 5px var(--magenta)); }
-        .selector-btn.active.green { border-color: var(--green); box-shadow: 0 0 20px rgba(84,255,58,0.4); background: rgba(84,255,58,0.15); filter: drop-shadow(0 0 5px var(--green)); }
-        .selector-btn.active.cyan { border-color: var(--cyan); box-shadow: 0 0 20px rgba(0,243,255,0.4); background: rgba(0,243,255,0.15); filter: drop-shadow(0 0 5px var(--cyan)); }
-
-        /* RULES & CTA CONTAINER (Hidden by default) */
-        #rules-container {
-            display: none; flex-direction: column; align-items: center; width: 100%;
-            background: rgba(10,15,30,0.8); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
-            border: 2px solid white; border-radius: 25px; padding: 30px 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            animation: fadeIn 0.3s ease-in-out;
+        .lang-switch {
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 2px solid #d92cff;
+            color: white;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            cursor: pointer;
+            outline: none;
+            box-shadow: 0 0 10px rgba(217, 44, 255, 0.3);
+            font-weight: bold;
         }
 
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
-
-        .rules-title { font-size: 1.4rem; font-weight: bold; text-transform: uppercase; margin-bottom: 20px; letter-spacing: 1px; }
-
-        .rules-list { text-align: left; margin-bottom: 30px; color: rgba(255,255,255,0.9); font-size: 1rem; line-height: 1.4; width: 100%; }
-        .rules-list div { margin-bottom: 12px; display: flex; gap: 10px; align-items: flex-start; }
-        .rules-list span { font-size: 1.3rem; flex-shrink: 0; }
-
-        .cta-btn {
-            background: transparent; border: 2px solid white; color: white;
-            padding: 15px 40px; border-radius: 50px; text-decoration: none; font-weight: bold;
-            text-transform: uppercase; letter-spacing: 1px; font-size: 1.1rem; cursor: pointer;
-            transition: 0.3s; width: 100%; text-align: center;
+        /* 2. ЛОГОТИП (SVG) - Уніфікований */
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 15px;
+            margin-bottom: 15px;
+        }
+        
+        .logo-svg {
+            width: 35px;
+            height: 35px;
+            filter: drop-shadow(0 0 8px #d92cff);
         }
 
-        @media (max-width: 600px) {
-            .selector-btn { width: 70px; height: 70px; font-size: 2rem; }
-            .mode-selectors { gap: 15px; }
-            #rules-container { padding: 25px 15px; }
+        .logo-text {
+            color: white;
+            font-weight: 800;
+            letter-spacing: 2px;
+            font-size: 1.3rem;
+            text-shadow: 0 0 10px #d92cff;
+        }
+
+        /* GAME SCREEN - Фіксована висота для усунення стрибків (jumpy) */
+        #game-screen { 
+            display: flex; 
+            flex-direction: column;
+            width: 100%; 
+            max-width: 450px; 
+            padding: 15px; 
+            min-height: 600px; /* Стабілізатор висоти */
+        }
+        
+        header {
+            width: 100%; 
+            padding: 12px; 
+            text-align: center;
+            background: rgba(217, 44, 255, 0.15); 
+            border: 2px solid #d92cff;
+            border-radius: 16px; 
+            margin-bottom: 12px;
+            box-shadow: 0 0 10px rgba(217, 44, 255, 0.2);
+        }
+        header h1 { color: white; font-size: 18px; text-transform: uppercase; letter-spacing: 1px; }
+
+        /* 3. РЕЖИМИ / РІВНІ */
+        .level-tabs {
+            display: flex;
+            gap: 8px;
+            width: 100%;
+            margin-bottom: 15px;
+        }
+        .level-tab {
+            flex: 1;
+            padding: 10px;
+            border-radius: 12px;
+            border: 2px solid #d92cff;
+            background: rgba(15, 23, 42, 0.6);
+            color: white;
+            font-weight: 700;
+            font-size: 0.85rem;
+            text-align: center;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .level-tab.active {
+            background: #d92cff;
+            color: black;
+            box-shadow: 0 0 15px rgba(217, 44, 255, 0.4);
+        }
+
+        /* 4. СТИЛЬ КАРТКИ */
+        .card-container {
+            width: 100%;
+            aspect-ratio: 3.5 / 4.5; /* Фіксоване співвідношення для усунення стрибків (No Jumps) */
+            perspective: 1000px;
+            margin-bottom: 15px;
+            cursor: pointer;
+        }
+        .card {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .card.flipped { transform: rotateY(180deg); }
+        
+        .card-face {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 24px;
+            border: 2.5px solid #d92cff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+            text-align: center;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5), 0 0 15px rgba(217, 44, 255, 0.1);
+        }
+        .card-front {
+            background: rgba(15, 23, 42, 0.7);
+        }
+        .card-back {
+            background: linear-gradient(135deg, #1e1b4b 0%, #311042 100%);
+            transform: rotateY(180deg);
+        }
+
+        .card-front .question { 
+            font-size: 1.35rem; 
+            font-weight: 800; 
+            line-height: 1.4; 
+            color: white; 
+            text-shadow: 0 0 10px rgba(255,255,255,0.1);
+        }
+        .card-front .hint { font-size: 0.85rem; color: #94a3b8; margin-top: 15px; font-style: italic; }
+        
+        .card-front .level-badge {
+            position: absolute; top: 18px; left: 20px;
+            background: rgba(217, 44, 255, 0.2);
+            border: 1px solid #d92cff;
+            padding: 4px 10px; border-radius: 20px;
+            font-size: 0.75rem; font-weight: 800; color: #d92cff;
+        }
+        .card-front .card-num {
+            position: absolute; top: 18px; right: 20px;
+            font-size: 0.75rem; font-weight: 800; color: #64748b;
+        }
+
+        .card-back p { color: white; font-size: 1.1rem; font-weight: 800; line-height: 1.5; padding: 10px; }
+        .card-back .tap-hint { color: rgba(255,255,255,0.7); font-size: 11px; margin-top: 15px; text-transform: uppercase; letter-spacing: 1px; }
+
+        /* 5. КНОПКИ КЕРУВАННЯ */
+        .controls {
+            display: flex;
+            gap: 12px;
+            width: 100%;
+        }
+        .ctrl-btn {
+            flex: 1;
+            padding: 14px;
+            border-radius: 14px;
+            border: none;
+            font-family: 'Nunito', sans-serif;
+            font-weight: 800;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: 0.2s;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .btn-shuffle {
+            background: transparent;
+            border: 2px solid #475569;
+            color: #94a3b8;
+        }
+        .btn-shuffle:hover { border-color: white; color: white; }
+        
+        .btn-next {
+            background: #d92cff;
+            color: black;
+            box-shadow: 0 4px 15px rgba(217, 44, 255, 0.3);
+        }
+        .btn-next:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 0 20px rgba(217, 44, 255, 0.6);
+        }
+
+        /* 6. ТРЕКЕР ІСТОРІЇ */
+        .history-tracker {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            margin-top: 15px;
+            background: rgba(15, 23, 42, 0.6);
+            padding: 10px;
+            border-radius: 12px;
+            border: 1px solid rgba(217, 44, 255, 0.2);
+        }
+        
+        .history-step {
+            font-size: 0.8rem;
+            color: #94a3b8;
+            font-weight: bold;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            border: 1.5px solid #475569;
+            transition: 0.3s;
+        }
+        .history-step.active {
+            border-color: #d92cff;
+            background: rgba(217, 44, 255, 0.2);
+            color: white;
+            box-shadow: 0 0 8px rgba(217, 44, 255, 0.4);
+        }
+
+        /* 7. ПРОМО-БАНЕР (Upsell) — Адаптивний та супер-інформативний */
+        .promo-banner {
+            margin-top: 20px; 
+            background: linear-gradient(135deg, #1e1b4b 0%, #311042 100%); 
+            border-radius: 16px;
+            padding: 12px 18px; 
+            width: 100%; 
+            border: 2px solid #ff9f43; 
+            box-shadow: 0 0 12px rgba(255, 159, 67, 0.3);
+            display: flex; 
+            align-items: center; 
+            justify-content: space-between;
+            text-decoration: none; 
+            color: white;
+            transition: 0.3s;
+        }
+        .promo-banner:hover {
+            transform: scale(1.02);
+            box-shadow: 0 0 18px rgba(255, 159, 67, 0.5);
+        }
+        .promo-text h3 { margin: 0 0 3px 0; font-size: 0.95rem; color: #ff9f43; font-weight:800; text-transform: uppercase; }
+        .promo-text p { margin: 0; font-size: 0.8rem; color: #cbd5e1; line-height: 1.3; }
+        .promo-btn { 
+            background: #ff9f43; 
+            color: #020617; 
+            padding: 8px 14px; 
+            border-radius: 30px; 
+            font-size: 0.75rem; 
+            font-weight: 900; 
+            white-space: nowrap; 
+            text-transform: uppercase;
+        }
+
+        .progress {
+            width: 100%; text-align: center; color: #64748b;
+            font-size: 12px; margin-top: 15px; font-weight: bold;
         }
     </style>
 </head>
 <body>
 
-    <div class="fixed-bg"></div>
+    <!-- Уніфікована панель вгорі -->
+    <div class="top-bar">
+        <a href="../index.html" class="back-btn" id="btn-back">← Hub</a>
+        <select class="lang-switch" id="lang-selector" onchange="changeLang()">
+            <option value="en">🇺🇸 EN</option>
+            <option value="uk">🇺🇦 UK</option>
+            <option value="es">🇪🇸 ES</option>
+            <option value="de">🇩🇪 DE</option>
+            <option value="fr">🇫🇷 FR</option>
+            <option value="nl">🇳🇱 NL</option>
+            <option value="da">🇩🇰 DA</option>
+            <option value="sv">🇸🇪 SV</option>
+            <option value="ro">🇷🇴 RO</option>
+            <option value="pl">🇵🇱 PL</option>
+            <option value="pt">🇧🇷 PT</option>
+        </select>
+    </div>
 
-    <header>
-        <a href="https://tararaidolls.github.io/prybambas/index.html" class="back-btn" id="lbl-back">← Hub</a>
-        <div id="lang-display" style="font-weight:bold; opacity:0.7;">🇺🇸 EN</div>
-    </header>
+    <!-- Логотип серії -->
+    <div class="logo-container">
+        <svg class="logo-svg" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M50 20 C25 20 20 50 50 80 C80 50 75 20 50 20 Z" stroke="#d92cff" stroke-width="4" stroke-linejoin="round" />
+            <circle cx="50" cy="45" r="10" stroke="white" stroke-width="3" />
+        </svg>
+        <span class="logo-text">WHAT IF?</span>
+    </div>
 
-    <h1>WHAT IF?</h1>
-    <div class="subtitle" id="lbl-sub">Choose your game</div>
-
-    <div id="app-container">
+    <!-- Головний екран гри -->
+    <div id="game-screen">
+        <header>
+            <h1 id="scr-title">The Logic Chain</h1>
+        </header>
         
-        <!-- 3 ICONS SELECTOR -->
-        <div class="mode-selectors">
-            <div class="selector-btn" id="btn-mode1" onclick="selectMode(1, 'magenta')">❓</div>
-            <div class="selector-btn" id="btn-mode2" onclick="selectMode(2, 'green')">🔗</div>
-            <div class="selector-btn" id="btn-mode3" onclick="selectMode(3, 'cyan')">🕵️</div>
+        <!-- Вкладки режимів гри -->
+        <div class="level-tabs">
+            <div class="level-tab active" id="tab-lvl1" onclick="switchLevel(0)">Level 1</div>
+            <div class="level-tab" id="tab-lvl2" onclick="switchLevel(1)">Level 2</div>
+            <div class="level-tab" id="tab-lvl3" onclick="switchLevel(2)">Level 3</div>
         </div>
 
-        <!-- RULES & CTA (DYNAMIC) -->
-        <div id="rules-container">
-            <div class="rules-title" id="rules-title">MODE TITLE</div>
-            <div class="rules-list" id="rules-text"></div>
-            <button class="cta-btn" id="cta-play" onclick="startGame()">PLAY</button>
+        <!-- Контейнер для картинок-карток -->
+        <div class="card-container" onclick="flipCard()">
+            <div class="card" id="active-card">
+                <div class="card-face card-front">
+                    <span class="level-badge" id="card-badge">Level 1</span>
+                    <span class="card-num" id="card-index">Card 1</span>
+                    <p class="question" id="card-question">What if all bees disappeared tomorrow?</p>
+                    <span class="hint" id="card-hint">Tap card to see consequence</span>
+                </div>
+                <div class="card-face card-back">
+                    <p id="card-answer">Flowers won't be pollinated → Fruits and vegetables will disappear → Animals will starve.</p>
+                    <span class="tap-hint" id="card-tapback">Tap to return</span>
+                </div>
+            </div>
         </div>
 
+        <!-- Кнопки керування -->
+        <div class="controls">
+            <button class="ctrl-btn btn-shuffle" id="btn-shuf" onclick="shuffleCards()">Shuffle</button>
+            <button class="ctrl-btn btn-next" id="btn-next" onclick="nextCard()">Next Card</button>
+        </div>
+
+        <!-- Трекінг прогресу та історія -->
+        <div class="history-tracker">
+            <span class="history-step active" id="hist-1">1</span>
+            <span class="history-step" id="hist-2">2</span>
+            <span class="history-step" id="hist-3">3</span>
+            <span class="history-step" id="hist-4">4</span>
+            <span class="history-step" id="hist-5">5</span>
+        </div>
+
+        <div class="progress" id="progress-text">Completed: 1 / 15</div>
+
+        <!-- Рекламний банер / Пропозиція Книги (Upsell) -->
+        <a href="https://www.amazon.com/dp/B0BRC7Z2NW" class="promo-banner" target="_blank">
+            <div class="promo-text">
+                <h3 id="promo-title">Offline Brain Fitness</h3>
+                <p id="promo-subtitle">Get the physical "What If?" workbook with 100+ logical puzzles to build critical thinking away from screens.</p>
+            </div>
+            <div class="promo-btn" id="promo-btn-lbl">Get Book</div>
+        </a>
     </div>
 
     <script>
-        const db = {
-            en: {
-                back: "← Hub", sub: "Choose your game", play: "PLAY NOW",
-                modes: [
-                    { title: "SINGLE QUESTION", rules: "<div><span>🗣️</span> Discuss what would happen if a crazy event occurred.</div><div><span>⏳</span> Use the timer for speed rounds!</div>" },
-                    { title: "LOGICAL CHAIN", rules: "<div><span>🧐</span> Read the starting fact.</div><div><span>🧠</span> Guess the crazy ending.</div><div><span>🔗</span> Tap to reveal the hidden logical chain!</div>" },
-                    { title: "DEDUCTION", rules: "<div><span>🕵️</span> Read the final crazy consequence.</div><div><span>🔄</span> Try to deduce what caused it.</div><div><span>💡</span> Tap to reveal the original event!</div>" }
+        const cardsDb = {
+            en: [
+                [
+                    { q: "What if all bees disappeared tomorrow?", a: "No pollination → Fruits & veggies disappear → Global food chains collapse.", hint: "Tap to decrypt consequence" },
+                    { q: "What if gravity became twice as strong?", a: "Walking hurts → Buildings collapse → Trees grow super short and stubby.", hint: "Tap to decrypt consequence" },
+                    { q: "What if it stopped raining forever?", a: "Rivers dry up → Global forest fires spark → Fresh water is a luxury treasure.", hint: "Tap to decrypt consequence" },
+                    { q: "What if humans slept 6 months like bears?", a: "Cities quiet down → Wildlife reclaims highways → Humanity lives in shifts.", hint: "Tap to decrypt consequence" },
+                    { q: "What if plastic vanished from Earth instantly?", a: "Supermarkets change completely → Computers stop working → Oceans clean up.", hint: "Tap to decrypt consequence" }
+                ],
+                [
+                    { q: "What if we could talk to marine animals?", a: "Oceans reveal lost secrets → Commercial fishing stops → Underwater traffic rules.", hint: "Tap to decrypt consequence" },
+                    { q: "What if paper was banned globally?", a: "100% digital transition → Paper notebooks become historic museum treasures.", hint: "Tap to decrypt consequence" },
+                    { q: "What if dinosaurs never went extinct?", a: "Humans build high-walled fortress cities → Dinosaur-safari is a daily job.", hint: "Tap to decrypt consequence" },
+                    { q: "What if trees could walk and run?", a: "Forests migrate searching for sun → Woods block highway roads in winter.", hint: "Tap to decrypt consequence" },
+                    { q: "What if we built a massive Moon city?", a: "Low-gravity sports invented → Sky is pitch black → Moon dust is a household problem.", hint: "Tap to decrypt consequence" }
+                ],
+                [
+                    { q: "What if Earth had two suns?", a: "Nights vanish forever → Extreme desert heat → Plants evolve black leaves.", hint: "Tap to decrypt consequence" },
+                    { q: "What if all screens stopped working?", a: "Neighbors talk again → Board games become bestsellers → Pen & paper rule.", hint: "Tap to decrypt consequence" },
+                    { q: "What if oxygen levels doubled?", a: "Insects grow giant-sized → Humans have boundless energy → Matches burn instantly.", hint: "Tap to decrypt consequence" },
+                    { q: "What if animals could vote?", a: "Forest protection is priority #1 → Strict animal welfare laws passed.", hint: "Tap to decrypt consequence" },
+                    { q: "What if humans couldn't lie for 24h?", a: "Most relationships are tested → Raw ads → Complete silence in politics.", hint: "Tap to decrypt consequence" }
                 ]
+            ],
+            uk: [
+                [
+                    { q: "Що, якби завтра зникли всі бджоли?", a: "Нема запилення → Зникнуть фрукти й овочі → Харчовий ланцюг рухне.", hint: "Торкнись для відповіді" },
+                    { q: "Що, якби сила тяжіння подвоїлась?", a: "Ходити боляче → Будівлі рухнуть → Дерева ростимуть карликовими.", hint: "Торкнись для відповіді" },
+                    { q: "Що, якби дощ припинився назавжди?", a: "Річки висохнуть → Спалахнуть лісові пожежі → Вода стане скарбом.", hint: "Торкнись для відповіді" },
+                    { q: "Що, якби люди спали зимою по 6 місяців?", a: "Міста затихнуть → Тварини займуть автобани → Живемо у дві зміни.", hint: "Торкнись для відповіді" },
+                    { q: "Що, якби весь пластик миттєво зник?", a: "Супермаркети зміняться → Електроніка зламається → Океани очистяться.", hint: "Торкнись для відповіді" }
+                ],
+                [
+                    { q: "Що, якби ми заговорили з рибами?", a: "Океан відкриє таємниці → Рибальство зупиниться → Рух під водою регулюється.", hint: "Торкнись для відповіді" },
+                    { q: "Що, якби папір заборонили глобально?", a: "100% диджитал → Паперові блокноти стануть експонатами в музеях.", hint: "Торкнись для відповіді" },
+                    { q: "Що, якби динозаври не вимерли?", a: "Люди живуть у містах-фортецях → Посада Сафарі-гіда є буденною.", hint: "Торкнись для відповіді" },
+                    { q: "Що, якби дерева вміли бігати?", a: "Ліси мігруватимуть за сонцем → Рухомі хащі блокуватимуть траси взимку.", hint: "Торкнись для відповіді" },
+                    { q: "Що, якби ми збудували місто на Місяці?", a: "Спорт у невагомості → Завжди чорне небо → Місячний пил у квартирах.", hint: "Торкнись для відповіді" }
+                ],
+                [
+                    { q: "Що, якби у Землі було два Сонця?", a: "Ніч зникне → Повсюдна екстремальна спека → Рослини стануть чорними.", hint: "Торкнись для відповіді" },
+                    { q: "Що, якби всі екрани згасли назавжди?", a: "Сусіди почнуть спілкування → Настільні ігри стануть хітом №1.", hint: "Торкнись для відповіді" },
+                    { q: "Що, якби рівень кисню подвоївся?", a: "Комахи стануть велетенськими → Безмежна енергія → Пожежі спалахують миттєво.", hint: "Торкнись для відповіді" },
+                    { q: "Що, якби тварини голосували на виборах?", a: "Ліси під захистом №1 → Усі парки отримають статус заповідників.", hint: "Торкнись для відповіді" },
+                    { q: "Що, якби ми не могли брехати 24 години?", a: "Перевірка стосунків на міцність → Правдива реклама → Тиша в політиці.", hint: "Торкнись для відповіді" }
+                ]
+            ]
+        };
+
+        const translationDict = {
+            en: {
+                title: "The Logic Chain",
+                shuffle: "Shuffle",
+                next: "Next Card",
+                tapback: "Tap to return",
+                completed: "Completed",
+                promo_t: "Offline Brain Fitness",
+                promo_st: "Get the physical 'What If?' workbook with 100+ logical puzzles to build critical thinking away from screens.",
+                promo_btn: "Get Book",
+                back: "← Hub"
             },
             uk: {
-                back: "← Назад", sub: "Обери свою гру", play: "ПОЧАТИ ГРУ",
-                modes: [
-                    { title: "ОДНЕ ПИТАННЯ", rules: "<div><span>🗣️</span> Обговоріть, що сталося б у такій шаленій ситуації.</div><div><span>⏳</span> Використовуйте таймер для швидких раундів!</div>" },
-                    { title: "ЛОГІЧНИЙ ЛАНЦЮЖОК", rules: "<div><span>🧐</span> Прочитай стартовий факт.</div><div><span>🧠</span> Спробуй вгадати фінал.</div><div><span>🔗</span> Натисни, щоб відкрити весь логічний ланцюжок!</div>" },
-                    { title: "ДЕДУКЦІЯ", rules: "<div><span>🕵️</span> Прочитай фінальний шалений наслідок.</div><div><span>🔄</span> Застосуй дедукцію і вгадай причину.</div><div><span>💡</span> Натисни, щоб відкрити всю історію!</div>" }
-                ]
+                title: "Ланцюг Логіки",
+                shuffle: "Перемішати",
+                next: "Наступна",
+                tapback: "Торкнись, щоб повернути",
+                completed: "Виконано",
+                promo_t: "Розумний відпочинок",
+                promo_st: "Отримайте велику книгу логічних ланцюжків 'Що, якби?' на Amazon! 100+ завдань для розвитку мислення без екранів.",
+                promo_btn: "Купити",
+                back: "← Хаб"
             }
         };
 
         let currentLang = 'en';
-        let currentMode = 0; // 1, 2, or 3
+        let currentLevel = 0;
+        let cardIdx = 0;
 
-        window.onload = () => {
-            currentLang = localStorage.getItem('prybambas_lang') || 'en';
-            if (!db[currentLang]) currentLang = 'en';
+        function changeLang() {
+            currentLang = document.getElementById('lang-selector').value;
+            localStorage.setItem('prybambas_lang', currentLang);
             
-            const flags = { en:"🇺🇸 EN", uk:"🇺🇦 UK" };
-            document.getElementById('lang-display').innerText = flags[currentLang] || currentLang.toUpperCase();
-            
-            document.getElementById('lbl-back').innerText = db[currentLang].back;
-            document.getElementById('lbl-sub').innerText = db[currentLang].sub;
-        };
+            // Apply UI Translations
+            const ui = translationDict[currentLang] || translationDict['en'];
+            document.getElementById('scr-title').innerText = ui.title;
+            document.getElementById('btn-shuf').innerText = ui.shuffle;
+            document.getElementById('btn-next').innerText = ui.next;
+            document.getElementById('card-tapback').innerText = ui.tapback;
+            document.getElementById('promo-title').innerText = ui.promo_t;
+            document.getElementById('promo-subtitle').innerText = ui.promo_st;
+            document.getElementById('promo-btn-lbl').innerText = ui.promo_btn;
+            document.getElementById('btn-back').innerText = ui.back;
 
-        function selectMode(modeNum, colorClass) {
-            currentMode = modeNum;
-            const t = db[currentLang];
-            
-            // Reset all buttons
-            document.getElementById('btn-mode1').className = "selector-btn";
-            document.getElementById('btn-mode2').className = "selector-btn";
-            document.getElementById('btn-mode3').className = "selector-btn";
-            
-            // Activate clicked button
-            document.getElementById('btn-mode' + modeNum).className = "selector-btn active " + colorClass;
-
-            // Update Container
-            const container = document.getElementById('rules-container');
-            const title = document.getElementById('rules-title');
-            const text = document.getElementById('rules-text');
-            const btn = document.getElementById('cta-play');
-
-            // Apply specific colors
-            container.style.display = "flex";
-            container.style.borderColor = `var(--${colorClass})`;
-            container.style.boxShadow = `0 0 25px rgba(var(--${colorClass}-rgb, 255,255,255), 0.2)`;
-            
-            title.style.color = `var(--${colorClass})`;
-            title.innerText = t.modes[modeNum - 1].title;
-            text.innerHTML = t.modes[modeNum - 1].rules;
-            
-            btn.innerText = t.play;
-            btn.style.borderColor = `var(--${colorClass})`;
-            
-            // Hover effect trick for CTA button based on color
-            btn.onmouseover = () => { btn.style.background = `var(--${colorClass})`; btn.style.color = "var(--bg)"; };
-            btn.onmouseout = () => { btn.style.background = "transparent"; btn.style.color = "white"; };
+            cardIdx = 0;
+            updateCard();
         }
 
-        function startGame() {
-            if (currentMode === 1) {
-                window.location.href = "single.html";
-            } else if (currentMode === 2) {
-                window.location.href = "chain.html";
-            } else if (currentMode === 3) {
-                window.location.href = "deduction.html";
+        function switchLevel(level) {
+            currentLevel = level;
+            
+            // Manage Tab classes
+            document.querySelectorAll('.level-tab').forEach((tab, i) => {
+                if (i === level) tab.classList.add('active');
+                else tab.classList.remove('active');
+            });
+            
+            cardIdx = 0;
+            document.getElementById('active-card').classList.remove('flipped');
+            updateCard();
+        }
+
+        function flipCard() {
+            document.getElementById('active-card').classList.toggle('flipped');
+        }
+
+        function updateCard() {
+            const list = cardsDb[currentLang] ? cardsDb[currentLang][currentLevel] : cardsDb['en'][currentLevel];
+            const item = list[cardIdx];
+            
+            document.getElementById('card-question').innerText = item.q;
+            document.getElementById('card-answer').innerText = item.a;
+            document.getElementById('card-hint').innerText = item.hint;
+            document.getElementById('card-index').innerText = `Card ${cardIdx + 1}`;
+            document.getElementById('card-badge').innerText = `Level ${currentLevel + 1}`;
+
+            // Update Progress text
+            const ui = translationDict[currentLang] || translationDict['en'];
+            document.getElementById('progress-text').innerText = `${ui.completed}: ${cardIdx + 1} / ${list.length}`;
+
+            // Update Steps visualization
+            for (let i = 1; i <= 5; i++) {
+                const step = document.getElementById(`hist-${i}`);
+                if (i <= cardIdx + 1) step.classList.add('active');
+                else step.classList.remove('active');
             }
+        }
+
+        function nextCard() {
+            const list = cardsDb[currentLang] ? cardsDb[currentLang][currentLevel] : cardsDb['en'][currentLevel];
+            cardIdx = (cardIdx + 1) % list.length;
+            
+            document.getElementById('active-card').classList.remove('flipped');
+            setTimeout(updateCard, 150); // slight delay for flip-back animation
+        }
+
+        function shuffleCards() {
+            const list = cardsDb[currentLang] ? cardsDb[currentLang][currentLevel] : cardsDb['en'][currentLevel];
+            
+            // Fisher-Yates Shuffle
+            for (let i = list.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [list[i], list[j]] = [list[j], list[i]];
+            }
+            
+            cardIdx = 0;
+            document.getElementById('active-card').classList.remove('flipped');
+            setTimeout(updateCard, 150);
+        }
+
+        window.onload = function() {
+            currentLang = localStorage.getItem('prybambas_lang') || 'en';
+            document.getElementById('lang-selector').value = currentLang;
+            changeLang();
         }
     </script>
 </body>
