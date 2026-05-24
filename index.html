@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Prybambas Educational Hub</title>
+    <meta name="theme-color" content="#020617">
+    <title>PRYBAMBAS | Educational Hub</title>
     <link rel="manifest" href="./manifest.json">
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800&display=swap" rel="stylesheet">
     <style>
@@ -13,13 +14,21 @@
             --cyan: #00f3ff;
             --yellow: #ff9f43;
             --bg: #020617;
+            --surface: rgba(15, 23, 42, 0.6);
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
 
         body, html {
             margin: 0; padding: 0; min-height: 100vh;
-            background: radial-gradient(circle at center, #0f172a 0%, #020617 100%);
+            background-color: var(--bg);
+            /* СТАБІЛЬНИЙ, СТАТИЧНИЙ КОСМІЧНИЙ БЕКГРАУНД (No Jumps on mobile) */
+            background-image: 
+                radial-gradient(circle at center, rgba(15, 23, 42, 0.8) 0%, #020617 100%),
+                linear-gradient(rgba(0, 243, 255, 0.025) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 243, 255, 0.025) 1px, transparent 1px);
+            background-size: 100% 100%, 30px 30px, 30px 30px;
+            background-attachment: fixed;
             color: white;
             font-family: 'Nunito', sans-serif;
             overflow-x: hidden; display: flex; flex-direction: column; align-items: center; justify-content: center;
@@ -48,6 +57,7 @@
         /* ЛОГОТИП СЕРІЇ */
         .logo-container {
             display: flex; flex-direction: column; align-items: center; gap: 10px; margin-bottom: 30px;
+            margin-top: 50px;
         }
         
         .logo-svg {
@@ -64,49 +74,55 @@
         .grid-container {
             display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px;
             width: 90%; max-width: 440px; padding: 10px;
+            margin-bottom: 50px;
         }
 
         .space-btn {
-            background: rgba(15, 23, 42, 0.6);
+            background: var(--surface);
             backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
             border-radius: 24px;
             aspect-ratio: 1;
             display: flex; flex-direction: column; align-items: center; justify-content: center;
             color: white; text-decoration: none; font-weight: 800; font-size: 1.05rem;
             transition: 0.3s; gap: 12px; cursor: pointer; text-align: center;
-            padding: 10px;
+            padding: 15px;
         }
 
-        .space-btn .icon { font-size: 2.8rem; transition: 0.3s; }
+        .space-btn svg { width: 55px; height: 55px; transition: 0.3s; }
 
-        /* Кольорові теми для кнопок */
-        .btn-whatif { border: 2.5px solid var(--magenta); box-shadow: 0 0 10px rgba(217, 44, 255, 0.2); }
+        /* Кольорові теми для кнопок із фірмовими SVG іконками */
+        .btn-whatif { border: 2.5px solid var(--magenta); box-shadow: 0 0 10px rgba(217, 44, 255, 0.15); }
+        .btn-whatif svg { filter: drop-shadow(0 0 6px rgba(217, 44, 255, 0.4)); }
         .btn-whatif:hover {
             background: rgba(217, 44, 255, 0.1); transform: translateY(-3px);
-            box-shadow: 0 0 20px rgba(217, 44, 255, 0.5);
+            box-shadow: 0 0 20px rgba(217, 44, 255, 0.45);
         }
-        .btn-whatif:hover .icon { filter: drop-shadow(0 0 8px var(--magenta)); }
+        .btn-whatif:hover svg { transform: scale(1.1); filter: drop-shadow(0 0 10px var(--magenta)); }
 
-        .btn-inventor { border: 2.5px solid var(--green); box-shadow: 0 0 10px rgba(84, 255, 58, 0.2); }
+        .btn-inventor { border: 2.5px solid var(--green); box-shadow: 0 0 10px rgba(84, 255, 58, 0.15); }
+        .btn-inventor svg { filter: drop-shadow(0 0 6px rgba(84, 255, 58, 0.4)); }
         .btn-inventor:hover {
             background: rgba(84, 255, 58, 0.1); transform: translateY(-3px);
-            box-shadow: 0 0 20px rgba(84, 255, 58, 0.5);
+            box-shadow: 0 0 20px rgba(84, 255, 58, 0.45);
         }
-        .btn-inventor:hover .icon { filter: drop-shadow(0 0 8px var(--green)); }
+        .btn-inventor:hover svg { transform: scale(1.1) rotate(45deg); filter: drop-shadow(0 0 10px var(--green)); }
 
-        .btn-books { border: 2.5px solid var(--yellow); box-shadow: 0 0 10px rgba(255, 159, 67, 0.2); }
+        .btn-books { border: 2.5px solid var(--yellow); box-shadow: 0 0 10px rgba(255, 159, 67, 0.15); }
+        .btn-books svg { filter: drop-shadow(0 0 6px rgba(255, 159, 67, 0.4)); }
         .btn-books:hover {
             background: rgba(255, 159, 67, 0.1); transform: translateY(-3px);
-            box-shadow: 0 0 20px rgba(255, 159, 67, 0.5);
+            box-shadow: 0 0 20px rgba(255, 159, 67, 0.45);
         }
-        .btn-books:hover .icon { filter: drop-shadow(0 0 8px var(--yellow)); }
+        .btn-books:hover svg { transform: scale(1.1); filter: drop-shadow(0 0 10px var(--yellow)); }
 
-        .btn-coach { border: 2.5px solid var(--cyan); box-shadow: 0 0 10px rgba(0, 243, 255, 0.2); }
+        .btn-coach { border: 2.5px solid var(--cyan); box-shadow: 0 0 10px rgba(0, 243, 255, 0.15); }
+        .btn-coach svg { filter: drop-shadow(0 0 6px rgba(0, 243, 255, 0.4)); }
         .btn-coach:hover {
             background: rgba(0, 243, 255, 0.1); transform: translateY(-3px);
-            box-shadow: 0 0 20px rgba(0, 243, 255, 0.5);
+            box-shadow: 0 0 20px rgba(0, 243, 255, 0.45);
         }
-        .btn-coach:hover .icon { filter: drop-shadow(0 0 8px var(--cyan)); }
+        .btn-coach:hover svg { transform: scale(1.1); filter: drop-shadow(0 0 10px var(--cyan)); }
     </style>
 </head>
 <body>
@@ -141,25 +157,47 @@
     <div class="grid-container">
         <!-- 1. What If -->
         <a href="./what-if/index.html" class="space-btn btn-whatif">
-            <span class="icon">🦋</span>
+            <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <!-- Векторний метелик -->
+                <path d="M50 80 C40 85 20 80 15 55 C10 30 35 25 50 45 C65 25 90 30 85 55 C80 80 60 85 50 80 Z" stroke="var(--magenta)" stroke-width="3"/>
+                <path d="M50 40 C45 30 25 20 20 40 C15 60 45 70 50 50 C55 70 85 60 80 40 C75 20 55 30 50 40 Z" stroke="white" stroke-width="2"/>
+                <circle cx="50" cy="45" r="4" fill="white"/>
+            </svg>
             <span id="lbl-whatif">What If?</span>
         </a>
 
         <!-- 2. Inventor Lab -->
         <a href="./inventor/index.html" class="space-btn btn-inventor">
-            <span class="icon">⚙️</span>
+            <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <!-- Векторна шестірня -->
+                <circle cx="50" cy="50" r="22" stroke="white" stroke-width="4"/>
+                <circle cx="50" cy="50" r="10" stroke="var(--green)" stroke-width="3"/>
+                <path d="M50 15 L50 26 M50 74 L50 85 M15 50 L26 50 M74 50 L85 50 M25 25 L33 33 M67 67 L75 75 M25 75 L33 67 M67 25 L75 33" stroke="var(--green)" stroke-width="6" stroke-linecap="round"/>
+            </svg>
             <span id="lbl-inventor">Inventor Lab</span>
         </a>
 
         <!-- 3. Books Gym -->
         <a href="./book/index.html" class="space-btn btn-books">
-            <span class="icon">📚</span>
+            <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <!-- Векторна розгорнута книга -->
+                <path d="M15 75 C30 75 45 65 50 60 C55 65 70 75 85 75 V25 C70 25 55 15 50 20 C45 15 30 25 15 25 Z" stroke="var(--yellow)" stroke-width="3.5" stroke-linejoin="round"/>
+                <path d="M50 20 V60" stroke="white" stroke-width="3"/>
+                <path d="M22 35 H42 M22 45 H42 M22 55 H35 M58 35 H78 M58 45 H78 M58 55 H70" stroke="rgba(255,255,255,0.4)" stroke-width="2"/>
+            </svg>
             <span id="lbl-books">Books Gym</span>
         </a>
 
         <!-- 4. AI Coach -->
         <a href="./coach/index.html" class="space-btn btn-coach">
-            <span class="icon">🤖</span>
+            <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <!-- Векторна голова робота з антеною -->
+                <rect x="25" y="32" width="50" height="42" rx="14" stroke="var(--cyan)" stroke-width="3.5"/>
+                <path d="M50 32 V20 M42 20 H58" stroke="white" stroke-width="3"/>
+                <circle cx="40" cy="50" r="5" fill="var(--cyan)"/>
+                <circle cx="60" cy="50" r="5" fill="var(--cyan)"/>
+                <path d="M40 62 Q50 70 60 62" stroke="white" stroke-width="3" stroke-linecap="round"/>
+            </svg>
             <span id="lbl-coach">AI Coach</span>
         </a>
     </div>
