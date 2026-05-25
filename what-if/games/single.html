@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Single Question | What If?</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --magenta: #d92cff;
+            --bg: #020617;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+        
+        body, html {
+            margin: 0; padding: 0; min-height: 100vh;
+            background: radial-gradient(circle at center, #0f172a 0%, #020617 100%);
+            color: white; font-family: 'Nunito', sans-serif;
+            display: flex; flex-direction: column; align-items: center;
+            overflow-x: hidden;
+        }
+
+        /* Уніфікована панель вгорі */
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            max-width: 450px;
+            padding: 15px 15px 0 15px;
+            z-index: 100;
+        }
+
+        .back-btn {
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 2px solid var(--magenta);
+            color: white; 
+            padding: 8px 16px; 
+            border-radius: 50px;
+            text-decoration: none; 
+            font-weight: bold; 
+            box-shadow: 0 0 10px rgba(217, 44, 255, 0.3); 
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: 0.3s;
+        }
+        .back-btn:hover { background: rgba(217, 44, 255, 0.2); }
+
+        .lang-switch {
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 2px solid var(--magenta);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            cursor: pointer;
+            outline: none;
+            box-shadow: 0 0 10px rgba(217, 44, 255, 0.3);
+            font-weight: bold;
+        }
+
+        /* Логотип серії */
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 15px;
+            margin-bottom: 15px;
+        }
+        
+        .logo-svg {
+            width: 35px;
+            height: 35px;
+            filter: drop-shadow(0 0 8px var(--magenta));
+        }
+
+        .logo-text {
+            color: white;
+            font-weight: 800;
+            letter-spacing: 2px;
+            font-size: 1.3rem;
+            text-shadow: 0 0 10px var(--magenta);
+        }
+
+        /* ГОЛОВНИЙ ЕКРАН */
+        .main-card {
+            width: 90%; max-width: 450px;
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(12px);
+            border-radius: 24px;
+            border: 2px solid var(--magenta);
+            padding: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5), 0 0 15px rgba(217, 44, 255, 0.1);
+            display: flex; flex-direction: column; align-items: center;
+            min-height: 520px;
+        }
+
+        header h1 {
+            font-size: 1.25rem; font-weight: 800; color: white; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1px;
+            text-align: center;
+        }
+
+        .card { 
+            background: rgba(15, 23, 42, 0.7); 
+            border: 2.5px solid var(--magenta); 
+            border-radius: 20px; 
+            padding: 30px; 
+            width: 100%; 
+            text-align: center; 
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), 0 0 15px rgba(217, 44, 255, 0.1);
+            aspect-ratio: 3.5 / 4.5;
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            margin-bottom: 20px;
+        }
+        .question { font-size: 1.35rem; font-weight: 800; line-height: 1.4; color: white; }
+        
+        .btn-group { display: flex; gap: 12px; width: 100%; }
+        
+        .action-btn { 
+            flex: 1;
+            background: transparent; 
+            border: 2px solid var(--magenta); 
+            color: white; 
+            padding: 14px; 
+            border-radius: 14px; 
+            font-weight: 800; 
+            cursor: pointer; 
+            transition: 0.3s; 
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .action-btn:hover { background: var(--magenta); color: #020617; box-shadow: 0 0 15px rgba(217, 44, 255, 0.4); }
+        .action-btn.timer-btn { border-color: #ff9f43; color: #ff9f43; }
+        .action-btn.timer-btn:hover { background: #ff9f43; color: #020617; box-shadow: 0 0 15px rgba(255, 159, 67, 0.4); }
+        
+        /* Simple timer overlay */
+        #timer-display { 
+            display: none; 
+            position: fixed; 
+            top: 40%; 
+            font-size: 7rem; 
+            font-weight: 800; 
+            color: #ff9f43; 
+            text-shadow: 0 0 25px rgba(255, 159, 67, 0.6); 
+            z-index: 100; 
+            pointer-events: none;
+        }
+
+        /* UPSELL BANNER (Inlined inside main-card to remain style stable) */
+        .promo-banner {
+            margin-top: 20px; 
+            background: linear-gradient(135deg, #1e1b4b 0%, #311042 100%); 
+            border-radius: 16px;
+            padding: 12px 18px; 
+            width: 100%; 
+            border: 2px solid var(--magenta); 
+            box-shadow: 0 0 12px rgba(217, 44, 255, 0.2);
+            display: flex; 
+            align-items: center; 
+            justify-content: space-between;
+            text-decoration: none; 
+            color: white;
+            transition: 0.3s;
+        }
+        .promo-banner:hover {
+            transform: scale(1.02);
+            box-shadow: 0 0 18px rgba(217, 44, 255, 0.4);
+        }
+        .promo-text h3 { margin: 0 0 3px 0; font-size: 0.95rem; color: var(--magenta); font-weight:800; text-transform: uppercase; }
+        .promo-text p { margin: 0; font-size: 0.8rem; color: #cbd5e1; line-height: 1.3; }
+        .promo-btn { 
+            background: var(--magenta); 
+            color: white; 
+            padding: 8px 14px; 
+            border-radius: 30px; 
+            font-size: 0.75rem; 
+            font-weight: 900; 
+            white-space: nowrap; 
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Уніфікована панель вгорі -->
+    <div class="top-bar">
+        <a href="../index.html" class="back-btn" id="btn-back">← Hub</a>
+        <select class="lang-switch" id="lang-selector" onchange="changeLang()">
+            <option value="en">🇺🇸 EN</option>
+            <option value="uk">🇺🇦 UK</option>
+            <option value="es">🇪🇸 ES</option>
+            <option value="de">🇩🇪 DE</option>
+            <option value="fr">🇫🇷 FR</option>
+            <option value="nl">🇳🇱 NL</option>
+            <option value="da">🇩🇰 DA</option>
+            <option value="sv">🇸🇪 SV</option>
+            <option value="ro">🇷🇴 RO</option>
+            <option value="pl">🇵🇱 PL</option>
+            <option value="pt">🇧🇷 PT</option>
+        </select>
+    </div>
+
+    <!-- Логотип серії -->
+    <div class="logo-container">
+        <svg class="logo-svg" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M50 20 C25 20 20 50 50 80 C80 50 75 20 50 20 Z" stroke="var(--magenta)" stroke-width="4" stroke-linejoin="round" />
+            <circle cx="50" cy="45" r="10" stroke="white" stroke-width="3" />
+        </svg>
+        <span class="logo-text">WHAT IF?</span>
+    </div>
+
+    <div class="main-card">
+        <header>
+            <h1 id="scr-title">Single Question</h1>
+        </header>
+        
+        <div class="card">
+            <div class="question" id="q-text">Tap 'Next' to start!</div>
+        </div>
+        
+        <div class="btn-group">
+            <button class="action-btn timer-btn" id="btn-timer" onclick="startTimer()">⏳ 60s</button>
+            <button class="action-btn" id="btn-next" onclick="nextQuestion()">NEXT ➔</button>
+        </div>
+
+        <!-- РЕКЛАМНИЙ БАНЕР / Пропозиція Книги (Upsell) -->
+        <a href="https://www.amazon.com/dp/B0BRC7Z2NW" class="promo-banner" target="_blank">
+            <div class="promo-text">
+                <h3 id="promo-title">Offline Brain Fitness</h3>
+                <p id="promo-subtitle">Get the physical "What If?" workbook with 100+ logical puzzles to build critical thinking away from screens.</p>
+            </div>
+            <div class="promo-btn" id="promo-btn-lbl">Get Book</div>
+        </a>
+    </div>
+    
+    <div id="timer-display">60</div>
+
+    <script>
+        const gamesData = {
+            en: [
+                "What if gravity turned off for exactly 1 minute every day?",
+                "What if animals could talk, but only complained about the weather?",
+                "What if all the oceans were replaced with orange juice?",
+                "What if you could only move by jumping like a kangaroo?",
+                "What if every lie made your nose literally grow like Pinocchio?",
+                "What if clouds were made of sweet cotton candy?",
+                "What if people glowed in the dark when they were happy?",
+                "What if money actually grew on backyard trees?",
+                "What if humans didn't need to sleep at all?",
+                "What if all insects grew to the size of medium dogs?",
+                "What if laughing out loud made you float in the air?",
+                "What if we could only eat colored crayons?"
+            ],
+            uk: [
+                "Що, якби сила тяжіння вимикалася рівно на 1 хвилину щодня?",
+                "Що, якби тварини вміли говорити, але тільки скаржилися на погоду?",
+                "Що, якби всі океани були замінені на апельсиновий сік?",
+                "Що, якби ви могли пересуватися лише стрибками, як кенгуру?",
+                "Що, якби кожна брехня змушувала ваш ніс рости, як у Піноккіо?",
+                "Що, якби хмари були зроблені із солодкої цукрової вати?",
+                "Що, якби люди світилися в темряві, коли вони щасливі?",
+                "Що, якби гроші дійсно росли на деревах у дворі?",
+                "Що, якби людям взагалі не потрібно було спати?",
+                "Що, якби всі комахи виросли до розмірів середнього собаки?",
+                "Що, якби сміх змушував вас злітати і літати в повітрі?",
+                "Що, якби ми могли їсти лише кольорові воскові олівці?"
+            ]
+        };
+
+        const translationDict = {
+            en: {
+                title: "Single Question",
+                next: "NEXT ➔",
+                promo_t: "Offline Brain Fitness",
+                promo_st: "Get the physical 'What If?' workbook with 100+ logical puzzles to build critical thinking away from screens.",
+                promo_btn: "Get Book",
+                back: "← Hub"
+            },
+            uk: {
+                title: "Одне Питання",
+                next: "Наступна ➔",
+                promo_t: "Розумний відпочинок",
+                promo_st: "Отримайте велику книгу логічних ланцюжків 'Що, якби?' на Amazon! 100+ завдань для розвитку мислення без екранів.",
+                promo_btn: "Купити",
+                back: "← Хаб"
+            }
+        };
+
+        let currentLang = 'en';
+        let timerInt;
+        
+        function changeLang() {
+            currentLang = document.getElementById('lang-selector').value;
+            localStorage.setItem('prybambas_lang', currentLang);
+            
+            // Apply UI Translations
+            const ui = translationDict[currentLang] || translationDict['en'];
+            document.getElementById('scr-title').innerText = ui.title;
+            document.getElementById('btn-next').innerText = ui.next;
+            document.getElementById('promo-title').innerText = ui.promo_t;
+            document.getElementById('promo-subtitle').innerText = ui.promo_st;
+            document.getElementById('promo-btn-lbl').innerText = ui.promo_btn;
+            document.getElementById('btn-back').innerText = ui.back;
+
+            nextQuestion();
+        }
+
+        function nextQuestion() {
+            const list = gamesData[currentLang] || gamesData['en'];
+            let rnd = Math.floor(Math.random() * list.length);
+            document.getElementById('q-text').innerText = list[rnd];
+        }
+        
+        function startTimer() {
+            let t = 60;
+            const display = document.getElementById('timer-display');
+            display.style.display = 'block';
+            display.innerText = t;
+            clearInterval(timerInt);
+            
+            timerInt = setInterval(() => {
+                t--;
+                display.innerText = t;
+                if(t <= 0) {
+                    clearInterval(timerInt);
+                    display.style.display = 'none';
+                }
+            }, 1000);
+        }
+
+        window.onload = function() {
+            currentLang = localStorage.getItem('prybambas_lang') || 'en';
+            document.getElementById('lang-selector').value = currentLang;
+            changeLang();
+        }
+    </script>
+</body>
+</html>
