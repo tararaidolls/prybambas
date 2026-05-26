@@ -235,60 +235,17 @@
         </a>
     </div>
 
+    <!-- Підключаємо зовнішні файли контенту для легкої локалізації -->
+    <script src="../content/en.js"></script>
+    <script src="../content/uk.js"></script>
+    <script src="../content/ro.js"></script>
+
     <script>
-        const gamesData = {
-            en: [
-                {
-                    start: "What if gravity turned off for exactly 1 minute every day?",
-                    end: "Helmets become mandatory indoor fashion."
-                },
-                {
-                    start: "What if animals could talk, but only complained about the weather?",
-                    end: "Weather forecasting is done by asking pigeons."
-                },
-                {
-                    start: "What if all the oceans were replaced with orange juice?",
-                    end: "Sharks become addicted to sugar and swim faster."
-                },
-                {
-                    start: "What if you could only move by jumping like a kangaroo?",
-                    end: "Trampolines replace all city sidewalks."
-                },
-                {
-                    start: "What if every lie made your nose literally grow like Pinocchio?",
-                    end: "Nose-trimming becomes a daily morning routine."
-                },
-                {
-                    start: "What if clouds were made of sweet cotton candy?",
-                    end: "Car washes are replaced by licking-machines."
-                }
-            ],
-            uk: [
-                {
-                    start: "Що, якби сила тяжіння вимикалася на 1 хвилину щодня?",
-                    end: "Шоломи стають обов'язковою домашньою модою."
-                },
-                {
-                    start: "Що, якби тварини тільки скаржилися на погоду?",
-                    end: "Прогноз погоди роблять через опитування голубів."
-                },
-                {
-                    start: "Що, якби всі океани замінили на апельсиновий сік?",
-                    end: "Акули стають залежними від цукру і плавають швидше."
-                },
-                {
-                    start: "Що, якби ми пересувалися лише стрибками?",
-                    end: "Тротуари замінюють на гігантські батути."
-                },
-                {
-                    start: "Що, якби кожна брехня змушувала ніс рости?",
-                    end: "Підрізання носа стає щоденною ранковою рутиною."
-                },
-                {
-                    start: "Що, якби хмари були з цукрової вати?",
-                    end: "Автомийки замінюють на гігантські машини-язики."
-                }
-            ]
+        // Об'єднана база даних, яка автоматично підхоплює мови з файлів у папці /content
+        const localizedData = {
+            en: typeof whatif_deduction_en !== 'undefined' ? whatif_deduction_en : [],
+            uk: typeof whatif_deduction_uk !== 'undefined' ? whatif_deduction_uk : [],
+            ro: typeof whatif_deduction_ro !== 'undefined' ? whatif_deduction_ro : []
         };
 
         const translationDict = {
@@ -313,11 +270,23 @@
                 promo_st: "Отримайте велику книгу логічних ланцюжків 'Що, якби?' на Amazon! 100+ завдань для розвитку мислення без екранів.",
                 promo_btn: "Купити",
                 back: "← Хаб"
+            },
+            ro: {
+                title: "Deducție",
+                reveal: "ARATĂ CAUZA INIȚIALĂ",
+                lbl_consequence: "CONSECINȚA FINALĂ:",
+                lbl_cause: "CAUZA INIȚIALĂ:",
+                next: "Următorul raund ➔",
+                promo_t: "Fitness Cerebral Offline",
+                promo_st: "Cumpără volumul fizic 'What If?' cu peste 100 de puzzle-uri de logică pentru dezvoltarea gândirii critice fără ecrane.",
+                promo_btn: "Cumpără",
+                back: "← Hub"
             }
         };
 
         let currentLang = 'en';
-        let currentItem = null;
+        let currentIndex = -1;
+        let isRevealed = false;
         
         function changeLang() {
             currentLang = document.getElementById('lang-selector').value;
@@ -333,12 +302,37 @@
             document.getElementById('promo-btn-lbl').innerText = ui.promo.btn;
             document.getElementById('btn-back').innerText = ui.back;
 
-            nextRound();
+            // Оновлюємо поточне питання на льоту! (UX FIX - No more sync bugs)
+            const list = localizedData[currentLang] || localizedData['en'];
+            if (list.length > 0) {
+                if (currentIndex === -1) {
+                    currentIndex = Math.floor(Math.random() * list.length);
+                }
+                const safeIndex = currentIndex % list.length;
+                const item = list[safeIndex];
+
+                const lbl = document.getElementById('lbl-status');
+                if (isRevealed) {
+                    lbl.innerText = ui.lbl_cause;
+                    document.getElementById('main-text').innerText = item.start;
+                } else {
+                    lbl.innerText = ui.lbl_consequence;
+                    document.getElementById('main-text').innerText = item.end;
+                }
+            }
         }
 
         function nextRound() {
-            const list = gamesData[currentLang] || gamesData['en'];
-            currentItem = list[Math.floor(Math.random() * list.length)];
+            const list = localizedData[currentLang] || localizedData['en'];
+            if (list.length === 0) return;
+
+            let newIndex;
+            do {
+                newIndex = Math.floor(Math.random() * list.length);
+            } while (newIndex === currentIndex && list.length > 1);
+
+            currentIndex = newIndex;
+            isRevealed = false;
             
             // Reset styles
             document.getElementById('card-box').classList.remove('revealed');
@@ -348,11 +342,15 @@
             lbl.innerText = ui.lbl_consequence;
             lbl.classList.remove('revealed');
             
-            document.getElementById('main-text').innerText = currentItem.end;
+            document.getElementById('main-text').innerText = list[currentIndex].end;
             document.getElementById('btn-reveal').style.display = 'block';
         }
 
         function revealStart() {
+            const list = localizedData[currentLang] || localizedData['en'];
+            if (list.length === 0) return;
+
+            isRevealed = true;
             document.getElementById('card-box').classList.add('revealed');
             
             const ui = translationDict[currentLang] || translationDict['en'];
@@ -360,7 +358,7 @@
             lbl.innerText = ui.lbl_cause;
             lbl.classList.add('revealed');
             
-            document.getElementById('main-text').innerText = currentItem.start;
+            document.getElementById('main-text').innerText = list[currentIndex].start;
             document.getElementById('btn-reveal').style.display = 'none';
         }
 

@@ -241,72 +241,17 @@
         </a>
     </div>
 
+    <!-- Підключаємо зовнішні файли контенту для легкої локалізації -->
+    <script src="../content/en.js"></script>
+    <script src="../content/uk.js"></script>
+    <script src="../content/ro.js"></script>
+
     <script>
-        const gamesData = {
-            en: [
-                {
-                    start: "What if gravity turned off for exactly 1 minute every day?",
-                    steps: ["People and objects float up in the air.", "Everyone hits their head on the ceiling.", "Helmets become mandatory indoor fashion."],
-                    end: "Helmets become mandatory indoor fashion."
-                },
-                {
-                    start: "What if animals could talk, but only complained about the weather?",
-                    steps: ["Dogs refuse to walk in the rain & argue loudly.", "Special dog-umbrella sales skyrocket.", "Weather forecasting is done by asking pigeons."],
-                    end: "Weather forecasting is done by asking pigeons."
-                },
-                {
-                    start: "What if all the oceans were replaced with orange juice?",
-                    steps: ["The ocean becomes highly acidic and sweet.", "Fish develop mutations to survive the citric acid.", "Sharks become addicted to sugar and swim faster."],
-                    end: "Sharks become addicted to sugar and swim faster."
-                },
-                {
-                    start: "What if you could only move by jumping like a kangaroo?",
-                    steps: ["Walking and running become strictly impossible.", "Ceilings in all houses are built 3x higher.", "Sidewalks are replaced by massive trampolines."],
-                    end: "Trampolines replace all city sidewalks."
-                },
-                {
-                    start: "What if every lie made your nose literally grow like Pinocchio?",
-                    steps: ["Politicians have 10-foot long noses.", "Office and house doors must be widened.", "Nose-trimming becomes a daily morning routine."],
-                    end: "Nose-trimming becomes a daily morning routine."
-                },
-                {
-                    start: "What if clouds were made of sweet cotton candy?",
-                    steps: ["It rains sticky sugar water.", "All cars and streets get incredibly sticky.", "Car washes are replaced by licking-machines."],
-                    end: "Car washes are replaced by licking-machines."
-                }
-            ],
-            uk: [
-                {
-                    start: "Що, якби сила тяжіння вимикалася на 1 хвилину щодня?",
-                    steps: ["Усі люди та предмети починають літати.", "Кожен сильно б'ється головою об стелю.", "Шоломи стають обов'язковою домашньою модою."],
-                    end: "Шоломи стають обов'язковою домашньою модою."
-                },
-                {
-                    start: "Що, якби тварини тільки скаржилися на погоду?",
-                    steps: ["Собаки відмовляються гуляти в дощ і лаються.", "Продажі парасольок для тварин злітають у космос.", "Прогноз погоди роблять через опитування голубів."],
-                    end: "Прогноз погоди роблять через опитування голубів."
-                },
-                {
-                    start: "Що, якби всі океани замінили на апельсиновий сік?",
-                    steps: ["Вода в океанах стає дуже кислою та солодкою.", "Риби мутують, щоб вижити у лимонній кислоті.", "Акули стають залежними від цукру і плавають швидше."],
-                    end: "Акули стають залежними від цукру і плавають швидше."
-                },
-                {
-                    start: "Що, якби ми пересувалися лише стрибками?",
-                    steps: ["Звичайна ходьба стає повністю неможливою.", "Стелі в будинках будують утричі вищими.", "Тротуари замінюють на гігантські батути."],
-                    end: "Тротуари замінюють на гігантські батути."
-                },
-                {
-                    start: "Що, якби кожна брехня змушувала ніс рости?",
-                    steps: ["У політиків виростають 3-метрові носи.", "Дверні прорізи доводиться розширювати у два рази.", "Підрізання носа стає щоденною ранковою рутиною."],
-                    end: "Підрізання носа стає щоденною ранковою рутиною."
-                },
-                {
-                    start: "Що, якби хмари були з цукрової вати?",
-                    steps: ["З неба починає йти липкий цукровий дощ.", "Усі вулиці та автомобілі стають суперлипкими.", "Автомийки замінюють на гігантські машини-язики."],
-                    end: "Автомийки замінюють на гігантські машини-язики."
-                }
-            ]
+        // Об'єднана база даних, яка автоматично підхоплює мови з файлів у папці /content
+        const localizedData = {
+            en: typeof whatif_chain_en !== 'undefined' ? whatif_chain_en : [],
+            uk: typeof whatif_chain_uk !== 'undefined' ? whatif_chain_uk : [],
+            ro: typeof whatif_chain_ro !== 'undefined' ? whatif_chain_ro : []
         };
 
         const translationDict = {
@@ -317,7 +262,9 @@
                 promo_t: "Offline Brain Fitness",
                 promo_st: "Get the physical 'What If?' workbook with 100+ logical puzzles to build critical thinking away from screens.",
                 promo_btn: "Get Book",
-                back: "← Hub"
+                back: "← Hub",
+                start_label: "START",
+                end_label: "END"
             },
             uk: {
                 title: "Логічний Ланцюг",
@@ -326,12 +273,25 @@
                 promo_t: "Розумний відпочинок",
                 promo_st: "Отримайте велику книгу логічних ланцюжків 'Що, якби?' на Amazon! 100+ завдань для розвитку мислення без екранів.",
                 promo_btn: "Купити",
-                back: "← Хаб"
+                back: "← Хаб",
+                start_label: "СТАРТ",
+                end_label: "ФІНАЛ"
+            },
+            ro: {
+                title: "Lanț Logic",
+                reveal: "Arată Logica",
+                next: "Următorul Raound ➔",
+                promo_t: "Fitness Cerebral Offline",
+                promo_st: "Cumpără volumul fizic 'What If?' cu peste 100 de puzzle-uri de logică pentru dezvoltarea gândirii critice fără ecrane.",
+                promo_btn: "Cumpără",
+                back: "← Hub",
+                start_label: "START",
+                end_label: "FINAL"
             }
         };
 
         let currentLang = 'en';
-        let currentItem = null;
+        let currentIndex = -1;
         let revealedSteps = 0;
         
         function changeLang() {
@@ -348,20 +308,51 @@
             document.getElementById('promo-btn-lbl').innerText = ui.promo.btn;
             document.getElementById('btn-back').innerText = ui.back;
 
-            nextRound();
+            // Оновлюємо поточне питання на льоту! (UX FIX - No more sync bugs)
+            const list = localizedData[currentLang] || localizedData['en'];
+            if (list.length > 0) {
+                if (currentIndex === -1) {
+                    currentIndex = Math.floor(Math.random() * list.length);
+                }
+                // Захист індексу при переході між базами різної довжини
+                const safeIndex = currentIndex % list.length;
+                const item = list[safeIndex];
+
+                document.getElementById('b-start').innerText = item.start;
+                document.getElementById('b-end').innerText = item.end;
+                
+                for (let i = 1; i <= 3; i++) {
+                    document.getElementById(`s${i}`).innerText = item.steps[i-1];
+                    // Зберігаємо поточний стан відкритих кроків при зміні мови!
+                    if (i <= revealedSteps) {
+                        document.getElementById(`s${i}`).style.display = 'block';
+                        document.getElementById(`arr${i}`).style.display = 'block';
+                    } else {
+                        document.getElementById(`s${i}`).style.display = 'none';
+                        document.getElementById(`arr${i}`).style.display = 'none';
+                    }
+                }
+            }
         }
 
         function nextRound() {
-            const list = gamesData[currentLang] || gamesData['en'];
-            currentItem = list[Math.floor(Math.random() * list.length)];
+            const list = localizedData[currentLang] || localizedData['en'];
+            if (list.length === 0) return;
+
+            let newIndex;
+            do {
+                newIndex = Math.floor(Math.random() * list.length);
+            } while (newIndex === currentIndex && list.length > 1);
+
+            currentIndex = newIndex;
             revealedSteps = 0;
             
-            // Set values
-            document.getElementById('b-start').innerText = currentItem.start;
-            document.getElementById('b-end').innerText = currentItem.end;
+            const item = list[currentIndex];
+            document.getElementById('b-start').innerText = item.start;
+            document.getElementById('b-end').innerText = item.end;
             
             for (let i = 1; i <= 3; i++) {
-                document.getElementById(`s${i}`).innerText = currentItem.steps[i-1];
+                document.getElementById(`s${i}`).innerText = item.steps[i-1];
                 document.getElementById(`s${i}`).style.display = 'none';
                 document.getElementById(`arr${i}`).style.display = 'none';
             }

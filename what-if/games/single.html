@@ -9,6 +9,7 @@
         :root {
             --magenta: #d92cff;
             --bg: #020617;
+            --yellow: #ff9f43;
         }
         * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
         
@@ -141,18 +142,38 @@
         .action-btn.timer-btn { border-color: #ff9f43; color: #ff9f43; }
         .action-btn.timer-btn:hover { background: #ff9f43; color: #020617; box-shadow: 0 0 15px rgba(255, 159, 67, 0.4); }
         
-        /* Simple timer overlay */
-        #timer-display { 
+        /* КРАСИВИЙ ПОВНОЕКРАННИЙ ТАЙМЕР ОВЕРЛЕЙ (No overlap UX fix) */
+        #timer-overlay { 
             display: none; 
             position: fixed; 
-            top: 40%; 
-            font-size: 7rem; 
-            font-weight: 800; 
-            color: #ff9f43; 
-            text-shadow: 0 0 25px rgba(255, 159, 67, 0.6); 
-            z-index: 100; 
-            pointer-events: none;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(2, 6, 23, 0.85);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            z-index: 1000;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            animation: fadeIn 0.3s ease-out;
         }
+
+        #timer-text {
+            font-size: 10rem;
+            font-weight: 800;
+            color: var(--yellow);
+            text-shadow: 0 0 35px rgba(255, 159, 67, 0.7);
+            margin-bottom: 20px;
+        }
+
+        #timer-sub {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #cbd5e1;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
         /* UPSELL BANNER (Inlined inside main-card to remain style stable) */
         .promo-banner {
@@ -241,38 +262,23 @@
         </a>
     </div>
     
-    <div id="timer-display">60</div>
+    <!-- ТАЙМЕР ОВЕРЛЕЙ (UX FIX) -->
+    <div id="timer-overlay" onclick="stopTimer()">
+        <div id="timer-text">60</div>
+        <div id="timer-sub" class="timer-sub-lbl">Tap anywhere to close</div>
+    </div>
+
+    <!-- Підключаємо зовнішні файли контенту для легкої локалізації -->
+    <script src="../content/en.js"></script>
+    <script src="../content/uk.js"></script>
+    <script src="../content/ro.js"></script>
 
     <script>
-        const gamesData = {
-            en: [
-                "What if gravity turned off for exactly 1 minute every day?",
-                "What if animals could talk, but only complained about the weather?",
-                "What if all the oceans were replaced with orange juice?",
-                "What if you could only move by jumping like a kangaroo?",
-                "What if every lie made your nose literally grow like Pinocchio?",
-                "What if clouds were made of sweet cotton candy?",
-                "What if people glowed in the dark when they were happy?",
-                "What if money actually grew on backyard trees?",
-                "What if humans didn't need to sleep at all?",
-                "What if all insects grew to the size of medium dogs?",
-                "What if laughing out loud made you float in the air?",
-                "What if we could only eat colored crayons?"
-            ],
-            uk: [
-                "Що, якби сила тяжіння вимикалася рівно на 1 хвилину щодня?",
-                "Що, якби тварини вміли говорити, але тільки скаржилися на погоду?",
-                "Що, якби всі океани були замінені на апельсиновий сік?",
-                "Що, якби ви могли пересуватися лише стрибками, як кенгуру?",
-                "Що, якби кожна брехня змушувала ваш ніс рости, як у Піноккіо?",
-                "Що, якби хмари були зроблені із солодкої цукрової вати?",
-                "Що, якби люди світилися в темряві, коли вони щасливі?",
-                "Що, якби гроші дійсно росли на деревах у дворі?",
-                "Що, якби людям взагалі не потрібно було спати?",
-                "Що, якби всі комахи виросли до розмірів середнього собаки?",
-                "Що, якби сміх змушував вас злітати і літати в повітрі?",
-                "Що, якби ми могли їсти лише кольорові воскові олівці?"
-            ]
+        // Об'єднана база даних, яка автоматично підхоплює мови з файлів у папці /content
+        const localizedData = {
+            en: typeof whatif_single_en !== 'undefined' ? whatif_single_en : [],
+            uk: typeof whatif_single_uk !== 'undefined' ? whatif_single_uk : [],
+            ro: typeof whatif_single_ro !== 'undefined' ? whatif_single_ro : []
         };
 
         const translationDict = {
@@ -282,7 +288,9 @@
                 promo_t: "Offline Brain Fitness",
                 promo_st: "Get the physical 'What If?' workbook with 100+ logical puzzles to build critical thinking away from screens.",
                 promo_btn: "Get Book",
-                back: "← Hub"
+                back: "← Hub",
+                tap_to_close: "Tap anywhere to close",
+                ready: "Tap 'Next' to start!"
             },
             uk: {
                 title: "Одне Питання",
@@ -290,12 +298,26 @@
                 promo_t: "Розумний відпочинок",
                 promo_st: "Отримайте велику книгу логічних ланцюжків 'Що, якби?' на Amazon! 100+ завдань для розвитку мислення без екранів.",
                 promo_btn: "Купити",
-                back: "← Хаб"
+                back: "← Хаб",
+                tap_to_close: "Торкніться будь-де, щоб закрити",
+                ready: "Натисніть 'Наступна', щоб почати!"
+            },
+            ro: {
+                title: "O Singură Întrebare",
+                next: "Următoarea ➔",
+                promo_t: "Fitness Cerebral Offline",
+                promo_st: "Cumpără volumul fizic 'What If?' cu peste 100 de puzzle-uri de logică pentru dezvoltarea gândirii critice fără ecrane.",
+                promo_btn: "Cumpără",
+                back: "← Hub",
+                tap_to_close: "Atinge oriunde pentru a închide",
+                ready: "Apasă pe 'Următoarea' pentru a începe!"
             }
         };
 
         let currentLang = 'en';
-        let timerInt;
+        let currentIndex = -1;
+        let timerVal = 60;
+        let timerInterval;
         
         function changeLang() {
             currentLang = document.getElementById('lang-selector').value;
@@ -305,35 +327,63 @@
             const ui = translationDict[currentLang] || translationDict['en'];
             document.getElementById('scr-title').innerText = ui.title;
             document.getElementById('btn-next').innerText = ui.next;
-            document.getElementById('promo-title').innerText = ui.promo_t;
-            document.getElementById('promo-subtitle').innerText = ui.promo_st;
-            document.getElementById('promo-btn-lbl').innerText = ui.promo_btn;
+            document.getElementById('promo-title').innerText = ui.promo.t;
+            document.getElementById('promo-subtitle').innerText = ui.promo.st;
+            document.getElementById('promo-btn-lbl').innerText = ui.promo.btn;
             document.getElementById('btn-back').innerText = ui.back;
+            document.querySelector('.timer-sub-lbl').innerText = ui.tap_to_close;
 
-            nextQuestion();
+            // Якщо гра ще не почалася, показуємо вітальне повідомлення цією мовою
+            if (currentIndex === -1) {
+                document.getElementById('q-text').innerText = ui.ready;
+            } else {
+                // Перекладаємо ПОТОЧНЕ питання на льоту! (UX FIX)
+                const questions = localizedData[currentLang] || localizedData['en'];
+                if (questions.length > 0) {
+                    // Страхуємось на випадок якщо масиви різної довжини
+                    const safeIndex = currentIndex % questions.length;
+                    document.getElementById('q-text').innerText = questions[safeIndex];
+                }
+            }
         }
 
         function nextQuestion() {
-            const list = gamesData[currentLang] || gamesData['en'];
-            let rnd = Math.floor(Math.random() * list.length);
-            document.getElementById('q-text').innerText = list[rnd];
+            // Беремо контент відповідно до обраної мови з підтримкою фоллбеку (Fallback)
+            const questions = localizedData[currentLang] || localizedData['en'];
+            if (questions.length === 0) return;
+
+            // Випадковий вибір без повторень підряд
+            let newIndex;
+            do {
+                newIndex = Math.floor(Math.random() * questions.length);
+            } while (newIndex === currentIndex && questions.length > 1);
+
+            currentIndex = newIndex;
+            document.getElementById('q-text').innerText = questions[currentIndex];
         }
-        
+
         function startTimer() {
-            let t = 60;
-            const display = document.getElementById('timer-display');
-            display.style.display = 'block';
-            display.innerText = t;
-            clearInterval(timerInt);
+            const overlay = document.getElementById('timer-overlay');
+            const text = document.getElementById('timer-text');
             
-            timerInt = setInterval(() => {
-                t--;
-                display.innerText = t;
-                if(t <= 0) {
-                    clearInterval(timerInt);
-                    display.style.display = 'none';
+            overlay.style.display = "flex";
+            timerVal = 60;
+            text.innerText = timerVal;
+            
+            clearInterval(timerInterval);
+            timerInterval = setInterval(() => {
+                timerVal--;
+                text.innerText = timerVal;
+                
+                if (timerVal <= 0) {
+                    stopTimer();
                 }
             }, 1000);
+        }
+
+        function stopTimer() {
+            clearInterval(timerInterval);
+            document.getElementById('timer-overlay').style.display = "none";
         }
 
         window.onload = function() {
