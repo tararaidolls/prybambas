@@ -246,7 +246,9 @@
                 placeholder: "Type a sentence...",
                 bot_thinking: "Thinking...",
                 launch: "📸 Check Handwriting by Photo",
-                bot_reply: "Excellent sentence! Your grammar is perfect. Keep practicing! 🚀"
+                bot_reply: "Excellent sentence! Your grammar is perfect. Keep practicing! 🚀",
+                submit_prefix: "I submitted an invention idea: ",
+                submit_reply: "Wow, that is a brilliant engineering solution! You applied the TRIZ tools beautifully. What if you combine this with another material to make it even stronger? Let's discuss! 💡"
             },
             uk: {
                 back: "← Хаб",
@@ -256,7 +258,9 @@
                 placeholder: "Напиши речення...",
                 bot_thinking: "Думаю...",
                 launch: "📸 Перевірити зошит по фото",
-                bot_reply: "Чудове речення! Твоя граматика ідеальна. Продовжуй практикуватися! 🚀"
+                bot_reply: "Чудове речення! Твоя граматика ідеальна. Продовжуй практикуватися! 🚀",
+                submit_prefix: "Я надіслав винахідницьку ідею: ",
+                submit_reply: "Ого, це просто блискуче інженерне рішення! Ти чудово застосувала інструменти ТРВЗ. А що, якби додати до цього інший матеріал, щоб зробити конструкцію ще міцнішою? Давай обговоримо! 💡"
             }
         };
 
@@ -305,10 +309,38 @@
             }, 1000);
         }
 
+        // Обробка ідеї, що прийшла через сабміт-місток
+        function checkSubmittedIdea() {
+            const idea = localStorage.getItem('prybambas_submit_idea');
+            if (idea) {
+                // Видаляємо з пам'яті, щоб повідомлення не дублювалося при оновленні сторінки
+                localStorage.removeItem('prybambas_submit_idea');
+
+                const chatBox = document.getElementById('chat-box');
+                const t = dict[currentLang] || dict['en'];
+
+                // 1. Додаємо ідею як повідомлення від юзера
+                const uMsg = document.createElement('div');
+                uMsg.className = 'msg user';
+                uMsg.innerText = t.submit_prefix + `"${idea}"`;
+                chatBox.appendChild(uMsg);
+
+                // 2. Додаємо бот-реплай спеціально під винахід
+                setTimeout(() => {
+                    const tMsg = document.createElement('div');
+                    tMsg.className = 'msg bot';
+                    tMsg.innerText = t.submit_reply;
+                    chatBox.appendChild(tMsg);
+                    chatBox.scrollTop = chatBox.scrollHeight;
+                }, 800);
+            }
+        }
+
         window.onload = function() {
             const savedLang = localStorage.getItem('prybambas_lang') || 'en';
             document.getElementById('lang-selector').value = savedLang;
             changeLang();
+            checkSubmittedIdea(); // Перевіряємо сабміт-місток
         }
     </script>
 </body>
