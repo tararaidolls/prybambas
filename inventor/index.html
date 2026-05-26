@@ -1,560 +1,122 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Inventor Lab | Prybambas</title>
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --magenta: #d92cff;
-            --green: #54ff3a;
-            --cyan: #00f3ff;
-            --bg: #020617;
-        }
-
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-
-        body, html {
-            margin: 0; padding: 0; min-height: 100vh;
-            background: radial-gradient(circle at center, #0f172a 0%, #020617 100%);
-            color: white;
-            font-family: 'Nunito', sans-serif;
-            overflow-x: hidden; display: flex; flex-direction: column; align-items: center;
-        }
-
-        /* Уніфікована панель вгорі */
-        .top-bar {
-            display: flex;
-            justify-content: space-between;
-            width: 100%;
-            max-width: 450px;
-            padding: 15px 15px 0 15px;
-            z-index: 100;
-        }
-
-        .back-btn {
-            background: rgba(15, 23, 42, 0.8);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-            border: 2px solid var(--green);
-            color: white; 
-            padding: 8px 16px; 
-            border-radius: 50px;
-            text-decoration: none; 
-            font-weight: bold; 
-            box-shadow: 0 0 10px rgba(84, 255, 58, 0.3); 
-            font-size: 0.9rem;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            transition: 0.3s;
-        }
-        .back-btn:hover { background: rgba(84, 255, 58, 0.2); }
-
-        .lang-switch {
-            background: rgba(15, 23, 42, 0.8);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-            border: 2px solid var(--green);
-            color: white;
-            padding: 6px 12px;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            cursor: pointer;
-            outline: none;
-            box-shadow: 0 0 10px rgba(84, 255, 58, 0.3);
-            font-weight: bold;
-        }
-
-        /* Логотип серії */
-        .logo-container {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-top: 15px;
-            margin-bottom: 15px;
-        }
-        
-        .logo-svg {
-            width: 35px;
-            height: 35px;
-            filter: drop-shadow(0 0 8px var(--green));
-        }
-
-        .logo-text {
-            color: white;
-            font-weight: 800;
-            letter-spacing: 2px;
-            font-size: 1.3rem;
-            text-shadow: 0 0 10px var(--green);
-        }
-
-        /* ГОЛОВНИЙ ЕКРАН */
-        .main-card {
-            width: 90%; max-width: 450px;
-            background: rgba(15, 23, 42, 0.6);
-            backdrop-filter: blur(12px);
-            border-radius: 24px;
-            border: 2px solid var(--green);
-            padding: 20px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5), 0 0 15px rgba(84, 255, 58, 0.1);
-            display: flex; flex-direction: column; align-items: center;
-            min-height: 520px;
-        }
-
-        header h1 {
-            font-size: 1.25rem; font-weight: 800; color: white; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1px;
-            text-align: center;
-        }
-
-        /* МЕНЮ (4 кнопки) */
-        #menu-screen {
-            display: flex; flex-direction: column; gap: 15px; width: 100%;
-        }
-
-        .mode-btn {
-            background: rgba(15, 23, 42, 0.8);
-            border: 2px solid var(--green);
-            padding: 16px; border-radius: 16px;
-            display: flex; align-items: center; gap: 15px;
-            color: white; text-decoration: none; cursor: pointer;
-            transition: 0.3s; font-weight: 700;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-        }
-        .mode-btn:hover {
-            transform: translateY(-2px);
-            background: rgba(84, 255, 58, 0.1);
-            box-shadow: 0 0 15px rgba(84, 255, 58, 0.3);
-        }
-        
-        .mode-btn.cyan-theme { border-color: var(--cyan); }
-        .mode-btn.cyan-theme:hover { background: rgba(0, 243, 255, 0.1); box-shadow: 0 0 15px rgba(0, 243, 255, 0.3); }
-
-        .mode-btn.magenta-theme { border-color: var(--magenta); }
-        .mode-btn.magenta-theme:hover { background: rgba(217, 44, 255, 0.1); box-shadow: 0 0 15px rgba(217, 44, 255, 0.3); }
-
-        .mode-btn .icon { font-size: 1.8rem; }
-
-        /* ЕКРАНИ ІГОР */
-        .content-screen {
-            display: none; flex-direction: column; width: 100%; height: 100%;
-        }
-
-        /* 1. TOOLS SCREEN */
-        .scrolling-tabs {
-            display: flex; gap: 8px; overflow-x: auto; width: 100%; padding-bottom: 10px;
-            scrollbar-width: none; -ms-overflow-style: none;
-        }
-        .scrolling-tabs::-webkit-scrollbar { display: none; }
-
-        .tool-tab {
-            padding: 8px 16px; border-radius: 20px; border: 2px solid var(--green);
-            background: transparent; color: white; font-weight: 700; font-size: 11px;
-            cursor: pointer; white-space: nowrap; transition: 0.2s;
-        }
-        .tool-tab.active { background: var(--green); color: black; box-shadow: 0 0 10px rgba(84, 255, 58, 0.4); }
-
-        .display-box {
-            background: rgba(2, 6, 23, 0.8); border-radius: 16px; padding: 18px;
-            border: 1px solid var(--green); margin-top: 15px; flex-grow: 1;
-            display: flex; flex-direction: column; justify-content: center;
-            min-height: 250px;
-        }
-        .display-box h3 { color: var(--green); font-size: 1.15rem; margin-bottom: 8px; font-weight: 800; }
-        .display-box p { color: #cbd5e1; font-size: 0.9rem; line-height: 1.45; margin-bottom: 12px; }
-        .display-box .example { border-top: 1px solid rgba(84, 255, 58, 0.2); padding-top: 10px; font-style: italic; color: #94a3b8; font-size: 0.85rem; }
-
-        /* 2. CALENDAR SCREEN */
-        .grid-30 {
-            display: grid; grid-template-columns: repeat(6, 1fr); gap: 6px; width: 100%; margin-bottom: 15px;
-        }
-        .day-node {
-            aspect-ratio: 1; background: rgba(2, 6, 23, 0.8); border: 2px solid var(--cyan);
-            border-radius: 10px; display: flex; align-items: center; justify-content: center;
-            font-weight: 800; font-size: 11px; cursor: pointer; transition: 0.2s;
-        }
-        .day-node.active, .day-node:hover { background: var(--cyan); color: black; box-shadow: 0 0 10px rgba(0, 243, 255, 0.4); }
-
-        /* BUTTONS */
-        .action-btn {
-            background: var(--green); color: black; border: none; padding: 12px 24px;
-            border-radius: 30px; font-weight: 800; font-size: 14px; cursor: pointer;
-            text-transform: uppercase; letter-spacing: 1px; width: 100%; margin-top: 15px;
-            transition: 0.3s;
-        }
-        .action-btn:hover { transform: scale(1.02); box-shadow: 0 0 15px rgba(84, 255, 58, 0.4); }
-        .action-btn.magenta-theme { background: var(--magenta); color: white; box-shadow: 0 0 10px rgba(217, 44, 255, 0.3); }
-        .action-btn.magenta-theme:hover { box-shadow: 0 0 15px rgba(217, 44, 255, 0.5); }
-
-        .back-menu-btn {
-            background: transparent; color: #94a3b8; border: 2px solid #475569;
-            padding: 10px; border-radius: 30px; font-weight: 700; width: 100%;
-            margin-top: 15px; cursor: pointer; transition: 0.3s; text-transform: uppercase; font-size: 11px;
-        }
-        .back-menu-btn:hover { border-color: white; color: white; }
-
-        /* UPSELL BANNER (Inlined to remain inside main-card to avoid jumpiness/displacements) */
-        .promo-banner {
-            margin-top: 20px; 
-            background: linear-gradient(135deg, #1e1b4b 0%, #064e3b 100%); 
-            border-radius: 16px;
-            padding: 12px 18px; 
-            width: 100%; 
-            border: 2px solid var(--green); 
-            box-shadow: 0 0 12px rgba(84, 255, 58, 0.2);
-            display: flex; 
-            align-items: center; 
-            justify-content: space-between;
-            text-decoration: none; 
-            color: white;
-            transition: 0.3s;
-        }
-        .promo-banner:hover {
-            transform: scale(1.02);
-            box-shadow: 0 0 18px rgba(84, 255, 58, 0.4);
-        }
-        .promo-text h3 { margin: 0 0 3px 0; font-size: 0.95rem; color: var(--green); font-weight:800; text-transform: uppercase; }
-        .promo-text p { margin: 0; font-size: 0.8rem; color: #cbd5e1; line-height: 1.3; }
-        .promo-btn { 
-            background: var(--green); 
-            color: #020617; 
-            padding: 8px 14px; 
-            border-radius: 30px; 
-            font-size: 0.75rem; 
-            font-weight: 900; 
-            white-space: nowrap; 
-            text-transform: uppercase;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Inventor Lab | Prybambas</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--magenta:#d92cff;--green:#54ff3a;--cyan:#00f3ff;--bg:#020617}
+*{box-sizing:border-box;margin:0;padding:0}
+body,html{margin:0;padding:0;min-height:100vh;background:radial-gradient(circle at center,#0f172a 0%,#020617 100%);color:#fff;font-family:'Nunito',sans-serif;overflow-x:hidden;display:flex;flex-direction:column;align-items:center}
+.top-bar{display:flex;justify-content:space-between;width:100%;max-width:450px;padding:15px 15px 0 15px;z-index:100}
+.back-btn,.lang-switch{background:rgba(15,23,42,.8);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);color:#fff;border-radius:20px;font-weight:700;box-shadow:0 0 10px rgba(84,255,58,.3);font-size:.85rem}
+.back-btn{border:2px solid var(--green);padding:8px 16px;text-decoration:none;display:flex;align-items:center;gap:5px;transition:.3s}
+.back-btn:hover{background:rgba(84,255,58,.2)}
+.lang-switch{border:2px solid var(--green);padding:6px 12px;cursor:pointer;outline:none}
+.logo-container{display:flex;align-items:center;gap:10px;margin-top:15px;margin-bottom:15px}
+.logo-svg{width:35px;height:35px;filter:drop-shadow(0 0 8px var(--green))}
+.logo-text{color:#fff;font-weight:800;letter-spacing:2px;font-size:1.3rem;text-shadow:0 0 10px var(--green)}
+.main-card{width:90%;max-width:450px;background:rgba(15,23,42,.6);backdrop-filter:blur(12px);border-radius:24px;border:2px solid var(--green);padding:20px;box-shadow:0 8px 32px rgba(0,0,0,.5),0 0 15px rgba(84,255,58,.1);display:flex;flex-direction:column;align-items:center;min-height:520px}
+header h1{font-size:1.25rem;font-weight:800;color:#fff;margin-bottom:20px;text-transform:uppercase;letter-spacing:1px;text-align:center}
+#menu-screen{display:flex;flex-direction:column;align-items:center;width:100%;gap:16px}
+.mode-selectors{display:flex;justify-content:center;gap:12px;width:100%}
+.selector-btn{width:72px;height:72px;border-radius:18px;background:rgba(10,15,30,.65);border:2.5px solid rgba(255,255,255,.18);color:#fff;cursor:pointer;transition:.25s;display:flex;align-items:center;justify-content:center;font-size:2rem;box-shadow:0 6px 18px rgba(0,0,0,.25)}
+.selector-btn:hover{transform:translateY(-2px);background:rgba(255,255,255,.08)}
+.selector-btn.active.green{border-color:var(--green);box-shadow:0 0 18px rgba(84,255,58,.35);background:rgba(84,255,58,.12)}
+.selector-btn.active.cyan{border-color:var(--cyan);box-shadow:0 0 18px rgba(0,243,255,.35);background:rgba(0,243,255,.12)}
+.selector-btn.active.magenta{border-color:var(--magenta);box-shadow:0 0 18px rgba(217,44,255,.35);background:rgba(217,44,255,.12)}
+.menu-panel{width:100%;background:rgba(2,6,23,.75);border:2px solid var(--green);border-radius:20px;padding:18px;display:flex;flex-direction:column;gap:14px;box-shadow:0 8px 24px rgba(0,0,0,.35)}
+.menu-title{color:var(--green);font-size:1.15rem;font-weight:800;text-align:center}
+.menu-list{color:#cbd5e1;font-size:.92rem;line-height:1.45;display:flex;flex-direction:column;gap:8px}
+.menu-list div{display:flex;gap:8px;align-items:flex-start}
+.menu-list span{flex-shrink:0}
+.menu-cta{background:var(--green);color:#020617;border:none;padding:13px 18px;border-radius:30px;font-weight:900;text-transform:uppercase;letter-spacing:1px;width:100%;cursor:pointer;transition:.25s}
+.menu-cta:hover{transform:scale(1.02);box-shadow:0 0 16px rgba(84,255,58,.35)}
+.menu-note{color:#94a3b8;font-size:.82rem;text-align:center;line-height:1.35}
+.content-screen{display:none;flex-direction:column;width:100%;height:100%}
+.scrolling-tabs{display:flex;gap:8px;overflow-x:auto;width:100%;padding-bottom:10px;scrollbar-width:none;-ms-overflow-style:none}.scrolling-tabs::-webkit-scrollbar{display:none}
+.tool-tab{padding:8px 16px;border-radius:20px;border:2px solid var(--green);background:transparent;color:#fff;font-weight:700;font-size:11px;cursor:pointer;white-space:nowrap;transition:.2s}
+.tool-tab.active{background:var(--green);color:#000;box-shadow:0 0 10px rgba(84,255,58,.4)}
+.display-box{background:rgba(2,6,23,.8);border-radius:16px;padding:18px;border:1px solid var(--green);margin-top:15px;flex-grow:1;display:flex;flex-direction:column;justify-content:center;min-height:250px}
+.display-box h3{color:var(--green);font-size:1.15rem;margin-bottom:8px;font-weight:800}
+.display-box p{color:#cbd5e1;font-size:.9rem;line-height:1.45;margin-bottom:12px}
+.display-box .example{border-top:1px solid rgba(84,255,58,.2);padding-top:10px;font-style:italic;color:#94a3b8;font-size:.85rem}
+.grid-30{display:grid;grid-template-columns:repeat(6,1fr);gap:6px;width:100%;margin-bottom:15px}
+.day-node{aspect-ratio:1;background:rgba(2,6,23,.8);border:2px solid var(--cyan);border-radius:10px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:11px;cursor:pointer;transition:.2s}
+.day-node.active,.day-node:hover{background:var(--cyan);color:#000;box-shadow:0 0 10px rgba(0,243,255,.4)}
+.action-btn{background:var(--green);color:#000;border:none;padding:12px 24px;border-radius:30px;font-weight:800;font-size:14px;cursor:pointer;text-transform:uppercase;letter-spacing:1px;width:100%;margin-top:15px;transition:.3s}
+.action-btn:hover{transform:scale(1.02);box-shadow:0 0 15px rgba(84,255,58,.4)}
+.action-btn.magenta-theme{background:var(--magenta);color:#fff;box-shadow:0 0 10px rgba(217,44,255,.3)}
+.action-btn.magenta-theme:hover{box-shadow:0 0 15px rgba(217,44,255,.5)}
+.back-menu-btn{background:transparent;color:#94a3b8;border:2px solid #475569;padding:10px;border-radius:30px;font-weight:700;width:100%;margin-top:15px;cursor:pointer;transition:.3s;text-transform:uppercase;font-size:11px}
+.back-menu-btn:hover{border-color:#fff;color:#fff}
+.promo-banner{margin-top:20px;background:linear-gradient(135deg,#1e1b4b 0%,#064e3b 100%);border-radius:16px;padding:12px 18px;width:100%;border:2px solid var(--green);box-shadow:0 0 12px rgba(84,255,58,.2);display:flex;align-items:center;justify-content:space-between;text-decoration:none;color:#fff;transition:.3s;box-sizing:border-box}
+.promo-banner:hover{transform:scale(1.02);box-shadow:0 0 18px rgba(84,255,58,.4)}
+.promo-text{flex-grow:1;padding-right:15px;text-align:left}
+.promo-text h3{margin:0 0 3px 0;font-size:.95rem;color:var(--green);font-weight:800;text-transform:uppercase}
+.promo-text p{margin:0;font-size:.8rem;color:#cbd5e1;line-height:1.35}
+.promo-btn{background:var(--green);color:#020617;padding:8px 14px;border-radius:30px;font-size:.75rem;font-weight:900;white-space:nowrap;text-transform:uppercase}
+@media (max-width:400px){.mode-selectors{gap:8px}.selector-btn{width:62px;height:62px;font-size:1.6rem;border-radius:15px}.promo-banner{flex-direction:column;gap:10px;align-items:stretch;text-align:center}.promo-text{padding-right:0;text-align:center}.promo-btn{width:100%;text-align:center;padding:10px}.main-card{padding:15px;min-height:auto}}
+</style>
 </head>
 <body>
+<div class="top-bar"><a href="../index.html" class="back-btn" id="btn-back">← Hub</a><select class="lang-switch" id="lang-selector" onchange="changeLang()"><option value="en">🇺🇸 EN</option><option value="uk">🇺🇦 UK</option><option value="es">🇪🇸 ES</option><option value="de">🇩🇪 DE</option><option value="fr">🇫🇷 FR</option><option value="nl">🇳🇱 NL</option><option value="da">🇩🇰 DA</option><option value="sv">🇸🇪 SV</option><option value="ro">🇷🇴 RO</option><option value="pl">🇵🇱 PL</option><option value="pt">🇧🇷 PT</option></select></div>
+<div class="logo-container"><svg class="logo-svg" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="40" stroke="var(--green)" stroke-width="4" stroke-dasharray="8 6"/><path d="M50 30 L50 70 M30 50 L70 50" stroke="#fff" stroke-width="4" stroke-linecap="round"/></svg><span class="logo-text">INVENTOR LAB</span></div>
+<div class="main-card">
+<header><h1 id="scr-title">Think Like an Inventor</h1></header>
+<div id="menu-screen">
+  <div class="mode-selectors">
+    <div class="selector-btn" id="menu-btn-1" onclick="selectMenuMode(1, 'green')">🛠️</div>
+    <div class="selector-btn" id="menu-btn-2" onclick="selectMenuMode(2, 'cyan')">📅</div>
+    <div class="selector-btn" id="menu-btn-3" onclick="selectMenuMode(3, 'green')">🎯</div>
+    <div class="selector-btn" id="menu-btn-4" onclick="selectMenuMode(4, 'magenta')">🚀</div>
+  </div>
+  <div class="menu-panel" id="menu-panel">
+    <div class="menu-title" id="menu-title">How it works</div>
+    <div class="menu-list" id="menu-list"></div>
+    <button class="menu-cta" id="menu-cta" onclick="openSelectedScreen()">START</button>
+    <div class="menu-note" id="menu-note">Tap a tab above to preview a section, then press Start.</div>
+  </div>
+</div>
 
-    <!-- Уніфікована панель вгорі -->
-    <div class="top-bar">
-        <a href="../index.html" class="back-btn" id="btn-back">← Hub</a>
-        <select class="lang-switch" id="lang-selector" onchange="changeLang()">
-            <option value="en">🇺🇸 EN</option>
-            <option value="uk">🇺🇦 UK</option>
-            <option value="es">🇪🇸 ES</option>
-            <option value="de">🇩🇪 DE</option>
-            <option value="fr">🇫🇷 FR</option>
-            <option value="nl">🇳🇱 NL</option>
-            <option value="da">🇩🇰 DA</option>
-            <option value="sv">🇸🇪 SV</option>
-            <option value="ro">🇷🇴 RO</option>
-            <option value="pl">🇵🇱 PL</option>
-            <option value="pt">🇧🇷 PT</option>
-        </select>
-    </div>
+<div id="scr-tools" class="content-screen"><div class="scrolling-tabs" id="tool-tabs"></div><div class="display-box" id="tool-display"><h3 id="tool-name">Tool Name</h3><p id="tool-desc">Tool description will appear here.</p><div class="example" id="tool-ex">Example info</div></div><button class="back-menu-btn" onclick="showMenu()">Back to Menu</button></div>
+<div id="scr-calendar" class="content-screen"><div class="grid-30" id="cal-grid"></div><div class="display-box" style="min-height:120px;border-color:var(--cyan);"><p id="cal-display" style="margin:0;text-align:center;font-weight:bold;">Tap any day to reveal your observation challenge!</p></div><button class="back-menu-btn" onclick="showMenu()">Back to Menu</button></div>
+<div id="scr-tool-challenges" class="content-screen"><div class="scrolling-tabs" id="tc-tabs"></div><div class="display-box"><h3 id="tc-title">Active Challenge</h3><p id="tc-content" style="margin:0;">Challenge details will appear here.</p></div><button class="back-menu-btn" onclick="showMenu()">Back to Menu</button></div>
+<div id="scr-missions" class="content-screen">
+  <div class="display-box" style="border-color:var(--magenta);min-height:200px;justify-content:center;align-items:center;text-align:center;gap:12px;">
+    <p id="mission-content" style="margin:0;font-size:1.08rem;font-weight:800;">Are you ready for your next big invention mission?</p>
+    <textarea id="mission-answer" placeholder="Write your idea here..." style="width:100%;min-height:96px;border-radius:14px;padding:12px 14px;border:1px solid rgba(255,255,255,.18);background:rgba(2,6,23,.8);color:#fff;resize:vertical;font-family:inherit;font-size:.92rem;"></textarea>
+    <button class="action-btn magenta-theme" id="btn-submit" onclick="submitToCoach()">Submit to AI Coach</button>
+  </div>
+  <button class="action-btn magenta-theme" id="btn-gen-miss" onclick="generateMission()">Generate Mission</button>
+  <button class="back-menu-btn" onclick="showMenu()">Back to Menu</button>
+</div>
 
-    <!-- Логотип серії -->
-    <div class="logo-container">
-        <svg class="logo-svg" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="50" cy="50" r="40" stroke="var(--green)" stroke-width="4" stroke-dasharray="8 6" />
-            <path d="M50 30 L50 70 M30 50 L70 50" stroke="white" stroke-width="4" stroke-linecap="round"/>
-        </svg>
-        <span class="logo-text">INVENTOR LAB</span>
-    </div>
-
-    <div class="main-card">
-        <header>
-            <h1 id="scr-title">Think Like an Inventor</h1>
-        </header>
-
-        <!-- МЕНЮ (4 кнопки) -->
-        <div id="menu-screen">
-            <div class="mode-btn" onclick="openScreen('tools')">
-                <div class="icon">🛠️</div> <span id="lbl-m1">Tools & Examples</span>
-            </div>
-            <div class="mode-btn cyan-theme" onclick="openScreen('calendar')">
-                <div class="icon">📅</div> <span id="lbl-m2">Observation Calendar</span>
-            </div>
-            <div class="mode-btn" onclick="openScreen('tool-challenges')">
-                <div class="icon">🎯</div> <span id="lbl-m3">Challenges per Tool</span>
-            </div>
-            <div class="mode-btn magenta-theme" onclick="openScreen('missions')">
-                <div class="icon">🚀</div> <span id="lbl-m4">Mission Possible</span>
-            </div>
-        </div>
-
-        <!-- 1. TOOLS SCREEN -->
-        <div id="scr-tools" class="content-screen">
-            <div class="scrolling-tabs" id="tool-tabs"></div>
-            <div class="display-box" id="tool-display">
-                <h3 id="tool-name">Tool Name</h3>
-                <p id="tool-desc">Tool description will appear here.</p>
-                <div class="example" id="tool-ex">Example info</div>
-            </div>
-            <button class="back-menu-btn" onclick="showMenu()">Back to Menu</button>
-        </div>
-
-        <!-- 2. CALENDAR SCREEN -->
-        <div id="scr-calendar" class="content-screen">
-            <div class="grid-30" id="cal-grid"></div>
-            <div class="display-box" style="min-height: 120px; border-color: var(--cyan);">
-                <p id="cal-display" style="margin: 0; text-align: center; font-weight: bold;">Tap any day to reveal your observation challenge!</p>
-            </div>
-            <button class="back-menu-btn" onclick="showMenu()">Back to Menu</button>
-        </div>
-
-        <!-- 3. CHALLENGES SCREEN -->
-        <div id="scr-tool-challenges" class="content-screen">
-            <div class="scrolling-tabs" id="tc-tabs"></div>
-            <div class="display-box">
-                <h3 id="tc-title">Active Challenge</h3>
-                <p id="tc-content" style="margin: 0;">Challenge details will appear here.</p>
-            </div>
-            <button class="back-menu-btn" onclick="showMenu()">Back to Menu</button>
-        </div>
-
-        <!-- 4. MISSIONS SCREEN -->
-        <div id="scr-missions" class="content-screen">
-            <div class="display-box" style="border-color: var(--magenta); min-height: 200px; justify-content: center; align-items: center; text-align: center;">
-                <p id="mission-content" style="margin: 0; font-size: 1.1rem; font-weight: 800;">Are you ready for your next big invention mission?</p>
-            </div>
-            <button class="action-btn magenta-theme" id="btn-gen-miss" onclick="generateMission()">Generate Mission</button>
-            <button class="back-menu-btn" onclick="showMenu()">Back to Menu</button>
-        </div>
-
-        <!-- РЕКЛАМНИЙ БАНЕР (Тепер усередині main-card, стоїть ідеально!) -->
-        <a href="https://www.amazon.com/dp/B0BRC7Z2NW" class="promo-banner" target="_blank">
-            <div class="promo-text">
-                <h3 id="promo-title">Love the game?</h3>
-                <p id="promo-subtitle">Get the physical 'Think Like an Inventor' workbook on Amazon!</p>
-            </div>
-            <div class="promo-btn" id="promo-btn-lbl">Get Book</div>
-        </a>
-    </div>
-
-    <script>
-        const db = {
-            en: {
-                menu: {
-                    m1: "Tools & Examples",
-                    m2: "Observation Calendar",
-                    m3: "Challenges per Tool",
-                    m4: "Mission Possible",
-                    back: "Back",
-                    backMenu: "Back to Menu",
-                    genBtn: "Generate Mission",
-                    tcTitle: "Challenge Description"
-                },
-                tools: [
-                    { name: "1. Segmentation", desc: "Divide an object into independent parts, or make it easy to disassemble.", ex: "Modular shelving, or a multi-part pen." },
-                    { name: "2. Nesting", desc: "Place one object inside another, which goes inside a third.", ex: "Measuring cups, nesting dolls, or a telescopic lens." },
-                    { name: "3. Merging", desc: "Bring identical or similar objects closer together, or connect operations in time.", ex: "Double-ended marker, toothbrush with tongue cleaner." },
-                    { name: "4. Asymmetry", desc: "Change the shape of an object from symmetrical to asymmetrical.", ex: "Ergonomic computer mouse, or asymmetric kitchen scissors." },
-                    { name: "5. Feedback", desc: "Introduce feedback loop to regulate, monitor, or improve a process.", ex: "Thermostat regulating room heat based on current temp." },
-                    { name: "6. Self-Service", desc: "Make an object serve itself by performing auxiliary functions.", ex: "Robot vacuum cleaner returning to dock automatically." },
-                    { name: "7. Copying", desc: "Use a simple/cheap optical or digital copy instead of an expensive object.", ex: "Using a simulated map on a phone instead of a 3D clay model." },
-                    { name: "8. Color Change", desc: "Change the color or transparency of an object or its surroundings.", ex: "Transition glasses that darken in the sunlight." }
-                ],
-                calendar: [
-                    "Find 3 things at home using 'Nesting' (things inside things).",
-                    "Spot an object that uses 'Segmentation' to save storage space.",
-                    "Identify an asymmetrical object in your room. Why was it made this way?",
-                    "Find a kitchen tool that merged two different functions into one.",
-                    "Find an object that changes color when it gets hot or cold.",
-                    "Find a device that uses a feedback loop (sensor/screen showing status).",
-                    "Look for modular furniture or items that can be rearranged easily.",
-                    "Identify a temporary or cheap item that replaced a permanent one."
-                ],
-                toolChallenges: [
-                    { name: "Nesting Pack", task: "Design a portable lunchbox where all plates, cups, and utensils fit perfectly inside each other to save 80% space." },
-                    { name: "Segmentation Pack", task: "Re-invent a bicycle so it can be disassembled in under 60 seconds and packed into a standard backpack." },
-                    { name: "Merging Pack", task: "Design a school desk accessory that merges a pencil holder, charger, and study lamp into one compact device." },
-                    { name: "Asymmetry Pack", task: "Design an ergonomic mug for kids that cannot be easily knocked over, utilizing an asymmetrical base." }
-                ],
-                missions: [
-                    "Design a shoe that automatically adjusts its size as a kid grows.",
-                    "Invent a cup that cools hot tea instantly without diluting it with water.",
-                    "Design a smartphone stand utilizing only paper clips and cardboard.",
-                    "Invent a school backpack that distributes weight evenly using modular segments.",
-                    "Design a smart umbrella that changes color to warn you when it is about to rain."
-                ],
-                promo: {
-                    t: "Love the game?",
-                    st: "Get the physical 'Think Like an Inventor' workbook on Amazon!",
-                    btn: "Get Book",
-                    backHub: "← Hub"
-                }
-            },
-            uk: {
-                menu: {
-                    m1: "Інструменти та приклади",
-                    m2: "Календар спостережень",
-                    m3: "Челенджі за інструментами",
-                    m4: "Місія Можлива",
-                    back: "Назад",
-                    backMenu: "Назад до Меню",
-                    genBtn: "Згенерувати Місію",
-                    tcTitle: "Опис Челенджу"
-                },
-                tools: [
-                    { name: "1. Дроблення", desc: "Розділити об'єкт на незалежні частини, або зробити його розбірним.", ex: "Розбірна кулькова ручка, або модульний стелаж." },
-                    { name: "2. Матрійошка", desc: "Помістити один об'єкт всередину іншого, який в свою чергу всередині третього.", ex: "Набір мірних ложок, матрьошка, телескопічний об'єктив." },
-                    { name: "3. Об'єднання", desc: "З'єднати схожі об'єкти або поєднати операції в часі.", ex: "Двостороння ручка, зубна щітка з очищувачем язика." },
-                    { name: "4. Асиметрія", desc: "Змінити форму об'єкта з симетричної на асиметричну.", ex: "Ергономічна комп'ютерна мишка, асиметричні ножиці." },
-                    { name: "5. Зворотний зв'язок", desc: "Ввести зворотний зв'язок для покращення або саморегуляції процесу.", ex: "Термостат, що вимикає обігрівач при досягненні температури." },
-                    { name: "6. Самообслуговування", desc: "Об'єкт повинен обслуговувати сам себе, виконуючи допоміжні роботи.", ex: "Робот-пилосос, який сам повертається на док-станцію." },
-                    { name: "7. Копіювання", desc: "Використовувати дешеву цифрову або оптичну копію замість дорогого об'єкту.", ex: "Віртуальна карта місцевості у смартфоні замість глиняного макету." },
-                    { name: "8. Зміна забарвлення", desc: "Змінити колір чи прозорість об'єкта або навколишнього середовища.", ex: "Окуляри-хамелеони, що темнішають на сонячному світлі." }
-                ],
-                calendar: [
-                    "Знайди 3 речі вдома, що використовують принцип 'Матрьошки' (ховане в хованому).",
-                    "Знайди предмет, який використовує 'Дроблення' для економії місця.",
-                    "Знайди асиметричний предмет у своїй кімнаті. Чому його зробили таким?",
-                    "Знайди на кухні прилад, який об'єднує дві різні функції в одну.",
-                    "Знайди предмет, що змінює свій колір залежно від тепла чи холоду.",
-                    "Знайди прилад, який використовує екран або датчик як зворотний зв'язок.",
-                    "Пошукай модульні речі, які можна легко перебудувати чи розібрати.",
-                    "Знайди тимчасову або дешеву річ, що успішно замінила постійну."
-                ],
-                toolChallenges: [
-                    { name: "Пакет Матрійошки", task: "Спроектуй ланчбокс, де всі тарілки, чашки та прибори ховаються одне в одне для економії 80% простору." },
-                    { name: "Пакет Дроблення", task: "Перевигадай велосипед так, щоб його можна було розібрати за 60 секунд і спакувати у звичайний рюкзак." },
-                    { name: "Пакет Об'єднання", task: "Спроектуй аксесуар для шкільної парти, який поєднує підставку для ручок, зарядку та настільну лампу." },
-                    { name: "Пакет Асиметрії", task: "Створи дитячу чашку, яку неможливо випадково перекинути, використовуючи асиметричну важку основу." }
-                ],
-                missions: [
-                    "Придумай взуття, яке автоматично збільшує свій розмір, коли дитина росте.",
-                    "Винайди чашку, яка миттєво охолоджує гарячий чай без розведення його водою.",
-                    "Створи підставку для смартфону, використовуючи лише скріпки та картон.",
-                    "Винайди шкільний рюкзак, який ідеально розподіляє вагу за допомогою модулів.",
-                    "Спроектуй розумну парасольку, яка змінює колір, попереджаючи про наближення зливи."
-                ],
-                promo: {
-                    t: "Подобається гра?",
-                    st: "Замовляй паперовий зошит 'Think Like an Inventor' на Amazon!",
-                    btn: "Купити",
-                    backHub: "← Хаб"
-                }
-            }
-        };
-
-        let currentLang = 'en';
-
-        function changeLang() {
-            currentLang = document.getElementById('lang-selector').value;
-            localStorage.setItem('prybambas_lang', currentLang);
-            applyTranslations();
-            initScreens();
-        }
-
-        function applyTranslations() {
-            const t = db[currentLang] ? db[currentLang].menu : db['en'].menu;
-            const promo = db[currentLang] ? db[currentLang].promo : db['en'].promo;
-            
-            document.getElementById('lbl-m1').innerText = t.m1; 
-            document.getElementById('lbl-m2').innerText = t.m2; 
-            document.getElementById('lbl-m3').innerText = t.m3; 
-            document.getElementById('lbl-m4').innerText = t.m4; 
-            document.getElementById('btn-gen-miss').innerText = t.genBtn;
-            document.getElementById('tc-title').innerText = t.tcTitle;
-            document.getElementById('btn-back').innerText = promo.backHub;
-            document.getElementById('promo-title').innerText = promo.t;
-            document.getElementById('promo-subtitle').innerText = promo.st;
-            document.getElementById('promo-btn-lbl').innerText = promo.btn;
-
-            // Update all back buttons to menu text
-            document.querySelectorAll('.back-menu-btn').forEach(btn => {
-                btn.innerText = t.backMenu;
-            });
-        }
-
-        function showMenu() {
-            document.querySelectorAll('.content-screen').forEach(s => s.style.display = 'none');
-            document.getElementById('menu-screen').style.display = 'flex';
-        }
-
-        function openScreen(id) {
-            document.getElementById('menu-screen').style.display = 'none';
-            document.getElementById('scr-' + id).style.display = 'flex';
-        }
-
-        function initScreens() {
-            const langData = db[currentLang] || db['en'];
-            
-            // 1. Tools Setup
-            const toolsTabs = document.getElementById('tool-tabs');
-            toolsTabs.innerHTML = '';
-            langData.tools.forEach((tool, i) => {
-                const btn = document.createElement('div');
-                btn.className = 'tool-tab' + (i===0?' active':'');
-                btn.innerText = tool.name;
-                btn.onclick = () => {
-                    document.querySelectorAll('#tool-tabs .tool-tab').forEach(b => b.classList.remove('active'));
-                    btn.classList.add('active');
-                    showToolContent(i);
-                };
-                toolsTabs.appendChild(btn);
-            });
-            showToolContent(0);
-
-            // 2. Calendar Setup (30 days)
-            const calGrid = document.getElementById('cal-grid');
-            calGrid.innerHTML = '';
-            for(let i=1; i<=30; i++) {
-                const day = document.createElement('div');
-                day.className = 'day-node';
-                day.innerText = i;
-                day.onclick = () => {
-                    document.querySelectorAll('.day-node').forEach(d => d.classList.remove('active'));
-                    day.classList.add('active');
-                    const obsList = langData.calendar;
-                    const challenge = obsList[(i-1) % obsList.length];
-                    document.getElementById('cal-display').innerHTML = `<strong>Day ${i}:</strong><br><br>${challenge}`;
-                };
-                calGrid.appendChild(day);
-            }
-
-            // 3. Tool Challenges Setup
-            const tcTabs = document.getElementById('tc-tabs');
-            tcTabs.innerHTML = '';
-            langData.toolChallenges.forEach((tc, i) => {
-                const btn = document.createElement('div');
-                btn.className = 'tool-tab' + (i===0?' active':'');
-                btn.innerText = tc.name;
-                btn.onclick = () => {
-                    document.querySelectorAll('#tc-tabs .tool-tab').forEach(b => b.classList.remove('active'));
-                    btn.classList.add('active');
-                    document.getElementById('tc-content').innerText = tc.task;
-                };
-                tcTabs.appendChild(btn);
-            });
-            document.getElementById('tc-content').innerText = langData.toolChallenges[0].task;
-        }
-
-        function showToolContent(index) {
-            const langData = db[currentLang] || db['en'];
-            const tool = langData.tools[index];
-            document.getElementById('tool-display').innerHTML = `
-                <h3>${tool.name}</h3>
-                <p>${tool.desc}</p>
-                <div class="example"><strong>Example:</strong><br>${tool.ex}</div>
-            `;
-        }
-
-        function generateMission() {
-            const langData = db[currentLang] || db['en'];
-            const missions = langData.missions;
-            const random = missions[Math.floor(Math.random() * missions.length)];
-            const el = document.getElementById('mission-content');
-            
-            el.style.opacity = '0';
-            setTimeout(() => {
-                el.innerText = random;
-                el.style.opacity = '1';
-                el.style.transition = 'opacity 0.5s';
-            }, 200);
-        }
-
-        window.onload = function() {
-            currentLang = localStorage.getItem('prybambas_lang') || 'en';
-            document.getElementById('lang-selector').value = currentLang;
-            changeLang();
-        }
-    </script>
+<a href="https://www.amazon.com/dp/B0BRC7Z2NW" class="promo-banner" target="_blank"><div class="promo-text"><h3 id="promo-title">Love the game?</h3><p id="promo-subtitle">Get the physical 'Think Like an Inventor' workbook on Amazon!</p></div><div class="promo-btn" id="promo-btn-lbl">Get Book</div></a>
+</div>
+    <script src="./content/en.js"></script>
+    <script src="./content/uk.js"></script>
+    <script src="./content/ro.js"></script>
+<script>
+const db={
+ en:{menu:{m1:"Tools & Examples",m2:"Observation Calendar",m3:"Challenges per Tool",m4:"Mission Possible",back:"Back",backMenu:"Back to Menu",genBtn:"Generate Mission",tcTitle:"Challenge Description"},modes:[{title:"Tools & Examples",rules:"<div><span>🛠️</span> Learn the 8 fundamental TRIZ tools used by real inventors.</div><div><span>💡</span> Read real-world examples for each tool!</div>"},{title:"Observation Calendar",rules:"<div><span>📅</span> A 30-day interactive engineering quest.</div><div><span>🔍</span> Spot different TRIZ principles in action right inside your home!</div>"},{title:"Challenges per Tool",rules:"<div><span>🎯</span> Hands-on complex creative design challenges.</div><div><span>🧠</span> Apply specific tools to solve real engineering problems!</div>"},{title:"Mission Possible",rules:"<div><span>🚀</span> 24 real missions split into Rookie, Agent, and Elite.</div><div><span>💡</span> Solve escape tasks, draft your patent, and submit it directly to AI Coach!</div>"}],tools:[{name:"1. Segmentation",desc:"Divide an object into independent parts, or make it easy to disassemble.",ex:"Modular shelving, or a multi-part pen."},{name:"2. Nesting",desc:"Place one object inside another, which goes inside a third.",ex:"Measuring cups, nesting dolls, or a telescopic lens."},{name:"3. Merging",desc:"Bring identical or similar objects closer together, or connect operations in time.",ex:"Double-ended marker, toothbrush with tongue cleaner."},{name:"4. Asymmetry",desc:"Change the shape of an object from symmetrical to asymmetrical.",ex:"Ergonomic computer mouse, or asymmetric kitchen scissors."},{name:"5. Feedback",desc:"Introduce feedback loop to regulate, monitor, or improve a process.",ex:"Thermostat regulating room heat based on current temp."},{name:"6. Self-Service",desc:"Make an object serve itself by performing auxiliary functions.",ex:"Robot vacuum cleaner returning to dock automatically."},{name:"7. Copying",desc:"Use a simple/cheap optical or digital copy instead of an expensive object.",ex:"Using a simulated map on a phone instead of a 3D clay model."},{name:"8. Color Change",desc:"Change the color or transparency of an object or its surroundings.",ex:"Transition glasses that darken in the sunlight."}],calendar:["Find 3 things at home using 'Nesting' (things inside things).","Spot an object that uses 'Segmentation' to save storage space.","Identify an asymmetrical object in your room. Why was it made this way?","Find a kitchen tool that merged two different functions into one.","Find an object that changes color when it gets hot or cold.","Find a device that uses a feedback loop (sensor/screen showing status).","Look for modular furniture or items that can be rearranged easily.","Identify a temporary or cheap item that replaced a permanent one."],toolChallenges:[{name:"Nesting Pack",task:"Design a portable lunchbox where all plates, cups, and utensils fit perfectly inside each other to save 80% space."},{name:"Segmentation Pack",task:"Re-invent a bicycle so it can be disassembled in under 60 seconds and packed into a standard backpack."},{name:"Merging Pack",task:"Design a school desk accessory that merges a pencil holder, charger, and study lamp into one compact device."},{name:"Asymmetry Pack",task:"Design an ergonomic mug for kids that cannot be easily knocked over, utilizing an asymmetrical base."}],missions:["Design a shoe that automatically adjusts its size as a kid grows.","Invent a cup that cools hot tea instantly without diluting it with water.","Design a smartphone stand utilizing only paper clips and cardboard.","Invent a school backpack that distributes weight evenly using modular segments.","Design a smart umbrella that changes color to warn you when it is about to rain."],promo:{t:"Love the game?",st:"Get the physical 'Think Like an Inventor' workbook on Amazon!",btn:"Get Book",backHub:"← Hub"}},
+ uk:{menu:{m1:"Інструменти та приклади",m2:"Календар спостережень",m3:"Челенджі за інструментами",m4:"Місія Можлива",back:"Назад",backMenu:"Назад до Меню",genBtn:"Згенерувати Місію",tcTitle:"Опис Челенджу"},modes:[{title:"Інструменти ТРВЗ",rules:"<div><span>🛠️</span> Вивчи 8 базових інструментів ТРВЗ, які використовують справжні винахідники.</div><div><span>💡</span> Прочитай реальні життєві приклади для кожного прийому!</div>"},{title:"Календар спостережень",rules:"<div><span>📅</span> 30-денний інтерактивний інженерний квест.</div><div><span>🔍</span> Знаходь ТРВЗ-принципи в дії прямо у себе вдома щодня!</div>"},{title:"Челенджі за прийомами",rules:"<div><span>🎯</span> Практичні завдання з креативного проектування.</div><div><span>🧠</span> Застосовуй винахідницькі інструменти для вирішення інженерних задач!</div>"},{title:"Місія Можлива",rules:"<div><span>🚀</span> 24 реальні місії ТРВЗ, розбиті на три рівні складності.</div><div><span>💡</span> Знайди вихід із критичної ситуації, розроби свій патент та надішли його на аудит ШІ-Коучу!</div>"}],tools:[{name:"1. Дроблення",desc:"Розділити об'єкт на незалежні частини, або зробити його розбірним.",ex:"Розбірна кулькова ручка, або модульний стелаж."},{name:"2. Вкладення",desc:"Помістити один об'єкт всередину іншого, який в свою чергу всередині третього.",ex:"Набір мірних ложок, складені склянки, телескопічний об'єктив."},{name:"3. Об'єднання",desc:"З'єднати схожі об'єкти або поєднати операції в часі.",ex:"Двостороння ручка, зубна щітка з очищувачем язика."},{name:"4. Асиметрія",desc:"Змінити форму об'єкта з симетричної на асиметричну.",ex:"Ергономічна комп'ютерна мишка, асиметричні ножиці."},{name:"5. Зворотний зв'язок",desc:"Ввести зворотний зв'язок для покращення або саморегуляції процесу.",ex:"Термостат, що вимикає обігрівач при досягненні температури."},{name:"6. Самообслуговування",desc:"Об'єкт повинен обслуговувати сам себе, виконуючи допоміжні роботи.",ex:"Робот-пилосос, який сам повертається на док-станцію."},{name:"7. Копіювання",desc:"Використовувати дешеву цифрову або оптичну копію замість дорогого об'єкту.",ex:"Віртуальна карта місцевості у смартфоні замість глиняного макету."},{name:"8. Зміна забарвлення",desc:"Змінити колір чи прозорість об'єкта або навколишнього середовища.",ex:"Окуляри-хамелеони, що темнішають на сонячному світлі."}],calendar:["Знайди 3 речі вдома, що використовують принцип 'Вкладення' (ховане в хованому).","Знайди предмет, який використовує 'Дроблення' для економії місця.","Знайди асиметричний предмет у своїй кімнаті. Чому його зробили таким?","Знайди на кухні прилад, який об'єднує дві різні функції в одну.","Знайди предмет, що змінює свій колір залежно від тепла чи холоду.","Знайди прилад, який використовує екран або датчик як зворотний зв'язок.","Пошукай модульні речі, які можна легко перебудувати чи розібрати.","Знайди тимчасову або дешеву річ, що успішно замінила постійну."],toolChallenges:[{name:"Пакет Вкладення",task:"Спроектуй ланчбокс, де всі тарілки, чашки та прибори ховаються одне в одне для економії 80% простору."},{name:"Пакет Дроблення",task:"Перевигадай велосипед так, щоб його можна було розібрати за 60 секунд і спакувати у звичайний рюкзак."},{name:"Пакет Об'єднання",task:"Спроектуй аксесуар для шкільної парти, який поєднує підставку для ручок, зарядку та настільну лампу."},{name:"Пакет Асиметрії",task:"Створи дитячу чашку, яку неможливо випадково перекинути, використовуючи асиметричну важку основу."}],missions:["Придумай взуття, яке автоматично збільшує свій розмір, коли дитина росте.","Винайди чашку, яка миттєво охолоджує гарячий чай без розведення його водою.","Створи підставку для смартфону, використовуючи лише скріпки та картон.","Винайди шкільний рюкзак, який ідеально розподіляє вагу за допомогою модулів.","Спроектуй розумну парасольку, яка змінює колір, попереджаючи про наближення зливи."],promo:{t:"Подобається гра?",st:"Замовляй паперовий зошит 'Think Like an Inventor' на Amazon!",btn:"Купити",backHub:"← Хаб"}}
+};
+let currentLang='en';let selectedMenuMode=1;let currentMission=null;let currentLevel='rookie';
+function changeLang(){currentLang=document.getElementById('lang-selector').value;localStorage.setItem('prybambas_lang',currentLang);applyTranslations();initScreens();selectMenuMode(selectedMenuMode,selectedMenuMode===1?'green':selectedMenuMode===2?'cyan':selectedMenuMode===3?'green':'magenta')}
+function applyTranslations(){const t=db[currentLang]?db[currentLang].menu:db['en'].menu;const promo=db[currentLang]?db[currentLang].promo:db['en'].promo;document.getElementById('btn-gen-miss').innerText=t.genBtn;document.getElementById('tc-title').innerText=t.tcTitle;document.getElementById('btn-back').innerText=promo.backHub;document.getElementById('promo-title').innerText=promo.t;document.getElementById('promo-subtitle').innerText=promo.st;document.getElementById('promo-btn-lbl').innerText=promo.btn;document.querySelectorAll('.back-menu-btn').forEach(btn=>btn.innerText=t.backMenu);document.getElementById('menu-cta').innerText=currentLang==='uk'?'ПОЧАТИ':'START';document.getElementById('menu-note').innerText=currentLang==='uk'?'Оберіть іконку вгорі, щоб прочитати інструкцію, та натисніть "Почати".':'Tap a tab above to preview a section, then press Start.'}
+function selectMenuMode(modeNum,colorClass){selectedMenuMode=modeNum;const langData=db[currentLang]||db['en'];const mode=langData.modes[modeNum-1];for(let i=1;i<=4;i++)document.getElementById('menu-btn-'+i).className='selector-btn';document.getElementById('menu-btn-'+modeNum).className='selector-btn active '+colorClass;const panel=document.getElementById('menu-panel'),title=document.getElementById('menu-title'),list=document.getElementById('menu-list'),cta=document.getElementById('menu-cta'),note=document.getElementById('menu-note');panel.style.borderColor=`var(--${colorClass})`;title.style.color=`var(--${colorClass})`;title.innerText=mode.title;list.innerHTML=mode.rules;cta.style.background=`var(--${colorClass})`;cta.style.color=(colorClass==='green'||colorClass==='cyan')?'#020617':'white';note.innerText=currentLang==='uk'?'Оберіть іконку вгорі, щоб прочитати інструкцію, та натисніть "Почати".':'Tap a tab above to preview a section, then press Start.'}
+function openSelectedScreen(){if(selectedMenuMode===1)openScreen('tools');else if(selectedMenuMode===2)openScreen('calendar');else if(selectedMenuMode===3)openScreen('tool-challenges');else if(selectedMenuMode===4)openScreen('missions')}
+function showMenu(){document.querySelectorAll('.content-screen').forEach(s=>s.style.display='none');document.getElementById('menu-screen').style.display='flex'}
+function openScreen(id){document.getElementById('menu-screen').style.display='none';document.getElementById('scr-'+id).style.display='flex'}
+function initScreens(){const langData=db[currentLang]||db['en'];const toolsTabs=document.getElementById('tool-tabs');toolsTabs.innerHTML='';langData.tools.forEach((tool,i)=>{const btn=document.createElement('div');btn.className='tool-tab'+(i===0?' active':'');btn.innerText=tool.name;btn.onclick=()=>{document.querySelectorAll('#tool-tabs .tool-tab').forEach(b=>b.classList.remove('active'));btn.classList.add('active');showToolContent(i)};toolsTabs.appendChild(btn)});showToolContent(0);const calGrid=document.getElementById('cal-grid');calGrid.innerHTML='';for(let i=1;i<=30;i++){const day=document.createElement('div');day.className='day-node';day.innerText=i;day.onclick=()=>{document.querySelectorAll('.day-node').forEach(d=>d.classList.remove('active'));day.classList.add('active');const obsList=langData.calendar;const challenge=obsList[(i-1)%obsList.length];document.getElementById('cal-display').innerHTML=`<strong>Day ${i}:</strong><br><br>${challenge}`};calGrid.appendChild(day)}const tcTabs=document.getElementById('tc-tabs');tcTabs.innerHTML='';langData.toolChallenges.forEach((tc,i)=>{const btn=document.createElement('div');btn.className='tool-tab'+(i===0?' active':'');btn.innerText=tc.name;btn.onclick=()=>{document.querySelectorAll('#tc-tabs .tool-tab').forEach(b=>b.classList.remove('active'));btn.classList.add('active');document.getElementById('tc-content').innerText=tc.task};tcTabs.appendChild(btn)});document.getElementById('tc-content').innerText=langData.toolChallenges[0].task;loadMissionLevel(currentLevel)}
+function showToolContent(index){const langData=db[currentLang]||db['en'];const tool=langData.tools[index];document.getElementById('tool-display').innerHTML=`<h3>${tool.name}</h3><p>${tool.desc}</p><div class="example"><strong>Example:</strong><br>${tool.ex}</div>`}
+function pick(arr){return arr[Math.floor(Math.random()*arr.length)]}
+function loadMissionLevel(level){currentLevel=level;const src=(currentLang==='uk'&&inventor_missions_uk)||(currentLang!=='uk'&&inventor_missions_en)||inventor_missions_en;const meta={rookie:{icon:'🟢',label:currentLang==='uk'?'РОУКІ':'ROOKIE',subtitle:currentLang==='uk'?'Легко, з підказками':'Easy, with hints'},agent:{icon:'🔵',label:'AGENT',subtitle:currentLang==='uk'?'Середній рівень':'Medium'},elite:{icon:'🔴',label:'ELITE',subtitle:currentLang==='uk'?'Складно, з обмеженнями':'Hard, with constraints'}}[level];document.getElementById('mission-content').innerHTML=`<div style="font-size:2rem;line-height:1">${meta.icon}</div><div style="font-size:1.15rem;font-weight:900;text-transform:uppercase;letter-spacing:1px">${meta.label}</div><div style="font-size:.88rem;color:#cbd5e1">${meta.subtitle}</div><div style="margin-top:8px;font-size:1rem;font-weight:800">${pick(src[level]).scenario}</div><div style="margin-top:8px;font-size:.88rem;color:#94a3b8">${currentLang==='uk'?'Використай усі 3 предмети.':'Use all 3 items.'}</div>`;document.getElementById('mission-answer').value='';document.getElementById('mission-answer').placeholder=currentLang==='uk'?'Впиши своє рішення сюди...':'Write your idea here...';document.getElementById('btn-submit').innerText=currentLang==='uk'?'Надіслати ШІ-Коучу':'Submit to AI Coach'}
+function generateMission(){const levelKeys=['rookie','agent','elite'];const nextLvl=levelKeys[(levelKeys.indexOf(currentLevel)+1)%3];loadMissionLevel(nextLvl)}
+function submitToCoach(){const answer=document.getElementById('mission-answer').value.trim();if(!answer){alert(currentLang==='uk'?'Будь ласка, впиши спочатку своє винахідницьке рішення!':'Please write your invention solution first!');return}localStorage.setItem('prybambas_submit_idea',answer);localStorage.setItem('prybambas_lang',currentLang);window.location.href='../coach/index.html'}
+window.onload=function(){currentLang=localStorage.getItem('prybambas_lang')||'en';document.getElementById('lang-selector').value=currentLang;changeLang()}
+</script>
 </body>
 </html>
