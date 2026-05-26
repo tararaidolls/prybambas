@@ -60,9 +60,12 @@
             margin-top: 50px;
         }
         
-        .logo-svg {
-            width: 70px; height: 70px;
-            filter: drop-shadow(0 0 12px var(--cyan));
+        .logo-img {
+            width: 75px; height: 75px;
+            border-radius: 20px;
+            border: 2px solid var(--cyan);
+            box-shadow: 0 0 15px rgba(0, 243, 255, 0.4);
+            object-fit: cover;
         }
 
         .logo-text {
@@ -146,10 +149,7 @@
 
     <!-- Логотип серії -->
     <div class="logo-container">
-        <svg class="logo-svg" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="50" cy="50" r="40" stroke="var(--cyan)" stroke-width="4" stroke-dasharray="10 6" />
-            <path d="M50 20 L50 80 M20 50 L80 50" stroke="white" stroke-width="3" stroke-linecap="round"/>
-        </svg>
+        <img class="logo-img" src="./logo.png" alt="Prybambas Logo">
         <span class="logo-text">PRYBAMBAS</span>
     </div>
 
