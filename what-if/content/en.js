@@ -103,8 +103,143 @@ const whatif_chain_en = [
         start: "What if shadows could move independently from us?",
         steps: ["Shadows sneak out at night to party without their owners.", "People wake up with someone else's shadow attached to them.", "A new profession of shadow-catchers is invented to return runaway shadows."],
         end: "A new profession of shadow-catchers is invented."
-    }
+    },
+  {
+    start: "What if bicycles could only move on painted lines?",
+    steps: [
+      "Roads would start looking like giant coloring books.",
+      "Traffic engineers would work together with artists.",
+      "Cities would repaint routes every night to keep them clear."
+    ],
+    end: "Street painters would become as important as road builders."
+  },
+  {
+    start: "What if every classroom chair could only be sat on once a day?",
+    steps: [
+      "Schools would rotate chairs between different rooms.",
+      "Students would start carrying personal seat mats.",
+      "Furniture companies would design faster swap systems."
+    ],
+    end: "Seat-sharing would become a normal school routine."
+  },
+  {
+    start: "What if cafes served drinks only in transparent cups?",
+    steps: [
+      "Customers would start noticing layers, colors, and mistakes.",
+      "Baristas would compete through drink design.",
+      "Menus would become more visual and color-based."
+    ],
+    end: "Drink presentation would become part of the order."
+  },
+  {
+    start: "What if every door opened only after a short rhyme?",
+    steps: [
+      "People would invent entrance rhymes for every building.",
+      "Schools would teach rhyme etiquette.",
+      "Nobody would forget their keys, but many would forget the line."
+    ],
+    end: "Poetry would become useful in daily life."
+  },
+  {
+    start: "What if every subway station smelled like one fruit?",
+    steps: [
+      "Riders would remember stations by scent instead of signs.",
+      "Transit systems would start using smell as a navigation tool.",
+      "Advertisers would try to brand entire neighborhoods by scent."
+    ],
+    end: "Cities would begin using smells as part of navigation."
+  },
+  {
+    start: "What if a dropped sock always teleported to the nearest laundry basket?",
+    steps: [
+      "People would stop searching under beds.",
+      "Laundry basket placement would become a serious strategy.",
+      "Clean rooms would be planned around basket zones."
+    ],
+    end: "Laundry baskets would become the most important furniture in the house."
+  },
+  {
+    start: "What if phone batteries charged only while you held the phone with both hands?",
+    steps: [
+      "People would schedule charging breaks like meetings.",
+      "Phone stands would become popular everywhere.",
+      "Cafes would create special charging lounges."
+    ],
+    end: "Charging would become a social habit instead of a solo one."
+  },
+  {
+    start: "What if every library book whispered one fact when opened?",
+    steps: [
+      "Readers would start hunting for surprising books.",
+      "Librarians would organize shelves by curiosity level.",
+      "Studying would become more like exploring a maze."
+    ],
+    end: "Libraries would turn into living fact mazes."
+  },
+  {
+    start: "What if reading a recipe aloud changed it slightly?",
+    steps: [
+      "Chefs would start memorizing recipes instead of reading them out loud.",
+      "Audio recipes would need careful testing.",
+      "Kitchen routines would depend on tone, timing, and silence."
+    ],
+    end: "Cooking would become a mix of reading and performance."
+  },
+  {
+    start: "What if the shadow of every tree pointed to the nearest water source?",
+    steps: [
+      "Hikers would begin following tree shadows on purpose.",
+      "Parks would plant trees as trail guides.",
+      "Map apps would compare shadows with GPS data."
+    ],
+    end: "Trees would become natural navigation helpers."
+  },
+  {
+    start: "What if every time someone lied, their shoes squeaked?",
+    steps: [
+      "Honesty would become something you could hear.",
+      "Public speeches would suddenly get much quieter.",
+      "Shoe companies would start making anti-squeak filters."
+    ],
+    end: "Truth-checking would become a footwear industry."
+  },
+  {    start: "What if elevator buttons could only be pressed in pairs?",
+   steps: [
+      "People would have to coordinate their floor choices.",
+      "Building traffic would become slower but more planned.",
+      "Friends would start taking elevators together on purpose."
+    ],
+    end: "Going up or down would become a social activity."
+  },
+  {
+    start: "What if every mailbox delivered one extra surprise item?",
+    steps: [
+      "People would check the mail with more excitement.",
+      "Unexpected items would create new sorting habits.",
+      "Postal insurance would become much more popular."
+    ],
+    end: "Mail would feel like a daily lottery."
+  },
+  {
+    start: "What if a spilled glass of water turned into a tiny map?",
+    steps: [
+      "Accidents would start turning into clues.",
+      "Kids and detectives would study puddles more carefully.",
+      "Map-reading games would use water spills as puzzles."
+    ],
+    end: "Messes would start carrying information."
+  },
+  {
+    start: "What if every popped balloon released one spoken sentence?",
+    steps: [
+      "Kids would save balloons for messages.",
+      "Parties would become full of accidental announcements.",
+      "Balloon makers would print warnings and message labels."
+    ],
+    end: "Balloons would become secret note carriers."
+  }
 ];
+
 
 const whatif_deduction_en = [
     {
