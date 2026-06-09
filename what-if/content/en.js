@@ -18,7 +18,39 @@ const whatif_single_en = [
     "What if shadows could play tricks and move independently from us?",
     "What if chocolate was the healthiest food on Earth?",
     "What if we could record and play back our dreams like movies?",
-    "What if pets became the bosses and humans had to obey them?"
+    "What if pets became the bosses and humans had to obey them?",
+  "What if every staircase became a slide after sunset?",
+  "What if classroom windows could display tomorrow's weather?",
+  "What if your backpack only accepted items that matched today's mood?",
+  "What if traffic lights changed based on the loudest sound nearby?",
+  "What if library books could forget their endings by morning?",
+  "What if every tree dropped one helpful tool instead of leaves?",
+  "What if shoes made a different rhythm for every emotion?",
+  "What if doors remembered the last song they heard?",
+  "What if the ocean followed the school timetable instead of the moon?",
+  "What if postcards arrived before they were written?",
+  "What if a spoonful of rain could run a small lamp for an hour?",
+  "What if your shadow always pointed to the nearest hidden object?",
+  "What if every song you hummed attracted a different insect?",
+  "What if supermarket shelves rearranged themselves by puzzle difficulty?",
+  "What if mirrors showed the person you helped most recently?",
+  "What if pencils grew longer every time you solved a problem?",
+  "What if clouds could be stored in jars and reopened later?",
+  "What if buses could pick the shortest route by themselves?",
+  "What if every recipe changed depending on who was cooking it?",
+  "What if school bells only rang for students who finished their work?",
+  "What if every city had a hidden underground river of music?",
+  "What if the first snow erased every footprint instantly?",
+  "What if keyboards typed the next word you were about to think?",
+  "What if houseplants could explain their needs in one sentence?",
+  "What if birthdays happened when your favorite color changed?",
+  "What if maps updated whenever someone moved a chair?",
+  "What if books on a shelf swapped places when nobody was looking?",
+  "What if the wind carried tiny notes instead of leaves?",
+  "What if every balloon told the truth about where it had been?",
+  "What if a tap on the wall could reveal whether someone was behind it?"
+];
+
 ];
 
 const whatif_chain_en = [
