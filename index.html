@@ -43,6 +43,7 @@
         /* Уніфікована панель вгорі */
         .top-bar {
             position: absolute; top: 15px; right: 15px; z-index: 100;
+            display: flex; gap: 10px; align-items: center;
         }
 
         .lang-switch {
@@ -59,6 +60,71 @@
             box-shadow: 0 0 10px rgba(0, 243, 255, 0.3);
             font-weight: bold;
         }
+
+        /* Стильна кнопка встановлення додатку */
+        .install-btn {
+            background: linear-gradient(135deg, var(--cyan) 0%, #00bcff 100%);
+            border: none;
+            color: black;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 800;
+            cursor: pointer;
+            display: none; /* Показується тільки коли PWA готовий до встановлення */
+            box-shadow: 0 0 12px rgba(0, 243, 255, 0.5);
+            transition: 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            animation: pulse-glow 2s infinite;
+        }
+        .install-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 18px var(--cyan);
+        }
+
+        @keyframes pulse-glow {
+            0% { box-shadow: 0 0 10px rgba(0, 243, 255, 0.4); }
+            50% { box-shadow: 0 0 20px rgba(0, 243, 255, 0.8); }
+            100% { box-shadow: 0 0 10px rgba(0, 243, 255, 0.4); }
+        }
+
+        /* Діалогове вікно-інструкція для iOS (iPhone) */
+        .ios-modal {
+            position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
+            width: 90%; max-width: 380px;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 2.5px solid var(--cyan);
+            border-radius: 24px;
+            padding: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.6), 0 0 20px rgba(0, 243, 255, 0.2);
+            z-index: 1000;
+            display: none;
+            flex-direction: column; gap: 12px;
+            animation: slide-up 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        @keyframes slide-up {
+            from { transform: translate(-50%, 100px); opacity: 0; }
+            to { transform: translate(-50%, 0); opacity: 1; }
+        }
+
+        .ios-modal h3 { font-size: 1.1rem; color: var(--cyan); font-weight: 800; text-align: center; }
+        .ios-modal p { font-size: 0.9rem; line-height: 1.4; color: #cbd5e1; text-align: center; }
+        .ios-modal-step {
+            display: flex; align-items: center; gap: 10px; background: rgba(2, 6, 23, 0.6);
+            padding: 10px 15px; border-radius: 14px; border: 1px solid rgba(0, 243, 255, 0.1);
+            font-size: 0.85rem; font-weight: 700;
+        }
+        .ios-modal-step span.icon { font-size: 1.3rem; }
+        .ios-modal-close {
+            background: rgba(255,255,255,0.1); border: none; color: white; padding: 8px;
+            border-radius: 12px; font-weight: bold; cursor: pointer; text-align: center; font-size: 0.85rem;
+            transition: 0.2s; margin-top: 5px;
+        }
+        .ios-modal-close:hover { background: rgba(255,255,255,0.2); }
 
         /* ЛОГОТИП СЕРІЇ */
         .logo-container {
@@ -139,18 +205,25 @@
 
     <!-- Уніфікована панель вгорі -->
     <div class="top-bar">
+        <!-- Розумна кнопка встановлення додатку -->
+        <button class="install-btn" id="install-pwa-btn" onclick="triggerInstall()">Install App</button>
+
         <select class="lang-switch" id="lang-selector" onchange="changeLang()">
-            <option value="en">🇺🇸 EN</option>
-            <option value="uk">🇺🇦 UK</option>
-            <option value="es">🇪🇸 ES</option>
-            <option value="de">🇩🇪 DE</option>
-            <option value="fr">🇫🇷 FR</option>
-            <option value="nl">🇳🇱 NL</option>
-            <option value="da">🇩🇰 DA</option>
-            <option value="sv">🇸🇪 SV</option>
-            <option value="ro">🇷🇴 RO</option>
-            <option value="pl">🇵🇱 PL</option>
-            <option value="pt">🇧🇷 PT</option>
+            <option value="en">🇺🇸 English</option>
+            <option value="uk">🇺🇦 Українська</option>
+            <option value="ro">🇷🇴 Română</option>
+            <option value="pl">🇵🇱 Polski</option>
+            <option value="de">🇩🇪 Deutsch</option>
+            <option value="fr">🇫🇷 Français</option>
+            <option value="it">🇮🇹 Italiano</option>
+            <option value="sv">🇸🇪 Svenska</option>
+            <option value="fi">🇫🇮 Suomi</option>
+            <option value="da">🇩🇰 Dansk</option>
+            <option value="es">🇪🇸 Español</option>
+            <option value="pt">🇵🇹 Português</option>
+            <option value="he">🇮🇱 עברית</option>
+            <option value="ja">🇯🇵 日本語</option>
+            <option value="ar">🇸🇦 العربية</option>
         </select>
     </div>
 
@@ -209,21 +282,211 @@
         </a>
     </div>
 
+    <!-- Вікно-інструкція для користувачів iPhone -->
+    <div class="ios-modal" id="ios-install-modal">
+        <h3 id="ios-title">Install App</h3>
+        <p id="ios-desc">Follow these simple steps to install the app on your iPhone:</p>
+        
+        <div class="ios-modal-step">
+            <span class="icon">📤</span>
+            <span id="ios-step-1">1. Tap the "Share" button in Safari's bottom toolbar.</span>
+        </div>
+        <div class="ios-modal-step">
+            <span class="icon">➕</span>
+            <span id="ios-step-2">2. Scroll down and select "Add to Home Screen".</span>
+        </div>
+
+        <button class="ios-modal-close" onclick="closeIosModal()" id="ios-btn-close">Got It</button>
+    </div>
+
     <script>
         const dict = {
+
             en: {
                 whatif: "What If? Game",
                 inventor: "Inventor Lab",
                 books: "Books Gym",
-                coach: "AI Coach"
+                coach: "AI Coach",
+                install: "Install App",
+                ios_title: "Install App",
+                ios_desc: "Follow these simple steps to install the app on your iPhone:",
+                ios_step1: "1. Tap the \"Share\" button in Safari's bottom toolbar.",
+                ios_step2: "2. Scroll down and select \"Add to Home Screen\".",
+                ios_close: "Got It",
             },
             uk: {
                 whatif: "Гра 'Що, якби?'",
                 inventor: "Лабораторія ТРВЗ",
                 books: "Зал Книг",
-                coach: "ШІ Тренер"
-            }
-        };
+                coach: "ШІ Тренер",
+                install: "Встановити",
+                ios_title: "Встановити додаток",
+                ios_desc: "Виконай ці прості кроки, щоб додати додаток на свій iPhone:",
+                ios_step1: "1. Натисни кнопку «Поділитися» у нижній панелі Safari.",
+                ios_step2: "2. Прокрути список та обери «Додати на початковий екран».",
+                ios_close: "Зрозуміло",
+            },
+            ro: {
+                whatif: "Jocul What If?",
+                inventor: "Laborator Inventor",
+                books: "Sala Cărților",
+                coach: "Antrenor AI",
+                install: "Instalează",
+                ios_title: "Instalează aplicația",
+                ios_desc: "Urmează acești pași simpli pentru a instala aplicația pe iPhone:",
+                ios_step1: "1. Apasă butonul «Share» din bara Safari.",
+                ios_step2: "2. Derulează și alege «Add to Home Screen».",
+                ios_close: "Am înțeles",
+            },
+            pl: {
+                whatif: "Gra What If?",
+                inventor: "Laboratorium Wynalazców",
+                books: "Sala Książek",
+                coach: "Trener AI",
+                install: "Zainstaluj",
+                ios_title: "Zainstaluj aplikację",
+                ios_desc: "Wykonaj te proste kroki, aby zainstalować aplikację na iPhone:",
+                ios_step1: "1. Naciśnij przycisk «Udostępnij» na pasku Safari.",
+                ios_step2: "2. Przewiń w dół i wybierz «Dodaj do ekranu początkowego».",
+                ios_close: "Rozumiem",
+            },
+            de: {
+                whatif: "What If? Spiel",
+                inventor: "Erfinder-Labor",
+                books: "Bücher-Gym",
+                coach: "KI-Coach",
+                install: "Installieren",
+                ios_title: "App installieren",
+                ios_desc: "Folge diesen einfachen Schritten, um die App auf deinem iPhone zu installieren:",
+                ios_step1: "1. Tippe auf «Teilen» in der Safari-Symbolleiste.",
+                ios_step2: "2. Scrolle nach unten und wähle «Zum Home-Bildschirm».",
+                ios_close: "Verstanden",
+            },
+            fr: {
+                whatif: "Jeu What If?",
+                inventor: "Labo Inventeur",
+                books: "Salle des Livres",
+                coach: "Coach IA",
+                install: "Installer",
+                ios_title: "Installer l'app",
+                ios_desc: "Suivez ces étapes simples pour installer l'app sur votre iPhone :",
+                ios_step1: "1. Appuyez sur « Partager » dans Safari.",
+                ios_step2: "2. Faites défiler et choisissez « Sur l'écran d'accueil ».",
+                ios_close: "Compris",
+            },
+            it: {
+                whatif: "Gioco What If?",
+                inventor: "Laboratorio Inventore",
+                books: "Sala dei Libri",
+                coach: "Coach IA",
+                install: "Installa",
+                ios_title: "Installa l'app",
+                ios_desc: "Segui questi semplici passaggi per installare l'app sul tuo iPhone:",
+                ios_step1: "1. Tocca «Condividi» nella barra di Safari.",
+                ios_step2: "2. Scorri e seleziona «Aggiungi a Home».",
+                ios_close: "Capito",
+            },
+            sv: {
+                whatif: "What If?-spelet",
+                inventor: "Uppfinnarlabbet",
+                books: "Bokgymmet",
+                coach: "AI-coach",
+                install: "Installera",
+                ios_title: "Installera appen",
+                ios_desc: "Följ dessa enkla steg för att installera appen på din iPhone:",
+                ios_step1: "1. Tryck på «Dela» i Safari.",
+                ios_step2: "2. Scrolla och välj «Lägg till på hemskärmen».",
+                ios_close: "Förstått",
+            },
+            fi: {
+                whatif: "What If? -peli",
+                inventor: "Keksijälaboratorio",
+                books: "Kirjasali",
+                coach: "AI-valmentaja",
+                install: "Asenna",
+                ios_title: "Asenna sovellus",
+                ios_desc: "Asenna sovellus iPhoneen näillä helpoilla vaiheilla:",
+                ios_step1: "1. Napauta «Jaa» Safarissa.",
+                ios_step2: "2. Vieritä ja valitse «Lisää Koti-valikkoon».",
+                ios_close: "Selvä",
+            },
+            da: {
+                whatif: "What If?-spillet",
+                inventor: "Opfinderlaboratoriet",
+                books: "Boggymnastik",
+                coach: "AI-coach",
+                install: "Installer",
+                ios_title: "Installer appen",
+                ios_desc: "Følg disse enkle trin for at installere appen på din iPhone:",
+                ios_step1: "1. Tryk på «Del» i Safari.",
+                ios_step2: "2. Rul ned og vælg «Føj til hjemmeskærm».",
+                ios_close: "Forstået",
+            },
+            es: {
+                whatif: "Juego What If?",
+                inventor: "Laboratorio Inventor",
+                books: "Gimnasio de Libros",
+                coach: "Entrenador IA",
+                install: "Instalar",
+                ios_title: "Instalar app",
+                ios_desc: "Sigue estos pasos simples para instalar la app en tu iPhone:",
+                ios_step1: "1. Toca «Compartir» en Safari.",
+                ios_step2: "2. Desplázate y elige «Añadir a pantalla de inicio».",
+                ios_close: "Entendido",
+            },
+            pt: {
+                whatif: "Jogo What If?",
+                inventor: "Laboratório Inventor",
+                books: "Ginásio de Livros",
+                coach: "Treinador IA",
+                install: "Instalar",
+                ios_title: "Instalar app",
+                ios_desc: "Siga estes passos simples para instalar o app no seu iPhone:",
+                ios_step1: "1. Toque em «Compartilhar» no Safari.",
+                ios_step2: "2. Role e escolha «Adicionar à Tela de Início».",
+                ios_close: "Entendi",
+            },
+            he: {
+                whatif: "משחק What If?",
+                inventor: "מעבדת הממציאים",
+                books: "אולם הספרים",
+                coach: "מאמן AI",
+                install: "התקנה",
+                ios_title: "התקנת האפליקציה",
+                ios_desc: "עקבו אחר השלבים הפשוטים האלה להתקנה ב-iPhone:",
+                ios_step1: "1. לחצו על «שיתוף» בספארי.",
+                ios_step2: "2. גללו ובחרו «הוסף למסך הבית».",
+                ios_close: "הבנתי",
+            },
+            ja: {
+                whatif: "What If? ゲーム",
+                inventor: "発明ラボ",
+                books: "ブックジム",
+                coach: "AIコーチ",
+                install: "インストール",
+                ios_title: "アプリをインストール",
+                ios_desc: "iPhoneにアプリをインストールする簡単な手順：",
+                ios_step1: "1. Safariで「共有」をタップ。",
+                ios_step2: "2. スクロールして「ホーム画面に追加」を選択。",
+                ios_close: "了解",
+            },
+            ar: {
+                whatif: "لعبة What If?",
+                inventor: "مختبر المخترعين",
+                books: "صالة الكتب",
+                coach: "مدرب الذكاء الاصطناعي",
+                install: "تثبيت",
+                ios_title: "تثبيت التطبيق",
+                ios_desc: "اتبع هذه الخطوات البسيطة لتثبيت التطبيق على iPhone:",
+                ios_step1: "1. اضغط على «مشاركة» في Safari.",
+                ios_step2: "2. مرّر واختر «إضافة إلى الشاشة الرئيسية».",
+                ios_close: "فهمت",
+            },
+
+                };
+
+        let deferredPrompt = null;
+        let isIos = false;
 
         function changeLang() {
             const lang = document.getElementById('lang-selector').value;
@@ -234,12 +497,72 @@
             document.getElementById('lbl-inventor').innerText = t.inventor;
             document.getElementById('lbl-books').innerText = t.books;
             document.getElementById('lbl-coach').innerText = t.coach;
+
+            // Оновлення текстів кнопки встановлення
+            const btn = document.getElementById('install-pwa-btn');
+            if (btn) btn.innerText = t.install;
+
+            // Оновлення текстів модалки iOS
+            document.getElementById('ios-title').innerText = t.ios_title;
+            document.getElementById('ios-desc').innerText = t.ios_desc;
+            document.getElementById('ios-step-1').innerText = t.ios_step1;
+            document.getElementById('ios-step-2').innerText = t.ios_step2;
+            document.getElementById('ios-btn-close').innerText = t.ios_close;
+        }
+
+        // Обробка події встановлення PWA на Android/Chrome
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault(); // Запобігаємо автоматичному спливанню дефолтного вікна
+            deferredPrompt = e; // Зберігаємо подію
+            
+            // Показуємо кнопку встановлення для Android
+            const installBtn = document.getElementById('install-pwa-btn');
+            if (installBtn) installBtn.style.display = 'block';
+        });
+
+        // Виявлення iOS пристроїв
+        function checkIos() {
+            isIos = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+            // Показуємо кнопку для iOS користувачів завжди (так як передзапиту немає)
+            if (isIos && !window.navigator.standalone) {
+                const installBtn = document.getElementById('install-pwa-btn');
+                if (installBtn) installBtn.style.display = 'block';
+            }
+        }
+
+        function triggerInstall() {
+            if (isIos) {
+                // Відкриваємо кастомну інструкцію для Apple
+                document.getElementById('ios-install-modal').style.display = 'flex';
+                if (window.umami) umami.track('click-install-ios-modal');
+            } else if (deferredPrompt) {
+                // Запускаємо системний діалог Google Chrome
+                deferredPrompt.prompt();
+                if (window.umami) umami.track('click-install-pwa-prompt');
+                
+                deferredPrompt.userChoice.then((choiceResult) => {
+                    if (choiceResult.outcome === 'accepted') {
+                        console.log('User accepted the install prompt');
+                        if (window.umami) umami.track('install-pwa-success');
+                    } else {
+                        console.log('User dismissed the install prompt');
+                    }
+                    deferredPrompt = null;
+                    const installBtn = document.getElementById('install-pwa-btn');
+                    if (installBtn) installBtn.style.display = 'none';
+                });
+            }
+        }
+
+        function closeIosModal() {
+            document.getElementById('ios-install-modal').style.display = 'none';
         }
 
         window.onload = function() {
             const savedLang = localStorage.getItem('prybambas_lang') || 'en';
             document.getElementById('lang-selector').value = savedLang;
             changeLang();
+            checkIos(); // Перевіряємо пристрій
 
             // Register PWA Service Worker
             if ('serviceWorker' in navigator) {
