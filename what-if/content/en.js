@@ -51,8 +51,6 @@ const whatif_single_en = [
   "What if a tap on the wall could reveal whether someone was behind it?"
 ];
 
-];
-
 const whatif_chain_en = [
     {
         start: "What if gravity turned off for exactly 1 minute every day?",
