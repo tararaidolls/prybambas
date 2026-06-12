@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="uk">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Deduction | What If?</title>
+    <title>Дедукція | What If?</title>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -186,19 +186,23 @@
 
     <!-- Уніфікована панель вгорі -->
     <div class="top-bar">
-        <a href="../index.html" class="back-btn" id="btn-back">← Hub</a>
+        <a href="../index.html" class="back-btn" id="btn-back">← Хаб</a>
         <select class="lang-switch" id="lang-selector" onchange="changeLang()">
-            <option value="en">🇺🇸 EN</option>
-            <option value="uk">🇺🇦 UK</option>
-            <option value="es">🇪🇸 ES</option>
-            <option value="de">🇩🇪 DE</option>
-            <option value="fr">🇫🇷 FR</option>
-            <option value="nl">🇳🇱 NL</option>
-            <option value="da">🇩🇰 DA</option>
-            <option value="sv">🇸🇪 SV</option>
-            <option value="ro">🇷🇴 RO</option>
-            <option value="pl">🇵🇱 PL</option>
-            <option value="pt">🇧🇷 PT</option>
+            <option value="en">🇺🇸 English</option>
+            <option value="uk">🇺🇦 Українська</option>
+            <option value="ro">🇷🇴 Română</option>
+            <option value="pl">🇵🇱 Polski</option>
+            <option value="de">🇩🇪 Deutsch</option>
+            <option value="fr">🇫🇷 Français</option>
+            <option value="it">🇮🇹 Italiano</option>
+            <option value="sv">🇸🇪 Svenska</option>
+            <option value="fi">🇫🇮 Suomi</option>
+            <option value="da">🇩🇰 Dansk</option>
+            <option value="es">🇪🇸 Español</option>
+            <option value="pt">🇵🇹 Português</option>
+            <option value="he">🇮🇱 עברית</option>
+            <option value="ja">🇯🇵 日本語</option>
+            <option value="ar">🇸🇦 العربية</option>
         </select>
     </div>
 
@@ -213,26 +217,26 @@
 
     <div class="main-card">
         <header>
-            <h1 id="scr-title">Deduction</h1>
+            <h1 id="scr-title">Дедукція</h1>
         </header>
         
         <div class="card" id="card-box">
-            <div class="label" id="lbl-status">FINAL CONSEQUENCE:</div>
+            <div class="label" id="lbl-status">ФІНАЛЬНИЙ НАСЛІДОК:</div>
             <div class="text" id="main-text">...</div>
         </div>
         
         <div class="btn-group">
-            <button class="action-btn" id="btn-reveal" onclick="revealStart()">REVEAL ORIGINAL CAUSE</button>
-            <button class="action-btn" id="btn-next" onclick="nextRound()" style="border-color:white;">NEXT ROUND ➔</button>
+            <button class="action-btn" id="btn-reveal" onclick="revealStart()">ВІДКРИТИ ПЕРШОПРИЧИНУ</button>
+            <button class="action-btn" id="btn-next" onclick="nextRound()" style="border-color:white;">НАСТУПНИЙ РАУНД ➔</button>
         </div>
 
         <!-- РЕКЛАМНИЙ БАНЕР / Пропозиція Книги (Upsell) -->
         <a href="https://www.amazon.com/dp/B0BRC7Z2NW" class="promo-banner" target="_blank">
             <div class="promo-text">
-                <h3 id="promo-title">Offline Brain Fitness</h3>
-                <p id="promo-subtitle">Get the physical "What If?" workbook with 100+ logical puzzles to build critical thinking away from screens.</p>
+                <h3 id="promo-title">Розумна зарядка для мозку</h3>
+                <p id="promo-subtitle">Отримайте фізичний зошит 'What If?' із понад 100 логічними задачами для розвитку критичного мислення без екранів.</p>
             </div>
-            <div class="promo-btn" id="promo-btn-lbl">Get Book</div>
+            <div class="promo-btn" id="promo-btn-lbl">Купити</div>
         </a>
     </div>
 
@@ -240,50 +244,121 @@
     <script src="../content/en.js"></script>
     <script src="../content/uk.js"></script>
     <script src="../content/ro.js"></script>
+    <script src="../content/pl.js"></script>
+    <script src="../content/de.js"></script>
+    <script src="../content/fr.js"></script>
+    <script src="../content/it.js"></script>
+    <script src="../content/sv.js"></script>
+    <script src="../content/fi.js"></script>
+    <script src="../content/da.js"></script>
+    <script src="../content/es.js"></script>
+    <script src="../content/pt.js"></script>
+    <script src="../content/he.js"></script>
+    <script src="../content/ja.js"></script>
+    <script src="../content/ar.js"></script>
+
 
     <script>
         // Об'єднана база даних, яка автоматично підхоплює мови з файлів у папці /content
         const localizedData = {
+
             en: typeof whatif_deduction_en !== 'undefined' ? whatif_deduction_en : [],
             uk: typeof whatif_deduction_uk !== 'undefined' ? whatif_deduction_uk : [],
-            ro: typeof whatif_deduction_ro !== 'undefined' ? whatif_deduction_ro : []
-        };
+            ro: typeof whatif_deduction_ro !== 'undefined' ? whatif_deduction_ro : [],
+            pl: typeof whatif_deduction_pl !== 'undefined' ? whatif_deduction_pl : [],
+            de: typeof whatif_deduction_de !== 'undefined' ? whatif_deduction_de : [],
+            fr: typeof whatif_deduction_fr !== 'undefined' ? whatif_deduction_fr : [],
+            it: typeof whatif_deduction_it !== 'undefined' ? whatif_deduction_it : [],
+            sv: typeof whatif_deduction_sv !== 'undefined' ? whatif_deduction_sv : [],
+            fi: typeof whatif_deduction_fi !== 'undefined' ? whatif_deduction_fi : [],
+            da: typeof whatif_deduction_da !== 'undefined' ? whatif_deduction_da : [],
+            es: typeof whatif_deduction_es !== 'undefined' ? whatif_deduction_es : [],
+            pt: typeof whatif_deduction_pt !== 'undefined' ? whatif_deduction_pt : [],
+            he: typeof whatif_deduction_he !== 'undefined' ? whatif_deduction_he : [],
+            ja: typeof whatif_deduction_ja !== 'undefined' ? whatif_deduction_ja : [],
+            ar: typeof whatif_deduction_ar !== 'undefined' ? whatif_deduction_ar : [],
+
+                };
 
         const translationDict = {
+
             en: {
-                title: "Deduction",
-                reveal: "REVEAL ORIGINAL CAUSE",
-                lbl_consequence: "FINAL CONSEQUENCE:",
-                lbl_cause: "ORIGINAL CAUSE:",
-                next: "NEXT ROUND ➔",
-                promo_t: "Offline Brain Fitness",
-                promo_st: "Get the physical 'What If?' workbook with 100+ logical puzzles to build critical thinking away from screens.",
-                promo_btn: "Get Book",
-                back: "← Hub"
+                title: "Deduction", reveal: "REVEAL ORIGINAL CAUSE",
+                lbl_consequence: "FINAL CONSEQUENCE:", lbl_cause: "ORIGINAL CAUSE:", next: "NEXT ROUND ➔",
+                promo_t: "Smart Brain Workout", promo_st: "Get the physical 'What If?' workbook with 100+ logic puzzles for critical thinking without screens.", promo_btn: "Buy", back: "← Hub"
             },
             uk: {
-                title: "Дедукція",
-                reveal: "ВІДКРИТИ ПЕРШОПРИЧИНУ",
-                lbl_consequence: "ФІНАЛЬНИЙ НАСЛІДОК:",
-                lbl_cause: "ПЕРШОПРИЧИНА (СТАРТ):",
-                next: "Наступний раунд ➔",
-                promo_t: "Розумний відпочинок",
-                promo_st: "Отримайте велику книгу логічних ланцюжків 'Що, якби?' на Amazon! 100+ завдань для розвитку мислення без екранів.",
-                promo_btn: "Купити",
-                back: "← Хаб"
+                title: "Дедукція", reveal: "Відкрити першопричину",
+                lbl_consequence: "ФІНАЛЬНИЙ НАСЛІДОК:", lbl_cause: "ПЕРШОПРИЧИНА:", next: "Наступний раунд ➔",
+                promo_t: "Розумна зарядка для мозку", promo_st: "Отримайте фізичний зошит 'What If?' із понад 100 логічними задачами для розвитку критичного мислення без екранів.", promo_btn: "Купити", back: "← Hub"
             },
             ro: {
-                title: "Deducție",
-                reveal: "ARATĂ CAUZA INIȚIALĂ",
-                lbl_consequence: "CONSECINȚA FINALĂ:",
-                lbl_cause: "CAUZA INIȚIALĂ:",
-                next: "Următorul raund ➔",
-                promo_t: "Fitness Cerebral Offline",
-                promo_st: "Cumpără volumul fizic 'What If?' cu peste 100 de puzzle-uri de logică pentru dezvoltarea gândirii critice fără ecrane.",
-                promo_btn: "Cumpără",
-                back: "← Hub"
-            }
-        };
+                title: "Deducție", reveal: "Arată Cauza Inițială",
+                lbl_consequence: "CONSECINȚA FINALĂ:", lbl_cause: "CAUZA INIȚIALĂ:", next: "Următorul raund ➔",
+                promo_t: "Antrenament Cerebral Offline", promo_st: "Cumpără caietul fizic 'What If?' cu peste 100 de puzzle-uri logice pentru gândire critică fără ecrane.", promo_btn: "Cumpără", back: "← Hub"
+            },
+            pl: {
+                title: "Dedukcja", reveal: "Odkryj przyczynę",
+                lbl_consequence: "KOŃCOWY SKUTEK:", lbl_cause: "PRZYCZYNA POCZĄTKOWA:", next: "NASTĘPNA RUNDA ➔",
+                promo_t: "Trening Mózgu Offline", promo_st: "Kup papierowy zeszyt 'What If?' z ponad 100 łamigłówkami logicznymi, aby trenować myślenie krytyczne bez ekranów.", promo_btn: "Kup teraz", back: "← Hub"
+            },
+            de: {
+                title: "Deduktion", reveal: "Ursprung enthüllen",
+                lbl_consequence: "ENDERGEBNIS:", lbl_cause: "URSPRUNG:", next: "NÄCHSTE RUNDE ➔",
+                promo_t: "Offline-Gehirn-Fitness", promo_st: "Hol dir das physische 'What If?'-Arbeitsbuch mit über 100 Logikrätseln, um kritisches Denken ohne Bildschirme zu trainieren.", promo_btn: "Kaufen", back: "← Hub"
+            },
+            fr: {
+                title: "Déduction", reveal: "Révéler la cause",
+                lbl_consequence: "CONSÉQUENCE FINALE :", lbl_cause: "CAUSE ORIGINALE :", next: "ROUND SUIVANT ➔",
+                promo_t: "Gymnastique Cérébrale Offline", promo_st: "Obtenez le cahier physique 'What If?' avec plus de 100 énigmes logiques pour la pensée critique sans écrans.", promo_btn: "Acheter", back: "← Hub"
+            },
+            it: {
+                title: "Deduzione", reveal: "Rivela la causa",
+                lbl_consequence: "CONSEGUENZA FINALE:", lbl_cause: "CAUSA ORIGINALE:", next: "PROSSIMO ROUND ➔",
+                promo_t: "Allenamento Cerebrale Offline", promo_st: "Ottieni il quaderno fisico 'What If?' con oltre 100 puzzle logici per il pensiero critico senza schermi.", promo_btn: "Acquista", back: "← Hub"
+            },
+            sv: {
+                title: "Deduktion", reveal: "Visa ursprunget",
+                lbl_consequence: "SLUTKONSEKVENS:", lbl_cause: "URSPRUNG:", next: "NÄSTA RUNDA ➔",
+                promo_t: "Hjärnträning Offline", promo_st: "Skaffa den fysiska 'What If?'-boken med över 100 logikpussel för kritiskt tänkande utan skärmar.", promo_btn: "Köp", back: "← Hub"
+            },
+            fi: {
+                title: "Päättely", reveal: "Paljasta syy",
+                lbl_consequence: "LOPULLINEN SEURAUS:", lbl_cause: "ALKUPERÄINEN SYY:", next: "SEURAAVA KIERROS ➔",
+                promo_t: "Aivojumppa Offline", promo_st: "Hanki fyysinen 'What If?' -vihko yli 100 logiikka-arvoituksella kriittiseen ajatteluun ilman näyttöjä.", promo_btn: "Osta", back: "← Hub"
+            },
+            da: {
+                title: "Deduktion", reveal: "Afslør årsagen",
+                lbl_consequence: "SLUTKONSEKVENS:", lbl_cause: "OPRINDELIG ÅRSAG:", next: "NÆSTE RUNDE ➔",
+                promo_t: "Hjernetræning Offline", promo_st: "Få den fysiske 'What If?'-bog med over 100 logikgåder til kritisk tænkning uden skærme.", promo_btn: "Køb", back: "← Hub"
+            },
+            es: {
+                title: "Deducción", reveal: "Revelar causa original",
+                lbl_consequence: "CONSECUENCIA FINAL:", lbl_cause: "CAUSA ORIGINAL:", next: "SIGUIENTE RONDA ➔",
+                promo_t: "Fitness Cerebral Offline", promo_st: "Consigue el cuaderno físico 'What If?' con más de 100 acertijos lógicos para entrenar el pensamiento crítico lejos de las pantallas.", promo_btn: "Comprar", back: "← Hub"
+            },
+            pt: {
+                title: "Dedução", reveal: "Revelar causa original",
+                lbl_consequence: "CONSEQUÊNCIA FINAL:", lbl_cause: "CAUSA ORIGINAL:", next: "PRÓXIMA RODADA ➔",
+                promo_t: "Treino Cerebral Offline", promo_st: "Obtenha o caderno físico 'What If?' com mais de 100 quebra-cabeças lógicos para pensamento crítico sem telas.", promo_btn: "Comprar", back: "← Hub"
+            },
+            he: {
+                title: "הסקה", reveal: "חשוף את הסיבה",
+                lbl_consequence: "התוצאה הסופית:", lbl_cause: "הסיבה המקורית:", next: "סיבוב הבא ➔",
+                promo_t: "אימון מוח אופליין", promo_st: "קבלו את חוברת 'What If?' הפיזית עם יותר מ-100 חידות לוגיות לחשיבה ביקורתית בלי מסכים.", promo_btn: "קנו", back: "← Hub"
+            },
+            ja: {
+                title: "推理", reveal: "原因を表示",
+                lbl_consequence: "最終結果：", lbl_cause: "元の原因：", next: "次のラウンド ➔",
+                promo_t: "オフライン脳トレ", promo_st: "画面なしで批判的思考を鍛える100以上の論理パズル入り物理版『What If?』を手に入れよう。", promo_btn: "購入", back: "← Hub"
+            },
+            ar: {
+                title: "استنتاج", reveal: "اكشف السبب الأصلي",
+                lbl_consequence: "العاقبة النهائية:", lbl_cause: "السبب الأصلي:", next: "الجولة التالية ➔",
+                promo_t: "تمرين الدماغ دون اتصال", promo_st: "احصل على دفتر 'What If?' الورقي مع أكثر من 100 لغز منطقي للتفكير النقدي بدون شاشات.", promo_btn: "اشترِ", back: "← Hub"
+            },
+
+                };
 
         let currentLang = 'en';
         let currentIndex = -1;
@@ -298,9 +373,9 @@
             document.getElementById('scr-title').innerText = ui.title;
             document.getElementById('btn-reveal').innerText = ui.reveal;
             document.getElementById('btn-next').innerText = ui.next;
-            document.getElementById('promo-title').innerText = ui.promo.t;
-            document.getElementById('promo-subtitle').innerText = ui.promo.st;
-            document.getElementById('promo-btn-lbl').innerText = ui.promo.btn;
+            document.getElementById('promo-title').innerText = ui.promo_t;
+            document.getElementById('promo-subtitle').innerText = ui.promo_st;
+            document.getElementById('promo-btn-lbl').innerText = ui.promo_btn;
             document.getElementById('btn-back').innerText = ui.back;
 
             // Оновлюємо поточне питання на льоту! (UX FIX - No more sync bugs)

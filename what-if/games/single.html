@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="uk">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Single Question | What If?</title>
+    <title>Одне запитання | What If?</title>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -214,19 +214,23 @@
 
     <!-- Уніфікована панель вгорі -->
     <div class="top-bar">
-        <a href="../index.html" class="back-btn" id="btn-back">← Hub</a>
+        <a href="../index.html" class="back-btn" id="btn-back">← Хаб</a>
         <select class="lang-switch" id="lang-selector" onchange="changeLang()">
-            <option value="en">🇺🇸 EN</option>
-            <option value="uk">🇺🇦 UK</option>
-            <option value="es">🇪🇸 ES</option>
-            <option value="de">🇩🇪 DE</option>
-            <option value="fr">🇫🇷 FR</option>
-            <option value="nl">🇳🇱 NL</option>
-            <option value="da">🇩🇰 DA</option>
-            <option value="sv">🇸🇪 SV</option>
-            <option value="ro">🇷🇴 RO</option>
-            <option value="pl">🇵🇱 PL</option>
-            <option value="pt">🇧🇷 PT</option>
+            <option value="en">🇺🇸 English</option>
+            <option value="uk">🇺🇦 Українська</option>
+            <option value="ro">🇷🇴 Română</option>
+            <option value="pl">🇵🇱 Polski</option>
+            <option value="de">🇩🇪 Deutsch</option>
+            <option value="fr">🇫🇷 Français</option>
+            <option value="it">🇮🇹 Italiano</option>
+            <option value="sv">🇸🇪 Svenska</option>
+            <option value="fi">🇫🇮 Suomi</option>
+            <option value="da">🇩🇰 Dansk</option>
+            <option value="es">🇪🇸 Español</option>
+            <option value="pt">🇵🇹 Português</option>
+            <option value="he">🇮🇱 עברית</option>
+            <option value="ja">🇯🇵 日本語</option>
+            <option value="ar">🇸🇦 العربية</option>
         </select>
     </div>
 
@@ -241,79 +245,138 @@
 
     <div class="main-card">
         <header>
-            <h1 id="scr-title">Single Question</h1>
+            <h1 id="scr-title">Одне запитання</h1>
         </header>
         
         <div class="card">
-            <div class="question" id="q-text">Tap 'Next' to start!</div>
+            <div class="question" id="q-text">Торкніться "Далі", щоб почати!</div>
         </div>
         
         <div class="btn-group">
-            <button class="action-btn timer-btn" id="btn-timer" onclick="startTimer()">⏳ 60s</button>
-            <button class="action-btn" id="btn-next" onclick="nextQuestion()">NEXT ➔</button>
+            <button class="action-btn timer-btn" id="btn-timer" onclick="startTimer()">⏳ 60 с</button>
+            <button class="action-btn" id="btn-next" onclick="nextQuestion()">ДАЛІ ➔</button>
         </div>
 
         <!-- РЕКЛАМНИЙ БАНЕР / Пропозиція Книги (Upsell) -->
         <a href="https://www.amazon.com/dp/B0BRC7Z2NW" class="promo-banner" target="_blank">
             <div class="promo-text">
-                <h3 id="promo-title">Offline Brain Fitness</h3>
-                <p id="promo-subtitle">Get the physical "What If?" workbook with 100+ logical puzzles to build critical thinking away from screens.</p>
+                <h3 id="promo-title">Розумна зарядка для мозку</h3>
+                <p id="promo-subtitle">Отримайте фізичний зошит 'What If?' із понад 100 логічними задачами для розвитку критичного мислення без екранів.</p>
             </div>
-            <div class="promo-btn" id="promo-btn-lbl">Get Book</div>
+            <div class="promo-btn" id="promo-btn-lbl">Купити</div>
         </a>
     </div>
     
     <!-- ТАЙМЕР ОВЕРЛЕЙ (UX FIX) -->
     <div id="timer-overlay" onclick="stopTimer()">
         <div id="timer-text">60</div>
-        <div id="timer-sub" class="timer-sub-lbl">Tap anywhere to close</div>
+        <div id="timer-sub" class="timer-sub-lbl">Торкніться будь-де, щоб закрити</div>
     </div>
 
     <!-- Підключаємо зовнішні файли контенту для легкої локалізації -->
     <script src="../content/en.js"></script>
     <script src="../content/uk.js"></script>
     <script src="../content/ro.js"></script>
+    <script src="../content/pl.js"></script>
+    <script src="../content/de.js"></script>
+    <script src="../content/fr.js"></script>
+    <script src="../content/it.js"></script>
+    <script src="../content/sv.js"></script>
+    <script src="../content/fi.js"></script>
+    <script src="../content/da.js"></script>
+    <script src="../content/es.js"></script>
+    <script src="../content/pt.js"></script>
+    <script src="../content/he.js"></script>
+    <script src="../content/ja.js"></script>
+    <script src="../content/ar.js"></script>
+
 
     <script>
         // Об'єднана база даних, яка автоматично підхоплює мови з файлів у папці /content
         const localizedData = {
+
             en: typeof whatif_single_en !== 'undefined' ? whatif_single_en : [],
             uk: typeof whatif_single_uk !== 'undefined' ? whatif_single_uk : [],
-            ro: typeof whatif_single_ro !== 'undefined' ? whatif_single_ro : []
-        };
+            ro: typeof whatif_single_ro !== 'undefined' ? whatif_single_ro : [],
+            pl: typeof whatif_single_pl !== 'undefined' ? whatif_single_pl : [],
+            de: typeof whatif_single_de !== 'undefined' ? whatif_single_de : [],
+            fr: typeof whatif_single_fr !== 'undefined' ? whatif_single_fr : [],
+            it: typeof whatif_single_it !== 'undefined' ? whatif_single_it : [],
+            sv: typeof whatif_single_sv !== 'undefined' ? whatif_single_sv : [],
+            fi: typeof whatif_single_fi !== 'undefined' ? whatif_single_fi : [],
+            da: typeof whatif_single_da !== 'undefined' ? whatif_single_da : [],
+            es: typeof whatif_single_es !== 'undefined' ? whatif_single_es : [],
+            pt: typeof whatif_single_pt !== 'undefined' ? whatif_single_pt : [],
+            he: typeof whatif_single_he !== 'undefined' ? whatif_single_he : [],
+            ja: typeof whatif_single_ja !== 'undefined' ? whatif_single_ja : [],
+            ar: typeof whatif_single_ar !== 'undefined' ? whatif_single_ar : [],
+
+                };
 
         const translationDict = {
+
             en: {
-                title: "Single Question",
-                next: "NEXT ➔",
-                promo_t: "Offline Brain Fitness",
-                promo_st: "Get the physical 'What If?' workbook with 100+ logical puzzles to build critical thinking away from screens.",
-                promo_btn: "Get Book",
-                back: "← Hub",
-                tap_to_close: "Tap anywhere to close",
-                ready: "Tap 'Next' to start!"
+                title: "Single Question", next: "NEXT ➔",
+                promo_t: "Smart Brain Workout", promo_st: "Get the physical 'What If?' workbook with 100+ logic puzzles for critical thinking without screens.", promo_btn: "Buy", back: "← Hub", tap_to_close: "Tap anywhere to close", ready: "Tap 'Next' to start!"
             },
             uk: {
-                title: "Одне Питання",
-                next: "Наступна ➔",
-                promo_t: "Розумний відпочинок",
-                promo_st: "Отримайте велику книгу логічних ланцюжків 'Що, якби?' на Amazon! 100+ завдань для розвитку мислення без екранів.",
-                promo_btn: "Купити",
-                back: "← Хаб",
-                tap_to_close: "Торкніться будь-де, щоб закрити",
-                ready: "Натисніть 'Наступна', щоб почати!"
+                title: "Одне запитання", next: "ДАЛІ ➔",
+                promo_t: "Розумна зарядка для мозку", promo_st: "Отримайте фізичний зошит 'What If?' із понад 100 логічними задачами для розвитку критичного мислення без екранів.", promo_btn: "Купити", back: "← Hub", tap_to_close: "Торкніться будь-де, щоб закрити", ready: "Торкніться 'Далі', щоб почати!"
             },
             ro: {
-                title: "O Singură Întrebare",
-                next: "Următoarea ➔",
-                promo_t: "Fitness Cerebral Offline",
-                promo_st: "Cumpără volumul fizic 'What If?' cu peste 100 de puzzle-uri de logică pentru dezvoltarea gândirii critice fără ecrane.",
-                promo_btn: "Cumpără",
-                back: "← Hub",
-                tap_to_close: "Atinge oriunde pentru a închide",
-                ready: "Apasă pe 'Următoarea' pentru a începe!"
-            }
-        };
+                title: "O Singură Întrebare", next: "URMĂTOAREA ➔",
+                promo_t: "Antrenament Cerebral Offline", promo_st: "Cumpără caietul fizic 'What If?' cu peste 100 de puzzle-uri logice pentru gândire critică fără ecrane.", promo_btn: "Cumpără", back: "← Hub", tap_to_close: "Atinge oriunde pentru a închide", ready: "Apasă pe 'Următoarea' pentru a începe!"
+            },
+            pl: {
+                title: "Jedno Pytanie", next: "DALEJ ➔",
+                promo_t: "Trening Mózgu Offline", promo_st: "Kup papierowy zeszyt 'What If?' z ponad 100 łamigłówkami logicznymi, aby trenować myślenie krytyczne bez ekranów.", promo_btn: "Kup teraz", back: "← Hub", tap_to_close: "Dotknij w dowolnym miejscu, aby zamknąć", ready: "Dotknij 'Dalej', aby rozpocząć!"
+            },
+            de: {
+                title: "Eine Einzige Frage", next: "WEITER ➔",
+                promo_t: "Offline-Gehirn-Fitness", promo_st: "Hol dir das physische 'What If?'-Arbeitsbuch mit über 100 Logikrätseln, um kritisches Denken ohne Bildschirme zu trainieren.", promo_btn: "Kaufen", back: "← Hub", tap_to_close: "Tippe irgendwohin zum Schließen", ready: "Tippe auf 'Weiter', um zu starten!"
+            },
+            fr: {
+                title: "Une Seule Question", next: "SUIVANT ➔",
+                promo_t: "Gymnastique Cérébrale Offline", promo_st: "Obtenez le cahier physique 'What If?' avec plus de 100 énigmes logiques pour la pensée critique sans écrans.", promo_btn: "Acheter", back: "← Hub", tap_to_close: "Appuie n'importe où pour fermer", ready: "Appuie sur 'Suivant' pour commencer !"
+            },
+            it: {
+                title: "Una Sola Domanda", next: "AVANTI ➔",
+                promo_t: "Allenamento Cerebrale Offline", promo_st: "Ottieni il quaderno fisico 'What If?' con oltre 100 puzzle logici per il pensiero critico senza schermi.", promo_btn: "Acquista", back: "← Hub", tap_to_close: "Tocca ovunque per chiudere", ready: "Tocca 'Avanti' per iniziare!"
+            },
+            sv: {
+                title: "En Enda Fråga", next: "NÄSTA ➔",
+                promo_t: "Hjärnträning Offline", promo_st: "Skaffa den fysiska 'What If?'-boken med över 100 logikpussel för kritiskt tänkande utan skärmar.", promo_btn: "Köp", back: "← Hub", tap_to_close: "Tryck var som helst för att stänga", ready: "Tryck på 'Nästa' för att börja!"
+            },
+            fi: {
+                title: "Yksittäinen Kysymys", next: "SEURAAVA ➔",
+                promo_t: "Aivojumppa Offline", promo_st: "Hanki fyysinen 'What If?' -vihko yli 100 logiikka-arvoituksella kriittiseen ajatteluun ilman näyttöjä.", promo_btn: "Osta", back: "← Hub", tap_to_close: "Napauta missä tahansa sulkeaksesi", ready: "Napauta 'Seuraava' aloittaaksesi!"
+            },
+            da: {
+                title: "Et Enkelt Spørgsmål", next: "NÆSTE ➔",
+                promo_t: "Hjernetræning Offline", promo_st: "Få den fysiske 'What If?'-bog med over 100 logikgåder til kritisk tænkning uden skærme.", promo_btn: "Køb", back: "← Hub", tap_to_close: "Tryk hvor som helst for at lukke", ready: "Tryk på 'Næste' for at starte!"
+            },
+            es: {
+                title: "Una Sola Pregunta", next: "SIGUIENTE ➔",
+                promo_t: "Fitness Cerebral Offline", promo_st: "Consigue el cuaderno físico 'What If?' con más de 100 acertijos lógicos para entrenar el pensamiento crítico lejos de las pantallas.", promo_btn: "Comprar", back: "← Hub", tap_to_close: "Toca en cualquier lugar para cerrar", ready: "¡Toca 'Siguiente' para empezar!"
+            },
+            pt: {
+                title: "Uma Única Pergunta", next: "PRÓXIMO ➔",
+                promo_t: "Treino Cerebral Offline", promo_st: "Obtenha o caderno físico 'What If?' com mais de 100 quebra-cabeças lógicos para pensamento crítico sem telas.", promo_btn: "Comprar", back: "← Hub", tap_to_close: "Toque em qualquer lugar para fechar", ready: "Toque em 'Próximo' para começar!"
+            },
+            he: {
+                title: "שאלה אחת", next: "הבא ➔",
+                promo_t: "אימון מוח אופליין", promo_st: "קבלו את חוברת 'What If?' הפיזית עם יותר מ-100 חידות לוגיות לחשיבה ביקורתית בלי מסכים.", promo_btn: "קנו", back: "← Hub", tap_to_close: "הקש בכל מקום לסגירה", ready: "הקש על 'הבא' כדי להתחיל!"
+            },
+            ja: {
+                title: "単一の質問", next: "次へ ➔",
+                promo_t: "オフライン脳トレ", promo_st: "画面なしで批判的思考を鍛える100以上の論理パズル入り物理版『What If?』を手に入れよう。", promo_btn: "購入", back: "← Hub", tap_to_close: "どこでもタップして閉じる", ready: "「次へ」をタップして開始！"
+            },
+            ar: {
+                title: "سؤال واحد", next: "التالي ➔",
+                promo_t: "تمرين الدماغ دون اتصال", promo_st: "احصل على دفتر 'What If?' الورقي مع أكثر من 100 لغز منطقي للتفكير النقدي بدون شاشات.", promo_btn: "اشترِ", back: "← Hub", tap_to_close: "اضغط في أي مكان للإغلاق", ready: "اضغط «التالي» للبدء!"
+            },
+
+                };
 
         let currentLang = 'en';
         let currentIndex = -1;
@@ -328,9 +391,9 @@
             const ui = translationDict[currentLang] || translationDict['en'];
             document.getElementById('scr-title').innerText = ui.title;
             document.getElementById('btn-next').innerText = ui.next;
-            document.getElementById('promo-title').innerText = ui.promo.t;
-            document.getElementById('promo-subtitle').innerText = ui.promo.st;
-            document.getElementById('promo-btn-lbl').innerText = ui.promo.btn;
+            document.getElementById('promo-title').innerText = ui.promo_t;
+            document.getElementById('promo-subtitle').innerText = ui.promo_st;
+            document.getElementById('promo-btn-lbl').innerText = ui.promo_btn;
             document.getElementById('btn-back').innerText = ui.back;
             document.querySelector('.timer-sub-lbl').innerText = ui.tap_to_close;
 

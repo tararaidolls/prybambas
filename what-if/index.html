@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="uk">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>What If? Selector | Prybambas</title>
+    <title>Що, якщо? | Prybambas</title>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -188,19 +188,23 @@
 
     <!-- Уніфікована панель вгорі -->
     <div class="top-bar">
-        <a href="../index.html" class="back-btn" id="btn-back">← Hub</a>
+        <a href="../index.html" class="back-btn" id="btn-back">← Хаб</a>
         <select class="lang-switch" id="lang-selector" onchange="changeLang()">
-            <option value="en">🇺🇸 EN</option>
-            <option value="uk">🇺🇦 UK</option>
-            <option value="es">🇪🇸 ES</option>
-            <option value="de">🇩🇪 DE</option>
-            <option value="fr">🇫🇷 FR</option>
-            <option value="nl">🇳🇱 NL</option>
-            <option value="da">🇩🇰 DA</option>
-            <option value="sv">🇸🇪 SV</option>
-            <option value="ro">🇷🇴 RO</option>
-            <option value="pl">🇵🇱 PL</option>
-            <option value="pt">🇧🇷 PT</option>
+            <option value="en">🇺🇸 English</option>
+            <option value="uk">🇺🇦 Українська</option>
+            <option value="ro">🇷🇴 Română</option>
+            <option value="pl">🇵🇱 Polski</option>
+            <option value="de">🇩🇪 Deutsch</option>
+            <option value="fr">🇫🇷 Français</option>
+            <option value="it">🇮🇹 Italiano</option>
+            <option value="sv">🇸🇪 Svenska</option>
+            <option value="fi">🇫🇮 Suomi</option>
+            <option value="da">🇩🇰 Dansk</option>
+            <option value="es">🇪🇸 Español</option>
+            <option value="pt">🇵🇹 Português</option>
+            <option value="he">🇮🇱 עברית</option>
+            <option value="ja">🇯🇵 日本語</option>
+            <option value="ar">🇸🇦 العربية</option>
         </select>
     </div>
 
@@ -215,7 +219,7 @@
 
     <div class="main-card">
         <header>
-            <h1 id="lbl-sub">Choose your game</h1>
+            <h1 id="lbl-sub">Оберіть свою гру</h1>
         </header>
 
         <!-- 3 ICONS SELECTOR -->
@@ -229,50 +233,159 @@
         <div id="rules-container">
             <div class="rules-title" id="rules-title">MODE TITLE</div>
             <div class="rules-list" id="rules-text"></div>
-            <button class="cta-btn" id="cta-play" onclick="startGame()">PLAY</button>
+            <button class="cta-btn" id="cta-play" onclick="startGame()">ГРАТИ</button>
         </div>
 
         <!-- РЕКЛАМНИЙ БАНЕР / Пропозиція Книги (Upsell) -->
-        <a href="https://www.amazon.com/dp/B0GXNWFZ6N" class="promo-banner" target="_blank">
+        <a href="https://www.amazon.com/dp/B0BRC7Z2NW" class="promo-banner" target="_blank">
             <div class="promo-text">
-                <h3 id="promo-title">Offline Brain Fitness</h3>
-                <p id="promo-subtitle">Get the physical "What If?" workbook with 100+ logical puzzles to build critical thinking away from screens.</p>
+                <h3 id="promo-title">Розумна зарядка для мозку</h3>
+                <p id="promo-subtitle">Отримайте фізичний зошит 'What If?' із понад 100 логічними задачами для розвитку критичного мислення без екранів.</p>
             </div>
-            <div class="promo-btn" id="promo-btn-lbl">Get Book</div>
+            <div class="promo-btn" id="promo-btn-lbl">Купити</div>
         </a>
     </div>
 
     <script>
         const db = {
+
             en: {
                 back: "← Hub", sub: "Choose your game", play: "PLAY NOW",
                 modes: [
                     { title: "SINGLE QUESTION", rules: "<div><span>🗣️</span> Discuss what would happen if a crazy event occurred.</div><div><span>⏳</span> Use the timer for speed rounds!</div>" },
                     { title: "LOGICAL CHAIN", rules: "<div><span>🧐</span> Read the starting fact.</div><div><span>🧠</span> Guess the crazy ending.</div><div><span>🔗</span> Tap to reveal the hidden logical chain!</div>" },
-                    { title: "DEDUCTION", rules: "<div><span>🕵️</span> Read the final crazy consequence.</div><div><span>🔄</span> Try to deduce what caused it.</div><div><span>💡</span> Tap to reveal the original event!</div>" }
+                    { title: "DEDUCTION", rules: "<div><span>🕵️</span> Read the final crazy consequence.</div><div><span>🔄</span> Try to deduce what caused it.</div><div><span>💡</span> Tap to reveal the original event!</div>" },
                 ],
-                promo: {
-                    t: "Offline Brain Fitness",
-                    st: "Get the physical 'What If?' workbook with 100+ logical puzzles to build critical thinking away from screens.",
-                    btn: "Get Book",
-                    backHub: "← Hub"
-                }
+                promo: { t: "Smart Brain Workout", st: "Get the physical 'What If?' workbook with 100+ logic puzzles for critical thinking without screens.", btn: "Buy" }
             },
             uk: {
-                back: "← Назад", sub: "Обери свою гру", play: "ПОЧАТИ ГРУ",
+                back: "← Хаб", sub: "Оберіть свою гру", play: "ГРАТИ",
                 modes: [
-                    { title: "ОДНЕ ПИТАННЯ", rules: "<div><span>🗣️</span> Обговоріть, що сталося б у такій шаленій ситуації.</div><div><span>⏳</span> Використовуйте таймер для швидких раундів!</div>" },
-                    { title: "ЛОГІЧНИЙ ЛАНЦЮЖОК", rules: "<div><span>🧐</span> Прочитай стартовий факт.</div><div><span>🧠</span> Спробуй вгадати фінал.</div><div><span>🔗</span> Натисни, щоб відкрити весь логічний ланцюжок!</div>" },
-                    { title: "ДЕДУКЦІЯ", rules: "<div><span>🕵️</span> Прочитай фінальний шалений наслідок.</div><div><span>🔄</span> Застосуй дедукцію і вгадай причину.</div><div><span>💡</span> Натисни, щоб відкрити всю історію!</div>" }
+                    { title: "ОДНЕ ПИТАННЯ", rules: "<div><span>🗣️</span> Обговоріть, що сталося б, якби відбулася якась шалена подія.</div><div><span>⏳</span> Використовуйте таймер для швидких раундів!</div>" },
+                    { title: "ЛОГІЧНИЙ ЛАНЦЮЖОК", rules: "<div><span>🧐</span> Прочитай стартовий факт.</div><div><span>🧠</span> Спробуй вгадати шалену кінцівку.</div><div><span>🔗</span> Натисни, щоб відкрити прихований логічний ланцюжок!</div>" },
+                    { title: "ДЕДУКЦІЯ", rules: "<div><span>🕵️</span> Прочитай фінальний шалений наслідок.</div><div><span>🔄</span> Спробуй визначити, що його спричинило.</div><div><span>💡</span> Натисни, щоб відкрити початкову подію!</div>" },
                 ],
-                promo: {
-                    t: "Розумний відпочинок",
-                    st: "Отримайте велику книгу логічних ланцюжків 'Що, якби?' на Amazon! 100+ завдань для розвитку мислення без екранів.",
-                    btn: "Купити",
-                    backHub: "← Хаб"
-                }
-            }
-        };
+                promo: { t: "Розумна зарядка для мозку", st: "Отримайте фізичний зошит 'What If?' із понад 100 логічними задачами для розвитку критичного мислення без екранів.", btn: "Купити" }
+            },
+            ro: {
+                back: "← Hub", sub: "Alege jocul", play: "JOACĂ ACUM",
+                modes: [
+                    { title: "O SINGURĂ ÎNTREBARE", rules: "<div><span>🗣️</span> Discutați ce s-ar întâmpla dacă ar avea loc un eveniment nebun.</div><div><span>⏳</span> Folosiți cronometrul pentru runde rapide!</div>" },
+                    { title: "LANȚ LOGIC", rules: "<div><span>🧐</span> Citește faptul de început.</div><div><span>🧠</span> Ghicește finalul nebun.</div><div><span>🔗</span> Atinge pentru a dezvălui lanțul logic ascuns!</div>" },
+                    { title: "DEDUCȚIE", rules: "<div><span>🕵️</span> Citește consecința finală nebună.</div><div><span>🔄</span> Încearcă să deduci ce a cauzat-o.</div><div><span>💡</span> Atinge pentru a dezvălui evenimentul original!</div>" },
+                ],
+                promo: { t: "Antrenament Cerebral Offline", st: "Cumpără caietul fizic 'What If?' cu peste 100 de puzzle-uri logice pentru gândire critică fără ecrane.", btn: "Cumpără" }
+            },
+            pl: {
+                back: "← Hub", sub: "Wybierz grę", play: "GRAJ TERAZ",
+                modes: [
+                    { title: "JEDNO PYTANIE", rules: "<div><span>🗣️</span> Porozmawiajcie o tym, co by się stało, gdyby wydarzyło się szalone zdarzenie.</div><div><span>⏳</span> Użyj timera do szybkich rund.</div>" },
+                    { title: "ŁAŃCUCH LOGICZNY", rules: "<div><span>🧐</span> Przeczytaj fakt początkowy.</div><div><span>🧠</span> Zgadnij szalone zakończenie.</div><div><span>🔗</span> Dotknij, aby odkryć ukryty łańcuch logiczny.</div>" },
+                    { title: "DEDUKCJA", rules: "<div><span>🕵️</span> Przeczytaj końcową szaloną konsekwencję.</div><div><span>🔄</span> Spróbuj odgadnąć, co ją spowodowało.</div><div><span>💡</span> Dotknij, aby odkryć oryginalne zdarzenie.</div>" },
+                ],
+                promo: { t: "Trening Mózgu Offline", st: "Kup papierowy zeszyt 'What If?' z ponad 100 łamigłówkami logicznymi, aby trenować myślenie krytyczne bez ekranów.", btn: "Kup teraz" }
+            },
+            de: {
+                back: "← Hub", sub: "Wähle dein Spiel", play: "JETZT SPIELEN",
+                modes: [
+                    { title: "EINE EINZIGE FRAGE", rules: "<div><span>🗣️</span> Sprecht darüber, was passieren würde, wenn ein verrücktes Ereignis eintritt.</div><div><span>⏳</span> Nutze den Timer für schnelle Runden!</div>" },
+                    { title: "LOGISCHE KETTE", rules: "<div><span>🧐</span> Lies die Ausgangsfrage.</div><div><span>🧠</span> Rate das verrückte Ende.</div><div><span>🔗</span> Tippe, um die versteckte logische Kette zu enthüllen.</div>" },
+                    { title: "DEDUKTION", rules: "<div><span>🕵️</span> Lies die verrückte Endfolge.</div><div><span>🔄</span> Versuche herauszufinden, was sie ausgelöst hat.</div><div><span>💡</span> Tippe, um das ursprüngliche Ereignis zu enthüllen.</div>" },
+                ],
+                promo: { t: "Offline-Gehirn-Fitness", st: "Hol dir das physische 'What If?'-Arbeitsbuch mit über 100 Logikrätseln, um kritisches Denken ohne Bildschirme zu trainieren.", btn: "Kaufen" }
+            },
+            fr: {
+                back: "← Hub", sub: "Choisis ton jeu", play: "JOUER",
+                modes: [
+                    { title: "UNE SEULE QUESTION", rules: "<div><span>🗣️</span> Discutez de ce qui se passerait si un événement fou avait lieu.</div><div><span>⏳</span> Utilisez le minuteur pour des rounds rapides !</div>" },
+                    { title: "CHAÎNE LOGIQUE", rules: "<div><span>🧐</span> Lis le fait de départ.</div><div><span>🧠</span> Devine la fin folle.</div><div><span>🔗</span> Appuie pour révéler la chaîne logique cachée !</div>" },
+                    { title: "DÉDUCTION", rules: "<div><span>🕵️</span> Lis la conséquence finale folle.</div><div><span>🔄</span> Essaie de déduire ce qui l'a causée.</div><div><span>💡</span> Appuie pour révéler l'événement original !</div>" },
+                ],
+                promo: { t: "Gymnastique Cérébrale Offline", st: "Obtenez le cahier physique 'What If?' avec plus de 100 énigmes logiques pour la pensée critique sans écrans.", btn: "Acheter" }
+            },
+            it: {
+                back: "← Hub", sub: "Scegli il tuo gioco", play: "GIOCA ORA",
+                modes: [
+                    { title: "UNA SOLA DOMANDA", rules: "<div><span>🗣️</span> Discutete cosa succederebbe se accadesse un evento folle.</div><div><span>⏳</span> Usate il timer per round veloci!</div>" },
+                    { title: "CATENA LOGICA", rules: "<div><span>🧐</span> Leggi il fatto iniziale.</div><div><span>🧠</span> Indovina il finale folle.</div><div><span>🔗</span> Tocca per rivelare la catena logica nascosta!</div>" },
+                    { title: "DEDUZIONE", rules: "<div><span>🕵️</span> Leggi la conseguenza finale folle.</div><div><span>🔄</span> Prova a dedurre cosa l'ha causata.</div><div><span>💡</span> Tocca per rivelare l'evento originale!</div>" },
+                ],
+                promo: { t: "Allenamento Cerebrale Offline", st: "Ottieni il quaderno fisico 'What If?' con oltre 100 puzzle logici per il pensiero critico senza schermi.", btn: "Acquista" }
+            },
+            sv: {
+                back: "← Hub", sub: "Välj ditt spel", play: "SPELA NU",
+                modes: [
+                    { title: "EN ENDA FRÅGA", rules: "<div><span>🗣️</span> Diskutera vad som skulle hända om en galen händelse inträffade.</div><div><span>⏳</span> Använd timern för snabba rundor!</div>" },
+                    { title: "LOGISK KEDJA", rules: "<div><span>🧐</span> Läs startfakta.</div><div><span>🧠</span> Gissa det galna slutet.</div><div><span>🔗</span> Tryck för att avslöja den dolda logiska kedjan!</div>" },
+                    { title: "DEDUKTION", rules: "<div><span>🕵️</span> Läs den galna slutkonsekvensen.</div><div><span>🔄</span> Försök lista ut vad som orsakade den.</div><div><span>💡</span> Tryck för att avslöja den ursprungliga händelsen!</div>" },
+                ],
+                promo: { t: "Hjärnträning Offline", st: "Skaffa den fysiska 'What If?'-boken med över 100 logikpussel för kritiskt tänkande utan skärmar.", btn: "Köp" }
+            },
+            fi: {
+                back: "← Hub", sub: "Valitse pelisi", play: "PELAA NYT",
+                modes: [
+                    { title: "YKSITTÄINEN KYSYMYS", rules: "<div><span>🗣️</span> Keskustelkaa, mitä tapahtuisi, jos hullu tapahtuma sattuisi.</div><div><span>⏳</span> Käytä ajastinta nopeisiin kierroksiin!</div>" },
+                    { title: "LOGIIKKAKETJU", rules: "<div><span>🧐</span> Lue aloitustieto.</div><div><span>🧠</span> Arvaa hullu loppu.</div><div><span>🔗</span> Napauta paljastaaksesi piilotetun logiikkaketjun!</div>" },
+                    { title: "PÄÄTTELY", rules: "<div><span>🕵️</span> Lue lopullinen hullu seuraus.</div><div><span>🔄</span> Yritä päätellä, mikä sen aiheutti.</div><div><span>💡</span> Napauta paljastaaksesi alkuperäisen tapahtuman!</div>" },
+                ],
+                promo: { t: "Aivojumppa Offline", st: "Hanki fyysinen 'What If?' -vihko yli 100 logiikka-arvoituksella kriittiseen ajatteluun ilman näyttöjä.", btn: "Osta" }
+            },
+            da: {
+                back: "← Hub", sub: "Vælg dit spil", play: "SPIL NU",
+                modes: [
+                    { title: "ET ENKELT SPØRGSMÅL", rules: "<div><span>🗣️</span> Diskutér, hvad der ville ske, hvis en skør begivenhed indtraf.</div><div><span>⏳</span> Brug timeren til hurtige runder!</div>" },
+                    { title: "LOGISK KÆDE", rules: "<div><span>🧐</span> Læs startfakta.</div><div><span>🧠</span> Gæt den skøre slutning.</div><div><span>🔗</span> Tryk for at afsløre den skjulte logiske kæde!</div>" },
+                    { title: "DEDUKTION", rules: "<div><span>🕵️</span> Læs den skøre slutkonsekvens.</div><div><span>🔄</span> Prøv at finde ud af, hvad der forårsagede den.</div><div><span>💡</span> Tryk for at afsløre den oprindelige begivenhed!</div>" },
+                ],
+                promo: { t: "Hjernetræning Offline", st: "Få den fysiske 'What If?'-bog med over 100 logikgåder til kritisk tænkning uden skærme.", btn: "Køb" }
+            },
+            es: {
+                back: "← Hub", sub: "Elige tu juego", play: "JUGAR AHORA",
+                modes: [
+                    { title: "UNA SOLA PREGUNTA", rules: "<div><span>🗣️</span> Habla sobre lo que pasaría si ocurriera un evento loco.</div><div><span>⏳</span> Usa el temporizador para rondas rápidas.</div>" },
+                    { title: "CADENA LÓGICA", rules: "<div><span>🧐</span> Lee el hecho inicial.</div><div><span>🧠</span> Adivina el final loco.</div><div><span>🔗</span> Toca para revelar la cadena lógica oculta.</div>" },
+                    { title: "DEDUCCIÓN", rules: "<div><span>🕵️</span> Lee la consecuencia final más loca.</div><div><span>🔄</span> Intenta deducir qué la causó.</div><div><span>💡</span> Toca para revelar el evento original.</div>" },
+                ],
+                promo: { t: "Fitness Cerebral Offline", st: "Consigue el cuaderno físico 'What If?' con más de 100 acertijos lógicos para entrenar el pensamiento crítico lejos de las pantallas.", btn: "Comprar" }
+            },
+            pt: {
+                back: "← Hub", sub: "Escolha seu jogo", play: "JOGAR AGORA",
+                modes: [
+                    { title: "UMA ÚNICA PERGUNTA", rules: "<div><span>🗣️</span> Discutam o que aconteceria se um evento maluco ocorresse.</div><div><span>⏳</span> Use o cronômetro para rodadas rápidas!</div>" },
+                    { title: "CADEIA LÓGICA", rules: "<div><span>🧐</span> Leia o fato inicial.</div><div><span>🧠</span> Adivinhe o final maluco.</div><div><span>🔗</span> Toque para revelar a cadeia lógica oculta!</div>" },
+                    { title: "DEDUÇÃO", rules: "<div><span>🕵️</span> Leia a consequência final maluca.</div><div><span>🔄</span> Tente deduzir o que a causou.</div><div><span>💡</span> Toque para revelar o evento original!</div>" },
+                ],
+                promo: { t: "Treino Cerebral Offline", st: "Obtenha o caderno físico 'What If?' com mais de 100 quebra-cabeças lógicos para pensamento crítico sem telas.", btn: "Comprar" }
+            },
+            he: {
+                back: "← Hub", sub: "בחרו את המשחק", play: "שחקו עכשיו",
+                modes: [
+                    { title: "שאלה אחת", rules: "<div><span>🗣️</span> דברו על מה היה קורה אם אירוע מטורף היה מתרחש.</div><div><span>⏳</span> השתמשו בטיימר לסיבובים מהירים!</div>" },
+                    { title: "שרשרת לוגית", rules: "<div><span>🧐</span> קראו את העובדה ההתחלתית.</div><div><span>🧠</span> נחשו את הסוף המטורף.</div><div><span>🔗</span> הקישו כדי לחשוף את השרשרת הלוגית הנסתרת!</div>" },
+                    { title: "הסקה", rules: "<div><span>🕵️</span> קראו את התוצאה הסופית המטורפת.</div><div><span>🔄</span> נסו להסיק מה גרם לה.</div><div><span>💡</span> הקישו כדי לחשוף את האירוע המקורי!</div>" },
+                ],
+                promo: { t: "אימון מוח אופליין", st: "קבלו את חוברת 'What If?' הפיזית עם יותר מ-100 חידות לוגיות לחשיבה ביקורתית בלי מסכים.", btn: "קנו" }
+            },
+            ja: {
+                back: "← Hub", sub: "ゲームを選ぶ", play: "プレイ",
+                modes: [
+                    { title: "単一の質問", rules: "<div><span>🗣️</span> クレイジーな出来事が起きたらどうなるか話し合おう。</div><div><span>⏳</span> タイマーでスピードラウンド！</div>" },
+                    { title: "論理チェーン", rules: "<div><span>🧐</span> 最初の事実を読もう。</div><div><span>🧠</span> クレイジーな結末を当てよう。</div><div><span>🔗</span> タップして隠された論理チェーンを表示！</div>" },
+                    { title: "推理", rules: "<div><span>🕵️</span> 最終的なクレイジーな結果を読もう。</div><div><span>🔄</span> 何が原因か推理しよう。</div><div><span>💡</span> タップして元の出来事を表示！</div>" },
+                ],
+                promo: { t: "オフライン脳トレ", st: "画面なしで批判的思考を鍛える100以上の論理パズル入り物理版『What If?』を手に入れよう。", btn: "購入" }
+            },
+            ar: {
+                back: "← Hub", sub: "اختر لعبتك", play: "العب الآن",
+                modes: [
+                    { title: "سؤال واحد", rules: "<div><span>🗣️</span> ناقشوا ماذا سيحدث إذا وقع حدث مجنون.</div><div><span>⏳</span> استخدموا المؤقت للجولات السريعة!</div>" },
+                    { title: "سلسلة منطقية", rules: "<div><span>🧐</span> اقرأ الحقيقة الابتدائية.</div><div><span>🧠</span> خمّن النهاية المجنونة.</div><div><span>🔗</span> اضغط لكشف السلسلة المنطقية المخفية!</div>" },
+                    { title: "استنتاج", rules: "<div><span>🕵️</span> اقرأ العاقبة النهائية المجنونة.</div><div><span>🔄</span> حاول أن تستنتج ما الذي سببها.</div><div><span>💡</span> اضغط لكشف الحدث الأصلي!</div>" },
+                ],
+                promo: { t: "تمرين الدماغ دون اتصال", st: "احصل على دفتر 'What If?' الورقي مع أكثر من 100 لغز منطقي للتفكير النقدي بدون شاشات.", btn: "اشترِ" }
+            },
+
+                };
 
         let currentLang = 'en';
         let currentMode = 0; // 1, 2, or 3
