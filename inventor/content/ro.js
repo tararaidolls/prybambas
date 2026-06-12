@@ -1,121 +1,102 @@
-// RO_JS: Pentru dezvoltatorii viitori - Baza de date de misiuni tradusă în limba Română.
+// Inventor Lab — ro (v2: structură completă ca en.js)
+const inventor_db_ro = {
+  ui: {
+    title: "Gândește ca un inventator",
+    howItWorks: "Cum funcționează",
+    start: "START",
+    menuNote: "Atinge o pictogramă de sus pentru previzualizare, apoi apasă Start.",
+    calPrompt: "Atinge orice zi pentru provocarea ta de observație!",
+    dayLabel: "Ziua",
+    example: "Vezi în viața reală",
+    realInvention: "Invenție reală",
+    searchAround: "🔍 Caută în jurul tău",
+    searchHint: "Atinge pentru a dezvălui mini-misiunea",
+    watchVideo: "▶ Vizionează exemplu de 30 sec",
+    comingSoon: "În curând",
+    toolOf: "Instrumentul {n} din 8",
+    prev: "←",
+    next: "→",
+    submitCoach: "Trimite la AI Coach",
+    writePlaceholder: "Scrie ideea ta aici...",
+    useAllItems: "Folosește toate cele 3 obiecte.",
+    inventory: "Obiectele tale",
+    hint: "Indiciu",
+    writeFirst: "Te rog, scrie mai întâi soluția ta de inventator!",
+    rookie: "ÎNCEPĂTOR",
+    agent: "AGENT",
+    elite: "ELITĂ",
+    rookieSub: "Ușor, cu indicii",
+    agentSub: "Nivel mediu",
+    eliteSub: "Greu, cu restricții",
+    constraint: "Restricție",
+    openChallenge: "Deschide provocarea",
+    unlockAfter: "Se deblochează după azi",
+    todaysLabel: "Vânătoarea de azi",
+    completed: "✓ Finalizat",
+    noPenalty: "Fără penalizare — progresul contează oricum.",
+    futureHint: "Lista completă se deblochează când ajungi la această zi.",
+    startDayHunt: "Începe vânătoarea — ziua {n}",
+    notAvailable: "Încă indisponibil",
+    previewTheme: "Temă",
+    completeLabel: "finalizat",
+    of30: "din 30",
+    weekLabel: "Săptămâna",
+    streakLabel: "zile la rând",
+    doAgain: "↺ Repetă",
+    unlocksOn: "🔒 Se deblochează mai târziu",
+    catchUp: "↺ Poți recupera oricând",
+    dayComplete: "✓ Zi finalizată — vânătoare reușită!",
+    markFound: "✓ Marchează ca găsit",
+    backToToday: "← Înapoi la vânătoarea de azi",
+    viewFullCalendar: "📅 Calendar complet (toate cele 30 de zile)",
+    questMap: "Harta questului de 30 de zile",
+    todaysObservation: "Observația de azi",
+    challengePlaceholder: "Descrie invenția: piese, materiale, cum funcționează...",
+    writeDesignFirst: "Descrie sau schițează invenția mai întâi!",
+    submitDesign: "Trimite designul la AI Coach",
+    learnTool: "↗ Află despre acest instrument TRIZ",
+    bonusChallenge: "Bonus",
+    successLooks: "Succesul arată așa",
+    paperNote: "📓 Schițează pe hârtie — apoi descrie mai jos",
+    designSteps: "Pașii designului",
+    constraints: "Restricții",
+    designBrief: "Scurtă descriere",
+    packOf: "Pachetul {n} din {total}",
+    yourInvention: "Invenția ta",
+    missionGoal: "Obiectivul evadării",
+    anotherMission: "🎲 Altă misiune",
+    hideHint: "－ Ascunde indiciul",
+    showHint: "＋ Arată indiciul",
+    escapePlan: "Planul tău de evadare",
+    missionOf: "Misiunea {n} din {total}",
+    hideSteps: "－ Ascunde pașii de design",
+    showSteps: "＋ Arată pașii de design"
+  },
+  menu: {
+    m1: "Instrumente și exemple",
+    m2: "Calendar de observație",
+    m3: "Provocări pe instrument",
+    m4: "Misiune Posibilă",
+    back: "Înapoi",
+    backMenu: "Înapoi la meniu",
+    genBtn: "Generează misiune",
+    tcTitle: "Descrierea provocării"
+  },
+  modes: [{title: "Instrumente și exemple", rules: "<div><span>🛠️</span> Învață cele 8 instrumente TRIZ folosite de inventatori reali.</div><div><span>👀</span> Vezi exemple vizuale — apoi caută-le acasă!</div>"}, {title: "Calendar de observație", rules: "<div><span>📅</span> Un quest de inginerie interactiv de 30 de zile.</div><div><span>🔍</span> O nouă vânătoare TRIZ în fiecare zi — în cameră, bucătărie sau curte.</div>"}, {title: "Provocări pe instrument", rules: "<div><span>🎯</span> Provocări de design care te obligă să folosești un instrument TRIZ.</div><div><span>🧠</span> Schițează pe hârtie, apoi trimite ideea la AI Coach!</div>"}, {title: "Misiune Posibilă", rules: "<div><span>🚀</span> 24 misiuni de evadare: Începător, Agent, Elită.</div><div><span>💡</span> Combină 3 obiecte aleatorii — inventează-ți ieșirea!</div>"}],
+  tools: [{name: "1. Segmentare", desc: "Împarte un obiect în părți independente — sau fă-l ușor de demontat și reconstruit.", realWorld: "Lego · Briceag elvețian", examples: [{"icon": "🧱", "label": "Raft modular", "note": "Adaugi sau scoți secțiuni"}, {"icon": "✏️", "label": "Pix cu mai multe părți", "note": "Capac, corp și rezervă separate"}], searchTasks: ["Ceva care se desface în piese", "Ceva pe care îl poți rearanja sau redimensiona", "Ceva mai ușor de transportat pentru că se desparte"], ex: "Raft modular sau pix cu mai multe părți."}, {name: "2. Imbricare", desc: "Pune un obiect în altul — ca păpușile rusești, dar pentru inginerie reală.", realWorld: "Căni gradate · Telescop", examples: [{"icon": "🥄", "label": "Căni gradate", "note": "Cea mică încape în cea mare"}, {"icon": "🥣", "label": "Boluri suprapuse", "note": "Aceeași formă, mai mică în interiorul celei mari"}], searchTasks: ["Două lucruri care încap unul în altul", "Ceva care economisește spațiu prin suprapunere", "Un set unde fiecare piesă are «acasă» în alta"], ex: "Căni gradate, boluri suprapuse sau obiectiv telescopic."}, {name: "3. Unificare", desc: "Combină două sarcini într-un singur obiect — sau fă doi pași simultan.", realWorld: "Briceag elvețian · Șampon + balsam", examples: [{"icon": "🖍️", "label": "Marker cu două capete", "note": "Două culori, un singur instrument"}, {"icon": "🪥", "label": "Periuță + curățător de limbă", "note": "Două sarcini, un singur mâner"}], searchTasks: ["Un instrument care face două lucruri diferite", "Ceva care a unit două obiecte separate", "Un gadget care îți economisește un pas în plus"], ex: "Marker cu două capete, periuță de dinți cu curățător de limbă."}, {name: "4. Asimetrie", desc: "Schimbă o formă simetrică într-una inegală — adesea pentru prindere, echilibru sau siguranță.", realWorld: "Mouse ergonomic · Foarfecă ondulată", examples: [{"icon": "🖱️", "label": "Mouse ergonomic", "note": "Curbat pentru a se potrivi mâinii"}, {"icon": "✂️", "label": "Foarfecă de bucătărie", "note": "Un mâner mai mare pentru forță"}], searchTasks: ["Un obiect care NU este simetric în oglindă", "Ceva modelat pentru o mână sau o parte anume", "Ceva mai greu de răsturnat datorită formei"], ex: "Mouse ergonomic sau foarfecă asimetrică de bucătărie."}, {name: "5. Feedback", desc: "Adaugă o buclă: obiectul simte ceva și se ajustează (sau îți spune să te ajustezi tu).", realWorld: "Termostat · Indicator combustibil auto", examples: [{"icon": "🌡️", "label": "Termostat", "note": "Măsoară temperatura → pornește/oprește căldura"}, {"icon": "🔋", "label": "Iconiță baterie", "note": "Arată starea → îți conectezi încărcătorul"}], searchTasks: ["Un aparat cu ecran sau lumină care arată starea", "Ceva care bipăie când o sarcină e gata", "Ceva care se pornește/oprește singur în funcție de condiții"], ex: "Termostat care reglează căldura camerei."}, {name: "6. Autoservire", desc: "Lasă obiectul să se întrețină sau să se încarce singur — mai puțină muncă pentru oameni.", realWorld: "Aspirator robot · Ghiveci cu autopolenire", examples: [{"icon": "🤖", "label": "Aspirator robot", "note": "Curăță și se întoarce la dock"}, {"icon": "🌱", "label": "Ghiveci cu autopolenire", "note": "Stochează apă, hrănește rădăcinile încet"}], searchTasks: ["Ceva care se curăță sau se încarcă singur", "Un aparat care se reumple sau resetează automat", "Ceva care face «sarcina extra» fără să fie rugat"], ex: "Aspirator robot care se întoarce singur la dock."}, {name: "7. Copiere", desc: "Înlocuiește un obiect greu, fragil sau scump cu o copie ieftină — foto, scan sau simulare.", realWorld: "Google Maps · Imprimare 3D din scan", examples: [{"icon": "📱", "label": "Hartă pe telefon", "note": "Înlocuiește harta pe hârtie + busola"}, {"icon": "📸", "label": "Foto document", "note": "Înlocuiește purtarea originalului"}], searchTasks: ["O versiune digitală a unui obiect fizic pe care îl ai", "O fotografie sau scan folosit în locul obiectului real", "Un eșantion sau demo «încearcă înainte de cumpărare»"], ex: "Hartă pe telefon în loc de model din argilă."}, {name: "8. Schimbare de culoare", desc: "Schimbă culoarea sau transparența pentru a semnala starea — cald, gata, sigur sau periculos.", realWorld: "Inel de dispoziție · Semafor", examples: [{"icon": "🕶️", "label": "Ochelari fotochromici", "note": "Se întunecă la soare"}, {"icon": "🚦", "label": "Semafor", "note": "Culoarea = regulă de acțiune"}], searchTasks: ["Ceva care își schimbă culoarea la cald sau rece", "O etichetă sau autocolant care semnalează «gata» sau «atenție»", "Ceva transparent care devine opac (sau invers)"], ex: "Ochelari fotochromici care se întunecă la soare."}],
+  promo: {
+    t: "Îți place jocul?",
+    st: "Ia workbook-ul fizic «Think Like an Inventor» de pe Amazon!",
+    btn: "Cumpără",
+    backHub: "← Hub"
+  },
+  calendarDays: [{day: 1, week: 1, weekTheme: "Imbricare", title: "Vânătoare Imbricare", tool: "Imbricare", hunt: "Găsește 2 lucruri unde unul încape în altul.", hint: "Caută în bucătărie, cutia de jucării sau trusa de scule.", checklist: ["Un obiect încape în altul", "Desenează sau numește ambele obiecte", "Bonus: ce spațiu a economisit imbricarea?"], unlock: "Pachet Imbricare"}, {day: 2, week: 1, weekTheme: "Imbricare", title: "Vânătoare Segmentare", tool: "Segmentare", hunt: "Găsește ceva care se desface în piese.", hint: "De ce a împărțit inventatorul obiectul?", checklist: ["Ceva cu părți separate", "Explică de ce ajută segmentarea", "Bonus: poți reasambla altfel?"], unlock: "Pachet Segmentare"}, {day: 3, week: 1, weekTheme: "Imbricare", title: "Vânătoare Asimetrie", tool: "Asimetrie", hunt: "Găsește un obiect care NU este simetric.", hint: "Foarfecele, cănile și mouse-urile sunt locuri bune de căutat.", checklist: ["Un obiect asimetric", "Ghicește de ce forma e inegală", "Bonus: ar fi mai rău dacă ar fi simetric?"], unlock: "Pachet Asimetrie"}, {day: 4, week: 1, weekTheme: "Imbricare", title: "Vânătoare Unificare", tool: "Unificare", hunt: "Găsește un instrument care face două sarcini într-unul.", hint: "Gadgeturile de bucătărie sunt pline de invenții unite.", checklist: ["Un instrument 2-în-1", "Numește ambele sarcini", "Bonus: ce ai uni în continuare?"], unlock: "Pachet Unificare"}, {day: 5, week: 1, weekTheme: "Imbricare", title: "Vânătoare Schimbare de culoare", tool: "Schimbare de culoare", hunt: "Găsește ceva care își schimbă culoarea la cald, rece sau lumină.", hint: "Ce încearcă să-ți spună?", checklist: ["Un obiect care își schimbă culoarea", "Ce declanșează schimbarea?", "Bonus: schițează înainte și după"], unlock: "Provocări pe instrument"}, {day: 6, week: 1, weekTheme: "Imbricare", title: "Vânătoare Feedback", tool: "Feedback", hunt: "Găsește un aparat care arată starea pe ecran, lumină sau sunet.", hint: "Ce măsoară sau ce îți spune?", checklist: ["Un aparat cu feedback", "Ce se întâmplă când starea se schimbă?", "Bonus: cum ar fi fără semnal?"], unlock: "Provocări pe instrument"}, {day: 7, week: 1, weekTheme: "Imbricare", title: "Vânătoare Autoservire", tool: "Autoservire", hunt: "Găsește ceva care se curăță, se încarcă sau se reumple singur.", hint: "Aspiratoarele robot și ghiveciile cu autopolenire contează!", checklist: ["Un obiect cu autoservire", "Ce sarcină extra face singur?", "Bonus: ce sarcină plictisitoare a eliminat?"], unlock: "Provocări pe instrument"}, {day: 8, week: 1, weekTheme: "Imbricare", title: "Vânătoare Copiere", tool: "Copiere", hunt: "Găsește o copie digitală a ceva fizic.", hint: "Fotografiile, scanările și aplicațiile contează.", checklist: ["O copie în locul unui obiect fizic", "Ce a înlocuit copia?", "Bonus: când e copia mai bună decât originalul?"], unlock: "Provocări pe instrument"}, {day: 9, week: 2, weekTheme: "Segmentare", title: "Vânătoare Imbricare", tool: "Imbricare", hunt: "Găsește 2 lucruri unde unul încape în altul.", hint: "Caută în bucătărie, cutia de jucării sau trusa de scule.", checklist: ["Un obiect încape în altul", "Desenează sau numește ambele obiecte", "Bonus: ce spațiu a economisit imbricarea?"], unlock: "Pachet Imbricare"}, {day: 10, week: 2, weekTheme: "Segmentare", title: "Vânătoare Segmentare", tool: "Segmentare", hunt: "Găsește ceva care se desface în piese.", hint: "De ce a împărțit inventatorul obiectul?", checklist: ["Ceva cu părți separate", "Explică de ce ajută segmentarea", "Bonus: poți reasambla altfel?"], unlock: "Pachet Segmentare"}, {day: 11, week: 2, weekTheme: "Segmentare", title: "Vânătoare Asimetrie", tool: "Asimetrie", hunt: "Găsește un obiect care NU este simetric.", hint: "Foarfecele, cănile și mouse-urile sunt locuri bune de căutat.", checklist: ["Un obiect asimetric", "Ghicește de ce forma e inegală", "Bonus: ar fi mai rău dacă ar fi simetric?"], unlock: "Pachet Asimetrie"}, {day: 12, week: 2, weekTheme: "Segmentare", title: "Vânătoare Unificare", tool: "Unificare", hunt: "Găsește un instrument care face două sarcini într-unul.", hint: "Gadgeturile de bucătărie sunt pline de invenții unite.", checklist: ["Un instrument 2-în-1", "Numește ambele sarcini", "Bonus: ce ai uni în continuare?"], unlock: "Pachet Unificare"}, {day: 13, week: 2, weekTheme: "Segmentare", title: "Vânătoare Schimbare de culoare", tool: "Schimbare de culoare", hunt: "Găsește ceva care își schimbă culoarea la cald, rece sau lumină.", hint: "Ce încearcă să-ți spună?", checklist: ["Un obiect care își schimbă culoarea", "Ce declanșează schimbarea?", "Bonus: schițează înainte și după"], unlock: "Provocări pe instrument"}, {day: 14, week: 2, weekTheme: "Segmentare", title: "Vânătoare Feedback", tool: "Feedback", hunt: "Găsește un aparat care arată starea pe ecran, lumină sau sunet.", hint: "Ce măsoară sau ce îți spune?", checklist: ["Un aparat cu feedback", "Ce se întâmplă când starea se schimbă?", "Bonus: cum ar fi fără semnal?"], unlock: "Provocări pe instrument"}, {day: 15, week: 2, weekTheme: "Segmentare", title: "Vânătoare Autoservire", tool: "Autoservire", hunt: "Găsește ceva care se curăță, se încarcă sau se reumple singur.", hint: "Aspiratoarele robot și ghiveciile cu autopolenire contează!", checklist: ["Un obiect cu autoservire", "Ce sarcină extra face singur?", "Bonus: ce sarcină plictisitoare a eliminat?"], unlock: "Provocări pe instrument"}, {day: 16, week: 2, weekTheme: "Segmentare", title: "Vânătoare Copiere", tool: "Copiere", hunt: "Găsește o copie digitală a ceva fizic.", hint: "Fotografiile, scanările și aplicațiile contează.", checklist: ["O copie în locul unui obiect fizic", "Ce a înlocuit copia?", "Bonus: când e copia mai bună decât originalul?"], unlock: "Provocări pe instrument"}, {day: 17, week: 3, weekTheme: "Unificare și asimetrie", title: "Vânătoare Imbricare", tool: "Imbricare", hunt: "Găsește 2 lucruri unde unul încape în altul.", hint: "Caută în bucătărie, cutia de jucării sau trusa de scule.", checklist: ["Un obiect încape în altul", "Desenează sau numește ambele obiecte", "Bonus: ce spațiu a economisit imbricarea?"], unlock: "Pachet Imbricare"}, {day: 18, week: 3, weekTheme: "Unificare și asimetrie", title: "Vânătoare Segmentare", tool: "Segmentare", hunt: "Găsește ceva care se desface în piese.", hint: "De ce a împărțit inventatorul obiectul?", checklist: ["Ceva cu părți separate", "Explică de ce ajută segmentarea", "Bonus: poți reasambla altfel?"], unlock: "Pachet Segmentare"}, {day: 19, week: 3, weekTheme: "Unificare și asimetrie", title: "Vânătoare Asimetrie", tool: "Asimetrie", hunt: "Găsește un obiect care NU este simetric.", hint: "Foarfecele, cănile și mouse-urile sunt locuri bune de căutat.", checklist: ["Un obiect asimetric", "Ghicește de ce forma e inegală", "Bonus: ar fi mai rău dacă ar fi simetric?"], unlock: "Pachet Asimetrie"}, {day: 20, week: 3, weekTheme: "Unificare și asimetrie", title: "Vânătoare Unificare", tool: "Unificare", hunt: "Găsește un instrument care face două sarcini într-unul.", hint: "Gadgeturile de bucătărie sunt pline de invenții unite.", checklist: ["Un instrument 2-în-1", "Numește ambele sarcini", "Bonus: ce ai uni în continuare?"], unlock: "Pachet Unificare"}, {day: 21, week: 3, weekTheme: "Unificare și asimetrie", title: "Vânătoare Schimbare de culoare", tool: "Schimbare de culoare", hunt: "Găsește ceva care își schimbă culoarea la cald, rece sau lumină.", hint: "Ce încearcă să-ți spună?", checklist: ["Un obiect care își schimbă culoarea", "Ce declanșează schimbarea?", "Bonus: schițează înainte și după"], unlock: "Provocări pe instrument"}, {day: 22, week: 3, weekTheme: "Unificare și asimetrie", title: "Vânătoare Feedback", tool: "Feedback", hunt: "Găsește un aparat care arată starea pe ecran, lumină sau sunet.", hint: "Ce măsoară sau ce îți spune?", checklist: ["Un aparat cu feedback", "Ce se întâmplă când starea se schimbă?", "Bonus: cum ar fi fără semnal?"], unlock: "Provocări pe instrument"}, {day: 23, week: 3, weekTheme: "Unificare și asimetrie", title: "Vânătoare Autoservire", tool: "Autoservire", hunt: "Găsește ceva care se curăță, se încarcă sau se reumple singur.", hint: "Aspiratoarele robot și ghiveciile cu autopolenire contează!", checklist: ["Un obiect cu autoservire", "Ce sarcină extra face singur?", "Bonus: ce sarcină plictisitoare a eliminat?"], unlock: "Provocări pe instrument"}, {day: 24, week: 3, weekTheme: "Unificare și asimetrie", title: "Vânătoare Copiere", tool: "Copiere", hunt: "Găsește o copie digitală a ceva fizic.", hint: "Fotografiile, scanările și aplicațiile contează.", checklist: ["O copie în locul unui obiect fizic", "Ce a înlocuit copia?", "Bonus: când e copia mai bună decât originalul?"], unlock: "Provocări pe instrument"}, {day: 25, week: 4, weekTheme: "Feedback și invenții", title: "Vânătoare Imbricare", tool: "Imbricare", hunt: "Găsește 2 lucruri unde unul încape în altul.", hint: "Caută în bucătărie, cutia de jucării sau trusa de scule.", checklist: ["Un obiect încape în altul", "Desenează sau numește ambele obiecte", "Bonus: ce spațiu a economisit imbricarea?"], unlock: "Pachet Imbricare"}, {day: 26, week: 4, weekTheme: "Feedback și invenții", title: "Vânătoare Segmentare", tool: "Segmentare", hunt: "Găsește ceva care se desface în piese.", hint: "De ce a împărțit inventatorul obiectul?", checklist: ["Ceva cu părți separate", "Explică de ce ajută segmentarea", "Bonus: poți reasambla altfel?"], unlock: "Pachet Segmentare"}, {day: 27, week: 4, weekTheme: "Feedback și invenții", title: "Vânătoare Asimetrie", tool: "Asimetrie", hunt: "Găsește un obiect care NU este simetric.", hint: "Foarfecele, cănile și mouse-urile sunt locuri bune de căutat.", checklist: ["Un obiect asimetric", "Ghicește de ce forma e inegală", "Bonus: ar fi mai rău dacă ar fi simetric?"], unlock: "Pachet Asimetrie"}, {day: 28, week: 4, weekTheme: "Feedback și invenții", title: "Vânătoare Unificare", tool: "Unificare", hunt: "Găsește un instrument care face două sarcini într-unul.", hint: "Gadgeturile de bucătărie sunt pline de invenții unite.", checklist: ["Un instrument 2-în-1", "Numește ambele sarcini", "Bonus: ce ai uni în continuare?"], unlock: "Pachet Unificare"}, {day: 29, week: 4, weekTheme: "Feedback și invenții", title: "Vânătoare Schimbare de culoare", tool: "Schimbare de culoare", hunt: "Găsește ceva care își schimbă culoarea la cald, rece sau lumină.", hint: "Ce încearcă să-ți spună?", checklist: ["Un obiect care își schimbă culoarea", "Ce declanșează schimbarea?", "Bonus: schițează înainte și după"], unlock: "Provocări pe instrument"}, {day: 30, week: 4, weekTheme: "Feedback și invenții", title: "Vânătoare Feedback", tool: "Feedback", hunt: "Găsește un aparat care arată starea pe ecran, lumină sau sunet.", hint: "Ce măsoară sau ce îți spune?", checklist: ["Un aparat cu feedback", "Ce se întâmplă când starea se schimbă?", "Bonus: cum ar fi fără semnal?"], unlock: "Provocări pe instrument"}],
+  calendar: ["🔍 Vânătoare Imbricare: găsește 3 lucruri acasă unde un obiect încape în altul. Desenează sau fotografiază!", "🔍 Vânătoare Segmentare: găsește ceva care se desface pentru a economisi spațiu. De ce a împărțit inventatorul obiectul?", "🔍 Vânătoare Asimetrie: găsește un obiect din cameră care NU este simetric. Ce problemă rezolvă forma?", "🔍 Vânătoare Unificare: găsește un instrument de bucătărie 2-în-1. Ce ai mai uni?", "🔍 Vânătoare Schimbare de culoare: găsește ceva care își schimbă culoarea la temperatură sau lumină. Ce semnalează?", "🔍 Vânătoare Feedback: găsește un aparat cu stare pe ecran, lumină sau sunet. Ce măsoară?", "🔍 Vânătoare Segmentare: găsește mobilier modular sau jucării pe care le poți rearanja. Câte configurații poți face?", "🔍 Vânătoare Copiere: găsește o copie digitală a ceva fizic (foto, scan, aplicație). Ce a înlocuit copia?"],
+  toolChallenges: [{name: "Pachet Imbricare", tool: "Imbricare", icon: "🍱", brief: "Proiectează un lunchbox școlar unde fiecare farfurie, cană și tacâm se încadrează unul în altul — și tot teancul încape într-o singură mână.", constraints: ["Minim 3 straturi imbricate", "Încape în buzunarul rucsacului copilului", "Fără piese mici care se pierd"], steps: ["Desenează 3 straturi imbricate de sus", "Etichetează fiecare strat (farfurie, cană, furculiță...)", "Numește materialul — de ce e ușor?"], success: "Un părinte poate pregăti prânzul în mai puțin de 10 secunde, fără piese pierdute.", bonus: "Adaugă un compartiment ascuns pentru desert, care se deschide din lateral.", learnToolIndex: 1, task: "Proiectează un lunchbox școlar unde fiecare farfurie, cană și tacâm se încadrează unul în altul — și tot teancul încape într-o singură mână."}, {name: "Pachet Segmentare", tool: "Segmentare", icon: "🛴", brief: "Reinventează un trotinetă pentru copii astfel încât să se desfacă în 3 părți în mai puțin de 60 de secunde și să încapă într-un rucsac standard.", constraints: ["Exact 3 părți detașabile", "Reasamblare fără unelte", "Sigur pentru 7+"], steps: ["Schițează trotineta asamblată ȘI desfăcută", "Inventează un conector (clips, răsucire, magnet?)", "Arată unde merge fiecare parte în rucsac"], success: "Un copil de 9 ani o poate plia singur înainte de clopoțel.", bonus: "O parte devine riglă sau muchie dreaptă.", learnToolIndex: 0, task: "Reinventează un trotinetă pentru copii astfel încât să se desfacă în 3 părți în mai puțin de 60 de secunde și să încapă într-un rucsac standard."}, {name: "Pachet Unificare", tool: "Unificare", icon: "🖊️", brief: "Proiectează UN singur gadget de birou care unește suport de creioane, stand de încărcare telefon și lampă de citit — fără să devină voluminos.", constraints: ["3 funcții, 1 amprentă pe birou", "Încape într-un colț de 30 cm", "Gestionare cabluri inclusă"], steps: ["Enumeră ce ai unit — și ce ai eliminat", "Schiță de sus cu etichete", "Explică UN lucru care îl face compact"], success: "Un elev elimină dezordinea de pe birou înlocuind 3 obiecte cu unul singur.", bonus: "Adaugă o a 4-a micro-funcție (suport bandă adezivă, cronometru...) fără să mărești dimensiunea.", learnToolIndex: 2, task: "Proiectează UN singur gadget de birou care unește suport de creioane, stand de încărcare telefon și lampă de citit — fără să devină voluminos."}, {name: "Pachet Asimetrie", tool: "Asimetrie", icon: "☕", brief: "Proiectează o cană pentru copii foarte greu de răsturnat — folosind o bază sau mâner asimetric.", constraints: ["Capacitate 200 ml", "Asimetria e trucul principal", "Fără colțuri ascuțite"], steps: ["Schiță laterală cu bază sau mâner inegal", "Marchează centrul de greutate — unde e mai greu?", "Explică într-o propoziție de ce nu se răstoarnă"], success: "Cana rezistă la o lovitură ușoară de masă fără să se verse.", bonus: "Fă-o distractivă — formă de animal sau față, dar stabilă.", learnToolIndex: 3, task: "Proiectează o cană pentru copii foarte greu de răsturnat — folosind o bază sau mâner asimetric."}, {name: "Pachet Feedback", tool: "Feedback", icon: "🌡️", brief: "Proiectează un gadget de cameră care arată copiilor când e timpul pentru o pauză de la ecran — cu lumină, sunet sau un afișaj simplu.", constraints: ["Vizibil de la 3 metri", "Fără telefon", "Copilul poate reseta singur"], steps: ["Desenează semnalul (culoare, iconiță, model sonor)", "Ce măsoară? (timp, postură, lumină...)", "Ce se întâmplă dacă îl ignori?"], success: "Un copil știe «timp de pauză» fără să fie certat de părinți.", bonus: "Adaugă un semnal pozitiv când se întoarce la timp.", learnToolIndex: 4, task: "Proiectează un gadget de cameră care arată copiilor când e timpul pentru o pauză de la ecran — cu lumină, sunet sau un afișaj simplu."}, {name: "Pachet Autoservire", tool: "Autoservire", icon: "🤖", brief: "Proiectează un rucsac care se «resetează» după școală — încarcă dispozitivele, se aerisește și își organizează conținutul.", constraints: ["Minim 2 acțiuni fără om", "Doar tehnologie casnică realistă", "Fără magie — explică mecanismul"], steps: ["Enumeră ce face rucsacul FĂRĂ ajutor", "Schiță cârlige, ventilație sau dock de încărcare", "Ce face copilul încă manual?"], success: "Pregătirea de luni dimineață durează jumătate din timpul obișnuit.", bonus: "Inventează un «dock» pe care rucsacul se pune noaptea.", learnToolIndex: 5, task: "Proiectează un rucsac care se «resetează» după școală — încarcă dispozitivele, se aerisește și își organizează conținutul."}, {name: "Pachet Copiere", tool: "Copiere", icon: "📱", brief: "Înlocuiește un obiect fizic greu pe care copiii îl poartă zilnic cu o copie digitală inteligentă — dar doar dacă copia e cu adevărat mai bună.", constraints: ["Numește obiectul real înlocuit", "Copia funcționează uneori offline", "Explică ce PIERZI vs ce CÂȘTIGI"], steps: ["Înainte/după: fizic vs digital", "Ce arată copia ce nu poate originalul?", "Când ai nevoie totuși de original?"], success: "Rucsacul e mai ușor ȘI nimic important nu se pierde.", bonus: "Proiectează «copia de rezervă pe hârtie» când se descarcă bateria.", learnToolIndex: 6, task: "Înlocuiește un obiect fizic greu pe care copiii îl poartă zilnic cu o copie digitală inteligentă — dar doar dacă copia e cu adevărat mai bună."}, {name: "Pachet Schimbare de culoare", tool: "Schimbare de culoare", icon: "🚦", brief: "Proiectează un capac de lunchbox (sau sticlă) care își schimbă culoarea pentru a semnala temperatura sau «mănâncă-mă primul».", constraints: ["Schimbarea de culoare evidentă pentru copil", "Fără materiale toxice", "Funcționează fără aplicație"], steps: ["Desenează starea închisă ȘI culoarea de «avertizare»", "Ce declanșează schimbarea? (cald, timp, UV...)", "Ce înseamnă fiecare culoare?"], success: "Părintele și copilul înțeleg semnalul instant.", bonus: "Adaugă un autocolant-legendă de culori pe care copilul îl poate personaliza.", learnToolIndex: 7, task: "Proiectează un capac de lunchbox (sau sticlă) care își schimbă culoarea pentru a semnala temperatura sau «mănâncă-mă primul»."}]
+};
+
 const inventor_missions_ro = {
-    rookie: [
-        {
-            scenario: "Trebuie să aduci apă de la râu în tabără, dar nu ai o găleată.",
-            inventory: "Un tricou, O pungă de plastic găurită, Bandă adezivă (Duct tape)",
-            hint: "Poți combina două obiecte pentru a face unul impermeabil?"
-        },
-        {
-            scenario: "Câinele tău a rămas blocat pe o ramură înaltă a unui copac și îi este prea frică să sară.",
-            inventory: "Un balon cu heliu, O frânghie lungă, Un borcan de unt de arahide",
-            hint: "Ce îi place cel mai mult câinelui tău? Îl poți ademeni?"
-        },
-        {
-            scenario: "Ești încuiat într-o cameră. Cheia este pe podea, pe cealaltă parte a ușii.",
-            inventory: "Un ziar, Un creion, O bucată de gumă de mestecat",
-            hint: "Poți împinge ceva plat pe sub ușa?"
-        },
-        {
-            scenario: "Trebuie să comunici cu un prieten aflat la 500 de metri distanță, dar telefonul tău este descărcat.",
-            inventory: "O oglindă, Un fluier, O eșarfă roșie aprinsă",
-            hint: "Gândește-te la simțuri: văz sau auz?"
-        },
-        {
-            scenario: "Plouă torențial și trebuie să menții focul de tabără aprins.",
-            inventory: "Un sac mare de gunoi, 4 bețe de lemn, Sfoară",
-            hint: "Poți construi un adăpost chiar deasupra focului?"
-        },
-        {
-            scenario: "Ai scăpat inelul într-o fisură foarte îngustă între două stânci grele.",
-            inventory: "Gumă de mestecat, Un băț lung, O lanternă",
-            hint: "Ce-ar fi dacă ai face unul dintre obiecte lipicios?"
-        },
-        {
-            scenario: "Trebuie să traversezi o zonă mare cu noroi adânc fără să te scufunzi.",
-            inventory: "Două bucăți mari de placaj, O frânghie, Rucsacul tău",
-            hint: "Gândește-te la rachetele de zăpadă - cum îți distribui greutatea pe o suprafață mare?"
-        },
-        {
-            scenario: "O pasăre a intrat în casă și nu vrea să mai iasă prin fereastra deschisă.",
-            inventory: "Un cearșaf, O lampă de birou, Un bol cu fructe",
-            hint: "Păsările sunt atrase de lumină și se tem de siluetele mari în mișcare."
-        }
-    ],
-    agent: [
-        {
-            scenario: "Trebuie să traversezi un râu plin de crocodili. Nu există pod.",
-            inventory: "5 butoaie goale din plastic, O plasă de pescuit puternică, Un băț lung"
-        },
-        {
-            scenario: "Este ger afară. Ai mare nevoie de foc, dar chibriturile sunt complet ude.",
-            inventory: "O baterie, Lană/buret de sârmă (steel wool), Frunze uscate"
-        },
-        {
-            scenario: "Te-ai rătăcit în deșert. Trebuie să semnalizezi unui avion de salvare care zboară departe.",
-            inventory: "O oglindă spartă, Ruj roșu aprins, Un prosop alb"
-        },
-        {
-            scenario: "Un bolovan greu a blocat intrarea într-o peșteră. Nu îl poți ridica.",
-            inventory: "O țeavă metalică lungă, Un cric auto, O piatră plată"
-        },
-        {
-            scenario: "Barca ta are o gaură și se scufundă lent la 1 km de mal.",
-            inventory: "Un săpun de casă, Un tricou, O sticlă goală de apă"
-        },
-        {
-            scenario: "Trebuie să te urci pe un perete neted de beton de 3 metri, fără scară.",
-            inventory: "Două curele, Un rucsac greu, Un prieten alături"
-        },
-        {
-            scenario: "Un roi de albine sălbatice a blocat singura potecă către mașina ta.",
-            inventory: "O fumigenă (flare), O pelerină de ploaie, Pantofi de alergat"
-        },
-        {
-            scenario: "Trebuie să păstrezi medicamentele reci timp de 8 ore fără electricitate.",
-            inventory: "Un vas de lut, Nisip, Apă"
-        }
-    ],
-    elite: [
-        {
-            scenario: "Ai naufragiat pe o insulă pustie. Construiește un adăpost înainte de lăsarea nopții, folosind doar ce a adus marea la mal.",
-            inventory: "O portieră de mașină, 5 metri de frânghie, O parașută ruptă",
-            constraint: "Pământul este doar stâncă dură - nu poți săpa sau înfige țăruși."
-        },
-        {
-            scenario: "Ești blocat într-un lift între etaje. Ușile s-au deschis doar 10 cm.",
-            inventory: "O curea, Un smartphone (fără semnal), O monedă",
-            constraint: "NU încerca să ieși singur. Trimite un semnal de ajutor."
-        },
-        {
-            scenario: "Apele inundațiilor cresc rapid. Protejează documentele importante dintr-o cameră de la parter.",
-            inventory: "Saci mari de gunoi, Bandă de ambalat, O bibliotecă",
-            constraint: "Ai la dispoziție doar 5 minute înainte de inundarea completă."
-        },
-        {
-            scenario: "Viscol puternic. Mașina s-a stricat la 2 km de cel mai apropiat oraș.",
-            inventory: "Un covoraș auto, O sticlă de ulei vegetal, Un ziar",
-            constraint: "Vântul suflă cu o viteză de 60 km/h direct în față."
-        },
-        {
-            scenario: "O jucărie a căzut într-o țeavă îngustă (2m adâncime, 8cm lățime), cimentată în pământ.",
-            inventory: "Un furtun de grădină, Bandă adezivă rezistentă, Un umeraș metalic",
-            constraint: "Jucăria este rotundă și netedă - este imposibil să o agăți cu un cârlig."
-        },
-        {
-            scenario: "Transportă un pește viu de la râu la un acvariu aflat la 3 km distanță. Nu ai găleată sau pungă.",
-            inventory: "Un pepene verde mare, Un cuțit, Cizma ta",
-            constraint: "Peștele trebuie să rămână viu (are nevoie de apă și oxigen)."
-        },
-        {
-            scenario: "Podul din față este distrus. O prăpastie de 3 metri lățime. Trebuie să treci cu o geantă grea.",
-            inventory: "Două scânduri de lemn (de 2.5 m fiecare), O frânghie, O piatră mare",
-            constraint: "Fiecare scândură în parte este prea scurtă pentru a trece prăpastia."
-        },
-        {
-            scenario: "Gătește o masă caldă pe teren, dar singura sursă de căldură este soarele.",
-            inventory: "Folie de aluminiu, O cutie de carton, O pungă de plastic transparentă",
-            constraint: "Temperatura trebuie să atingă cel puțin 70°C."
-        }
-    ]
+  rookie: [{scenario: "Trebuie să aduci apă de la râu în tabără, dar nu ai o găleată.", inventory: "Un tricou, O pungă de plastic găurită, Bandă adezivă (Duct tape)", hint: "Poți combina două obiecte pentru a face unul impermeabil?"}, {scenario: "Câinele tău a rămas blocat pe o ramură înaltă a unui copac și îi este prea frică să sară.", inventory: "Un balon cu heliu, O frânghie lungă, Un borcan de unt de arahide", hint: "Ce îi place cel mai mult câinelui tău? Îl poți ademeni?"}, {scenario: "Ești încuiat într-o cameră. Cheia este pe podea, pe cealaltă parte a ușii.", inventory: "Un ziar, Un creion, O bucată de gumă de mestecat", hint: "Poți împinge ceva plat pe sub ușa?"}, {scenario: "Trebuie să comunici cu un prieten aflat la 500 de metri distanță, dar telefonul tău este descărcat.", inventory: "O oglindă, Un fluier, O eșarfă roșie aprinsă", hint: "Gândește-te la simțuri: văz sau auz?"}, {scenario: "Plouă torențial și trebuie să menții focul de tabără aprins.", inventory: "Un sac mare de gunoi, 4 bețe de lemn, Sfoară", hint: "Poți construi un adăpost chiar deasupra focului?"}, {scenario: "Ai scăpat inelul într-o fisură foarte îngustă între două stânci grele.", inventory: "Gumă de mestecat, Un băț lung, O lanternă", hint: "Ce-ar fi dacă ai face unul dintre obiecte lipicios?"}, {scenario: "Trebuie să traversezi o zonă mare cu noroi adânc fără să te scufunzi.", inventory: "Două bucăți mari de placaj, O frânghie, Rucsacul tău", hint: "Gândește-te la rachetele de zăpadă - cum îți distribui greutatea pe o suprafață mare?"}, {scenario: "O pasăre a intrat în casă și nu vrea să mai iasă prin fereastra deschisă.", inventory: "Un cearșaf, O lampă de birou, Un bol cu fructe", hint: "Păsările sunt atrase de lumină și se tem de siluetele mari în mișcare."}],
+  agent: [{scenario: "Trebuie să traversezi un râu plin de crocodili. Nu există pod.", inventory: "5 butoaie goale din plastic, O plasă de pescuit puternică, Un băț lung"}, {scenario: "Este ger afară. Ai mare nevoie de foc, dar chibriturile sunt complet ude.", inventory: "O baterie, Lană/buret de sârmă (steel wool), Frunze uscate"}, {scenario: "Te-ai rătăcit în deșert. Trebuie să semnalizezi unui avion de salvare care zboară departe.", inventory: "O oglindă spartă, Ruj roșu aprins, Un prosop alb"}, {scenario: "Un bolovan greu a blocat intrarea într-o peșteră. Nu îl poți ridica.", inventory: "O țeavă metalică lungă, Un cric auto, O piatră plată"}, {scenario: "Barca ta are o gaură și se scufundă lent la 1 km de mal.", inventory: "Un săpun de casă, Un tricou, O sticlă goală de apă"}, {scenario: "Trebuie să te urci pe un perete neted de beton de 3 metri, fără scară.", inventory: "Două curele, Un rucsac greu, Un prieten alături"}, {scenario: "Un roi de albine sălbatice a blocat singura potecă către mașina ta.", inventory: "O fumigenă (flare), O pelerină de ploaie, Pantofi de alergat"}, {scenario: "Trebuie să păstrezi medicamentele reci timp de 8 ore fără electricitate.", inventory: "Un vas de lut, Nisip, Apă"}],
+  elite: [{scenario: "Ai naufragiat pe o insulă pustie. Construiește un adăpost înainte de lăsarea nopții, folosind doar ce a adus marea la mal.", inventory: "O portieră de mașină, 5 metri de frânghie, O parașută ruptă", constraint: "Pământul este doar stâncă dură - nu poți săpa sau înfige țăruși."}, {scenario: "Ești blocat într-un lift între etaje. Ușile s-au deschis doar 10 cm.", inventory: "O curea, Un smartphone (fără semnal), O monedă", constraint: "NU încerca să ieși singur. Trimite un semnal de ajutor."}, {scenario: "Apele inundațiilor cresc rapid. Protejează documentele importante dintr-o cameră de la parter.", inventory: "Saci mari de gunoi, Bandă de ambalat, O bibliotecă", constraint: "Ai la dispoziție doar 5 minute înainte de inundarea completă."}, {scenario: "Viscol puternic. Mașina s-a stricat la 2 km de cel mai apropiat oraș.", inventory: "Un covoraș auto, O sticlă de ulei vegetal, Un ziar", constraint: "Vântul suflă cu o viteză de 60 km/h direct în față."}, {scenario: "O jucărie a căzut într-o țeavă îngustă (2m adâncime, 8cm lățime), cimentată în pământ.", inventory: "Un furtun de grădină, Bandă adezivă rezistentă, Un umeraș metalic", constraint: "Jucăria este rotundă și netedă - este imposibil să o agăți cu un cârlig."}, {scenario: "Transportă un pește viu de la râu la un acvariu aflat la 3 km distanță. Nu ai găleată sau pungă.", inventory: "Un pepene verde mare, Un cuțit, Cizma ta", constraint: "Peștele trebuie să rămână viu (are nevoie de apă și oxigen)."}, {scenario: "Podul din față este distrus. O prăpastie de 3 metri lățime. Trebuie să treci cu o geantă grea.", inventory: "Două scânduri de lemn (de 2.5 m fiecare), O frânghie, O piatră mare", constraint: "Fiecare scândură în parte este prea scurtă pentru a trece prăpastia."}, {scenario: "Gătește o masă caldă pe teren, dar singura sursă de căldură este soarele.", inventory: "Folie de aluminiu, O cutie de carton, O pungă de plastic transparentă", constraint: "Temperatura trebuie să atingă cel puțin 70°C."}]
 };
