@@ -1,0 +1,38 @@
+# Prybambas
+
+> Free STEM education hub for curious kids ages 5–14. No login required.
+
+## What it is
+
+Prybambas (https://prybambas.com) is a free web app and PWA with three learning spaces:
+
+- **What If?** — logic and cause-and-effect game for kids. Modes: single round, logic chain, deduction.
+- **Inventor Lab** — TRIZ-inspired creative thinking: tools, 30-day calendar, challenges, missions (Rookie / Agent / Elite).
+- **AI Coach** — language practice companion (links to coach-ai hub).
+
+## Who it's for
+
+- Children ages 5–14
+- Parents, homeschoolers, teachers
+- Multilingual families (11+ languages)
+
+## Languages
+
+English, Ukrainian, Polish, Spanish, German, French, Romanian, Italian, Portuguese, Swedish, and more.
+
+## Key URLs
+
+- Home: https://prybambas.com/
+- What If: https://prybambas.com/what-if/
+- Inventor Lab: https://prybambas.com/inventor/
+- AI Coach: https://prybambas.com/coach/
+- About: https://prybambas.com/about.html
+- FAQ: https://prybambas.com/faq.html
+
+## Author / Brand
+
+Kids Skill Academy — educational content for tired but inspired parents.
+
+## License
+
+Educational content by Kids Skill Academy. Free to use in browser.

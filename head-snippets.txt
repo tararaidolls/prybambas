@@ -1,0 +1,33 @@
+=== PASTE INTO index.html (hub) inside <head> ===
+
+<meta name="description" content="Prybambas — free STEM games for kids ages 5–14. What If logic puzzles, Inventor Lab (TRIZ), AI Coach. 11+ languages. No login.">
+<link rel="canonical" href="https://prybambas.com/">
+<meta property="og:title" content="Prybambas — Free STEM Games for Curious Kids">
+<meta property="og:description" content="What If logic game, Inventor Lab, AI Coach. Free multilingual PWA for kids 5–14.">
+<meta property="og:url" content="https://prybambas.com/">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://prybambas.com/logo.png">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Prybambas","url":"https://prybambas.com/","applicationCategory":"EducationalApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"audience":{"@type":"Audience","audienceType":"Children ages 5-14"},"description":"Free STEM hub: What If logic game, Inventor Lab TRIZ thinking, AI Coach language practice. 11+ languages."}
+</script>
+
+
+=== PASTE INTO what-if/index.html inside <head> ===
+
+<meta name="description" content="What If? — free logic game for kids. Cause-and-effect puzzles, logic chains, deduction mode. Ages 5–14. Multilingual.">
+<link rel="canonical" href="https://prybambas.com/what-if/">
+<meta property="og:title" content="What If? — Logic Game for Kids | Prybambas">
+<meta property="og:description" content="Explore cause-and-effect with logic chains and deduction puzzles. Free, no login.">
+<meta property="og:url" content="https://prybambas.com/what-if/">
+<meta property="og:image" content="https://prybambas.com/logo.png">
+
+
+=== PASTE INTO inventor/index.html inside <head> ===
+
+<meta name="description" content="Inventor Lab — think like an inventor. TRIZ tools, 30-day calendar, design challenges, missions for kids ages 5–14. Free.">
+<link rel="canonical" href="https://prybambas.com/inventor/">
+<meta property="og:title" content="Inventor Lab — TRIZ for Kids | Prybambas">
+<meta property="og:description" content="Creative thinking tools, daily challenges, and inventor missions. Multilingual PWA.">
+<meta property="og:url" content="https://prybambas.com/inventor/">
+<meta property="og:image" content="https://prybambas.com/logo.png">
