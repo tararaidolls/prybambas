@@ -1,0 +1,34 @@
+{# Обкладинка: картинка, якщо є, інакше намальована «обкладинка зошита» #}
+{% macro cover(item, t, size="card") %}
+<div class="cover cover-{{ size }} c-{{ item.color or 'blue' }}">
+  {% if item.cover %}
+    <img src="{{ item.cover }}" alt="" loading="lazy">
+  {% else %}
+    <span class="cover-series">{{ item.seriesTitle }}</span>
+    <span class="cover-title">{{ item.title }}</span>
+    <i class="cover-dot" aria-hidden="true"></i>
+  {% endif %}
+  {% if item.status == "coming-soon" %}<span class="sticker">{{ t.coming_soon }}</span>{% endif %}
+</div>
+{% endmacro %}
+
+{% macro productCard(p, t, lang) %}
+<a class="p-card" href="{{ p.url }}">
+  {{ cover(p, t) }}
+  <span class="p-meta">
+    {%- if p.type %}<span>{{ t.types[p.type] or p.type }}</span>{% endif -%}
+    {%- if p.ages %}<span>{{ t.ages | fmt({ages: p.ages}) }}</span>{% endif -%}
+    {%- for el in p.editionLangs %}<span class="lang-chip">{{ el | upper }}</span>{% endfor -%}
+  </span>
+  <span class="p-title">{{ p.title }}</span>
+  {% if p.tagline %}<span class="p-tag">{{ p.tagline }}</span>{% endif %}
+</a>
+{% endmacro %}
+
+{% macro postCard(p, t, lang) %}
+<a class="i-card" href="{{ p.url }}">
+  <span class="i-date">{{ p.date | dateLocal(lang) }}</span>
+  <span class="i-title">{{ p.title }}</span>
+  {% if p.summary %}<span class="i-sum">{{ p.summary }}</span>{% endif %}
+</a>
+{% endmacro %}

@@ -1,0 +1,23 @@
+---js
+{
+  pagination: { data: "catalog.langPages", size: 1, alias: "L" },
+  permalink: (data) => `/${data.L.lang}/ideas/`,
+  layout: "base.njk",
+  section: "ideas",
+  eleventyComputed: {
+    lang: (data) => data.L.lang,
+    alternates: (data) => data.L.altIdeas,
+    pageTitle: (data) => data.i18n[data.L.lang].ideas_title,
+    description: (data) => data.i18n[data.L.lang].ideas_intro,
+  },
+}
+---
+{%- from "macros.njk" import postCard -%}
+{%- set t = i18n[L.lang] -%}
+<section class="page-head">
+  <h1>{{ t.ideas_title }}</h1>
+  <p>{{ t.ideas_intro }}</p>
+</section>
+{% if L.posts.length %}
+<div class="i-grid">{% for p in L.posts %}{{ postCard(p, t, L.lang) }}{% endfor %}</div>
+{% else %}<p class="empty">{{ t.no_items }}</p>{% endif %}

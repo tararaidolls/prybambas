@@ -1,0 +1,10 @@
+series: language-games
+type: workbook
+status: available
+featured: true
+order: 1
+game: coach
+editions:
+  - lang: en
+    buy:
+      kdp: https://www.amazon.com/dp/B0FT96B31H

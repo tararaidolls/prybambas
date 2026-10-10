@@ -1,0 +1,74 @@
+{%- set t = i18n[lang] -%}
+{%- set fullTitle = (pageTitle + " · " + site.name) if pageTitle else site.name -%}
+{%- set desc = description or t.home_intro -%}
+{%- set ogImg = (ogImage or "/logo.png") | absolute(site.url) -%}
+<!DOCTYPE html>
+<html lang="{{ lang }}">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>{{ fullTitle }}</title>
+<meta name="description" content="{{ desc | stripHtml }}">
+<link rel="canonical" href="{{ page.url | absolute(site.url) }}">
+{%- for a in alternates or [] %}{% if a.url %}
+<link rel="alternate" hreflang="{{ a.lang }}" href="{{ a.url | absolute(site.url) }}">
+{%- endif %}{% endfor %}
+<meta property="og:type" content="{{ ogType or 'website' }}">
+<meta property="og:site_name" content="{{ site.name }}">
+<meta property="og:title" content="{{ pageTitle or site.name }}">
+<meta property="og:description" content="{{ desc | stripHtml }}">
+<meta property="og:url" content="{{ page.url | absolute(site.url) }}">
+<meta property="og:image" content="{{ ogImg }}">
+<meta property="og:locale" content="{{ lang }}">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#FBFCFE">
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/icon-192.png">
+<link rel="alternate" type="application/rss+xml" title="{{ site.name }} · {{ t.ideas_title }}" href="/{{ lang }}/ideas/feed.xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Geologica:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css">
+{% if jsonld %}<script type="application/ld+json">{{ jsonld | json | safe }}</script>{% endif %}
+<script defer src="https://cloud.umami.is/script.js" data-website-id="8460fd7f-da31-46c7-8c9d-eff5e64399cc"></script>
+</head>
+<body>
+<div class="page">
+  <header class="site-head">
+    <a class="brand" href="/{{ lang }}/">
+      <svg viewBox="0 0 34 34" fill="none" aria-hidden="true"><circle cx="19" cy="14" r="9" fill="#FFE800" style="mix-blend-mode:multiply"/><circle cx="14" cy="14" r="9" stroke="#1A1A2E" stroke-width="2.6"/><path d="M20.5 20.5 L29 29" stroke="#1A1A2E" stroke-width="3" stroke-linecap="round"/></svg>
+      <span>{{ site.name }}</span>
+    </a>
+    <nav class="site-nav" aria-label="Main">
+      <a href="/">{{ t.nav_games }}</a>
+      <a href="/{{ lang }}/ideas/" {% if section == "ideas" %}aria-current="page"{% endif %}>{{ t.nav_ideas }}</a>
+      <a href="/{{ lang }}/shop/" {% if section == "shop" %}aria-current="page"{% endif %}>{{ t.nav_shop }}</a>
+    </nav>
+    <label class="lang-pick">
+      <span class="visually-hidden">{{ t.language }}</span>
+      <select id="lang-pick" onchange="if(this.value){try{localStorage.setItem('prybambas_lang',this.selectedOptions[0].dataset.lang)}catch(e){};location.href=this.value}">
+        {%- for l in site.languages %}
+          {%- set alt = null -%}
+          {%- for a in alternates or [] %}{% if a.lang == l %}{% set alt = a %}{% endif %}{% endfor %}
+          {%- set target = alt.url if alt else "" %}
+        <option value="{{ target }}" data-lang="{{ l }}" {% if l == lang %}selected{% endif %} {% if not target %}disabled{% endif %}>{{ l | langName(l) }}</option>
+        {%- endfor %}
+      </select>
+    </label>
+  </header>
+
+  <main>
+{{ content | safe }}
+  </main>
+
+  <footer class="site-foot">
+    <a href="/about.html">{{ t.about }}</a>
+    <a href="/faq.html">{{ t.faq }}</a>
+    <a href="/{{ lang }}/ideas/feed.xml">{{ t.rss }}</a>
+    <span>© Kids Skill Academy</span>
+  </footer>
+</div>
+<script>try{localStorage.setItem('prybambas_lang','{{ lang }}')}catch(e){}</script>
+{% if gumroad %}<script src="https://gumroad.com/js/gumroad.js"></script>{% endif %}
+</body>
+</html>

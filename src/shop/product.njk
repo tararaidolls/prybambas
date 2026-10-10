@@ -1,0 +1,87 @@
+---js
+{
+  pagination: { data: "catalog.productPages", size: 1, alias: "P" },
+  permalink: (data) => data.P.url,
+  layout: "base.njk",
+  section: "shop",
+  ogType: "product",
+  eleventyComputed: {
+    lang: (data) => data.P.lang,
+    alternates: (data) => data.P.alternates,
+    pageTitle: (data) => data.P.t.title,
+    description: (data) => data.P.t.tagline || data.P.t.title,
+    ogImage: (data) => data.P.product.cover,
+    gumroad: (data) => data.P.product.editions.some((e) => e.buy && e.buy.gumroad),
+    jsonld: (data) => ({
+      "@context": "https://schema.org", "@type": "Product",
+      name: data.P.t.title, description: data.P.t.tagline || "",
+      image: data.P.product.cover ? new URL(data.P.product.cover, data.site.url).href : undefined,
+      brand: { "@type": "Brand", name: "Kids Skill Academy" },
+      inLanguage: data.P.editionLangs,
+    }),
+  },
+}
+---
+{%- from "macros.njk" import cover, productCard, postCard -%}
+{%- set t = i18n[P.lang] -%}
+{%- set p = P.product -%}
+<p class="crumbs"><a href="/{{ P.lang }}/shop/">{{ t.shop_title }}</a> / <a href="{{ P.seriesUrl }}">{{ P.seriesT.title }}</a></p>
+
+<article class="product">
+  <div class="product-cover">
+    {{ cover({cover: p.cover, color: P.color, title: P.t.title, seriesTitle: P.seriesT.title, status: p.status}, t, "big") }}
+    {% if p.images.length %}<div class="thumbs">{% for img in p.images %}<img src="{{ img }}" alt="" loading="lazy">{% endfor %}</div>{% endif %}
+  </div>
+
+  <div class="product-main">
+    <h1>{{ P.t.title }}</h1>
+    {% if P.t.tagline %}<p class="lead">{{ P.t.tagline }}</p>{% endif %}
+    <p class="p-meta">
+      {%- if p.type %}<span>{{ t.types[p.type] or p.type }}</span>{% endif -%}
+      {%- if p.ages %}<span>{{ t.ages | fmt({ages: p.ages}) }}</span>{% endif -%}
+    </p>
+
+    {% if p.status == "coming-soon" %}
+      <p class="soon-note">{{ t.coming_soon }}</p>
+    {% endif %}
+
+    {% if p.editions.length %}
+    <div class="buy">
+      {% for e in p.editions %}
+      <div class="edition">
+        <div class="edition-head">
+          {% if e.lang %}<b>{{ e.lang | langName(P.lang) }}</b>{% endif %}
+          {% if e.title %}<span>{{ e.title }}</span>{% endif %}
+          {% if e.pages %}<span>{{ t.pages | fmt({n: e.pages}) }}</span>{% endif %}
+          {% if e.price %}<span class="price">{{ e.price }}</span>{% endif %}
+        </div>
+        <div class="edition-btns">
+          {% for st in site.stores %}{% if e.buy and e.buy[st.key] %}
+          <a class="btn {% if st.kind == 'print' %}btn-ghost{% endif %}" href="{{ e.buy[st.key] }}" {% if st.key != 'site' %}target="_blank" rel="noopener"{% endif %} data-umami-event="buy-{{ st.key }}" data-umami-event-product="{{ p.slug }}">
+            <small>{{ t.buy_print if st.kind == 'print' else t.buy_digital }}</small>{{ t.buy_on | fmt({store: st.label}) }}
+          </a>
+          {% endif %}{% endfor %}
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    {% endif %}
+
+    {% if P.gameUrl %}<a class="game-link" href="{{ P.gameUrl }}">▶ {{ t.try_game }}</a>{% endif %}
+
+    {% if P.t.html %}<div class="prose">{{ P.t.html | safe }}</div>{% endif %}
+  </div>
+</article>
+
+{% if P.ideas.length %}
+<section class="block">
+  <div class="block-head"><h2>{{ t.related_ideas }}</h2></div>
+  <div class="i-grid">{% for i in P.ideas %}{{ postCard(i, t, P.lang) }}{% endfor %}</div>
+</section>
+{% endif %}
+{% if P.more.length %}
+<section class="block">
+  <div class="block-head"><h2>{{ t.more_in_series }}</h2></div>
+  <div class="p-grid">{% for o in P.more %}{{ productCard(o, t, P.lang) }}{% endfor %}</div>
+</section>
+{% endif %}

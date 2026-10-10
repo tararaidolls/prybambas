@@ -1,0 +1,11 @@
+series: thinking
+type: workbook
+status: available
+featured: true
+order: 2
+game: inventor
+editions:
+  - lang: en
+    title: 4 volumes
+    buy:
+      kdp: https://www.amazon.com/dp/B0FLKJV2PX

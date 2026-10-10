@@ -1,0 +1,19 @@
+/* Prybambas — спільні кольори й шрифти стилю «Блокнот дослідника».
+   Змінюй палітру тут: її використовують і ігри, і магазин. */
+:root {
+    --paper: #FBFCFE;
+    --grid: #DCE7F4;
+    --ink: #1A1A2E;
+    --ink-soft: #4A4D66;
+    --pink: #FF48B0;
+    --pink-ink: #D61F86;
+    --blue: #0078BF;
+    --yellow: #FFE800;
+    --card: #FFFFFF;
+    --pink-bg: #FFE3F2;
+    --blue-bg: #DDF0FB;
+    --yellow-bg: #FFF9C2;
+    --f-main: 'Geologica', 'Segoe UI', system-ui, -apple-system, sans-serif;
+    --f-hand: 'Caveat', 'Comic Sans MS', cursive;
+    color-scheme: light;
+}

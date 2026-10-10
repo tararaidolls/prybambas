@@ -1,0 +1,232 @@
+# Тексти інтерфейсу для сторінок магазину й дописів.
+# Нова мова = новий блок з тими самими ключами.
+
+uk:
+  nav_games: Ігри
+  nav_ideas: Ідеї
+  nav_shop: Магазин
+  home_title: Простір для допитливих
+  home_intro: Ігри, ідеї на кожен день і зошити, які вчать помічати, питати й перевіряти. Навіть відповіді ШІ.
+  latest_ideas: Нові ідеї
+  all_ideas: Усі ідеї
+  featured: Зошити й матеріали
+  all_products: Увесь магазин
+  play_online: Грати онлайн
+  shop_title: Магазин
+  shop_intro: Зошити, постери й щоденники для друку вдома чи в класі.
+  ideas_title: Ідеї
+  ideas_intro: Питання, задачі й маленькі експерименти на кожен день.
+  all_series: Усі серії
+  coming_soon: Скоро
+  available: Можна купити
+  edition: Мова видання
+  buy_digital: Файл для друку
+  buy_print: Друкована книжка
+  buy_on: "{store}"
+  pages: "{n} с."
+  ages: "{ages} років"
+  inside: Що всередині
+  related_ideas: Ідеї з цієї серії
+  related_product: Для цієї ідеї є зошит
+  try_game: Спробуй онлайн
+  more_in_series: Ще в серії
+  read_more: Читати
+  no_items: Тут поки порожньо. Скоро додамо.
+  not_in_lang: Цей матеріал поки є лише іншими мовами
+  published: Опубліковано
+  language: Мова
+  rss: RSS-стрічка
+  about: Про нас
+  faq: Питання
+  types:
+    workbook: Зошит
+    poster: Постер
+    game: Гра
+    cards: Картки
+    diary: Щоденник
+    journal: Журнал
+    bundle: Набір
+
+en:
+  nav_games: Games
+  nav_ideas: Ideas
+  nav_shop: Shop
+  home_title: A space for curious kids
+  home_intro: Games, daily ideas and workbooks that teach kids to notice, ask and check. Even the answers AI gives.
+  latest_ideas: New ideas
+  all_ideas: All ideas
+  featured: Workbooks & printables
+  all_products: Whole shop
+  play_online: Play online
+  shop_title: Shop
+  shop_intro: Workbooks, posters and journals to print at home or in class.
+  ideas_title: Ideas
+  ideas_intro: Questions, puzzles and small experiments for every day.
+  all_series: All series
+  coming_soon: Coming soon
+  available: Available
+  edition: Edition language
+  buy_digital: Printable file
+  buy_print: Printed book
+  buy_on: "{store}"
+  pages: "{n} pages"
+  ages: "Ages {ages}"
+  inside: What's inside
+  related_ideas: Ideas from this series
+  related_product: There's a workbook for this idea
+  try_game: Try it online
+  more_in_series: More in this series
+  read_more: Read
+  no_items: Nothing here yet. Coming soon.
+  not_in_lang: This item is only available in other languages for now
+  published: Published
+  language: Language
+  rss: RSS feed
+  about: About
+  faq: FAQ
+  types:
+    workbook: Workbook
+    poster: Poster
+    game: Game
+    cards: Cards
+    diary: Diary
+    journal: Journal
+    bundle: Bundle
+
+pl:
+  nav_games: Gry
+  nav_ideas: Pomysły
+  nav_shop: Sklep
+  home_title: Przestrzeń dla ciekawskich
+  home_intro: Gry, pomysły na każdy dzień i zeszyty, które uczą zauważać, pytać i sprawdzać. Nawet odpowiedzi AI.
+  latest_ideas: Nowe pomysły
+  all_ideas: Wszystkie pomysły
+  featured: Zeszyty i materiały
+  all_products: Cały sklep
+  play_online: Graj online
+  shop_title: Sklep
+  shop_intro: Zeszyty, plakaty i dzienniki do druku w domu lub w klasie.
+  ideas_title: Pomysły
+  ideas_intro: Pytania, zagadki i małe eksperymenty na każdy dzień.
+  all_series: Wszystkie serie
+  coming_soon: Wkrótce
+  available: Dostępne
+  edition: Język wydania
+  buy_digital: Plik do druku
+  buy_print: Książka drukowana
+  buy_on: "{store}"
+  pages: "{n} str."
+  ages: "Wiek {ages}"
+  inside: Co w środku
+  related_ideas: Pomysły z tej serii
+  related_product: Do tego pomysłu jest zeszyt
+  try_game: Spróbuj online
+  more_in_series: Więcej w serii
+  read_more: Czytaj
+  no_items: Na razie pusto. Wkrótce coś dodamy.
+  not_in_lang: Ten materiał jest na razie dostępny tylko w innych językach
+  published: Opublikowano
+  language: Język
+  rss: Kanał RSS
+  about: O nas
+  faq: FAQ
+  types:
+    workbook: Zeszyt
+    poster: Plakat
+    game: Gra
+    cards: Karty
+    diary: Dziennik
+    journal: Dziennik
+    bundle: Zestaw
+
+de:
+  nav_games: Spiele
+  nav_ideas: Ideen
+  nav_shop: Shop
+  home_title: Ein Ort für neugierige Kinder
+  home_intro: Spiele, Ideen für jeden Tag und Arbeitshefte, die Kindern beibringen, hinzuschauen, zu fragen und zu prüfen. Auch die Antworten der KI.
+  latest_ideas: Neue Ideen
+  all_ideas: Alle Ideen
+  featured: Arbeitshefte & Druckvorlagen
+  all_products: Ganzer Shop
+  play_online: Online spielen
+  shop_title: Shop
+  shop_intro: Arbeitshefte, Poster und Tagebücher zum Ausdrucken zu Hause oder in der Klasse.
+  ideas_title: Ideen
+  ideas_intro: Fragen, Rätsel und kleine Experimente für jeden Tag.
+  all_series: Alle Reihen
+  coming_soon: Demnächst
+  available: Erhältlich
+  edition: Sprache der Ausgabe
+  buy_digital: Druckdatei
+  buy_print: Gedrucktes Buch
+  buy_on: "{store}"
+  pages: "{n} Seiten"
+  ages: "{ages} Jahre"
+  inside: Was drin ist
+  related_ideas: Ideen aus dieser Reihe
+  related_product: Zu dieser Idee gibt es ein Arbeitsheft
+  try_game: Online ausprobieren
+  more_in_series: Mehr aus der Reihe
+  read_more: Lesen
+  no_items: Hier ist noch nichts. Bald kommt mehr.
+  not_in_lang: Dieses Material gibt es vorerst nur in anderen Sprachen
+  published: Veröffentlicht
+  language: Sprache
+  rss: RSS-Feed
+  about: Über uns
+  faq: FAQ
+  types:
+    workbook: Arbeitsheft
+    poster: Poster
+    game: Spiel
+    cards: Karten
+    diary: Tagebuch
+    journal: Journal
+    bundle: Paket
+
+es:
+  nav_games: Juegos
+  nav_ideas: Ideas
+  nav_shop: Tienda
+  home_title: Un espacio para niños curiosos
+  home_intro: Juegos, ideas para cada día y cuadernos que enseñan a observar, preguntar y comprobar. Incluso las respuestas de la IA.
+  latest_ideas: Ideas nuevas
+  all_ideas: Todas las ideas
+  featured: Cuadernos e imprimibles
+  all_products: Toda la tienda
+  play_online: Jugar en línea
+  shop_title: Tienda
+  shop_intro: Cuadernos, pósteres y diarios para imprimir en casa o en clase.
+  ideas_title: Ideas
+  ideas_intro: Preguntas, retos y pequeños experimentos para cada día.
+  all_series: Todas las series
+  coming_soon: Próximamente
+  available: Disponible
+  edition: Idioma de la edición
+  buy_digital: Archivo para imprimir
+  buy_print: Libro impreso
+  buy_on: "{store}"
+  pages: "{n} págs."
+  ages: "{ages} años"
+  inside: Qué incluye
+  related_ideas: Ideas de esta serie
+  related_product: Hay un cuaderno para esta idea
+  try_game: Pruébalo en línea
+  more_in_series: Más de la serie
+  read_more: Leer
+  no_items: Aún no hay nada aquí. Pronto añadiremos más.
+  not_in_lang: Por ahora este material solo está en otros idiomas
+  published: Publicado
+  language: Idioma
+  rss: Canal RSS
+  about: Sobre nosotros
+  faq: Preguntas
+  types:
+    workbook: Cuaderno
+    poster: Póster
+    game: Juego
+    cards: Tarjetas
+    diary: Diario
+    journal: Diario
+    bundle: Paquete
