@@ -1,0 +1,32 @@
+---js
+{
+  pagination: { data: "catalog.postPages", size: 1, alias: "I" },
+  permalink: (data) => data.I.url,
+  layout: "base.njk",
+  section: "ideas",
+  ogType: "article",
+  eleventyComputed: {
+    lang: (data) => data.I.lang,
+    alternates: (data) => data.I.alternates,
+    pageTitle: (data) => data.I.t.title,
+    description: (data) => data.I.t.summary || data.I.t.social,
+    ogImage: (data) => data.I.post.cover,
+  },
+}
+---
+{%- from "macros.njk" import productCard -%}
+{%- set t = i18n[I.lang] -%}
+<p class="crumbs"><a href="/{{ I.lang }}/ideas/">{{ t.ideas_title }}</a></p>
+<article class="post">
+  <p class="i-date">{{ t.published }} {{ I.post.date | dateLocal(I.lang) }}</p>
+  <h1>{{ I.t.title }}</h1>
+  {% if I.post.cover %}<img class="post-cover" src="{{ I.post.cover }}" alt="">{% endif %}
+  <div class="prose">{{ I.t.html | safe }}</div>
+  {% if I.gameUrl %}<a class="game-link" href="{{ I.gameUrl }}">▶ {{ t.try_game }}</a>{% endif %}
+</article>
+{% if I.product %}
+<section class="block">
+  <div class="block-head"><h2>{{ t.related_product }}</h2></div>
+  <div class="p-grid p-grid-one">{{ productCard(I.product, t, I.lang) }}</div>
+</section>
+{% endif %}

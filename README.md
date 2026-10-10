@@ -21,9 +21,10 @@ Prybambas (https://prybambas.com) is a free web app and PWA with three learning 
 
 ## Tech
 
-- Static site + PWA (install on phone/tablet)
-- Content in separate JS files per language (`what-if/content/`, `inventor/content/`)
-- Hosted on GitHub Pages → prybambas.com
+- Games: static HTML + PWA, translations in `what-if/content/`, `inventor/content/`
+- Shop & ideas: built with [Eleventy](https://www.11ty.dev/) from `content/`
+  (templates in `src/`, styles in `assets/`). See **CONTENT.md** for how to add products and posts.
+- Deployed by GitHub Actions to GitHub Pages → prybambas.com
 
 ## Related books (Kids Skill Academy)
 

@@ -1,0 +1,30 @@
+---js
+{
+  pagination: { data: "catalog.langPages", size: 1, alias: "L" },
+  permalink: (data) => `/${data.L.lang}/ideas/feed.xml`,
+  eleventyExcludeFromCollections: true,
+}
+---
+{%- set t = i18n[L.lang] -%}
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+  <title>{{ site.name }} · {{ t.ideas_title }}</title>
+  <link>{{ ("/" + L.lang + "/ideas/") | absolute(site.url) }}</link>
+  <atom:link href="{{ ("/" + L.lang + "/ideas/feed.xml") | absolute(site.url) }}" rel="self" type="application/rss+xml"/>
+  <description>{{ t.ideas_intro }}</description>
+  <language>{{ L.lang }}</language>
+  {%- for p in catalog.postPages %}{% if p.lang == L.lang %}
+  <item>
+    <title>{{ p.t.title }}</title>
+    <link>{{ p.url | absolute(site.url) }}</link>
+    <guid>{{ p.url | absolute(site.url) }}</guid>
+    <pubDate>{{ p.post.date | dateRfc }}</pubDate>
+    <description><![CDATA[{{ p.t.social or p.t.summary }}{% if p.t.hashtags %}
+
+{{ p.t.hashtags }}{% endif %}]]></description>
+    {%- if p.post.cover %}<enclosure url="{{ p.post.cover | absolute(site.url) }}" type="image/jpeg" length="0"/>{% endif %}
+  </item>
+  {%- endif %}{% endfor %}
+</channel>
+</rss>

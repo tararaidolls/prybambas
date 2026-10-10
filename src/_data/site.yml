@@ -1,0 +1,24 @@
+# Загальні налаштування сайту
+url: https://prybambas.com
+name: Prybambas
+
+# Мови магазину й дописів. Щоб додати мову:
+# 1) допиши її код сюди, 2) додай переклад інтерфейсу в i18n.yml,
+# 3) додавай файли <код>.md до товарів і дописів.
+languages: [uk, en, pl, de, es]
+defaultLang: en
+
+# Майданчики продажу. Порядок тут = порядок кнопок на сторінці товару.
+# kind: digital (файл) або print (друкована книжка)
+stores:
+  - { key: site,    label: Prybambas, kind: digital }
+  - { key: gumroad, label: Gumroad,   kind: digital }
+  - { key: etsy,    label: Etsy,      kind: digital }
+  - { key: tpt,     label: TpT,       kind: digital }
+  - { key: kdp,     label: Amazon,    kind: print }
+
+# Ігри на сайті, до яких можна привʼязати товар (поле game у product.yml)
+games:
+  what-if:  /what-if/
+  inventor: /inventor/
+  coach:    /coach/

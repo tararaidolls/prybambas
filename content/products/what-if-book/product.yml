@@ -1,0 +1,13 @@
+series: thinking
+type: workbook
+status: available
+featured: true
+order: 1
+game: what-if          # кнопка «Спробуй онлайн» веде на гру
+# cover: cover.jpg     # поклади картинку в цю папку і розкоментуй
+editions:
+  - lang: en
+    buy:
+      kdp: https://www.amazon.com/dp/B0GXNWFZ6N
+      # etsy: https://www.etsy.com/listing/...
+      # gumroad: https://....gumroad.com/l/...

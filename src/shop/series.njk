@@ -1,0 +1,31 @@
+---js
+{
+  pagination: { data: "catalog.seriesPages", size: 1, alias: "S" },
+  permalink: (data) => data.S.url,
+  layout: "base.njk",
+  section: "shop",
+  eleventyComputed: {
+    lang: (data) => data.S.lang,
+    alternates: (data) => data.S.alternates,
+    pageTitle: (data) => data.S.t.title,
+    description: (data) => data.S.t.tagline,
+  },
+}
+---
+{%- from "macros.njk" import productCard, postCard -%}
+{%- set t = i18n[S.lang] -%}
+<p class="crumbs"><a href="/{{ S.lang }}/shop/">{{ t.shop_title }}</a></p>
+<section class="page-head c-{{ S.color }}">
+  <h1><span class="hl">{{ S.t.title }}</span></h1>
+  {% if S.t.tagline %}<p>{{ S.t.tagline }}</p>{% endif %}
+  {% if S.t.html %}<div class="prose">{{ S.t.html | safe }}</div>{% endif %}
+</section>
+{% if S.products.length %}
+<div class="p-grid">{% for p in S.products %}{{ productCard(p, t, S.lang) }}{% endfor %}</div>
+{% else %}<p class="empty">{{ t.no_items }}</p>{% endif %}
+{% if S.posts.length %}
+<section class="block">
+  <div class="block-head"><h2>{{ t.related_ideas }}</h2></div>
+  <div class="i-grid">{% for p in S.posts %}{{ postCard(p, t, S.lang) }}{% endfor %}</div>
+</section>
+{% endif %}

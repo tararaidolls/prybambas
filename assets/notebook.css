@@ -2,19 +2,9 @@
    Папір у клітинку, чорнило, різограф-акценти (рожевий, синій, жовтий).
    Спільна база для внутрішніх розділів + блоки окремих сторінок. */
 
-:root {
-    --paper: #FBFCFE;
-    --grid: #DCE7F4;
-    --ink: #1A1A2E;
-    --ink-soft: #4A4D66;
-    --pink: #FF48B0;
-    --pink-ink: #D61F86;
-    --blue: #0078BF;
-    --yellow: #FFE800;
-    --card: #FFFFFF;
-    --f-main: 'Geologica', 'Segoe UI', system-ui, -apple-system, sans-serif;
-    --f-hand: 'Caveat', 'Comic Sans MS', cursive;
+@import url("tokens.css");
 
+:root {
     /* Старі імена кольорів, які використовують скрипти сторінок */
     --magenta: var(--pink-ink);
     --green: var(--blue);

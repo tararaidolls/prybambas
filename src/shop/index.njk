@@ -1,0 +1,37 @@
+---js
+{
+  pagination: { data: "catalog.langPages", size: 1, alias: "L" },
+  permalink: (data) => `/${data.L.lang}/shop/`,
+  layout: "base.njk",
+  section: "shop",
+  eleventyComputed: {
+    lang: (data) => data.L.lang,
+    alternates: (data) => data.L.altShop,
+    pageTitle: (data) => data.i18n[data.L.lang].shop_title,
+    description: (data) => data.i18n[data.L.lang].shop_intro,
+  },
+}
+---
+{%- from "macros.njk" import productCard -%}
+{%- set t = i18n[L.lang] -%}
+<section class="page-head">
+  <h1>{{ t.shop_title }}</h1>
+  <p>{{ t.shop_intro }}</p>
+</section>
+
+<nav class="series-tabs" aria-label="{{ t.all_series }}">
+  {% for s in L.series %}
+  <a class="series-tab c-{{ s.color }}" href="{{ s.url }}"><b>{{ s.title }}</b>{% if s.tagline %}<span>{{ s.tagline }}</span>{% endif %}</a>
+  {% endfor %}
+</nav>
+
+{% for s in L.series %}
+{% set items = L.products | where('series', s.slug) %}
+{% if items.length %}
+<section class="block">
+  <div class="block-head"><h2>{{ s.title }}</h2><a href="{{ s.url }}">{{ items.length }} →</a></div>
+  <div class="p-grid">{% for p in items %}{{ productCard(p, t, L.lang) }}{% endfor %}</div>
+</section>
+{% endif %}
+{% endfor %}
+{% if not L.products.length %}<p class="empty">{{ t.no_items }}</p>{% endif %}

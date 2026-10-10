@@ -1,0 +1,26 @@
+# Скопіюй цю папку, перейменуй (латиницею, через дефіс: my-new-workbook)
+# і заповни поля. Папки, що починаються з "_", на сайт не потрапляють.
+
+series: language-games    # папка серії з content/series
+type: workbook            # workbook | poster | game | cards | diary | journal | bundle
+status: available         # available | coming-soon
+featured: false           # true = показувати на головній
+order: 10                 # порядок у серії (менше = вище)
+ages: "6-10"              # необовʼязково
+game: coach               # необовʼязково: what-if | inventor | coach
+cover: cover.jpg          # картинка в цій же папці (можна не вказувати)
+images: [page-1.jpg, page-2.jpg]   # додаткові превʼю (необовʼязково)
+
+# Видання: окремо для кожної мови самого зошита
+editions:
+  - lang: en              # мова зошита (будь-яка: en, uk, fr, ja…)
+    pages: 60
+    price: "$6"
+    buy:                  # залиш лише ті майданчики, де товар є
+      gumroad: https://yourname.gumroad.com/l/xxxx
+      etsy: https://www.etsy.com/listing/xxxx
+      tpt: https://www.teacherspayteachers.com/Product/xxxx
+      kdp: https://www.amazon.com/dp/XXXXXXXXXX
+  - lang: uk
+    buy:
+      etsy: https://www.etsy.com/listing/yyyy
