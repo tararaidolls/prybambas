@@ -16,6 +16,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Geologica:wght@400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../assets/notebook.css">
     <script defer src="https://cloud.umami.is/script.js" data-website-id="8460fd7f-da31-46c7-8c9d-eff5e64399cc"></script>
+    <script src="../assets/i18n-fallback.js"></script>
 </head>
 <body>
 
@@ -227,7 +228,7 @@
             currentLang = document.getElementById('lang-selector').value;
             localStorage.setItem('prybambas_lang', currentLang);
             
-            const t = db[currentLang] || db['en'];
+            const t = withEnglish(db, currentLang);
             document.getElementById('btn-back').innerText = t.back;
             document.getElementById('lbl-sub').innerText = t.sub;
             document.getElementById('promo-title').innerText = t.promo.t;
@@ -241,7 +242,7 @@
 
         function selectMode(modeNum, colorClass) {
             currentMode = modeNum;
-            const t = db[currentLang] || db['en'];
+            const t = withEnglish(db, currentLang);
             
             // Reset all buttons
             document.getElementById('btn-mode1').className = "selector-btn";

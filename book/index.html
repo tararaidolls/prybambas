@@ -4,152 +4,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Books | Prybambas</title>
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --magenta: #d92cff;
-            --green: #54ff3a;
-            --cyan: #00f3ff;
-            --yellow: #ff9f43;
-            --bg: #020617;
-        }
-
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-
-        body, html {
-            margin: 0; padding: 0; min-height: 100vh;
-            background: radial-gradient(circle at center, #0f172a 0%, #020617 100%);
-            color: white;
-            font-family: 'Nunito', sans-serif;
-            overflow-x: hidden; display: flex; flex-direction: column; align-items: center;
-        }
-
-        /* Уніфікована панель вгорі */
-        .top-bar {
-            display: flex;
-            justify-content: space-between;
-            width: 100%;
-            max-width: 500px;
-            padding: 15px 15px 0 15px;
-            z-index: 100;
-        }
-
-        .back-btn {
-            background: rgba(15, 23, 42, 0.8);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-            border: 2px solid var(--yellow);
-            color: white; 
-            padding: 8px 16px; 
-            border-radius: 50px;
-            text-decoration: none; 
-            font-weight: bold; 
-            box-shadow: 0 0 10px rgba(255, 159, 67, 0.3); 
-            font-size: 0.9rem;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            transition: 0.3s;
-        }
-        .back-btn:hover { background: rgba(255, 159, 67, 0.2); }
-
-        .lang-switch {
-            background: rgba(15, 23, 42, 0.8);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-            border: 2px solid var(--yellow);
-            color: white;
-            padding: 6px 12px;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            cursor: pointer;
-            outline: none;
-            box-shadow: 0 0 10px rgba(255, 159, 67, 0.3);
-            font-weight: bold;
-        }
-
-        /* Логотип серії */
-        .logo-container {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-top: 25px;
-            margin-bottom: 25px;
-        }
-        
-        .logo-svg {
-            width: 35px;
-            height: 35px;
-            filter: drop-shadow(0 0 8px var(--yellow));
-        }
-
-        .logo-text {
-            color: white;
-            font-weight: 800;
-            letter-spacing: 2px;
-            font-size: 1.3rem;
-            text-shadow: 0 0 10px var(--yellow);
-        }
-
-        /* КАТАЛОГ КНИГ */
-        .books-container {
-            width: 90%; max-width: 450px;
-            display: flex; flex-direction: column; gap: 20px;
-            padding-bottom: 50px;
-        }
-
-        .book-card {
-            background: rgba(15, 23, 42, 0.6);
-            backdrop-filter: blur(12px);
-            border-radius: 20px;
-            border: 2px solid var(--yellow);
-            padding: 20px;
-            display: flex; gap: 15px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.4);
-            align-items: center;
-            transition: 0.3s;
-            text-decoration: none;
-            color: white;
-        }
-        .book-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 0 15px rgba(255, 159, 67, 0.3);
-            background: rgba(15, 23, 42, 0.8);
-        }
-
-        .book-cover {
-            width: 80px; height: 110px;
-            background: #1e293b;
-            border-radius: 8px;
-            display: flex; align-items: center; justify-content: center;
-            font-size: 2rem;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-            border: 1px solid rgba(255,255,255,0.1);
-            flex-shrink: 0;
-        }
-
-        .book-info h3 { font-size: 1.1rem; font-weight: 800; margin-bottom: 5px; color: var(--yellow); }
-        .book-info p { font-size: 0.85rem; color: #cbd5e1; line-height: 1.4; }
-    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Geologica:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/notebook.css">
+    <meta name="theme-color" content="#FBFCFE">
     <script defer src="https://cloud.umami.is/script.js" data-website-id="8460fd7f-da31-46c7-8c9d-eff5e64399cc"></script>
+    <script src="../assets/i18n-fallback.js"></script>
 </head>
 <body>
 
     <!-- Уніфікована панель вгорі -->
     <div class="top-bar">
         <a href="../index.html" class="back-btn" id="btn-back">← Hub</a>
-        <select class="lang-switch" id="lang-selector" onchange="changeLang()">
-            <option value="en">🇺🇸 EN</option>
-            <option value="uk">🇺🇦 UK</option>
-            <option value="es">🇪🇸 ES</option>
-            <option value="de">🇩🇪 DE</option>
-            <option value="fr">🇫🇷 FR</option>
-            <option value="nl">🇳🇱 NL</option>
-            <option value="da">🇩🇰 DA</option>
-            <option value="sv">🇸🇪 SV</option>
-            <option value="ro">🇷🇴 RO</option>
-            <option value="pl">🇵🇱 PL</option>
-            <option value="pt">🇧🇷 PT</option>
+        <select class="lang-switch" id="lang-selector" onchange="changeLang()" aria-label="Language">
+            <option value="en">🇺🇸 English</option>
+            <option value="uk">🇺🇦 Українська</option>
+            <option value="ro">🇷🇴 Română</option>
+            <option value="pl">🇵🇱 Polski</option>
+            <option value="de">🇩🇪 Deutsch</option>
+            <option value="fr">🇫🇷 Français</option>
+            <option value="it">🇮🇹 Italiano</option>
+            <option value="sv">🇸🇪 Svenska</option>
+            <option value="fi">🇫🇮 Suomi</option>
+            <option value="da">🇩🇰 Dansk</option>
+            <option value="es">🇪🇸 Español</option>
+            <option value="pt">🇵🇹 Português</option>
+            <option value="he">🇮🇱 עברית</option>
+            <option value="ja">🇯🇵 日本語</option>
+            <option value="ar">🇸🇦 العربية</option>
         </select>
     </div>
 
@@ -162,7 +45,7 @@
         <span class="logo-text" id="header-title">Books Gym</span>
     </div>
 
-    <div class="books-container">
+    <div class="books-container" style="padding-bottom: 40px;">
         <!-- Книга 1: What If -->
         <a href="https://www.amazon.com/dp/B0GXNWFZ6N" class="book-card" target="_blank">
             <div class="book-cover">🦋</div>
@@ -198,12 +81,14 @@
                 <p id="b4-desc">A guided look-closer science journal for pocket microscopes. Real biomimicry and fun outdoor/indoor research.</p>
             </div>
         </a>
+        <a class="shop-link" id="shop-link" href="/en/shop/">All workbooks in the shop →</a>
     </div>
 
     <script>
         const dict = {
             en: {
                 back: "← Hub",
+                shop: "All workbooks in the shop →",
                 header: "Books Gym",
                 b1_t: "What If? Book",
                 b1_d: "The physical workbook with 100+ logical chain puzzles. Turn science and cause-and-effect into a game!",
@@ -216,6 +101,7 @@
             },
             uk: {
                 back: "← Хаб",
+                shop: "Усі зошити в магазині →",
                 header: "Зал Книг",
                 b1_t: "Книга 'Що, якби?'",
                 b1_d: "Паперовий робочий зошит із 100+ логічними ланцюжками. Перетвори науку та логіку на захоплюючу гру!",
@@ -225,14 +111,17 @@
                 b3_d: "Найкращі зошити для вивчення мов за допомогою методу Active Recall та вбудованих аудіо-кодів вимови.",
                 b4_t: "Мікроскоп Сафарі",
                 b4_d: "Інтерактивний науковий журнал для кишенькових мікроскопів. Справжня біомімікрія та дослідження довкола нас."
-            }
+            },
+            pl: { shop: "Wszystkie zeszyty w sklepie →" },
+            de: { shop: "Alle Arbeitshefte im Shop →" },
+            es: { shop: "Todos los cuadernos en la tienda →" },
         };
 
         function changeLang() {
             const lang = document.getElementById('lang-selector').value;
             localStorage.setItem('prybambas_lang', lang);
             
-            const t = dict[lang] || dict['en'];
+            const t = withEnglish(dict, lang);
             document.getElementById('btn-back').innerText = t.back;
             document.getElementById('header-title').innerText = t.header;
             document.getElementById('b1-title').innerText = t.b1_t;
@@ -243,6 +132,10 @@
             document.getElementById('b3-desc').innerText = t.b3_d;
             document.getElementById('b4-title').innerText = t.b4_t;
             document.getElementById('b4-desc').innerText = t.b4_d;
+            const shopLang = ['uk', 'en', 'pl', 'de', 'es'].includes(lang) ? lang : 'en';
+            const shop = document.getElementById('shop-link');
+            shop.innerText = t.shop;
+            shop.href = '/' + shopLang + '/shop/';
         }
 
         window.onload = function() {
