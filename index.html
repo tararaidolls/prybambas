@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta name="theme-color" content="#020617">
+    <meta name="theme-color" content="#FBFCFE">
     <title>PRYBAMBAS | Educational Hub</title>
     <link rel="manifest" href="./manifest.json">
     <link rel="apple-touch-icon" href="./icon-192.png">
@@ -11,7 +11,7 @@
     <link rel="apple-touch-icon" sizes="180x180" href="./icon-192.png">
     <link rel="apple-touch-icon" sizes="167x167" href="./icon-192.png">
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="description" content="Prybambas — free STEM games for kids ages 5–14. What If logic puzzles, Inventor Lab (TRIZ), AI Coach. 11+ languages. No login.">
 <link rel="canonical" href="https://prybambas.com/">
 <meta property="og:title" content="Prybambas — Free STEM Games for Curious Kids">
@@ -23,281 +23,346 @@
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"WebApplication","name":"Prybambas","url":"https://prybambas.com/","applicationCategory":"EducationalApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"audience":{"@type":"Audience","audienceType":"Children ages 5-14"},"description":"Free STEM hub: What If logic game, Inventor Lab TRIZ thinking, AI Coach language practice. 11+ languages."}
 </script>
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Geologica:wght@400;600;800&display=swap" rel="stylesheet">
     <style>
+        /* Стиль «Блокнот дослідника»: папір у клітинку, чорнило, різограф-кольори */
         :root {
-            --magenta: #d92cff;
-            --green: #54ff3a;
-            --cyan: #00f3ff;
-            --yellow: #ff9f43;
-            --bg: #020617;
-            --surface: rgba(15, 23, 42, 0.6);
+            --paper: #FBFCFE;
+            --grid: #DCE7F4;
+            --ink: #1A1A2E;
+            --ink-soft: #4A4D66;
+            --pink: #FF48B0;
+            --pink-ink: #D61F86;
+            --blue: #0078BF;
+            --yellow: #FFE800;
+            --card: #FFFFFF;
+            --f-main: 'Geologica', 'Segoe UI', system-ui, -apple-system, sans-serif;
+            --f-hand: 'Caveat', 'Comic Sans MS', cursive;
+            color-scheme: light;
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
 
-        body, html {
-            margin: 0; padding: 0; min-height: 100vh;
-            background-color: var(--bg);
-            /* СТАБІЛЬНИЙ, СТАТИЧНИЙ КОСМІЧНИЙ БЕКГРАУНД (No Jumps on mobile) */
-            background-image: 
-                radial-gradient(circle at center, rgba(15, 23, 42, 0.8) 0%, #020617 100%),
-                linear-gradient(rgba(0, 243, 255, 0.025) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(0, 243, 255, 0.025) 1px, transparent 1px);
-            background-size: 100% 100%, 30px 30px, 30px 30px;
-            background-attachment: fixed;
-            color: white;
-            font-family: 'Nunito', sans-serif;
-            overflow-x: hidden; display: flex; flex-direction: column; align-items: center; justify-content: center;
+        html, body { min-height: 100%; }
+
+        body {
+            background-color: var(--paper);
+            background-image:
+                linear-gradient(var(--grid) 1px, transparent 1px),
+                linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+            background-size: 24px 24px;
+            color: var(--ink);
+            font-family: var(--f-main);
+            line-height: 1.5;
+            overflow-x: hidden;
         }
 
-        /* Уніфікована панель вгорі */
-        .top-bar {
-            position: absolute; top: 15px; right: 15px; z-index: 100;
-            display: flex; gap: 10px; align-items: center;
+        .page {
+            max-width: 1040px;
+            margin: 0 auto;
+            padding-inline: 20px;
+            padding-block: 16px 40px;
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            min-height: 100vh;
         }
+
+        /* Верхня панель */
+        .top-bar {
+            display: flex; justify-content: space-between; align-items: center;
+            gap: 12px; flex-wrap: wrap;
+            padding-top: env(safe-area-inset-top, 0px);
+        }
+        .brand {
+            display: flex; align-items: center; gap: 10px;
+            color: var(--ink); text-decoration: none;
+            font-weight: 800; font-size: 1.35rem; letter-spacing: 0.01em;
+        }
+        .brand svg { width: 34px; height: 34px; flex-shrink: 0; }
+        .top-actions { display: flex; gap: 10px; align-items: center; }
 
         .lang-switch {
-            background: rgba(15, 23, 42, 0.8);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-            border: 2px solid var(--cyan);
-            color: white;
-            padding: 6px 12px;
-            border-radius: 20px;
-            font-size: 0.85rem;
+            background: var(--card);
+            border: 1.5px solid var(--ink);
+            color: var(--ink);
+            padding: 7px 12px;
+            border-radius: 8px;
+            font: 600 0.88rem var(--f-main);
             cursor: pointer;
-            outline: none;
-            box-shadow: 0 0 10px rgba(0, 243, 255, 0.3);
-            font-weight: bold;
+            box-shadow: 3px 3px 0 var(--blue);
         }
 
-        /* Стильна кнопка встановлення додатку */
         .install-btn {
-            background: linear-gradient(135deg, var(--cyan) 0%, #00bcff 100%);
-            border: none;
-            color: black;
-            padding: 6px 14px;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 800;
+            background: var(--ink);
+            border: 1.5px solid var(--ink);
+            color: #fff;
+            padding: 7px 14px;
+            border-radius: 8px;
+            font: 600 0.88rem var(--f-main);
             cursor: pointer;
             display: none; /* Показується тільки коли PWA готовий до встановлення */
-            box-shadow: 0 0 12px rgba(0, 243, 255, 0.5);
-            transition: 0.3s;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            animation: pulse-glow 2s infinite;
+            box-shadow: 3px 3px 0 var(--pink);
+            transition: transform 0.15s, box-shadow 0.15s;
         }
-        .install-btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 18px var(--cyan);
+        .install-btn:hover { transform: translate(-1px, -1px); box-shadow: 4px 4px 0 var(--pink); }
+
+        .lang-switch:focus-visible, .install-btn:focus-visible, .space-card:focus-visible, .ios-modal-close:focus-visible, .foot a:focus-visible {
+            outline: 3px solid var(--blue); outline-offset: 3px;
         }
 
-        @keyframes pulse-glow {
-            0% { box-shadow: 0 0 10px rgba(0, 243, 255, 0.4); }
-            50% { box-shadow: 0 0 20px rgba(0, 243, 255, 0.8); }
-            100% { box-shadow: 0 0 10px rgba(0, 243, 255, 0.4); }
+        /* Герой */
+        .hero { position: relative; display: grid; gap: 16px; max-width: 720px; padding-top: 12px; }
+        .hero h1 {
+            font-size: clamp(2.2rem, 6vw, 3.9rem);
+            line-height: 1.04; font-weight: 800; letter-spacing: -0.02em;
+            text-wrap: balance;
         }
+        .hero h1 mark {
+            color: inherit;
+            background: linear-gradient(transparent 56%, var(--yellow) 56%, var(--yellow) 92%, transparent 92%);
+            padding: 0 0.08em;
+        }
+        .hero p { font-size: 1.12rem; color: var(--ink-soft); max-width: 52ch; }
+
+        .hand {
+            font-family: var(--f-hand); font-weight: 700; color: var(--pink-ink);
+            font-size: 1.6rem; line-height: 1;
+        }
+        .hero-note {
+            position: absolute; top: 18px; inset-inline-end: -220px; width: 190px;
+            text-align: center; transform: rotate(-5deg);
+        }
+        .hero-note svg { display: block; margin: 6px auto 0; width: 70px; height: 44px; }
+        [dir="rtl"] .hero-note svg { transform: scaleX(-1); }
+        [dir="rtl"] .card-tag { letter-spacing: 0; }
+        @media (max-width: 1100px) {
+            .hero-note { position: static; width: auto; text-align: start; transform: rotate(-2deg); }
+            .hero-note svg { display: none; }
+        }
+
+        /* Картки просторів */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+            gap: 26px 20px;
+        }
+
+        .space-card {
+            position: relative;
+            background: var(--card);
+            border: 1.5px solid var(--ink);
+            border-radius: 6px;
+            padding: 22px 18px 18px;
+            display: flex; flex-direction: column; gap: 8px;
+            color: var(--ink); text-decoration: none;
+            box-shadow: 4px 4px 0 var(--ink);
+            transition: transform 0.15s, box-shadow 0.15s;
+        }
+        .space-card:hover { transform: translate(-2px, -2px) rotate(-0.4deg); box-shadow: 6px 6px 0 var(--ink); }
+        .space-card:active { transform: translate(2px, 2px); box-shadow: 2px 2px 0 var(--ink); }
+
+        /* Скотч зверху */
+        .space-card::before {
+            content: ""; position: absolute; top: -10px; left: 50%;
+            width: 64px; height: 18px; transform: translateX(-50%) rotate(-3deg);
+            background: var(--tape); opacity: 0.75;
+        }
+        .c-whatif   { --tape: var(--yellow); --spot: var(--yellow); }
+        .c-inventor { --tape: var(--blue);   --spot: var(--blue); }
+        .c-books    { --tape: var(--pink);   --spot: var(--pink); }
+        .c-coach    { --tape: var(--yellow); --spot: var(--blue); }
+        .c-inventor::before { transform: translateX(-50%) rotate(2deg); opacity: 0.45; }
+        .c-books::before    { transform: translateX(-50%) rotate(-1deg); opacity: 0.55; }
+        .c-coach::before    { transform: translateX(-50%) rotate(4deg); }
+
+        .card-ico { position: relative; width: 64px; height: 64px; }
+        .card-ico::before {
+            content: ""; position: absolute; width: 46px; height: 46px; border-radius: 50%;
+            right: -2px; bottom: 0; background: var(--spot); opacity: 0.85; mix-blend-mode: multiply;
+        }
+        .card-ico svg { position: relative; width: 64px; height: 64px; }
+
+        .card-tag {
+            font-size: 0.72rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+            color: var(--blue);
+        }
+        .card-title { font-size: 1.22rem; font-weight: 800; line-height: 1.2; }
+        .card-desc { font-size: 0.95rem; color: var(--ink-soft); }
+
+        /* Підвал */
+        .foot {
+            margin-top: auto;
+            display: flex; flex-wrap: wrap; gap: 8px 20px; align-items: center;
+            font-size: 0.9rem; color: var(--ink-soft);
+            border-top: 1.5px dashed var(--grid); padding-top: 16px;
+        }
+        .foot a { color: var(--ink); font-weight: 600; text-decoration-color: var(--pink); text-underline-offset: 3px; }
 
         /* Діалогове вікно-інструкція для iOS (iPhone) */
         .ios-modal {
-            position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
+            position: fixed; bottom: calc(20px + env(safe-area-inset-bottom, 0px)); left: 50%; transform: translateX(-50%);
             width: 90%; max-width: 380px;
-            background: rgba(15, 23, 42, 0.95);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 2.5px solid var(--cyan);
-            border-radius: 24px;
+            background: var(--card);
+            border: 1.5px solid var(--ink);
+            border-radius: 8px;
             padding: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.6), 0 0 20px rgba(0, 243, 255, 0.2);
+            box-shadow: 5px 5px 0 var(--pink);
             z-index: 1000;
             display: none;
             flex-direction: column; gap: 12px;
             animation: slide-up 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
-
         @keyframes slide-up {
             from { transform: translate(-50%, 100px); opacity: 0; }
             to { transform: translate(-50%, 0); opacity: 1; }
         }
-
-        .ios-modal h3 { font-size: 1.1rem; color: var(--cyan); font-weight: 800; text-align: center; }
-        .ios-modal p { font-size: 0.9rem; line-height: 1.4; color: #cbd5e1; text-align: center; }
+        .ios-modal h3 { font-size: 1.1rem; font-weight: 800; text-align: center; }
+        .ios-modal p { font-size: 0.92rem; line-height: 1.4; color: var(--ink-soft); text-align: center; }
         .ios-modal-step {
-            display: flex; align-items: center; gap: 10px; background: rgba(2, 6, 23, 0.6);
-            padding: 10px 15px; border-radius: 14px; border: 1px solid rgba(0, 243, 255, 0.1);
-            font-size: 0.85rem; font-weight: 700;
+            display: flex; align-items: center; gap: 10px;
+            background: var(--paper); border: 1px solid var(--grid);
+            padding: 10px 14px; border-radius: 6px;
+            font-size: 0.88rem; font-weight: 600;
         }
         .ios-modal-step span.icon { font-size: 1.3rem; }
         .ios-modal-close {
-            background: rgba(255,255,255,0.1); border: none; color: white; padding: 8px;
-            border-radius: 12px; font-weight: bold; cursor: pointer; text-align: center; font-size: 0.85rem;
-            transition: 0.2s; margin-top: 5px;
-        }
-        .ios-modal-close:hover { background: rgba(255,255,255,0.2); }
-
-        /* ЛОГОТИП СЕРІЇ */
-        .logo-container {
-            display: flex; flex-direction: column; align-items: center; gap: 10px; margin-bottom: 30px;
-            margin-top: 50px;
-        }
-        
-        .logo-img {
-            width: 75px; height: 75px;
-            border-radius: 20px;
-            border: 2px solid var(--cyan);
-            box-shadow: 0 0 15px rgba(0, 243, 255, 0.4);
-            object-fit: cover;
+            background: var(--ink); border: none; color: #fff; padding: 9px;
+            border-radius: 6px; font: 600 0.88rem var(--f-main); cursor: pointer; margin-top: 4px;
         }
 
-        .logo-text {
-            color: white; font-weight: 800; letter-spacing: 4px; font-size: 1.8rem;
-            text-shadow: 0 0 12px var(--cyan);
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after { animation: none !important; transition: none !important; }
         }
-
-        /* СІТКА КНОПОК */
-        .grid-container {
-            display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px;
-            width: 90%; max-width: 440px; padding: 10px;
-            margin-bottom: 50px;
-        }
-
-        .space-btn {
-            background: var(--surface);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border-radius: 24px;
-            aspect-ratio: 1;
-            display: flex; flex-direction: column; align-items: center; justify-content: center;
-            color: white; text-decoration: none; font-weight: 800; font-size: 1.05rem;
-            transition: 0.3s; gap: 12px; cursor: pointer; text-align: center;
-            padding: 15px;
-        }
-
-        .space-btn svg { width: 55px; height: 55px; transition: 0.3s; }
-
-        /* Кольорові теми для кнопок із фірмовими SVG іконками */
-        .btn-whatif { border: 2.5px solid var(--magenta); box-shadow: 0 0 10px rgba(217, 44, 255, 0.15); }
-        .btn-whatif svg { filter: drop-shadow(0 0 6px rgba(217, 44, 255, 0.4)); }
-        .btn-whatif:hover {
-            background: rgba(217, 44, 255, 0.1); transform: translateY(-3px);
-            box-shadow: 0 0 20px rgba(217, 44, 255, 0.45);
-        }
-        .btn-whatif:hover svg { transform: scale(1.1); filter: drop-shadow(0 0 10px var(--magenta)); }
-
-        .btn-inventor { border: 2.5px solid var(--green); box-shadow: 0 0 10px rgba(84, 255, 58, 0.15); }
-        .btn-inventor svg { filter: drop-shadow(0 0 6px rgba(84, 255, 58, 0.4)); }
-        .btn-inventor:hover {
-            background: rgba(84, 255, 58, 0.1); transform: translateY(-3px);
-            box-shadow: 0 0 20px rgba(84, 255, 58, 0.45);
-        }
-        .btn-inventor:hover svg { transform: scale(1.1) rotate(45deg); filter: drop-shadow(0 0 10px var(--green)); }
-
-        .btn-books { border: 2.5px solid var(--yellow); box-shadow: 0 0 10px rgba(255, 159, 67, 0.15); }
-        .btn-books svg { filter: drop-shadow(0 0 6px rgba(255, 159, 67, 0.4)); }
-        .btn-books:hover {
-            background: rgba(255, 159, 67, 0.1); transform: translateY(-3px);
-            box-shadow: 0 0 20px rgba(255, 159, 67, 0.45);
-        }
-        .btn-books:hover svg { transform: scale(1.1); filter: drop-shadow(0 0 10px var(--yellow)); }
-
-        .btn-coach { border: 2.5px solid var(--cyan); box-shadow: 0 0 10px rgba(0, 243, 255, 0.15); }
-        .btn-coach svg { filter: drop-shadow(0 0 6px rgba(0, 243, 255, 0.4)); }
-        .btn-coach:hover {
-            background: rgba(0, 243, 255, 0.1); transform: translateY(-3px);
-            box-shadow: 0 0 20px rgba(0, 243, 255, 0.45);
-        }
-        .btn-coach:hover svg { transform: scale(1.1); filter: drop-shadow(0 0 10px var(--cyan)); }
     </style>
     <script defer src="https://cloud.umami.is/script.js" data-website-id="8460fd7f-da31-46c7-8c9d-eff5e64399cc"></script>
 </head>
 <body>
+  <div class="page">
 
-    <!-- Уніфікована панель вгорі -->
-    <div class="top-bar">
-        <!-- Розумна кнопка встановлення додатку -->
-        <button class="install-btn" id="install-pwa-btn" onclick="triggerInstall()">Install App</button>
+    <!-- Верхня панель -->
+    <header class="top-bar">
+        <a class="brand" href="./index.html" aria-label="Prybambas">
+            <svg viewBox="0 0 34 34" fill="none" aria-hidden="true">
+                <circle cx="19" cy="14" r="9" fill="#FFE800" style="mix-blend-mode:multiply"/>
+                <circle cx="14" cy="14" r="9" stroke="#1A1A2E" stroke-width="2.6"/>
+                <path d="M20.5 20.5 L29 29" stroke="#1A1A2E" stroke-width="3" stroke-linecap="round"/>
+            </svg>
+            <span>Prybambas</span>
+        </a>
+        <div class="top-actions">
+            <!-- Розумна кнопка встановлення додатку -->
+            <button class="install-btn" id="install-pwa-btn" onclick="triggerInstall()">Install App</button>
 
-        <select class="lang-switch" id="lang-selector" onchange="changeLang()">
-            <option value="en">🇺🇸 English</option>
-            <option value="uk">🇺🇦 Українська</option>
-            <option value="ro">🇷🇴 Română</option>
-            <option value="pl">🇵🇱 Polski</option>
-            <option value="de">🇩🇪 Deutsch</option>
-            <option value="fr">🇫🇷 Français</option>
-            <option value="it">🇮🇹 Italiano</option>
-            <option value="sv">🇸🇪 Svenska</option>
-            <option value="fi">🇫🇮 Suomi</option>
-            <option value="da">🇩🇰 Dansk</option>
-            <option value="es">🇪🇸 Español</option>
-            <option value="pt">🇵🇹 Português</option>
-            <option value="he">🇮🇱 עברית</option>
-            <option value="ja">🇯🇵 日本語</option>
-            <option value="ar">🇸🇦 العربية</option>
-        </select>
-    </div>
+            <select class="lang-switch" id="lang-selector" onchange="changeLang()" aria-label="Language">
+                <option value="en">🇺🇸 English</option>
+                <option value="uk">🇺🇦 Українська</option>
+                <option value="ro">🇷🇴 Română</option>
+                <option value="pl">🇵🇱 Polski</option>
+                <option value="de">🇩🇪 Deutsch</option>
+                <option value="fr">🇫🇷 Français</option>
+                <option value="it">🇮🇹 Italiano</option>
+                <option value="sv">🇸🇪 Svenska</option>
+                <option value="fi">🇫🇮 Suomi</option>
+                <option value="da">🇩🇰 Dansk</option>
+                <option value="es">🇪🇸 Español</option>
+                <option value="pt">🇵🇹 Português</option>
+                <option value="he">🇮🇱 עברית</option>
+                <option value="ja">🇯🇵 日本語</option>
+                <option value="ar">🇸🇦 العربية</option>
+            </select>
+        </div>
+    </header>
 
-    <!-- Логотип серії -->
-    <div class="logo-container">
-        <img class="logo-img" src="./logo.png" alt="Prybambas Logo">
-        <span class="logo-text">PRYBAMBAS</span>
-    </div>
+    <!-- Герой -->
+    <section class="hero">
+        <h1 id="hero-title">What if you <mark>look</mark> a little closer?</h1>
+        <p id="hero-sub">A place where kids ask questions, notice small things and check the answers. Even the ones AI gives.</p>
+        <div class="hero-note" aria-hidden="true">
+            <span class="hand" id="hero-note">every “why?” counts!</span>
+            <svg viewBox="0 0 70 44" fill="none" stroke="#D61F86" stroke-width="2.2" stroke-linecap="round"><path d="M62 4 C 48 22, 30 32, 8 36"/><path d="M8 36 l10 -8 M8 36 l12 3"/></svg>
+        </div>
+    </section>
 
     <!-- Сітка просторів -->
-    <div class="grid-container">
+    <nav class="grid-container">
         <!-- 1. What If -->
-        <a href="./what-if/index.html" class="space-btn btn-whatif">
-            <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <!-- Векторний метелик -->
-                <path d="M50 80 C40 85 20 80 15 55 C10 30 35 25 50 45 C65 25 90 30 85 55 C80 80 60 85 50 80 Z" stroke="var(--magenta)" stroke-width="3"/>
-                <path d="M50 40 C45 30 25 20 20 40 C15 60 45 70 50 50 C55 70 85 60 80 40 C75 20 55 30 50 40 Z" stroke="white" stroke-width="2"/>
-                <circle cx="50" cy="45" r="4" fill="white"/>
-            </svg>
-            <span id="lbl-whatif">What If?</span>
+        <a href="./what-if/index.html" class="space-card c-whatif">
+            <div class="card-ico">
+                <svg viewBox="0 0 100 100" fill="none" aria-hidden="true">
+                    <!-- Метелик -->
+                    <path d="M50 80 C40 85 20 80 15 55 C10 30 35 25 50 45 C65 25 90 30 85 55 C80 80 60 85 50 80 Z" stroke="#1A1A2E" stroke-width="4" stroke-linejoin="round"/>
+                    <path d="M50 45 V78" stroke="#1A1A2E" stroke-width="4" stroke-linecap="round"/>
+                    <path d="M46 30 Q50 22 44 16 M54 30 Q50 22 56 16" stroke="#1A1A2E" stroke-width="3" stroke-linecap="round"/>
+                </svg>
+            </div>
+            <span class="card-tag" id="tag-whatif">Curiosity</span>
+            <span class="card-title" id="lbl-whatif">What If?</span>
+            <span class="card-desc" id="desc-whatif">Chains of consequences: one change, a whole new world.</span>
         </a>
 
         <!-- 2. Inventor Lab -->
-        <a href="./inventor/index.html" class="space-btn btn-inventor">
-            <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <!-- Векторна шестірня -->
-                <circle cx="50" cy="50" r="22" stroke="white" stroke-width="4"/>
-                <circle cx="50" cy="50" r="10" stroke="var(--green)" stroke-width="3"/>
-                <path d="M50 15 L50 26 M50 74 L50 85 M15 50 L26 50 M74 50 L85 50 M25 25 L33 33 M67 67 L75 75 M25 75 L33 67 M67 25 L75 33" stroke="var(--green)" stroke-width="6" stroke-linecap="round"/>
-            </svg>
-            <span id="lbl-inventor">Inventor Lab</span>
+        <a href="./inventor/index.html" class="space-card c-inventor">
+            <div class="card-ico">
+                <svg viewBox="0 0 100 100" fill="none" aria-hidden="true">
+                    <!-- Шестірня -->
+                    <circle cx="48" cy="48" r="22" stroke="#1A1A2E" stroke-width="4.5"/>
+                    <circle cx="48" cy="48" r="9" stroke="#1A1A2E" stroke-width="4"/>
+                    <path d="M48 14 V24 M48 72 V82 M14 48 H24 M72 48 H82 M24 24 L31 31 M65 65 L72 72 M24 72 L31 65 M65 31 L72 24" stroke="#1A1A2E" stroke-width="6" stroke-linecap="round"/>
+                </svg>
+            </div>
+            <span class="card-tag" id="tag-inventor">Critical thinking</span>
+            <span class="card-title" id="lbl-inventor">Inventor Lab</span>
+            <span class="card-desc" id="desc-inventor">TRIZ puzzles, contradictions and a 30-day calendar.</span>
         </a>
 
         <!-- 3. Books Gym -->
-        <a href="./book/index.html" class="space-btn btn-books">
-            <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <!-- Векторна розгорнута книга -->
-                <path d="M15 75 C30 75 45 65 50 60 C55 65 70 75 85 75 V25 C70 25 55 15 50 20 C45 15 30 25 15 25 Z" stroke="var(--yellow)" stroke-width="3.5" stroke-linejoin="round"/>
-                <path d="M50 20 V60" stroke="white" stroke-width="3"/>
-                <path d="M22 35 H42 M22 45 H42 M22 55 H35 M58 35 H78 M58 45 H78 M58 55 H70" stroke="rgba(255,255,255,0.4)" stroke-width="2"/>
-            </svg>
-            <span id="lbl-books">Books Gym</span>
+        <a href="./book/index.html" class="space-card c-books">
+            <div class="card-ico">
+                <svg viewBox="0 0 100 100" fill="none" aria-hidden="true">
+                    <!-- Розгорнута книга -->
+                    <path d="M12 74 C28 74 44 66 50 60 C56 66 72 74 88 74 V26 C72 26 56 18 50 22 C44 18 28 26 12 26 Z" stroke="#1A1A2E" stroke-width="4" stroke-linejoin="round"/>
+                    <path d="M50 22 V60" stroke="#1A1A2E" stroke-width="3.5"/>
+                    <path d="M20 36 H40 M20 46 H40 M20 56 H33 M60 36 H80 M60 46 H80 M60 56 H72" stroke="#1A1A2E" stroke-width="2.5" stroke-linecap="round"/>
+                </svg>
+            </div>
+            <span class="card-tag" id="tag-books">Observation</span>
+            <span class="card-title" id="lbl-books">Books Gym</span>
+            <span class="card-desc" id="desc-books">Exercises for the Kids Skill Academy books.</span>
         </a>
 
         <!-- 4. AI Coach -->
-        <a href="./coach/index.html" class="space-btn btn-coach">
-            <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <!-- Векторна голова робота з антеною -->
-                <rect x="25" y="32" width="50" height="42" rx="14" stroke="var(--cyan)" stroke-width="3.5"/>
-                <path d="M50 32 V20 M42 20 H58" stroke="white" stroke-width="3"/>
-                <circle cx="40" cy="50" r="5" fill="var(--cyan)"/>
-                <circle cx="60" cy="50" r="5" fill="var(--cyan)"/>
-                <path d="M40 62 Q50 70 60 62" stroke="white" stroke-width="3" stroke-linecap="round"/>
-            </svg>
-            <span id="lbl-coach">AI Coach</span>
+        <a href="./coach/index.html" class="space-card c-coach">
+            <div class="card-ico">
+                <svg viewBox="0 0 100 100" fill="none" aria-hidden="true">
+                    <!-- Голова робота з антеною -->
+                    <rect x="22" y="32" width="52" height="42" rx="12" stroke="#1A1A2E" stroke-width="4"/>
+                    <path d="M48 32 V20 M40 20 H56" stroke="#1A1A2E" stroke-width="3.5" stroke-linecap="round"/>
+                    <circle cx="38" cy="50" r="4.5" fill="#1A1A2E"/>
+                    <circle cx="58" cy="50" r="4.5" fill="#1A1A2E"/>
+                    <path d="M38 62 Q48 69 58 62" stroke="#1A1A2E" stroke-width="3.5" stroke-linecap="round"/>
+                </svg>
+            </div>
+            <span class="card-tag" id="tag-coach">Languages</span>
+            <span class="card-title" id="lbl-coach">AI Coach</span>
+            <span class="card-desc" id="desc-coach">Practice languages with a friendly AI coach.</span>
         </a>
-    </div>
+    </nav>
+
+    <footer class="foot">
+        <a href="./about.html" id="lnk-about">About</a>
+        <a href="./faq.html" id="lnk-faq">FAQ</a>
+        <span>© Kids Skill Academy</span>
+    </footer>
+  </div>
 
     <!-- Вікно-інструкція для користувачів iPhone -->
-    <div class="ios-modal" id="ios-install-modal">
+    <div class="ios-modal" id="ios-install-modal" role="dialog" aria-labelledby="ios-title">
         <h3 id="ios-title">Install App</h3>
         <p id="ios-desc">Follow these simple steps to install the app on your iPhone:</p>
-        
+
         <div class="ios-modal-step">
             <span class="icon">📤</span>
             <span id="ios-step-1">1. Tap the "Share" button in Safari's bottom toolbar.</span>
@@ -496,6 +561,25 @@
 
                 };
 
+        // Тексти нового героя й карток (зливаються з dict у changeLang)
+        const heroDict = {
+            en: { h1: "What if you <mark>look</mark> a little closer?", sub: "A place where kids ask questions, notice small things and check the answers. Even the ones AI gives.", note: "every “why?” counts!", t_whatif: "Curiosity", t_inventor: "Critical thinking", t_books: "Observation", t_coach: "Languages", d_whatif: "Chains of consequences: one change, a whole new world.", d_inventor: "TRIZ puzzles, contradictions and a 30-day calendar.", d_books: "Exercises for the Kids Skill Academy books.", d_coach: "Practice languages with a friendly AI coach.", about: "About", faq: "FAQ" },
+            uk: { h1: "А що, якщо <mark>придивитися</mark> уважніше?", sub: "Простір, де діти ставлять питання, помічають дрібниці й перевіряють відповіді. Навіть ті, що дає ШІ.", note: "кожне «чому?» рахується!", t_whatif: "Допитливість", t_inventor: "Критичне мислення", t_books: "Спостережливість", t_coach: "Мови", d_whatif: "Ланцюжки наслідків: одна зміна і цілий новий світ.", d_inventor: "ТРВЗ-задачі, протиріччя і 30-денний календар.", d_books: "Вправи до книжок Kids Skill Academy.", d_coach: "Практикуй мови з дружнім ШІ-тренером.", about: "Про нас", faq: "Питання" },
+            ro: { h1: "Ce-ar fi să <mark>privești</mark> mai atent?", sub: "Un loc unde copiii pun întrebări, observă detaliile și verifică răspunsurile. Chiar și pe cele date de AI.", note: "fiecare „de ce?” contează!", t_whatif: "Curiozitate", t_inventor: "Gândire critică", t_books: "Observație", t_coach: "Limbi", d_whatif: "Lanțuri de consecințe: o schimbare, o lume nouă.", d_inventor: "Probleme TRIZ, contradicții și un calendar de 30 de zile.", d_books: "Exerciții pentru cărțile Kids Skill Academy.", d_coach: "Exersează limbi cu un antrenor AI prietenos.", about: "Despre", faq: "Întrebări" },
+            pl: { h1: "A co, jeśli <mark>przyjrzysz się</mark> uważniej?", sub: "Miejsce, gdzie dzieci zadają pytania, zauważają szczegóły i sprawdzają odpowiedzi. Nawet te od AI.", note: "każde „dlaczego?” się liczy!", t_whatif: "Ciekawość", t_inventor: "Krytyczne myślenie", t_books: "Spostrzegawczość", t_coach: "Języki", d_whatif: "Łańcuchy skutków: jedna zmiana, cały nowy świat.", d_inventor: "Zadania TRIZ, sprzeczności i 30-dniowy kalendarz.", d_books: "Ćwiczenia do książek Kids Skill Academy.", d_coach: "Ćwicz języki z przyjaznym trenerem AI.", about: "O nas", faq: "FAQ" },
+            de: { h1: "Was wäre, wenn du <mark>genauer</mark> hinschaust?", sub: "Ein Ort, an dem Kinder Fragen stellen, Kleinigkeiten bemerken und Antworten prüfen. Auch die von der KI.", note: "jedes „Warum?“ zählt!", t_whatif: "Neugier", t_inventor: "Kritisches Denken", t_books: "Beobachten", t_coach: "Sprachen", d_whatif: "Ketten von Folgen: eine Änderung, eine ganz neue Welt.", d_inventor: "TRIZ-Rätsel, Widersprüche und ein 30-Tage-Kalender.", d_books: "Übungen zu den Büchern von Kids Skill Academy.", d_coach: "Übe Sprachen mit einem freundlichen KI-Coach.", about: "Über uns", faq: "FAQ" },
+            fr: { h1: "Et si tu <mark>regardais</mark> de plus près&nbsp;?", sub: "Un espace où les enfants posent des questions, remarquent les détails et vérifient les réponses. Même celles de l'IA.", note: "chaque « pourquoi ? » compte !", t_whatif: "Curiosité", t_inventor: "Esprit critique", t_books: "Observation", t_coach: "Langues", d_whatif: "Chaînes de conséquences : un changement, tout un monde.", d_inventor: "Défis TRIZ, contradictions et calendrier de 30 jours.", d_books: "Exercices pour les livres Kids Skill Academy.", d_coach: "Pratique les langues avec un coach IA bienveillant.", about: "À propos", faq: "FAQ" },
+            it: { h1: "E se <mark>guardassi</mark> più da vicino?", sub: "Uno spazio dove i bambini fanno domande, notano i dettagli e verificano le risposte. Anche quelle dell'IA.", note: "ogni «perché?» conta!", t_whatif: "Curiosità", t_inventor: "Pensiero critico", t_books: "Osservazione", t_coach: "Lingue", d_whatif: "Catene di conseguenze: un cambiamento, un mondo nuovo.", d_inventor: "Sfide TRIZ, contraddizioni e un calendario di 30 giorni.", d_books: "Esercizi per i libri Kids Skill Academy.", d_coach: "Pratica le lingue con un coach IA amichevole.", about: "Chi siamo", faq: "FAQ" },
+            sv: { h1: "Tänk om du <mark>tittar</mark> lite närmare?", sub: "En plats där barn ställer frågor, lägger märke till detaljer och kollar svaren. Även de som AI ger.", note: "varje ”varför?” räknas!", t_whatif: "Nyfikenhet", t_inventor: "Kritiskt tänkande", t_books: "Iakttagelse", t_coach: "Språk", d_whatif: "Kedjor av följder: en ändring, en helt ny värld.", d_inventor: "TRIZ-uppgifter, motsägelser och en 30-dagarskalender.", d_books: "Övningar till Kids Skill Academy-böckerna.", d_coach: "Öva språk med en vänlig AI-coach.", about: "Om oss", faq: "Frågor" },
+            fi: { h1: "Entä jos <mark>katsot</mark> tarkemmin?", sub: "Paikka, jossa lapset kysyvät, huomaavat pieniä asioita ja tarkistavat vastaukset. Myös tekoälyn antamat.", note: "jokainen ”miksi?” on tärkeä!", t_whatif: "Uteliaisuus", t_inventor: "Kriittinen ajattelu", t_books: "Havainnointi", t_coach: "Kielet", d_whatif: "Seurausten ketjut: yksi muutos, kokonaan uusi maailma.", d_inventor: "TRIZ-tehtäviä, ristiriitoja ja 30 päivän kalenteri.", d_books: "Harjoituksia Kids Skill Academyn kirjoihin.", d_coach: "Harjoittele kieliä ystävällisen tekoälyvalmentajan kanssa.", about: "Tietoa", faq: "UKK" },
+            da: { h1: "Hvad nu hvis du <mark>kigger</mark> lidt nærmere?", sub: "Et sted, hvor børn stiller spørgsmål, lægger mærke til detaljer og tjekker svarene. Også dem, AI giver.", note: "hvert “hvorfor?” tæller!", t_whatif: "Nysgerrighed", t_inventor: "Kritisk tænkning", t_books: "Iagttagelse", t_coach: "Sprog", d_whatif: "Kæder af følger: én ændring, en helt ny verden.", d_inventor: "TRIZ-opgaver, modsætninger og en 30-dages kalender.", d_books: "Øvelser til Kids Skill Academy-bøgerne.", d_coach: "Øv sprog med en venlig AI-coach.", about: "Om os", faq: "FAQ" },
+            es: { h1: "¿Y si <mark>miras</mark> más de cerca?", sub: "Un espacio donde los niños hacen preguntas, notan los detalles y comprueban las respuestas. Incluso las de la IA.", note: "¡cada «¿por qué?» cuenta!", t_whatif: "Curiosidad", t_inventor: "Pensamiento crítico", t_books: "Observación", t_coach: "Idiomas", d_whatif: "Cadenas de consecuencias: un cambio, un mundo nuevo.", d_inventor: "Retos TRIZ, contradicciones y un calendario de 30 días.", d_books: "Ejercicios para los libros de Kids Skill Academy.", d_coach: "Practica idiomas con un entrenador IA amable.", about: "Sobre nosotros", faq: "Preguntas" },
+            pt: { h1: "E se você <mark>olhar</mark> mais de perto?", sub: "Um espaço onde as crianças fazem perguntas, reparam nos detalhes e verificam as respostas. Até as da IA.", note: "cada “por quê?” conta!", t_whatif: "Curiosidade", t_inventor: "Pensamento crítico", t_books: "Observação", t_coach: "Idiomas", d_whatif: "Cadeias de consequências: uma mudança, um mundo novo.", d_inventor: "Desafios TRIZ, contradições e um calendário de 30 dias.", d_books: "Exercícios para os livros da Kids Skill Academy.", d_coach: "Pratique idiomas com um treinador IA amigável.", about: "Sobre", faq: "Perguntas" },
+            he: { h1: "ומה אם <mark>תסתכלו</mark> קצת יותר מקרוב?", sub: "מקום שבו ילדים שואלים שאלות, שמים לב לפרטים ובודקים תשובות. גם את אלה של הבינה המלאכותית.", note: "כל „למה?” נחשב!", t_whatif: "סקרנות", t_inventor: "חשיבה ביקורתית", t_books: "התבוננות", t_coach: "שפות", d_whatif: "שרשראות של תוצאות: שינוי אחד, עולם חדש.", d_inventor: "חידות TRIZ, סתירות ולוח שנה של 30 יום.", d_books: "תרגילים לספרי Kids Skill Academy.", d_coach: "תרגלו שפות עם מאמן AI ידידותי.", about: "אודות", faq: "שאלות" },
+            ja: { h1: "もっと<mark>よく見て</mark>みたら？", sub: "子どもたちが質問し、小さなことに気づき、答えを確かめる場所。AIの答えも。", note: "「なぜ？」はぜんぶ大事！", t_whatif: "好奇心", t_inventor: "批判的思考", t_books: "観察力", t_coach: "言語", d_whatif: "結果の連鎖：ひとつの変化で、まったく新しい世界。", d_inventor: "TRIZパズル、矛盾、30日カレンダー。", d_books: "Kids Skill Academyの本のための練習。", d_coach: "やさしいAIコーチと言語を練習しよう。", about: "概要", faq: "よくある質問" },
+            ar: { h1: "ماذا لو <mark>نظرت</mark> عن قرب أكثر؟", sub: "مكان يطرح فيه الأطفال الأسئلة، ويلاحظون التفاصيل، ويتحققون من الإجابات. حتى إجابات الذكاء الاصطناعي.", note: "كل «لماذا؟» مهم!", t_whatif: "الفضول", t_inventor: "التفكير النقدي", t_books: "الملاحظة", t_coach: "اللغات", d_whatif: "سلاسل من النتائج: تغيير واحد، عالم جديد.", d_inventor: "ألغاز TRIZ وتناقضات وتقويم لمدة 30 يومًا.", d_books: "تمارين لكتب Kids Skill Academy.", d_coach: "تدرّب على اللغات مع مدرب ذكاء اصطناعي ودود.", about: "من نحن", faq: "أسئلة" },
+        };
+
         let deferredPrompt = null;
         let isIos = false;
 
@@ -508,6 +592,20 @@
             document.getElementById('lbl-inventor').innerText = t.inventor;
             document.getElementById('lbl-books').innerText = t.books;
             document.getElementById('lbl-coach').innerText = t.coach;
+
+            // Герой, мітки та описи карток
+            const h = heroDict[lang] || heroDict['en'];
+            document.getElementById('hero-title').innerHTML = h.h1;
+            document.getElementById('hero-sub').innerText = h.sub;
+            document.getElementById('hero-note').innerText = h.note;
+            ['whatif', 'inventor', 'books', 'coach'].forEach(k => {
+                document.getElementById('tag-' + k).innerText = h['t_' + k];
+                document.getElementById('desc-' + k).innerText = h['d_' + k];
+            });
+            document.getElementById('lnk-about').innerText = h.about;
+            document.getElementById('lnk-faq').innerText = h.faq;
+            document.documentElement.lang = lang;
+            document.documentElement.dir = (lang === 'he' || lang === 'ar') ? 'rtl' : 'ltr';
 
             // Оновлення текстів кнопки встановлення
             const btn = document.getElementById('install-pwa-btn');
