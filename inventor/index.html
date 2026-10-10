@@ -12,148 +12,124 @@
 <meta property="og:image" content="https://prybambas.com/logo.png">
 
 <title>Inventor Lab | Prybambas</title>
-<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Geologica:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/notebook.css">
 <style>
-:root{--magenta:#d92cff;--green:#54ff3a;--cyan:#00f3ff;--bg:#020617}
-*{box-sizing:border-box;margin:0;padding:0}
-body,html{margin:0;padding:0;min-height:100vh;background:radial-gradient(circle at center,#0f172a 0%,#020617 100%);color:#fff;font-family:'Nunito',sans-serif;overflow-x:hidden;display:flex;flex-direction:column;align-items:center}
-.top-bar{display:flex;justify-content:space-between;width:100%;max-width:450px;padding:15px 15px 0 15px;z-index:100}
-.back-btn,.lang-switch{background:rgba(15,23,42,.8);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);color:#fff;border-radius:20px;font-weight:700;box-shadow:0 0 10px rgba(84,255,58,.3);font-size:.85rem}
-.back-btn{border:2px solid var(--green);padding:8px 16px;text-decoration:none;display:flex;align-items:center;gap:5px;transition:.3s}
-.back-btn:hover{background:rgba(84,255,58,.2)}
-.lang-switch{border:2px solid var(--green);padding:6px 12px;cursor:pointer;outline:none}
-.logo-container{display:flex;align-items:center;gap:10px;margin-top:15px;margin-bottom:15px}
-.logo-svg{width:35px;height:35px;filter:drop-shadow(0 0 8px var(--green))}
-.logo-text{color:#fff;font-weight:800;letter-spacing:2px;font-size:1.3rem;text-shadow:0 0 10px var(--green)}
-.main-card{width:90%;max-width:450px;background:rgba(15,23,42,.6);backdrop-filter:blur(12px);border-radius:24px;border:2px solid var(--green);padding:20px;box-shadow:0 8px 32px rgba(0,0,0,.5),0 0 15px rgba(84,255,58,.1);display:flex;flex-direction:column;align-items:center;min-height:520px}
-header h1{font-size:1.25rem;font-weight:800;color:#fff;margin-bottom:20px;text-transform:uppercase;letter-spacing:1px;text-align:center}
+/* Лабораторія винахідника: доповнення до notebook.css */
+:root{--ok:#1F8A5B;--warn:#B76E00;--warn-bg:#FFF3D6;--alert:#C8323C;--pink-bg:#FFE3F2;--blue-bg:#DDF0FB;--yellow-bg:#FFF9C2;--ok-bg:#DFF5EA}
+.main-card::before{background:var(--blue)}
 #menu-screen{display:flex;flex-direction:column;align-items:center;width:100%;gap:16px}
-.mode-selectors{display:flex;justify-content:center;gap:12px;width:100%}
-.selector-btn{width:72px;height:72px;border-radius:18px;background:rgba(10,15,30,.65);border:2.5px solid rgba(255,255,255,.18);color:#fff;cursor:pointer;transition:.25s;display:flex;align-items:center;justify-content:center;font-size:2rem;box-shadow:0 6px 18px rgba(0,0,0,.25)}
-.selector-btn:hover{transform:translateY(-2px);background:rgba(255,255,255,.08)}
-.selector-btn.active.green{border-color:var(--green);box-shadow:0 0 18px rgba(84,255,58,.35);background:rgba(84,255,58,.12)}
-.selector-btn.active.cyan{border-color:var(--cyan);box-shadow:0 0 18px rgba(0,243,255,.35);background:rgba(0,243,255,.12)}
-.selector-btn.active.magenta{border-color:var(--magenta);box-shadow:0 0 18px rgba(217,44,255,.35);background:rgba(217,44,255,.12)}
-.menu-panel{width:100%;background:rgba(2,6,23,.75);border:2px solid var(--green);border-radius:20px;padding:18px;display:flex;flex-direction:column;gap:14px;box-shadow:0 8px 24px rgba(0,0,0,.35)}
-.menu-title{color:var(--green);font-size:1.15rem;font-weight:800;text-align:center}
-.menu-list{color:#cbd5e1;font-size:.92rem;line-height:1.45;display:flex;flex-direction:column;gap:8px}
+.mode-selectors{gap:12px;margin-bottom:0}
+.selector-btn{width:70px;height:70px;font-size:1.9rem}
+.menu-panel{width:100%;background:var(--paper);background-image:repeating-linear-gradient(transparent 0 27px,var(--grid) 27px 28px);border:1.5px solid var(--ink);border-radius:6px;padding:18px;display:flex;flex-direction:column;gap:14px}
+.menu-title{color:var(--ink);font-size:1.15rem;font-weight:800;text-align:center}
+.menu-list{color:var(--ink);font-size:.93rem;line-height:1.45;display:flex;flex-direction:column;gap:8px}
 .menu-list div{display:flex;gap:8px;align-items:flex-start}
 .menu-list span{flex-shrink:0}
-.menu-cta{background:var(--green);color:#020617;border:none;padding:13px 18px;border-radius:30px;font-weight:900;text-transform:uppercase;letter-spacing:1px;width:100%;cursor:pointer;transition:.25s}
-.menu-cta:hover{transform:scale(1.02);box-shadow:0 0 16px rgba(84,255,58,.35)}
-.menu-note{color:#94a3b8;font-size:.82rem;text-align:center;line-height:1.35}
+.menu-cta{background:var(--ink);color:#fff;border:1.5px solid var(--ink);padding:13px 18px;border-radius:8px;font:700 .95rem var(--f-main);width:100%;cursor:pointer;box-shadow:3px 3px 0 var(--yellow);transition:transform .15s,box-shadow .15s}
+.menu-cta:hover{transform:translate(-1px,-1px);box-shadow:5px 5px 0 var(--yellow)}
+.menu-note{color:var(--ink-soft);font-size:.84rem;text-align:center;line-height:1.4}
 .content-screen{display:none;flex-direction:column;width:100%;height:100%}
-.scrolling-tabs{display:flex;gap:8px;overflow-x:auto;width:100%;padding-bottom:10px;scrollbar-width:none;-ms-overflow-style:none}.scrolling-tabs::-webkit-scrollbar{display:none}
-.tool-tab{padding:8px 16px;border-radius:20px;border:2px solid var(--green);background:transparent;color:#fff;font-weight:700;font-size:11px;cursor:pointer;white-space:nowrap;transition:.2s}
-.tool-tab.active{background:var(--green);color:#000;box-shadow:0 0 10px rgba(84,255,58,.4)}
-.display-box{background:rgba(2,6,23,.8);border-radius:16px;padding:18px;border:1px solid var(--green);margin-top:15px;flex-grow:1;display:flex;flex-direction:column;justify-content:center;min-height:250px}
-.display-box h3{color:var(--green);font-size:1.15rem;margin-bottom:8px;font-weight:800}
-.display-box p{color:#cbd5e1;font-size:.9rem;line-height:1.45;margin-bottom:12px}
-.display-box .example{border-top:1px solid rgba(84,255,58,.2);padding-top:10px;font-style:italic;color:#94a3b8;font-size:.85rem}
-.real-badge{display:inline-block;background:rgba(84,255,58,.15);border:1px solid rgba(84,255,58,.4);color:var(--green);font-size:.72rem;font-weight:800;text-transform:uppercase;letter-spacing:.5px;padding:4px 10px;border-radius:20px;margin-bottom:10px}
+.scrolling-tabs{display:flex;gap:8px;overflow-x:auto;width:100%;padding:2px 2px 10px;scrollbar-width:none;-ms-overflow-style:none}.scrolling-tabs::-webkit-scrollbar{display:none}
+.tool-tab{padding:7px 14px;border-radius:999px;border:1.5px solid var(--ink);background:var(--card);color:var(--ink);font:600 .78rem var(--f-main);cursor:pointer;white-space:nowrap;transition:background .15s}
+.tool-tab:hover{background:var(--yellow-bg)}
+.tool-tab.active{background:var(--ink);color:#fff}
+.display-box{background:var(--card);border-radius:6px;padding:18px;border:1.5px solid var(--ink);margin-top:12px;flex-grow:1;display:flex;flex-direction:column;justify-content:center;min-height:250px;box-shadow:4px 4px 0 var(--blue);color:var(--ink)}
+.display-box h3{color:var(--ink);font-size:1.2rem;margin-bottom:8px;font-weight:800}
+.display-box p{color:var(--ink-soft);font-size:.93rem;line-height:1.5;margin-bottom:12px}
+.display-box .example{border-top:1.5px dashed var(--grid);padding-top:10px;font-family:var(--f-hand);font-size:1.25rem;line-height:1.25;color:var(--pink-ink)}
+.real-badge{display:inline-block;background:var(--yellow);color:var(--ink);font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;padding:3px 10px;border-radius:4px;margin-bottom:10px;transform:rotate(-1.5deg);align-self:flex-start}
 .example-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:12px 0}
-.example-card{background:rgba(2,6,23,.6);border:1px solid rgba(84,255,58,.25);border-radius:14px;padding:12px 10px;text-align:center}
+.example-card{background:var(--paper);border:1.5px solid var(--ink);border-radius:6px;padding:12px 10px;text-align:center}
 .example-card .ex-icon{font-size:2rem;line-height:1;margin-bottom:6px}
-.example-card .ex-label{font-size:.82rem;font-weight:800;color:#fff;line-height:1.25}
-.example-card .ex-note{font-size:.72rem;color:#94a3b8;margin-top:4px;line-height:1.3}
-.search-cta-btn{background:rgba(84,255,58,.12);border:2px solid var(--green);color:var(--green);padding:12px 16px;border-radius:30px;font-weight:800;font-size:.85rem;width:100%;cursor:pointer;margin-top:8px;transition:.25s;text-align:center}
-.search-cta-btn:hover{background:rgba(84,255,58,.22);box-shadow:0 0 12px rgba(84,255,58,.3)}
-.search-checklist{display:none;margin-top:10px;text-align:left;background:rgba(2,6,23,.5);border-radius:12px;padding:12px 14px;border:1px dashed rgba(84,255,58,.3)}
+.example-card .ex-label{font-size:.84rem;font-weight:800;color:var(--ink);line-height:1.25}
+.example-card .ex-note{font-size:.74rem;color:var(--ink-soft);margin-top:4px;line-height:1.3}
+.search-cta-btn{background:var(--blue-bg);border:1.5px solid var(--ink);color:var(--ink);padding:11px 16px;border-radius:8px;font:700 .86rem var(--f-main);width:100%;cursor:pointer;margin-top:8px;text-align:center}
+.search-cta-btn:hover{background:#C9E6F7}
+.search-checklist{display:none;margin-top:10px;text-align:start;background:var(--paper);border-radius:6px;padding:12px 14px;border:1.5px dashed var(--blue)}
 .search-checklist.open{display:block}
-.search-checklist li{color:#cbd5e1;font-size:.82rem;line-height:1.45;margin:6px 0;list-style:none;padding-left:4px}
-.search-checklist li::before{content:"☐ ";color:var(--green)}
-.video-placeholder{margin-top:10px;padding:10px 14px;border-radius:12px;border:1px solid rgba(255,255,255,.12);color:#64748b;font-size:.78rem;text-align:center;font-weight:700}
-.tool-nav-row{display:flex;align-items:center;justify-content:space-between;width:100%;margin-top:8px;gap:8px}
-.tool-nav-btn{background:rgba(15,23,42,.8);border:2px solid var(--green);color:#fff;width:44px;height:44px;border-radius:50%;font-size:1.2rem;font-weight:800;cursor:pointer;transition:.2s;flex-shrink:0}
-.tool-nav-btn:hover{background:rgba(84,255,58,.2)}
-#tool-counter{font-size:.82rem;font-weight:800;color:#94a3b8;letter-spacing:.5px}
+.search-checklist li{color:var(--ink);font-size:.84rem;line-height:1.45;margin:6px 0;list-style:none;padding-inline-start:4px}
+.search-checklist li::before{content:"☐ ";color:var(--blue)}
+.video-placeholder{margin-top:10px;padding:10px 14px;border-radius:6px;border:1.5px dashed var(--grid);color:var(--ink-soft);font-size:.8rem;text-align:center;font-weight:600}
+.tool-nav-row{display:flex;align-items:center;justify-content:space-between;width:100%;margin-top:10px;gap:8px}
+.tool-nav-btn{background:var(--card);border:1.5px solid var(--ink);color:var(--ink);width:44px;height:44px;border-radius:50%;font-size:1.2rem;font-weight:800;cursor:pointer;box-shadow:2px 2px 0 var(--ink);flex-shrink:0}
+.tool-nav-btn:hover{background:var(--yellow-bg)}
+#tool-counter{font-size:.84rem;font-weight:700;color:var(--ink-soft);font-variant-numeric:tabular-nums}
 .inv-pills{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin-top:8px}
-.inv-pill{background:rgba(217,44,255,.15);border:1px solid rgba(217,44,255,.4);color:#f0abfc;font-size:.75rem;font-weight:700;padding:5px 10px;border-radius:20px}
-.hint-box{background:rgba(84,255,58,.08);border-left:3px solid var(--green);padding:8px 12px;margin-top:8px;font-size:.82rem;color:#cbd5e1;text-align:left;border-radius:0 8px 8px 0}
-.constraint-box{background:rgba(255,34,68,.08);border-left:3px solid #ff2244;padding:8px 12px;margin-top:8px;font-size:.82rem;color:#fca5a5;text-align:left;border-radius:0 8px 8px 0}
-.grid-30{display:grid;grid-template-columns:repeat(6,1fr);gap:6px;width:100%;margin-bottom:15px}
-.day-node{aspect-ratio:1;background:rgba(2,6,23,.8);border:2px solid var(--cyan);border-radius:10px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:11px;cursor:pointer;transition:.2s}
-.day-node.active,.day-node:hover{background:var(--cyan);color:#000;box-shadow:0 0 10px rgba(0,243,255,.4)}
-.action-btn{background:var(--green);color:#000;border:none;padding:12px 24px;border-radius:30px;font-weight:800;font-size:14px;cursor:pointer;text-transform:uppercase;letter-spacing:1px;width:100%;margin-top:15px;transition:.3s}
-.action-btn:hover{transform:scale(1.02);box-shadow:0 0 15px rgba(84,255,58,.4)}
-.action-btn.magenta-theme{background:var(--magenta);color:#fff;box-shadow:0 0 10px rgba(217,44,255,.3)}
-.action-btn.magenta-theme:hover{box-shadow:0 0 15px rgba(217,44,255,.5)}
-.back-menu-btn{background:transparent;color:#94a3b8;border:2px solid #475569;padding:10px;border-radius:30px;font-weight:700;width:100%;margin-top:15px;cursor:pointer;transition:.3s;text-transform:uppercase;font-size:11px}
-.back-menu-btn:hover{border-color:#fff;color:#fff}
-.promo-banner{margin-top:20px;background:linear-gradient(135deg,#1e1b4b 0%,#064e3b 100%);border-radius:16px;padding:12px 18px;width:100%;border:2px solid var(--green);box-shadow:0 0 12px rgba(84,255,58,.2);display:flex;align-items:center;justify-content:space-between;text-decoration:none;color:#fff;transition:.3s;box-sizing:border-box}
-.promo-banner:hover{transform:scale(1.02);box-shadow:0 0 18px rgba(84,255,58,.4)}
-.promo-text{flex-grow:1;padding-right:15px;text-align:left}
-.promo-text h3{margin:0 0 3px 0;font-size:.95rem;color:var(--green);font-weight:800;text-transform:uppercase}
-.promo-text p{margin:0;font-size:.8rem;color:#cbd5e1;line-height:1.35}
-.promo-btn{background:var(--green);color:#020617;padding:8px 14px;border-radius:30px;font-size:.75rem;font-weight:900;white-space:nowrap;text-transform:uppercase}
-
+.inv-pill{background:var(--pink-bg);border:1px solid var(--pink);color:var(--ink);font-size:.78rem;font-weight:600;padding:4px 10px;border-radius:999px}
+.hint-box,.success-box{background:var(--ok-bg);border-inline-start:3px solid var(--ok);padding:8px 12px;margin-top:8px;font-size:.84rem;color:var(--ink);text-align:start;border-radius:0 6px 6px 0;line-height:1.45}
+.constraint-box{background:#FDE4E6;border-inline-start:3px solid var(--alert);padding:8px 12px;margin-top:8px;font-size:.84rem;color:var(--ink);text-align:start;border-radius:0 6px 6px 0}
+.bonus-box{background:var(--pink-bg);border-inline-start:3px solid var(--pink-ink);padding:8px 12px;margin-top:8px;font-size:.84rem;color:var(--ink);border-radius:0 6px 6px 0;line-height:1.45}
+.grid-30{display:grid;grid-template-columns:repeat(6,1fr);gap:6px;width:100%;margin-bottom:14px}
+.day-node{aspect-ratio:1;background:var(--card);border:1.5px solid var(--ink);border-radius:6px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:12px;color:var(--ink);cursor:pointer;transition:background .15s;font-variant-numeric:tabular-nums}
+.day-node:hover{background:var(--yellow-bg)}
+.day-node.active,.day-node.today{background:var(--yellow);color:var(--ink);border-color:var(--ink)}
+.day-node.done{background:var(--ok-bg);border-color:var(--ok);color:var(--ok);position:relative}
+.day-node.done .tick{position:absolute;top:1px;right:3px;font-size:8px}
+.day-node.missed{border-color:var(--warn);color:var(--warn);background:var(--warn-bg)}
+.day-node.future{opacity:.45}
+.day-node.selected{box-shadow:2px 2px 0 var(--pink);border-color:var(--pink-ink)}
+.action-btn{margin-top:14px;--accent:var(--blue)}
+.action-btn.magenta-theme{--accent:var(--pink)}
+.action-btn.cyan-theme{background:var(--ink);color:#fff;--accent:var(--yellow)}
+.action-btn.cyan-outline{background:var(--blue-bg);margin-top:6px;--accent:var(--blue)}
+.back-menu-btn{background:transparent;color:var(--ink-soft);border:1.5px dashed var(--ink-soft);padding:10px;border-radius:8px;font:600 .8rem var(--f-main);width:100%;margin-top:14px;cursor:pointer}
+.back-menu-btn:hover{color:var(--ink);border-color:var(--ink)}
+.promo-text{flex-grow:1;text-align:start}
 .streak{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin-bottom:12px;width:100%}
-.streak-pill{background:rgba(0,243,255,.12);border:1px solid rgba(0,243,255,.35);color:var(--cyan);font-size:.72rem;font-weight:800;padding:5px 12px;border-radius:20px}
+.streak-pill{background:var(--yellow-bg);border:1px solid var(--ink);color:var(--ink);font-size:.74rem;font-weight:700;padding:4px 12px;border-radius:999px}
 .cal-subview{display:none;flex-direction:column;width:100%;gap:10px}
 .cal-subview.active{display:flex}
-.week-badge{display:inline-block;background:rgba(217,44,255,.15);border:1px solid rgba(217,44,255,.35);color:var(--magenta);font-size:.68rem;font-weight:800;text-transform:uppercase;padding:3px 9px;border-radius:20px;margin-bottom:6px}
-.cal-day-big{font-size:2rem;font-weight:800;color:var(--cyan);line-height:1}
-.cal-day-sub{font-size:.78rem;color:#94a3b8;font-weight:800;text-transform:uppercase;margin-bottom:8px}
-.hunt-title{font-size:.95rem;font-weight:800;line-height:1.35;margin-bottom:6px}
-.tool-tag{display:inline-block;background:rgba(84,255,58,.12);border:1px solid rgba(84,255,58,.35);color:var(--green);font-size:.68rem;font-weight:800;padding:3px 8px;border-radius:20px;margin-bottom:8px}
-.cal-hint{font-size:.78rem;color:#94a3b8;line-height:1.4;margin-bottom:8px}
-.cal-checklist{background:rgba(2,6,23,.5);border:1px dashed rgba(0,243,255,.3);border-radius:10px;padding:10px 12px;font-size:.78rem;color:#cbd5e1;line-height:1.55;margin-bottom:10px;list-style:none}
-.cal-checklist li::before{content:"☐ ";color:var(--cyan)}
-.cal-checklist.done li::before{content:"✓ ";color:var(--green)}
-.progress-bar{height:6px;background:rgba(255,255,255,.08);border-radius:6px;margin-bottom:6px;width:100%}
-.progress-fill{height:100%;background:linear-gradient(90deg,var(--cyan),var(--green));border-radius:6px}
-.progress-label{font-size:.68rem;color:#94a3b8;text-align:center;margin-bottom:10px}
-.cal-unlock{font-size:.72rem;color:#94a3b8;text-align:center;margin-top:8px}
-.cal-unlock strong{color:var(--green)}
-.cal-done-banner{background:rgba(84,255,58,.1);border:1px solid rgba(84,255,58,.35);color:var(--green);font-weight:800;font-size:.82rem;text-align:center;padding:10px;border-radius:12px;margin-bottom:10px}
-.action-btn.cyan-theme{background:var(--cyan);color:#020617;box-shadow:0 0 10px rgba(0,243,255,.3)}
-.action-btn.cyan-outline{background:rgba(0,243,255,.1);border:2px solid var(--cyan);color:var(--cyan);margin-top:6px}
+.week-badge{display:inline-block;background:var(--pink-bg);color:var(--pink-ink);font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;padding:3px 9px;border-radius:4px;margin-bottom:6px}
+.cal-day-big{font-size:2.2rem;font-weight:800;color:var(--ink);line-height:1;font-variant-numeric:tabular-nums}
+.cal-day-sub{font-size:.78rem;color:var(--ink-soft);font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px}
+.hunt-title{font-size:1rem;font-weight:800;line-height:1.35;margin-bottom:6px;color:var(--ink)}
+.tool-tag{display:inline-block;background:var(--blue-bg);color:var(--blue);font-size:.7rem;font-weight:700;padding:3px 8px;border-radius:4px;margin-bottom:8px}
+.cal-hint{font-size:.82rem;color:var(--ink-soft);line-height:1.45;margin-bottom:8px}
+.cal-checklist{background:var(--paper);border:1.5px dashed var(--blue);border-radius:6px;padding:10px 12px;font-size:.82rem;color:var(--ink);line-height:1.6;margin-bottom:10px;list-style:none}
+.cal-checklist li::before{content:"☐ ";color:var(--blue)}
+.cal-checklist.done li::before{content:"✓ ";color:var(--ok)}
+.progress-bar{height:8px;background:var(--grid);border-radius:4px;margin-bottom:6px;width:100%}
+.progress-fill{height:100%;background:var(--blue);border-radius:4px}
+.progress-label{font-size:.72rem;color:var(--ink-soft);text-align:center;margin-bottom:10px;font-variant-numeric:tabular-nums}
+.cal-unlock{font-size:.76rem;color:var(--ink-soft);text-align:center;margin-top:8px}
+.cal-unlock strong{color:var(--ink)}
+.cal-done-banner{background:var(--ok-bg);border:1.5px solid var(--ok);color:var(--ok);font-weight:700;font-size:.86rem;text-align:center;padding:10px;border-radius:6px;margin-bottom:10px}
 .week-row{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin-bottom:10px;width:100%}
-.week-chip{font-size:.65rem;font-weight:800;padding:4px 8px;border-radius:12px;border:1px solid rgba(255,255,255,.15);color:#64748b}
-.week-chip.active{border-color:var(--cyan);color:var(--cyan);background:rgba(0,243,255,.1)}
-.week-chip.done{border-color:var(--green);color:var(--green);background:rgba(84,255,58,.08)}
-.day-node.done{border-color:var(--green);color:var(--green);position:relative}
-.day-node.done .tick{position:absolute;top:1px;right:2px;font-size:7px}
-.day-node.today{background:var(--cyan);color:#000;border-color:var(--cyan)}
-.day-node.missed{border-color:#f59e0b;color:#f59e0b}
-.day-node.future{opacity:.45}
-.day-node.selected{box-shadow:0 0 8px rgba(217,44,255,.5);border-color:var(--magenta)}
-.cal-legend{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;font-size:.62rem;color:#94a3b8;margin-bottom:8px}
-.status-badge{display:inline-block;font-size:.68rem;font-weight:800;padding:4px 10px;border-radius:20px;margin-bottom:10px}
-.status-badge.done{background:rgba(84,255,58,.15);color:var(--green);border:1px solid rgba(84,255,58,.35)}
-.status-badge.catchup{background:rgba(245,158,11,.15);color:#f59e0b;border:1px solid rgba(245,158,11,.35)}
-.status-badge.preview{background:rgba(100,116,139,.2);color:#94a3b8;border:1px solid rgba(100,116,139,.35)}
-.status-badge.today{background:rgba(0,243,255,.15);color:var(--cyan);border:1px solid rgba(0,243,255,.35)}
+.week-chip{font-size:.68rem;font-weight:700;padding:4px 8px;border-radius:4px;border:1px solid var(--grid);color:var(--ink-soft);background:var(--card)}
+.week-chip.active{border-color:var(--ink);color:var(--ink);background:var(--yellow)}
+.week-chip.done{border-color:var(--ok);color:var(--ok);background:var(--ok-bg)}
+.cal-legend{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;font-size:.7rem;color:var(--ink-soft);margin-bottom:8px}
+.status-badge{display:inline-block;font-size:.7rem;font-weight:700;padding:3px 10px;border-radius:4px;margin-bottom:10px;align-self:flex-start}
+.status-badge.done{background:var(--ok-bg);color:var(--ok)}
+.status-badge.catchup{background:var(--warn-bg);color:var(--warn)}
+.status-badge.preview{background:var(--grid);color:var(--ink-soft)}
+.status-badge.today{background:var(--yellow);color:var(--ink)}
 .cal-header-row{display:flex;justify-content:space-between;align-items:center;width:100%;margin-bottom:4px}
-.cal-icon-btn{background:rgba(15,23,42,.8);border:2px solid var(--cyan);color:#fff;border-radius:50%;width:36px;height:36px;font-size:1rem;cursor:pointer}
-
-
+.cal-icon-btn{background:var(--card);border:1.5px solid var(--ink);color:var(--ink);border-radius:50%;width:38px;height:38px;font-size:1rem;cursor:pointer;box-shadow:2px 2px 0 var(--ink)}
 .constraint-pills{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:8px}
-.constraint-pill{background:rgba(0,243,255,.1);border:1px solid rgba(0,243,255,.35);color:var(--cyan);font-size:.68rem;font-weight:700;padding:4px 9px;border-radius:20px}
-.sketch-zone{margin:10px 0;padding:14px;border:2px dashed rgba(84,255,58,.35);border-radius:12px;text-align:center;font-size:.75rem;color:#94a3b8;font-weight:700;background:rgba(2,6,23,.4)}
-.success-box{background:rgba(84,255,58,.08);border-left:3px solid var(--green);padding:8px 12px;margin-top:8px;font-size:.78rem;color:#cbd5e1;border-radius:0 8px 8px 0;line-height:1.4}
-.bonus-box{background:rgba(217,44,255,.08);border-left:3px solid var(--magenta);padding:8px 12px;margin-top:8px;font-size:.78rem;color:#cbd5e1;border-radius:0 8px 8px 0;line-height:1.4}
-.learn-tool-btn{background:transparent;border:2px solid var(--green);color:var(--green);padding:8px 14px;border-radius:30px;font-weight:800;font-size:.72rem;width:100%;margin-top:10px;cursor:pointer}
-.learn-tool-btn:hover{background:rgba(84,255,58,.12)}
-#challenge-answer{width:100%;min-height:88px;border-radius:14px;padding:12px 14px;border:1px solid rgba(255,255,255,.18);background:rgba(2,6,23,.8);color:#fff;resize:vertical;font-family:inherit;font-size:.88rem;margin-top:10px}
-
-
-.challenge-brief{font-size:.88rem;line-height:1.45;margin-bottom:10px;color:#e2e8f0}
-.paper-note{background:rgba(84,255,58,.1);border:1px solid rgba(84,255,58,.3);border-radius:12px;padding:10px;font-size:.78rem;color:var(--green);font-weight:800;text-align:center;margin-bottom:8px;line-height:1.4}
-.expand-steps-btn{width:100%;padding:9px;border-radius:30px;border:2px dashed rgba(255,255,255,.2);background:transparent;color:#94a3b8;font-size:.72rem;font-weight:800;margin-bottom:8px;cursor:pointer;font-family:inherit}
-.expand-steps-btn:hover{border-color:var(--green);color:var(--green)}
+.constraint-pill{background:var(--blue-bg);color:var(--ink);font-size:.72rem;font-weight:600;padding:4px 9px;border-radius:999px;border:1px solid var(--blue)}
+.sketch-zone{margin:10px 0;padding:16px;border:1.5px dashed var(--ink-soft);border-radius:6px;text-align:center;font-family:var(--f-hand);font-size:1.3rem;color:var(--pink-ink);background:var(--paper)}
+.learn-tool-btn{background:var(--card);border:1.5px solid var(--ink);color:var(--ink);padding:8px 14px;border-radius:8px;font:600 .8rem var(--f-main);width:100%;margin-top:10px;cursor:pointer}
+.learn-tool-btn:hover{background:var(--yellow-bg)}
+#challenge-answer,#mission-answer{width:100%;min-height:92px;border-radius:6px;padding:12px 14px;border:1.5px solid var(--ink);background:var(--paper);background-image:repeating-linear-gradient(transparent 0 25px,var(--grid) 25px 26px);line-height:26px;color:var(--ink);resize:vertical;font-family:inherit;font-size:.92rem;margin-top:10px}
+#challenge-answer:focus,#mission-answer:focus{outline:3px solid var(--blue);outline-offset:2px}
+.challenge-brief{font-size:.93rem;line-height:1.5;margin-bottom:10px;color:var(--ink)}
+.paper-note{background:var(--yellow-bg);border:1.5px solid var(--ink);border-radius:6px;padding:10px;font-size:.82rem;color:var(--ink);font-weight:700;text-align:center;margin-bottom:8px;line-height:1.4}
+.expand-steps-btn{width:100%;padding:9px;border-radius:8px;border:1.5px dashed var(--ink-soft);background:transparent;color:var(--ink-soft);font:600 .8rem var(--f-main);margin-bottom:8px;cursor:pointer}
+.expand-steps-btn:hover{border-color:var(--ink);color:var(--ink)}
 .challenge-steps-panel{display:none;margin-bottom:4px}
 .challenge-steps-panel.open{display:block}
-.learn-tool-link{background:transparent;border:none;color:#64748b;font-size:.68rem;font-weight:700;width:100%;margin-top:8px;cursor:pointer;text-decoration:underline;font-family:inherit}
-.challenge-answer-label{font-size:.68rem;font-weight:800;color:#94a3b8;text-transform:uppercase;margin-top:6px;margin-bottom:4px;width:100%;text-align:left}
-
-
-.mission-scenario{font-size:1rem;font-weight:800;line-height:1.45;color:#f1f5f9;margin:0}
-#mission-level-tabs .tool-tab.active{background:var(--magenta);color:#fff;border-color:var(--magenta);box-shadow:0 0 10px rgba(217,44,255,.35)}
-#scr-missions .display-box{text-align:left;align-items:stretch;justify-content:flex-start}
-#btn-gen-miss{background:rgba(217,44,255,.12)!important;color:#f0abfc!important;border:2px solid var(--magenta)!important;box-shadow:none!important}
-
-@media (max-width:400px){.mode-selectors{gap:8px}.selector-btn{width:62px;height:62px;font-size:1.6rem;border-radius:15px}.promo-banner{flex-direction:column;gap:10px;align-items:stretch;text-align:center}.promo-text{padding-right:0;text-align:center}.promo-btn{width:100%;text-align:center;padding:10px}.main-card{padding:15px;min-height:auto}}
+.learn-tool-link{background:transparent;border:none;color:var(--blue);font-size:.76rem;font-weight:600;width:100%;margin-top:8px;cursor:pointer;text-decoration:underline;font-family:inherit}
+.challenge-answer-label{font-size:.72rem;font-weight:700;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.06em;margin-top:8px;margin-bottom:4px;width:100%;text-align:start}
+.mission-scenario{font-size:1.05rem;font-weight:800;line-height:1.45;color:var(--ink);margin:0}
+#mission-level-tabs .tool-tab.active{background:var(--pink-ink);color:#fff;border-color:var(--pink-ink)}
+#scr-missions .display-box{text-align:start;align-items:stretch;justify-content:flex-start;box-shadow:4px 4px 0 var(--pink)}
+#btn-gen-miss{--accent:var(--pink)}
+.muted-label{font-size:.74rem;font-weight:700;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.06em}
+@media (max-width:400px){.mode-selectors{gap:8px}.selector-btn{width:62px;height:62px;font-size:1.6rem}.promo-banner{flex-direction:column;gap:10px;align-items:stretch;text-align:center}.promo-text{text-align:center}.promo-btn{text-align:center;padding:10px}.main-card{padding:16px;min-height:auto}}
 </style>
     <script defer src="https://cloud.umami.is/script.js" data-website-id="8460fd7f-da31-46c7-8c9d-eff5e64399cc"></script>
 </head>
@@ -179,30 +155,30 @@ header h1{font-size:1.25rem;font-weight:800;color:#fff;margin-bottom:20px;text-t
 <div id="scr-tools" class="content-screen"><div class="scrolling-tabs" id="tool-tabs"></div><div class="tool-nav-row"><button class="tool-nav-btn" id="tool-prev" onclick="navTool(-1)">←</button><span id="tool-counter">1 / 8</span><button class="tool-nav-btn" id="tool-next" onclick="navTool(1)">→</button></div><div class="display-box" id="tool-display"></div><button class="back-menu-btn" onclick="showMenu()">Back to Menu</button></div>
 <div id="scr-calendar" class="content-screen">
   <div id="cal-today-view" class="cal-subview active">
-    <div class="cal-header-row"><span id="cal-today-title" style="font-weight:800;color:var(--cyan);text-transform:uppercase;font-size:.9rem">Today's Observation</span><button class="cal-icon-btn" onclick="showCalGrid()" title="Full calendar">📅</button></div>
+    <div class="cal-header-row"><span id="cal-today-title" style="font-weight:800;color:var(--ink);text-transform:uppercase;letter-spacing:.06em;font-size:.9rem">Today's Observation</span><button class="cal-icon-btn" onclick="showCalGrid()" title="Full calendar">📅</button></div>
     <div id="cal-streak" class="streak"></div>
-    <div class="display-box" style="border-color:var(--cyan);min-height:200px" id="cal-today-card"></div>
+    <div class="display-box" style="min-height:200px;box-shadow:4px 4px 0 var(--yellow)" id="cal-today-card"></div>
     <button class="back-menu-btn" id="cal-view-full-btn" onclick="showCalGrid()">📅 View full calendar (all 30 days)</button>
     <button class="back-menu-btn" onclick="showMenu()">Back to Menu</button>
   </div>
   <div id="cal-grid-view" class="cal-subview">
-    <div class="cal-header-row"><span id="cal-grid-title" style="font-weight:800;color:var(--green);text-transform:uppercase;font-size:.9rem">30-Day Quest Map</span><button class="cal-icon-btn" onclick="showCalView('today');renderCalToday()">↩</button></div>
+    <div class="cal-header-row"><span id="cal-grid-title" style="font-weight:800;color:var(--ink);text-transform:uppercase;letter-spacing:.06em;font-size:.9rem">30-Day Quest Map</span><button class="cal-icon-btn" onclick="showCalView('today');renderCalToday()">↩</button></div>
     <div id="cal-week-chips" class="week-row"></div>
-    <div class="cal-legend"><span>✓ done</span><span style="color:var(--cyan)">● today</span><span style="color:#f59e0b">● missed</span><span>○ future</span></div>
+    <div class="cal-legend"><span>✓ done</span><span style="color:var(--ink)">● today</span><span style="color:var(--warn)">● missed</span><span>○ future</span></div>
     <div class="grid-30" id="cal-grid"></div>
     <button class="back-menu-btn" onclick="showCalView('today');renderCalToday()">← Back to today's hunt</button>
     <button class="back-menu-btn" onclick="showMenu()">Back to Menu</button>
   </div>
   <div id="cal-day-view" class="cal-subview">
-    <div class="cal-header-row"><span id="cal-day-detail-title" style="font-weight:800;color:var(--magenta)">Day</span><button class="cal-icon-btn" onclick="showCalGrid()">←</button></div>
-    <div class="display-box" style="border-color:var(--magenta);min-height:200px" id="cal-day-detail"></div>
+    <div class="cal-header-row"><span id="cal-day-detail-title" style="font-weight:800;color:var(--pink-ink)">Day</span><button class="cal-icon-btn" onclick="showCalGrid()">←</button></div>
+    <div class="display-box" style="min-height:200px;box-shadow:4px 4px 0 var(--pink)" id="cal-day-detail"></div>
     <button class="back-menu-btn" onclick="showCalGrid()">← Back to calendar</button>
   </div>
 </div>
 <div id="scr-tool-challenges" class="content-screen">
   <div class="scrolling-tabs" id="tc-tabs"></div>
   <div class="tool-nav-row"><button class="tool-nav-btn" id="tc-prev" onclick="navChallenge(-1)">←</button><span id="tc-counter">Pack 1 of 8</span><button class="tool-nav-btn" id="tc-next" onclick="navChallenge(1)">→</button></div>
-  <div class="display-box" id="challenge-display" style="border-color:var(--green);min-height:200px;justify-content:flex-start;text-align:left"></div>
+  <div class="display-box" id="challenge-display" style="min-height:200px;justify-content:flex-start;text-align:start"></div>
   <div class="challenge-answer-label" id="challenge-answer-label">Your invention</div>
   <textarea id="challenge-answer" placeholder="Describe your invention..."></textarea>
   <button class="action-btn" id="btn-submit-challenge" onclick="submitChallengeToCoach()">Submit design to AI Coach</button>
@@ -211,9 +187,9 @@ header h1{font-size:1.25rem;font-weight:800;color:#fff;margin-bottom:20px;text-t
 <div id="scr-missions" class="content-screen">
   <div class="scrolling-tabs" id="mission-level-tabs"></div>
   <div class="tool-nav-row"><button class="tool-nav-btn" id="miss-prev" onclick="navMission(-1)">←</button><span id="miss-counter">Mission 1 of 8</span><button class="tool-nav-btn" id="miss-next" onclick="navMission(1)">→</button></div>
-  <div class="display-box" id="mission-display" style="border-color:var(--magenta);min-height:180px"></div>
+  <div class="display-box" id="mission-display" style="min-height:180px"></div>
   <div class="challenge-answer-label" id="mission-answer-label">Your escape plan</div>
-  <textarea id="mission-answer" style="width:100%;min-height:96px;border-radius:14px;padding:12px 14px;border:1px solid rgba(255,255,255,.18);background:rgba(2,6,23,.8);color:#fff;resize:vertical;font-family:inherit;font-size:.92rem;"></textarea>
+  <textarea id="mission-answer"></textarea>
   <button class="action-btn magenta-theme" id="btn-submit" onclick="submitMissionToCoach()">Submit to AI Coach</button>
   <button class="action-btn magenta-theme" id="btn-gen-miss" onclick="randomMission()">🎲 Another mission</button>
   <button class="back-menu-btn" onclick="showMenu()">Back to Menu</button>
@@ -243,14 +219,14 @@ function getDb(lang){ return DB_MAP[lang] || inventor_db_en; }
 function getMissions(lang){ return MISSION_MAP[lang] || inventor_missions_en; }
 function changeLang(){ currentLang=document.getElementById('lang-selector').value; localStorage.setItem('prybambas_lang',currentLang); applyTranslations(); initScreens(); selectMenuMode(selectedMenuMode, selectedMenuMode===1?'green':selectedMenuMode===2?'cyan':selectedMenuMode===3?'green':'magenta'); }
 function applyTranslations(){ const d=getDb(currentLang); const u=d.ui; const m=d.menu; const p=d.promo; document.getElementById('scr-title').innerText=u.title; document.getElementById('menu-title').innerText=u.howItWorks; document.getElementById('menu-cta').innerText=u.start; document.getElementById('menu-note').innerText=u.menuNote;  document.getElementById('btn-gen-miss').innerText=m.genBtn;  document.getElementById('btn-back').innerText=p.backHub; document.getElementById('promo-title').innerText=p.t; document.getElementById('promo-subtitle').innerText=p.st; document.getElementById('promo-btn-lbl').innerText=p.btn; document.querySelectorAll('.back-menu-btn').forEach(btn=>btn.innerText=m.backMenu); document.getElementById('btn-submit').innerText=u.submitCoach; document.getElementById('mission-answer').placeholder=u.writePlaceholder; }
-function selectMenuMode(modeNum,colorClass){ selectedMenuMode=modeNum; const langData=getDb(currentLang); const mode=langData.modes[modeNum-1]; for(let i=1;i<=4;i++)document.getElementById('menu-btn-'+i).className='selector-btn'; document.getElementById('menu-btn-'+modeNum).className='selector-btn active '+colorClass; const panel=document.getElementById('menu-panel'),title=document.getElementById('menu-title'),list=document.getElementById('menu-list'),cta=document.getElementById('menu-cta'); panel.style.borderColor=`var(--${colorClass})`; title.style.color=`var(--${colorClass})`; title.innerText=mode.title; list.innerHTML=mode.rules; cta.style.background=`var(--${colorClass})`; cta.style.color=(colorClass==='green'||colorClass==='cyan')?'#020617':'white'; }
+function selectMenuMode(modeNum,colorClass){ selectedMenuMode=modeNum; const langData=getDb(currentLang); const mode=langData.modes[modeNum-1]; for(let i=1;i<=4;i++)document.getElementById('menu-btn-'+i).className='selector-btn'; document.getElementById('menu-btn-'+modeNum).className='selector-btn active '+colorClass; const panel=document.getElementById('menu-panel'),title=document.getElementById('menu-title'),list=document.getElementById('menu-list'),cta=document.getElementById('menu-cta'); panel.style.boxShadow=`4px 4px 0 var(--${colorClass==='cyan'?'yellow':colorClass==='magenta'?'pink':colorClass})`; title.style.color='var(--ink)'; title.innerText=mode.title; list.innerHTML=mode.rules; cta.style.background=`var(--${colorClass})`; cta.style.color='#fff'; }
 function openSelectedScreen(){ if(selectedMenuMode===1)openScreen('tools'); else if(selectedMenuMode===2)openCalendar(); else if(selectedMenuMode===3)openScreen('tool-challenges'); else if(selectedMenuMode===4)openScreen('missions'); }
 function showMenu(){ document.querySelectorAll('.content-screen').forEach(s=>s.style.display='none'); document.getElementById('menu-screen').style.display='flex'; }
 function openScreen(id){ document.getElementById('menu-screen').style.display='none'; document.getElementById('scr-'+id).style.display='flex'; }
 function initScreens(){ const langData=getDb(currentLang); const u=langData.ui; const toolsTabs=document.getElementById('tool-tabs'); toolsTabs.innerHTML=''; langData.tools.forEach((tool,i)=>{ const btn=document.createElement('div'); btn.className='tool-tab'+(i===0?' active':''); btn.innerText=tool.name; btn.onclick=()=>{ setToolIndex(i); }; toolsTabs.appendChild(btn); }); setToolIndex(currentToolIndex||0); /* calendar rendered on open */ const tcTabs=document.getElementById('tc-tabs'); tcTabs.innerHTML=''; langData.toolChallenges.forEach((tc,i)=>{ const btn=document.createElement('div'); btn.className='tool-tab'+(i===0?' active':''); btn.innerText=tc.name; btn.onclick=()=>{ setChallengeIndex(i); }; tcTabs.appendChild(btn); }); setChallengeIndex(currentChallengeIndex||0); initMissionTabs(); selectMissionLevel(currentLevel||'rookie'); }
 function setToolIndex(index){ const langData=getDb(currentLang); const total=langData.tools.length; currentToolIndex=((index%total)+total)%total; document.querySelectorAll('#tool-tabs .tool-tab').forEach((b,i)=>b.classList.toggle('active',i===currentToolIndex)); const tab=document.querySelectorAll('#tool-tabs .tool-tab')[currentToolIndex]; if(tab)tab.scrollIntoView({behavior:'smooth',inline:'center',block:'nearest'}); showToolContent(currentToolIndex); }
 function navTool(delta){ setToolIndex(currentToolIndex+delta); }
-function showToolContent(index){ const langData=getDb(currentLang); const u=langData.ui; const tool=langData.tools[index]; const counter=(u.toolOf||'Tool {n} of 8').replace('{n}',index+1); document.getElementById('tool-counter').innerText=counter; document.getElementById('tool-prev').innerText=u.prev||'←'; document.getElementById('tool-next').innerText=u.next||'→'; let html=`<h3>${tool.name}</h3><p>${tool.desc}</p>`; if(tool.realWorld)html+=`<div class="real-badge">${u.realInvention||'Real invention'}: ${tool.realWorld}</div>`; if(tool.examples&&tool.examples.length){ html+=`<div style="font-size:.78rem;font-weight:800;color:#94a3b8;text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px">${u.example||'See it in real life'}</div><div class="example-grid">`; tool.examples.forEach(ex=>{ html+=`<div class="example-card"><div class="ex-icon">${ex.icon||'💡'}</div><div class="ex-label">${ex.label}</div><div class="ex-note">${ex.note||''}</div></div>`; }); html+=`</div>`; } else if(tool.ex){ html+=`<div class="example"><strong>${u.example||'Example:'}</strong><br>${tool.ex}</div>`; } if(tool.searchTasks&&tool.searchTasks.length){ const tasks=tool.searchTasks.map(t=>`<li>${t}</li>`).join(''); html+=`<button class="search-cta-btn" onclick="this.nextElementSibling.classList.toggle('open')">${u.searchAround||'🔍 Search around you'}</button><ul class="search-checklist">${tasks}</ul>`; } html+=`<div class="video-placeholder">${u.watchVideo||'▶ Watch 30-sec example'} · <span style="opacity:.7">${u.comingSoon||'Coming soon'}</span></div>`; document.getElementById('tool-display').innerHTML=html; }
+function showToolContent(index){ const langData=getDb(currentLang); const u=langData.ui; const tool=langData.tools[index]; const counter=(u.toolOf||'Tool {n} of 8').replace('{n}',index+1); document.getElementById('tool-counter').innerText=counter; document.getElementById('tool-prev').innerText=u.prev||'←'; document.getElementById('tool-next').innerText=u.next||'→'; let html=`<h3>${tool.name}</h3><p>${tool.desc}</p>`; if(tool.realWorld)html+=`<div class="real-badge">${u.realInvention||'Real invention'}: ${tool.realWorld}</div>`; if(tool.examples&&tool.examples.length){ html+=`<div style="font-size:.78rem;font-weight:800;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px">${u.example||'See it in real life'}</div><div class="example-grid">`; tool.examples.forEach(ex=>{ html+=`<div class="example-card"><div class="ex-icon">${ex.icon||'💡'}</div><div class="ex-label">${ex.label}</div><div class="ex-note">${ex.note||''}</div></div>`; }); html+=`</div>`; } else if(tool.ex){ html+=`<div class="example"><strong>${u.example||'Example:'}</strong><br>${tool.ex}</div>`; } if(tool.searchTasks&&tool.searchTasks.length){ const tasks=tool.searchTasks.map(t=>`<li>${t}</li>`).join(''); html+=`<button class="search-cta-btn" onclick="this.nextElementSibling.classList.toggle('open')">${u.searchAround||'🔍 Search around you'}</button><ul class="search-checklist">${tasks}</ul>`; } html+=`<div class="video-placeholder">${u.watchVideo||'▶ Watch 30-sec example'} · <span style="opacity:.7">${u.comingSoon||'Coming soon'}</span></div>`; document.getElementById('tool-display').innerHTML=html; }
 function pick(arr){ return arr[Math.floor(Math.random()*arr.length)]; }
 
 let currentChallengeIndex=0;
@@ -262,7 +238,7 @@ function initMissionTabs(){ const u=getDb(currentLang).ui; const tabs=document.g
 function selectMissionLevel(level){ currentLevel=level; currentMissionIndex=0; document.querySelectorAll('#mission-level-tabs .tool-tab').forEach((b,i)=>b.classList.toggle('active',missionLevels()[i]===level)); showMissionAt(currentMissionIndex); }
 function navMission(delta){ const list=getMissionList(currentLevel); if(!list.length)return; showMissionAt(currentMissionIndex+delta); }
 function randomMission(){ const list=getMissionList(currentLevel); if(!list.length)return; let idx=Math.floor(Math.random()*list.length); if(list.length>1&&idx===currentMissionIndex)idx=(idx+1)%list.length; showMissionAt(idx); }
-function showMissionAt(index){ const list=getMissionList(currentLevel); if(!list.length)return; currentMissionIndex=((index%list.length)+list.length)%list.length; const m=list[currentMissionIndex]; const u=getDb(currentLang).ui; const meta={rookie:{icon:'🟢',label:u.rookie,subtitle:u.rookieSub,color:'var(--green)'},agent:{icon:'🔵',label:u.agent,subtitle:u.agentSub,color:'#60a5fa'},elite:{icon:'🔴',label:u.elite,subtitle:u.eliteSub,color:'#f87171'}}[currentLevel]; document.getElementById('miss-counter').innerText=(u.missionOf||'Mission {n} of {total}').replace('{n}',currentMissionIndex+1).replace('{total}',list.length); document.getElementById('miss-prev').innerText=u.prev||'←'; document.getElementById('miss-next').innerText=u.next||'→'; let html=`<div style="text-align:center;margin-bottom:8px"><span style="font-size:1.8rem">${meta.icon}</span></div><div style="font-size:1rem;font-weight:900;text-transform:uppercase;letter-spacing:1px;color:${meta.color}">${meta.label}</div><div style="font-size:.8rem;color:#94a3b8;margin-bottom:10px">${meta.subtitle}</div><div style="font-size:.72rem;font-weight:800;color:#94a3b8;text-transform:uppercase;margin-bottom:4px">${u.missionGoal||'Escape goal'}</div><p class="mission-scenario">${m.scenario}</p>`; if(m.inventory){ const items=m.inventory.split(',').map(s=>s.trim()); html+=`<div style="font-size:.72rem;font-weight:800;color:#94a3b8;margin-top:10px;text-transform:uppercase">${u.inventory||'Your items'}</div><div class="inv-pills">${items.map(i=>`<span class="inv-pill">${i}</span>`).join('')}</div><p style="font-size:.78rem;color:#94a3b8;margin-top:8px">${u.useAllItems}</p>`; } if(m.constraint)html+=`<div class="constraint-box"><strong>${u.constraint||'Constraint'}:</strong> ${m.constraint}</div>`; if(m.hint){ html+=`<button type="button" class="expand-steps-btn" style="border-color:rgba(217,44,255,.4);color:#f0abfc" onclick="toggleMissionHint(this)">${u.showHint||'＋ Show hint'}</button><div class="challenge-steps-panel" id="mission-hint-panel"><div class="hint-box" style="margin-top:0"><strong>${u.hint||'Hint'}:</strong> ${m.hint}</div></div>`; } document.getElementById('mission-display').innerHTML=html; document.getElementById('mission-answer-label').innerText=u.escapePlan||'Your escape plan'; document.getElementById('mission-answer').placeholder=u.writePlaceholder; document.getElementById('btn-submit').innerText=u.submitCoach; document.getElementById('btn-gen-miss').innerText=u.anotherMission||'🎲 Another mission'; document.getElementById('mission-answer').value=''; }
+function showMissionAt(index){ const list=getMissionList(currentLevel); if(!list.length)return; currentMissionIndex=((index%list.length)+list.length)%list.length; const m=list[currentMissionIndex]; const u=getDb(currentLang).ui; const meta={rookie:{icon:'🟢',label:u.rookie,subtitle:u.rookieSub,color:'var(--ok)'},agent:{icon:'🔵',label:u.agent,subtitle:u.agentSub,color:'var(--blue)'},elite:{icon:'🔴',label:u.elite,subtitle:u.eliteSub,color:'var(--alert)'}}[currentLevel]; document.getElementById('miss-counter').innerText=(u.missionOf||'Mission {n} of {total}').replace('{n}',currentMissionIndex+1).replace('{total}',list.length); document.getElementById('miss-prev').innerText=u.prev||'←'; document.getElementById('miss-next').innerText=u.next||'→'; let html=`<div style="text-align:center;margin-bottom:8px"><span style="font-size:1.8rem">${meta.icon}</span></div><div style="font-size:1rem;font-weight:900;text-transform:uppercase;letter-spacing:1px;color:${meta.color}">${meta.label}</div><div style="font-size:.8rem;color:var(--ink-soft);margin-bottom:10px">${meta.subtitle}</div><div style="font-size:.72rem;font-weight:800;color:var(--ink-soft);text-transform:uppercase;margin-bottom:4px">${u.missionGoal||'Escape goal'}</div><p class="mission-scenario">${m.scenario}</p>`; if(m.inventory){ const items=m.inventory.split(',').map(s=>s.trim()); html+=`<div style="font-size:.72rem;font-weight:800;color:var(--ink-soft);margin-top:10px;text-transform:uppercase">${u.inventory||'Your items'}</div><div class="inv-pills">${items.map(i=>`<span class="inv-pill">${i}</span>`).join('')}</div><p style="font-size:.78rem;color:var(--ink-soft);margin-top:8px">${u.useAllItems}</p>`; } if(m.constraint)html+=`<div class="constraint-box"><strong>${u.constraint||'Constraint'}:</strong> ${m.constraint}</div>`; if(m.hint){ html+=`<button type="button" class="expand-steps-btn" style="border-color:var(--pink);color:var(--pink-ink)" onclick="toggleMissionHint(this)">${u.showHint||'＋ Show hint'}</button><div class="challenge-steps-panel" id="mission-hint-panel"><div class="hint-box" style="margin-top:0"><strong>${u.hint||'Hint'}:</strong> ${m.hint}</div></div>`; } document.getElementById('mission-display').innerHTML=html; document.getElementById('mission-answer-label').innerText=u.escapePlan||'Your escape plan'; document.getElementById('mission-answer').placeholder=u.writePlaceholder; document.getElementById('btn-submit').innerText=u.submitCoach; document.getElementById('btn-gen-miss').innerText=u.anotherMission||'🎲 Another mission'; document.getElementById('mission-answer').value=''; }
 function toggleMissionHint(btn){ const panel=document.getElementById('mission-hint-panel'); const u=getDb(currentLang).ui; if(!panel||!btn)return; const open=panel.classList.toggle('open'); btn.innerText=open?(u.hideHint||'－ Hide hint'):(u.showHint||'＋ Show hint'); }
 function submitMissionToCoach(){ const answer=document.getElementById('mission-answer').value.trim(); if(!answer){ alert(getDb(currentLang).ui.writeFirst); return; } const list=getMissionList(currentLevel); const m=list[currentMissionIndex]||{}; const payload=`Mission Possible (${currentLevel.toUpperCase()})\nScenario: ${m.scenario||''}\nItems: ${m.inventory||''}\n\nMy escape plan:\n${answer}`; localStorage.setItem('prybambas_submit_idea',payload); localStorage.setItem('prybambas_lang',currentLang); window.location.href='../coach/index.html'; }
 
