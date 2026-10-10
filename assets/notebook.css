@@ -251,3 +251,89 @@ header h1 {
 @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after { animation: none !important; transition: none !important; }
 }
+
+/* ===== Книжковий спортзал ===== */
+.books-container { width: calc(100% - 32px); max-width: 480px; display: flex; flex-direction: column; gap: 18px; }
+.book-card {
+    background: var(--card); border: 1.5px solid var(--ink); border-radius: 6px;
+    padding: 16px; display: flex; gap: 16px; align-items: center;
+    box-shadow: 4px 4px 0 var(--ink); text-decoration: none; color: var(--ink);
+    transition: transform 0.15s, box-shadow 0.15s;
+}
+.book-card:hover { transform: translate(-2px, -2px) rotate(-0.4deg); box-shadow: 6px 6px 0 var(--ink); }
+.book-card:focus-visible { outline: 3px solid var(--blue); outline-offset: 3px; }
+.book-cover {
+    position: relative; width: 76px; height: 104px; flex-shrink: 0;
+    background: var(--cover, var(--blue-bg)); border: 1.5px solid var(--ink); border-radius: 3px 8px 8px 3px;
+    display: flex; align-items: center; justify-content: center; font-size: 2rem; overflow: hidden;
+}
+.book-cover::before { content: ""; position: absolute; inset-block: 0; inset-inline-start: 0; width: 8px; background: var(--spot, var(--blue)); border-inline-end: 1.5px solid var(--ink); }
+.book-card:nth-child(4n+1) .book-cover { --cover: var(--pink-bg); --spot: var(--pink); }
+.book-card:nth-child(4n+2) .book-cover { --cover: var(--blue-bg); --spot: var(--blue); }
+.book-card:nth-child(4n+3) .book-cover { --cover: var(--yellow-bg); --spot: var(--yellow); }
+.book-card:nth-child(4n+4) .book-cover { --cover: #ECEDF3; --spot: var(--ink); }
+.book-info { min-width: 0; display: grid; gap: 4px; }
+.book-info h3 { font-size: 1.1rem; font-weight: 800; color: var(--ink); line-height: 1.25; }
+.book-info p { font-size: 0.9rem; color: var(--ink-soft); line-height: 1.45; }
+.shop-link {
+    align-self: center; margin-top: 4px; font-weight: 700; color: var(--ink);
+    text-decoration-color: var(--pink); text-underline-offset: 4px;
+}
+
+/* ===== AI-коуч ===== */
+.chat-card {
+    width: calc(100% - 32px); max-width: 480px;
+    background: var(--card); border: 1.5px solid var(--ink); border-radius: 6px;
+    padding: 20px; box-shadow: 5px 5px 0 var(--blue);
+    display: flex; flex-direction: column; height: 540px;
+}
+.chat-header { border-bottom: 1.5px dashed var(--grid); padding-bottom: 12px; margin-bottom: 14px; text-align: center; }
+.chat-header h2 { font-size: 1.2rem; font-weight: 800; color: var(--ink); }
+.chat-header p { font-size: 0.86rem; color: var(--ink-soft); margin-top: 2px; }
+.launch-btn {
+    background: var(--yellow-bg); border: 1.5px solid var(--ink); border-radius: 8px; color: var(--ink);
+    padding: 11px; text-align: center; font-weight: 700; font-size: 0.9rem; text-decoration: none;
+    display: flex; align-items: center; justify-content: center; gap: 8px; margin-bottom: 14px;
+    box-shadow: 3px 3px 0 var(--ink); transition: transform 0.15s, box-shadow 0.15s;
+}
+.launch-btn:hover { transform: translate(-1px, -1px); box-shadow: 4px 4px 0 var(--ink); }
+.chat-messages {
+    flex-grow: 1; overflow-y: auto; display: flex; flex-direction: column; gap: 12px; padding: 4px;
+    background-image: repeating-linear-gradient(transparent 0 27px, var(--grid) 27px 28px);
+}
+.msg { max-width: 85%; padding: 10px 14px; border-radius: 10px; font-size: 0.93rem; line-height: 1.45; border: 1.5px solid var(--ink); }
+.msg.bot { background: var(--paper); color: var(--ink); align-self: flex-start; border-start-start-radius: 2px; }
+.msg.user { background: var(--blue-bg); color: var(--ink); font-weight: 600; align-self: flex-end; border-start-end-radius: 2px; box-shadow: 2px 2px 0 var(--blue); }
+.chat-input-area { display: flex; gap: 8px; margin-top: 14px; border-top: 1.5px dashed var(--grid); padding-top: 14px; }
+.chat-input {
+    flex-grow: 1; min-width: 0; background: var(--paper); border: 1.5px solid var(--ink);
+    border-radius: 8px; padding: 10px 14px; color: var(--ink); font: 0.95rem var(--f-main);
+}
+.chat-input:focus { outline: 3px solid var(--blue); outline-offset: 1px; }
+.send-btn {
+    background: var(--ink); color: #fff; border: none; width: 44px; height: 44px; border-radius: 8px;
+    display: flex; align-items: center; justify-content: center; cursor: pointer; flex-shrink: 0; font-size: 1.1rem;
+    box-shadow: 2px 2px 0 var(--yellow);
+}
+.send-btn:focus-visible { outline: 3px solid var(--blue); outline-offset: 2px; }
+[dir="rtl"] .send-btn { transform: scaleX(-1); }
+
+/* ===== Мовні підписи без розрядки для арабської/івриту ===== */
+[dir="rtl"] .label, [dir="rtl"] .card-tag, [dir="rtl"] .challenge-answer-label { letter-spacing: 0; }
+
+/* ===== Текстові сторінки (Про нас, Питання) ===== */
+body.text-page { display: block; padding: calc(24px + env(safe-area-inset-top, 0px)) 20px 48px; }
+.text-page main {
+    max-width: 720px; margin: 0 auto; background: var(--card);
+    border: 1.5px solid var(--ink); border-radius: 6px; box-shadow: 5px 5px 0 var(--ink);
+    padding: clamp(20px, 4vw, 40px); display: grid; gap: 12px; line-height: 1.6;
+}
+.text-page nav { max-width: 720px; margin: 0 auto 20px; }
+.text-page nav a { font-weight: 700; color: var(--ink); text-decoration-color: var(--pink); text-underline-offset: 4px; }
+.text-page h1 { font-size: clamp(1.8rem, 5vw, 2.6rem); line-height: 1.1; font-weight: 800; text-wrap: balance; }
+.text-page h1::after { content: ""; display: block; width: 88px; height: 10px; margin-top: 8px; background: var(--yellow); }
+.text-page h2 { font-size: 1.15rem; font-weight: 800; margin-top: 14px; }
+.text-page p, .text-page li { color: var(--ink-soft); max-width: 65ch; }
+.text-page ul { padding-inline-start: 22px; display: grid; gap: 4px; }
+.text-page a { color: var(--ink); text-decoration-color: var(--pink); text-underline-offset: 3px; }
+.text-page strong { color: var(--ink); }

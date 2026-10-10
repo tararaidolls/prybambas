@@ -1,6 +1,7 @@
 // Inventor Lab — es (v2: estructura completa como en.js)
 const inventor_db_es = {
   ui: {
+    legendDone: "hecho", legendToday: "hoy", legendMissed: "perdido", legendFuture: "próximo",
     title: "Piensa como un inventor",
     howItWorks: "Cómo funciona",
     start: "EMPEZAR",
