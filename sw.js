@@ -1,4 +1,4 @@
-const CACHE_NAME = 'prybambas-v6';
+const CACHE_NAME = 'prybambas-v7';
 const ASSETS = [
     './',
     './index.html',

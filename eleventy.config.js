@@ -3,7 +3,7 @@ import yaml from "js-yaml";
 // Статичні файли, які копіюються на сайт без змін (ігри, стилі, іконки)
 const PASSTHROUGH = [
   "what-if", "inventor", "coach", "book", "assets",
-  "index.html", "about.html", "faq.html",
+  "index.html",
   "CNAME", "robots.txt", "llms.txt", "manifest.json", "sw.js",
   "icon-192.png", "icon-512.png", "logo.png", "logo.jpg", "bg-image.jpg",
 ];

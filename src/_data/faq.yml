@@ -1,0 +1,63 @@
+# Питання й відповіді для сторінки FAQ (/faq.html англійською, /uk/faq/ українською).
+# Щоб додати питання: допиши пару q / a в потрібну мову. JSON-LD для Google і AI збирається автоматично.
+# У відповідях можна використовувати прості HTML-посилання <a href="...">.
+
+en:
+  title: Frequently asked questions
+  pageTitle: FAQ — Free Thinking Games for Kids
+  description: "Answers for parents and teachers: Is Prybambas free? What age is it for? Which languages? Is it safe? How do What If?, Inventor Lab and AI Coach work?"
+  items:
+    - q: What is Prybambas?
+      a: 'Prybambas is a free website with thinking games for kids ages 5–14. It has four parts: <a href="/what-if/">What If?</a> (cause-and-effect logic), <a href="/inventor/">Inventor Lab</a> (TRIZ creative thinking), <a href="/coach/">AI Coach</a> (language practice) and <a href="/book/">Books Gym</a> (printed workbooks that match the games).'
+    - q: Is Prybambas free?
+      a: Yes. All games are free. There is no login, no subscription and no ads. Printed workbooks are sold separately on Amazon, but you do not need them to play.
+    - q: What age is Prybambas for?
+      a: Ages 5 to 14. Kids 5–7 usually play with a parent who reads the questions aloud. From about 8, children play on their own. Teachers use the games with whole classes.
+    - q: Which languages does Prybambas support?
+      a: The What If? and Inventor Lab games are available in 15 languages — English, Ukrainian, Romanian, Polish, German, French, Italian, Swedish, Finnish, Danish, Spanish, Portuguese, Hebrew, Japanese and Arabic. Ideas and the shop are in English, Ukrainian, Polish, German and Spanish.
+    - q: Do I need to install an app?
+      a: No. Prybambas works in any modern browser on phone, tablet or computer. You can add it to your home screen so it opens like an app.
+    - q: Is Prybambas safe for children?
+      a: There is no login, no personal profile and no ads. To count visits we use Umami, a privacy-friendly analytics tool that does not use cookies. Language and game progress are stored only in your own browser.
+    - q: What is the What If? game?
+      a: 'A logic game about cause and effect with three modes. <strong>Single question</strong>: discuss what would happen if a crazy event occurred. <strong>Logical chain</strong>: guess where a starting fact leads, then reveal the hidden chain. <strong>Deduction</strong>: work backwards from a strange consequence to its cause.'
+    - q: What is Inventor Lab?
+      a: Creative problem solving inspired by TRIZ, the method engineers use to invent. It has 8 invention tools with real examples, a 30-day observation calendar, challenges by tool and missions at three levels (Rookie, Agent, Elite).
+    - q: What is the AI Coach?
+      a: 'A language practice space that pairs with the <em>One Verb a Day</em> workbooks: a child writes a sentence with the verb of the day and keeps practising.'
+    - q: Can teachers use Prybambas in class?
+      a: Yes. Show a What If? question on the board as a warm-up, use an Inventor Lab mission as a team challenge, or give a calendar hunt as homework. Students need no accounts.
+    - q: Are there printed versions?
+      a: 'Yes: <em>What If?</em>, <em>Think Like an Inventor</em>, <em>One Verb a Day</em> and <em>Microscope Safari</em> are available on Amazon. See <a href="/book/">Books Gym</a> and the <a href="/en/shop/">shop</a>.'
+    - q: Who makes Prybambas?
+      a: 'Prybambas is made by Kids Skill Academy, the publisher of the <em>What If?</em>, <em>Think Like an Inventor</em>, <em>One Verb a Day</em> and <em>Microscope Safari</em> workbooks. More on the <a href="/about.html">About page</a>.'
+
+uk:
+  title: Питання й відповіді
+  pageTitle: Питання й відповіді — безкоштовні ігри для мислення дітей
+  description: "Відповіді для батьків і вчителів: чи безкоштовний Prybambas, для якого віку, якими мовами, чи безпечний, як працюють «Що якби?», Лабораторія винахідника та AI-коуч."
+  items:
+    - q: Що таке Prybambas?
+      a: 'Prybambas — безкоштовний сайт з іграми для розвитку мислення дітей 5–14 років. Чотири розділи: <a href="/what-if/">«Що якби?»</a> (причини й наслідки), <a href="/inventor/">Лабораторія винахідника</a> (ТРВЗ), <a href="/coach/">AI-коуч</a> (практика мов) і <a href="/book/">Books Gym</a> (друковані зошити до ігор).'
+    - q: Чи безкоштовний Prybambas?
+      a: Так. Усі ігри безкоштовні, без реєстрації, підписки й реклами. Друковані зошити продаються окремо на Amazon, але для гри вони не потрібні.
+    - q: Для якого віку?
+      a: Для дітей 5–14 років. Діти 5–7 років зазвичай грають з батьками, які читають питання вголос. Приблизно з 8 років діти грають самостійно. Вчителі використовують ігри з усім класом.
+    - q: Якими мовами працює сайт?
+      a: Ігри «Що якби?» і Лабораторія винахідника доступні 15 мовами — українською, англійською, румунською, польською, німецькою, французькою, італійською, шведською, фінською, данською, іспанською, португальською, івритом, японською та арабською. Ідеї та магазин — українською, англійською, польською, німецькою та іспанською.
+    - q: Чи треба встановлювати застосунок?
+      a: Ні. Prybambas працює в будь-якому сучасному браузері на телефоні, планшеті чи комп'ютері. За бажанням його можна додати на головний екран, і він відкриватиметься як застосунок.
+    - q: Чи безпечно це для дітей?
+      a: Реєстрації, особистого профілю й реклами немає. Для підрахунку відвідувань ми використовуємо Umami — аналітику, яка не використовує cookies. Мова й прогрес у грі зберігаються лише у вашому браузері.
+    - q: Що таке гра «Що якби?»
+      a: 'Логічна гра про причини й наслідки з трьома режимами. <strong>Одне питання</strong>: обговоріть, що сталося б після шаленої події. <strong>Логічний ланцюжок</strong>: вгадайте, куди веде стартовий факт, і відкрийте прихований ланцюжок. <strong>Дедукція</strong>: від дивного наслідку дійдіть до причини.'
+    - q: Що таке Лабораторія винахідника?
+      a: Творче розв'язання задач на основі ТРВЗ — методу, яким користуються інженери. Є 8 інструментів винахідника з реальними прикладами, 30-денний календар спостережень, завдання за інструментами і місії трьох рівнів (Rookie, Agent, Elite).
+    - q: Що таке AI-коуч?
+      a: 'Простір для практики мови, який працює разом із зошитами <em>One Verb a Day</em>: дитина пише речення з дієсловом дня і продовжує практику.'
+    - q: Чи можна використовувати на уроках?
+      a: Так. Покажіть питання «Що якби?» на дошці як розминку, дайте місію з Лабораторії як командне завдання або «полювання» з календаря як домашнє. Учням не потрібні акаунти.
+    - q: Чи є друковані версії?
+      a: 'Так: <em>What If?</em>, <em>Think Like an Inventor</em>, <em>One Verb a Day</em> і <em>Microscope Safari</em> є на Amazon. Дивіться <a href="/book/">Books Gym</a> і <a href="/uk/shop/">магазин</a>.'
+    - q: Хто створює Prybambas?
+      a: 'Prybambas створює Kids Skill Academy — видавець зошитів <em>What If?</em>, <em>Think Like an Inventor</em>, <em>One Verb a Day</em> і <em>Microscope Safari</em>. Детальніше на сторінці <a href="/uk/about/">Про нас</a>.'

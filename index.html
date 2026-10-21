@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#FBFCFE">
-    <title>PRYBAMBAS | Educational Hub</title>
+    <title>Prybambas — Free Thinking Games for Curious Kids (Ages 5–14)</title>
     <link rel="manifest" href="./manifest.json">
     <link rel="apple-touch-icon" href="./icon-192.png">
     <link rel="apple-touch-icon" sizes="152x152" href="./icon-192.png">
@@ -12,7 +12,7 @@
     <link rel="apple-touch-icon" sizes="167x167" href="./icon-192.png">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
-<meta name="description" content="Prybambas — free STEM games for kids ages 5–14. What If logic puzzles, Inventor Lab (TRIZ), AI Coach. 11+ languages. No login.">
+<meta name="description" content="Free STEM thinking games for kids ages 5–14: What If? logic puzzles, Inventor Lab (TRIZ creative thinking) and AI Coach. 15 languages. No login, no ads.">
 <link rel="canonical" href="https://prybambas.com/">
 <meta property="og:title" content="Prybambas — Free STEM Games for Curious Kids">
 <meta property="og:description" content="What If logic game, Inventor Lab, AI Coach. Free multilingual PWA for kids 5–14.">
@@ -21,7 +21,67 @@
 <meta property="og:image" content="https://prybambas.com/logo.png">
 <meta name="twitter:card" content="summary_large_image">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebApplication","name":"Prybambas","url":"https://prybambas.com/","applicationCategory":"EducationalApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"audience":{"@type":"Audience","audienceType":"Children ages 5-14"},"description":"Free STEM hub: What If logic game, Inventor Lab TRIZ thinking, AI Coach language practice. 11+ languages."}
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "Organization",
+   "@id": "https://prybambas.com/#org",
+   "name": "Prybambas",
+   "alternateName": "Kids Skill Academy",
+   "url": "https://prybambas.com/",
+   "logo": "https://prybambas.com/logo.png",
+   "description": "Free thinking games and printed workbooks that teach kids ages 5–14 to ask questions, notice details and check answers."
+  },
+  {
+   "@type": "WebSite",
+   "@id": "https://prybambas.com/#website",
+   "name": "Prybambas",
+   "url": "https://prybambas.com/",
+   "publisher": {
+    "@id": "https://prybambas.com/#org"
+   },
+   "inLanguage": [
+    "en",
+    "uk",
+    "ro",
+    "pl",
+    "de",
+    "fr",
+    "it",
+    "sv",
+    "fi",
+    "da",
+    "es",
+    "pt",
+    "he",
+    "ja",
+    "ar"
+   ]
+  },
+  {
+   "@type": "WebApplication",
+   "name": "Prybambas",
+   "url": "https://prybambas.com/",
+   "applicationCategory": "EducationalApplication",
+   "operatingSystem": "Any (web browser)",
+   "isAccessibleForFree": true,
+   "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+   },
+   "audience": {
+    "@type": "Audience",
+    "audienceType": "Children ages 5-14, parents and teachers"
+   },
+   "description": "Free STEM hub: What If? logic game, Inventor Lab TRIZ thinking, AI Coach language practice. 15 languages.",
+   "publisher": {
+    "@id": "https://prybambas.com/#org"
+   }
+  }
+ ]
+}
 </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -243,6 +303,7 @@
         }
     </style>
     <script defer src="https://cloud.umami.is/script.js" data-website-id="8460fd7f-da31-46c7-8c9d-eff5e64399cc"></script>
+<link rel="stylesheet" href="/assets/seo-info.css">
 </head>
 <body>
   <div class="page">
@@ -360,10 +421,39 @@
         </a>
     </nav>
 
+<!-- Текст для батьків, вчителів і AI-пошуку. Згорнуті блоки не заважають. -->
+    <section class="seo-info" lang="en">
+      <h2>What is Prybambas?</h2>
+      <p class="lead">Prybambas is a free collection of thinking games for kids ages 5–14. Children explore cause and effect, solve inventor puzzles and practise languages — in the browser, with no login and no ads, in 15 languages.</p>
+      <p>It is made for parents, teachers, homeschoolers and multilingual families who want screen time that builds curiosity, logic and creativity — and the habit of checking answers, even the ones AI gives.</p>
+
+      <details>
+        <summary>Which games are included?</summary>
+        <ul>
+          <li><a href="/what-if/"><strong>What If?</strong></a> — a cause-and-effect logic game with three modes: single question, logical chain and deduction.</li>
+          <li><a href="/inventor/"><strong>Inventor Lab</strong></a> — creative problem solving with 8 TRIZ tools, a 30-day observation calendar, challenges and missions.</li>
+          <li><a href="/coach/"><strong>AI Coach</strong></a> — language practice that pairs with the <em>One Verb a Day</em> workbooks.</li>
+          <li><a href="/book/"><strong>Books Gym</strong></a> — printed workbooks that match the games.</li>
+        </ul>
+      </details>
+
+      <details>
+        <summary>Who is it for?</summary>
+        <p>Children ages 5–14. Younger kids (5–7) usually play with a parent; older kids play on their own. Teachers use the games as warm-ups, discussion starters and logic lessons — students need no accounts.</p>
+      </details>
+
+      <details>
+        <summary>Do I need to install anything?</summary>
+        <p>No. Prybambas opens in any modern browser on phone, tablet or computer. You can also add it to the home screen so it opens like an app.</p>
+      </details>
+
+      <p class="more"><a href="/about.html">About</a> · <a href="/faq.html">FAQ</a> · <a href="/en/ideas/">Ideas for the dinner table</a></p>
+    </section>
+
     <footer class="foot">
         <a href="./about.html" id="lnk-about">About</a>
         <a href="./faq.html" id="lnk-faq">FAQ</a>
-        <span>© Kids Skill Academy</span>
+        <span>© Prybambas by Kids Skill Academy</span>
     </footer>
   </div>
 

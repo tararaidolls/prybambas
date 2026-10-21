@@ -1,38 +1,33 @@
 # Prybambas
 
-> Free STEM education hub for curious kids ages 5–14. No login required.
+> Free thinking games for curious kids ages 5–14: cause-and-effect logic, TRIZ inventor puzzles and language practice. In the browser, no login, no ads, 15 languages. Made by Kids Skill Academy.
 
-## What it is
+## Games
 
-Prybambas (https://prybambas.com) is a free web app and PWA with three learning spaces:
-
-- **What If?** — logic and cause-and-effect game for kids. Modes: single round, logic chain, deduction.
-- **Inventor Lab** — TRIZ-inspired creative thinking: tools, 30-day calendar, challenges, missions (Rookie / Agent / Elite).
-- **AI Coach** — language practice companion (links to coach-ai hub).
+- [What If?](https://prybambas.com/what-if/): cause-and-effect logic game. Modes: single question (discuss a crazy what-if event), logical chain (guess where a fact leads, reveal the hidden chain), deduction (work back from a consequence to its cause).
+- [Inventor Lab](https://prybambas.com/inventor/): TRIZ for kids — 8 invention tools (Segmentation, Nesting, Merging, Asymmetry, Feedback, Self-Service, Copying, Color Change) with real examples, a 30-day observation calendar, challenges by tool, missions at Rookie / Agent / Elite level.
+- [AI Coach](https://prybambas.com/coach/): language practice space that pairs with the One Verb a Day workbooks.
+- [Books Gym](https://prybambas.com/book/): printed workbooks that match the games.
 
 ## Who it's for
 
-- Children ages 5–14
-- Parents, homeschoolers, teachers
-- Multilingual families (11+ languages)
+Children ages 5–14, parents, homeschoolers, teachers, multilingual families.
 
 ## Languages
 
-English, Ukrainian, Polish, Spanish, German, French, Romanian, Italian, Portuguese, Swedish, and more.
+Games: English, Ukrainian, Romanian, Polish, German, French, Italian, Swedish, Finnish, Danish, Spanish, Portuguese, Hebrew, Japanese, Arabic.
+Ideas and shop: English, Ukrainian, Polish, German, Spanish.
 
-## Key URLs
+## Printed workbooks (Kids Skill Academy, on Amazon)
 
-- Home: https://prybambas.com/
-- What If: https://prybambas.com/what-if/
-- Inventor Lab: https://prybambas.com/inventor/
-- AI Coach: https://prybambas.com/coach/
-- About: https://prybambas.com/about.html
-- FAQ: https://prybambas.com/faq.html
+- [What If?](https://www.amazon.com/dp/B0GXNWFZ6N): 100+ logic puzzles about cause and effect.
+- [Think Like an Inventor](https://www.amazon.com/dp/B0FLKJV2PX): 4 volumes of hands-on TRIZ missions.
+- [One Verb a Day](https://www.amazon.com/dp/B0FT96B31H): active-recall language workbooks with audio codes.
+- [Microscope Safari](https://www.amazon.com/dp/B0H6H4RRBT): guided science journal for pocket microscopes.
 
-## Author / Brand
+## More
 
-Kids Skill Academy — educational content for tired but inspired parents.
-
-## License
-
-Educational content by Kids Skill Academy. Free to use in browser.
+- [Ideas](https://prybambas.com/en/ideas/): what-if questions and small experiments for the dinner table.
+- [Shop](https://prybambas.com/en/shop/)
+- [About](https://prybambas.com/about.html)
+- [FAQ](https://prybambas.com/faq.html)

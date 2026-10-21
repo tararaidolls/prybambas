@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="uk">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="What If? — free logic game for kids. Cause-and-effect puzzles, logic chains, deduction mode. Ages 5–14. Multilingual.">
 <link rel="canonical" href="https://prybambas.com/what-if/">
 <meta property="og:title" content="What If? — Logic Game for Kids | Prybambas">
@@ -10,18 +10,96 @@
 <meta property="og:url" content="https://prybambas.com/what-if/">
 <meta property="og:image" content="https://prybambas.com/logo.png">
 
-    <title>Що, якщо? | Prybambas</title>
+    <title>What If? — Free Cause-and-Effect Logic Game for Kids 5–14 | Prybambas</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Geologica:wght@400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../assets/notebook.css">
     <script defer src="https://cloud.umami.is/script.js" data-website-id="8460fd7f-da31-46c7-8c9d-eff5e64399cc"></script>
+<link rel="stylesheet" href="/assets/seo-info.css">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "WebApplication",
+   "name": "What If? — Logic Game for Kids",
+   "url": "https://prybambas.com/what-if/",
+   "applicationCategory": "EducationalApplication",
+   "operatingSystem": "Any (web browser)",
+   "isAccessibleForFree": true,
+   "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+   },
+   "educationalUse": [
+    "Critical thinking",
+    "Cause and effect",
+    "Logic"
+   ],
+   "description": "A cause-and-effect logic game for kids: discuss a crazy what-if event, guess where a logical chain leads, or deduce which event caused a strange consequence.",
+   "publisher": {
+    "@id": "https://prybambas.com/#org"
+   },
+   "typicalAgeRange": "5-14"
+  },
+  {
+   "@type": "FAQPage",
+   "mainEntity": [
+    {
+     "@type": "Question",
+     "name": "What age is What If? for?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Ages 5 to 14. Kids 5–7 usually play with a parent who reads the question aloud; from about 8 they can play on their own. Teachers use it with whole classes."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Is What If? free?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Yes. It is free, works in the browser and needs no login."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "What skills does What If? develop?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Cause-and-effect reasoning, building logical chains, working backwards from a result to its cause (deduction), and explaining an answer out loud."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Which languages is it available in?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "15 languages: English, Ukrainian, Romanian, Polish, German, French, Italian, Swedish, Finnish, Danish, Spanish, Portuguese, Hebrew, Japanese and Arabic."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Is there a printed version?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Yes. The What If? workbook has 100+ logic puzzles for screen-free practice and is available on Amazon."
+     }
+    }
+   ]
+  }
+ ]
+}
+</script>
 </head>
 <body>
 
     <!-- Уніфікована панель вгорі -->
     <div class="top-bar">
-        <a href="../index.html" class="back-btn" id="btn-back">← Хаб</a>
+        <a href="../index.html" class="back-btn" id="btn-back">← Hub</a>
         <select class="lang-switch" id="lang-selector" onchange="changeLang()">
             <option value="en">🇺🇸 English</option>
             <option value="uk">🇺🇦 Українська</option>
@@ -52,7 +130,7 @@
 
     <div class="main-card">
         <header>
-            <h1 id="lbl-sub">Оберіть свою гру</h1>
+            <h1 id="lbl-sub">Choose your game</h1>
         </header>
 
         <!-- 3 ICONS SELECTOR -->
@@ -66,18 +144,65 @@
         <div id="rules-container">
             <div class="rules-title" id="rules-title">MODE TITLE</div>
             <div class="rules-list" id="rules-text"></div>
-            <button class="cta-btn" id="cta-play" onclick="startGame()">ГРАТИ</button>
+            <button class="cta-btn" id="cta-play" onclick="startGame()">PLAY NOW</button>
         </div>
 
         <!-- РЕКЛАМНИЙ БАНЕР / Пропозиція Книги (Upsell) -->
-        <a href="https://www.amazon.com/dp/B0BRC7Z2NW" class="promo-banner" target="_blank">
+        <a href="https://www.amazon.com/dp/B0GXNWFZ6N" class="promo-banner" target="_blank">
             <div class="promo-text">
-                <h3 id="promo-title">Розумна зарядка для мозку</h3>
-                <p id="promo-subtitle">Отримайте фізичний зошит 'What If?' із понад 100 логічними задачами для розвитку критичного мислення без екранів.</p>
+                <h3 id="promo-title">Smart Brain Workout</h3>
+                <p id="promo-subtitle">Get the physical 'What If?' workbook with 100+ logic puzzles for critical thinking without screens.</p>
             </div>
-            <div class="promo-btn" id="promo-btn-lbl">Купити</div>
+            <div class="promo-btn" id="promo-btn-lbl">Buy</div>
         </a>
     </div>
+
+<!-- Текст для батьків, вчителів і AI-пошуку. Згорнуті блоки не заважають грі. -->
+<section class="seo-info" lang="en">
+  <h2>What If? — a free logic game about cause and effect</h2>
+  <p class="lead"><strong>What If?</strong> is a free online game that teaches kids ages 5–14 to think in chains of consequences. The game changes one thing about the world, and children work out what happens next — and why.</p>
+  <p>For example: <em>What if bees disappeared?</em> → flowers are not pollinated → fewer fruits and seeds → animals that eat them go hungry. Each step must follow from the one before. That is the core skill: not guessing, but explaining <em>why</em>.</p>
+
+  <details>
+    <summary>Three game modes</summary>
+    <ul>
+      <li><strong>Single question</strong> — discuss what would happen if a crazy event occurred. Use the timer for speed rounds. Great for ages 5–7 and quick warm-ups.</li>
+      <li><strong>Logical chain</strong> — read the starting fact, guess the crazy ending, then reveal the hidden chain of steps that connects them.</li>
+      <li><strong>Deduction</strong> — read the final consequence and work backwards: what event could have caused it? Then reveal the original event.</li>
+    </ul>
+  </details>
+
+  <details>
+    <summary>Who is it for?</summary>
+    <p>Kids ages 5–14, parents looking for screen time that sparks conversation, homeschoolers, and teachers who need a 5-minute logic warm-up or a science discussion starter. Multilingual families can switch the language and play the same question again.</p>
+  </details>
+
+  <details>
+    <summary>Using What If? in the classroom</summary>
+    <ul>
+      <li>Show one question on the board as a lesson opener.</li>
+      <li>Split the class into teams: each team builds the longest chain where every step makes sense.</li>
+      <li>In Deduction mode, let teams propose causes before revealing the answer.</li>
+      <li>Ask students to invent their own "what if" question for the next lesson.</li>
+    </ul>
+  </details>
+
+  <details>
+    <summary>FAQ</summary>
+    <h3>What age is What If? for?</h3>
+    <p>Ages 5 to 14. Kids 5–7 usually play with a parent who reads the question aloud; from about 8 they can play on their own. Teachers use it with whole classes.</p>
+    <h3>Is What If? free?</h3>
+    <p>Yes. It is free, works in the browser and needs no login.</p>
+    <h3>What skills does What If? develop?</h3>
+    <p>Cause-and-effect reasoning, building logical chains, working backwards from a result to its cause (deduction), and explaining an answer out loud.</p>
+    <h3>Which languages is it available in?</h3>
+    <p>15 languages: English, Ukrainian, Romanian, Polish, German, French, Italian, Swedish, Finnish, Danish, Spanish, Portuguese, Hebrew, Japanese and Arabic.</p>
+    <h3>Is there a printed version?</h3>
+    <p>Yes. The What If? workbook has 100+ logic puzzles for screen-free practice and is available on Amazon.</p>
+  </details>
+
+  <p class="more">More: <a href="/inventor/">Inventor Lab</a> · <a href="/en/ideas/">What-if questions for the dinner table</a> · <a href="/faq.html">FAQ</a></p>
+</section>
 
     <script>
         const db = {
