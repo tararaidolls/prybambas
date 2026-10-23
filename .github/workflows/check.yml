@@ -1,0 +1,29 @@
+# Перевіряє, що сайт збирається, для кожного pull request (нічого не публікує).
+name: Check build
+
+on:
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+      - name: Check key pages exist
+        run: |
+          for f in index.html faq.html about.html uk/faq/index.html uk/about/index.html sitemap.xml \
+                   en/ideas/2026-10-what-if-no-night/index.html uk/ideas/2026-10-what-if-no-night/index.html \
+                   what-if/index.html inventor/index.html coach/index.html book/index.html; do
+            test -f "_site/$f" || { echo "Missing: $f"; exit 1; }
+          done
+          echo "All key pages built."
