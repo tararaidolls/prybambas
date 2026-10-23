@@ -21,8 +21,8 @@ jobs:
       - run: npm run build
       - name: Check key pages exist
         run: |
-          for f in index.html faq.html about.html uk/faq/index.html uk/about/index.html sitemap.xml \
-                   en/ideas/2026-10-what-if-no-night/index.html uk/ideas/2026-10-what-if-no-night/index.html \
+          for f in index.html faq.html about.html uk/faq/index.html uk/about/index.html pl/faq/index.html de/about/index.html es/faq/index.html sitemap.xml \
+                   en/ideas/2026-10-what-if-no-night/index.html uk/ideas/2026-10-what-if-no-night/index.html de/ideas/2026-10-what-if-no-night/index.html \
                    what-if/index.html inventor/index.html coach/index.html book/index.html; do
             test -f "_site/$f" || { echo "Missing: $f"; exit 1; }
           done
