@@ -62,10 +62,10 @@
   </main>
 
   <footer class="site-foot">
-    <a href="/about.html">{{ t.about }}</a>
-    <a href="/faq.html">{{ t.faq }}</a>
+    <a href="{{ '/about.html' if lang == 'en' else '/' + lang + '/about/' }}">{{ t.about }}</a>
+    <a href="{{ '/faq.html' if lang == 'en' else '/' + lang + '/faq/' }}">{{ t.faq }}</a>
     <a href="/{{ lang }}/ideas/feed.xml">{{ t.rss }}</a>
-    <span>© Kids Skill Academy</span>
+    <span>© Prybambas by Kids Skill Academy</span>
   </footer>
 </div>
 <script>try{localStorage.setItem('prybambas_lang','{{ lang }}')}catch(e){}</script>
