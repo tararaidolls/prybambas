@@ -62,9 +62,8 @@
   </main>
 
   <footer class="site-foot">
-    {%- set infoUk = (lang == "uk") %}
-    <a href="{{ '/uk/about/' if infoUk else '/about.html' }}">{{ t.about }}</a>
-    <a href="{{ '/uk/faq/' if infoUk else '/faq.html' }}">{{ t.faq }}</a>
+    <a href="{{ '/about.html' if lang == 'en' else '/' + lang + '/about/' }}">{{ t.about }}</a>
+    <a href="{{ '/faq.html' if lang == 'en' else '/' + lang + '/faq/' }}">{{ t.faq }}</a>
     <a href="/{{ lang }}/ideas/feed.xml">{{ t.rss }}</a>
     <span>© Prybambas by Kids Skill Academy</span>
   </footer>

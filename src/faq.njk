@@ -1,14 +1,17 @@
 ---js
 {
-  // Сторінка FAQ: англійська — /faq.html (стара адреса), українська — /uk/faq/.
+  // Сторінка FAQ: англійська — /faq.html (стара адреса), інші мови — /<мова>/faq/.
   // Тексти — у src/_data/faq.yml
   pagination: { data: "faqLangs", size: 1, alias: "fl" },
-  faqLangs: ["en", "uk"],
+  faqLangs: ["en", "uk", "pl", "de", "es"],
   permalink: (data) => (data.fl === "en" ? "/faq.html" : `/${data.fl}/faq/`),
   layout: "base.njk",
   alternates: [
     { lang: "en", url: "/faq.html" },
     { lang: "uk", url: "/uk/faq/" },
+    { lang: "pl", url: "/pl/faq/" },
+    { lang: "de", url: "/de/faq/" },
+    { lang: "es", url: "/es/faq/" },
   ],
   eleventyComputed: {
     lang: (data) => data.fl,
