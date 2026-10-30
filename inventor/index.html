@@ -53,6 +53,56 @@
 .search-checklist li{color:var(--ink);font-size:.84rem;line-height:1.45;margin:6px 0;list-style:none;padding-inline-start:4px}
 .search-checklist li::before{content:"☐ ";color:var(--blue)}
 .video-placeholder{margin-top:10px;padding:10px 14px;border-radius:6px;border:1.5px dashed var(--grid);color:var(--ink-soft);font-size:.8rem;text-align:center;font-weight:600}
+.watch-btn{margin-top:10px;width:100%;padding:11px 16px;border-radius:8px;border:1.5px solid var(--ink);background:var(--yellow-bg);color:var(--ink);font:700 .86rem var(--f-main);cursor:pointer;box-shadow:2px 2px 0 var(--ink)}
+.watch-btn:hover{background:var(--yellow)}
+.anim-player{margin-top:10px;display:flex;flex-direction:column;gap:8px}
+.anim-stage{border:1.5px solid var(--ink);border-radius:6px;background-color:var(--card);background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:16px 16px;overflow:hidden}
+.anim-stage svg{display:block;width:100%;height:auto}
+.anim-stage [data-s]{transition:none}
+.anim-stage [data-t]{transform-origin:0 0;transition:none}
+.anim-player.ready [data-s]{transition:opacity .5s ease}
+.anim-player.ready [data-t]{transition:transform .9s cubic-bezier(.6,.05,.25,1)}
+.anim-cap{display:flex;flex-direction:column;gap:2px;min-height:5.6em;text-align:start}
+.anim-step{font-size:.7rem;font-weight:700;color:var(--blue);letter-spacing:.06em;font-variant-numeric:tabular-nums}
+.anim-cap b{font-size:1rem;font-weight:800;color:var(--ink)}
+.anim-cap p{margin:0;font-size:.86rem;color:var(--ink-soft);line-height:1.45}
+.anim-ctrl{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.anim-btn{width:38px;height:38px;border-radius:50%;border:1.5px solid var(--ink);background:var(--card);color:var(--ink);font:800 .9rem var(--f-main);cursor:pointer;box-shadow:2px 2px 0 var(--ink)}
+.anim-btn:hover{background:var(--yellow-bg)}
+.anim-play{background:var(--ink);color:#fff}
+.anim-play:hover{background:var(--blue);color:#fff}
+.anim-dots{display:flex;gap:5px;margin-inline-start:auto}
+.anim-dots button{width:10px;height:10px;padding:0;border-radius:50%;border:1.5px solid var(--ink);background:var(--card);cursor:pointer}
+.anim-dots button[aria-current="true"]{background:var(--pink)}
+.anim-close{width:30px;height:30px;font-size:.75rem;box-shadow:none}
+.anim-player button:focus-visible,.watch-btn:focus-visible{outline:3px solid var(--blue);outline-offset:2px}
+.a-s{stroke:var(--ink);stroke-width:2;stroke-linejoin:round;stroke-linecap:round}
+.a-thin{stroke:var(--ink);stroke-width:1}
+.a-fy{fill:var(--yellow)}.a-fp{fill:var(--pink)}.a-fb{fill:var(--blue)}.a-fbb{fill:var(--blue-bg)}.a-fw{fill:var(--card)}.a-fk{fill:var(--ink)}
+.a-white{stroke:#fff;stroke-width:1.5;opacity:.7;fill:none}
+.a-mono{font:700 7px var(--f-main);fill:var(--ink)}
+.a-h{font:700 18px var(--f-hand);fill:var(--pink-ink)}
+.a-hbig{font-size:26px}
+.a-big{font:800 26px var(--f-main)}
+.a-bad{fill:var(--alert)}.a-ok{fill:var(--ok)}
+.a-cut{stroke:var(--pink-ink);stroke-width:2;stroke-dasharray:4 4}
+.a-arrow{fill:none;stroke:var(--blue);stroke-width:2;stroke-linecap:round;stroke-dasharray:5 5}
+.a-blade{stroke-width:5}
+.a-heat{fill:none;stroke:var(--pink);stroke-width:3;stroke-linecap:round}
+.a-loop{fill:none;stroke:var(--blue);stroke-width:3;stroke-dasharray:8 6;animation:aflow 1s linear infinite}
+.a-stem{fill:none;stroke:var(--ok);stroke-width:4;stroke-linecap:round}
+.a-leaf{fill:var(--ok);stroke:var(--ink);stroke-width:1.5}
+.a-dry{stroke:var(--warn)}.a-dryl{fill:var(--warn-bg)}
+.a-wick{stroke:var(--pink-ink);stroke-width:3;stroke-dasharray:2 3}
+.a-rise{animation:arise 2.4s linear infinite}.a-d2{animation-delay:.8s}.a-d3{animation-delay:1.6s}
+.a-flash{fill:var(--yellow);animation:aflash 1.2s ease-out infinite;transform-origin:180px 100px}
+.a-map{fill:none;stroke:var(--blue);stroke-width:2.5;stroke-linecap:round}.a-map2{stroke:var(--grid);stroke-width:4}
+.scene-3 .a-blink-wrap,.scene-4 .a-blink-wrap{animation:ablink 1.6s steps(2,jump-none) infinite}
+@keyframes ablink{0%{opacity:1}100%{opacity:.1}}
+@keyframes aflow{to{stroke-dashoffset:-14}}
+@keyframes arise{0%{transform:translateY(0);opacity:0}15%{opacity:1}100%{transform:translateY(-46px);opacity:0}}
+@keyframes aflash{0%{transform:scale(.3);opacity:1}100%{transform:scale(1.6);opacity:0}}
+@media (prefers-reduced-motion:reduce){.anim-player.ready [data-s],.anim-player.ready [data-t]{transition-duration:.01s!important;transition-delay:0s!important}.a-rise,.a-flash,.a-loop,.a-blink-wrap{animation:none!important}}
 .tool-nav-row{display:flex;align-items:center;justify-content:space-between;width:100%;margin-top:10px;gap:8px}
 .tool-nav-btn{background:var(--card);border:1.5px solid var(--ink);color:var(--ink);width:44px;height:44px;border-radius:50%;font-size:1.2rem;font-weight:800;cursor:pointer;box-shadow:2px 2px 0 var(--ink);flex-shrink:0}
 .tool-nav-btn:hover{background:var(--yellow-bg)}
@@ -211,6 +261,7 @@
     <script src="./content/he.js"></script>
     <script src="./content/ja.js"></script>
     <script src="./content/ar.js"></script>
+    <script src="./animations.js"></script>
 <script>
 const DB_MAP = { en: inventor_db_en, uk: inventor_db_uk, ro: inventor_db_ro, pl: inventor_db_pl, de: inventor_db_de, fr: inventor_db_fr, it: inventor_db_it, sv: inventor_db_sv, fi: inventor_db_fi, da: inventor_db_da, es: inventor_db_es, pt: inventor_db_pt, he: inventor_db_he, ja: inventor_db_ja, ar: inventor_db_ar };
 const MISSION_MAP = { en: inventor_missions_en, uk: inventor_missions_uk, ro: inventor_missions_ro, pl: inventor_missions_pl, de: inventor_missions_de, fr: inventor_missions_fr, it: inventor_missions_it, sv: inventor_missions_sv, fi: inventor_missions_fi, da: inventor_missions_da, es: inventor_missions_es, pt: inventor_missions_pt, he: inventor_missions_he, ja: inventor_missions_ja, ar: inventor_missions_ar };
@@ -221,12 +272,12 @@ function changeLang(){ currentLang=document.getElementById('lang-selector').valu
 function applyTranslations(){ const d=getDb(currentLang); const u=d.ui; const m=d.menu; const p=d.promo; document.getElementById('scr-title').innerText=u.title; document.getElementById('menu-title').innerText=u.howItWorks; document.getElementById('menu-cta').innerText=u.start; document.getElementById('menu-note').innerText=u.menuNote;  document.getElementById('btn-gen-miss').innerText=m.genBtn;  document.getElementById('btn-back').innerText=p.backHub; document.getElementById('promo-title').innerText=p.t; document.getElementById('promo-subtitle').innerText=p.st; document.getElementById('promo-btn-lbl').innerText=p.btn; document.querySelectorAll('.back-menu-btn').forEach(btn=>btn.innerText=m.backMenu); document.getElementById('btn-submit').innerText=u.submitCoach; document.getElementById('mission-answer').placeholder=u.writePlaceholder; }
 function selectMenuMode(modeNum,colorClass){ selectedMenuMode=modeNum; const langData=getDb(currentLang); const mode=langData.modes[modeNum-1]; for(let i=1;i<=4;i++)document.getElementById('menu-btn-'+i).className='selector-btn'; document.getElementById('menu-btn-'+modeNum).className='selector-btn active '+colorClass; const panel=document.getElementById('menu-panel'),title=document.getElementById('menu-title'),list=document.getElementById('menu-list'),cta=document.getElementById('menu-cta'); panel.style.boxShadow=`4px 4px 0 var(--${colorClass==='cyan'?'yellow':colorClass==='magenta'?'pink':colorClass})`; title.style.color='var(--ink)'; title.innerText=mode.title; list.innerHTML=mode.rules; cta.style.background=`var(--${colorClass})`; cta.style.color='#fff'; }
 function openSelectedScreen(){ if(selectedMenuMode===1)openScreen('tools'); else if(selectedMenuMode===2)openCalendar(); else if(selectedMenuMode===3)openScreen('tool-challenges'); else if(selectedMenuMode===4)openScreen('missions'); }
-function showMenu(){ document.querySelectorAll('.content-screen').forEach(s=>s.style.display='none'); document.getElementById('menu-screen').style.display='flex'; }
+function showMenu(){ if(window.InventorAnim)InventorAnim.stop(); document.querySelectorAll('.content-screen').forEach(s=>s.style.display='none'); document.getElementById('menu-screen').style.display='flex'; }
 function openScreen(id){ document.getElementById('menu-screen').style.display='none'; document.getElementById('scr-'+id).style.display='flex'; }
 function initScreens(){ const langData=getDb(currentLang); const u=langData.ui; const toolsTabs=document.getElementById('tool-tabs'); toolsTabs.innerHTML=''; langData.tools.forEach((tool,i)=>{ const btn=document.createElement('div'); btn.className='tool-tab'+(i===0?' active':''); btn.innerText=tool.name; btn.onclick=()=>{ setToolIndex(i); }; toolsTabs.appendChild(btn); }); setToolIndex(currentToolIndex||0); /* calendar rendered on open */ const tcTabs=document.getElementById('tc-tabs'); tcTabs.innerHTML=''; langData.toolChallenges.forEach((tc,i)=>{ const btn=document.createElement('div'); btn.className='tool-tab'+(i===0?' active':''); btn.innerText=tc.name; btn.onclick=()=>{ setChallengeIndex(i); }; tcTabs.appendChild(btn); }); setChallengeIndex(currentChallengeIndex||0); initMissionTabs(); selectMissionLevel(currentLevel||'rookie'); }
 function setToolIndex(index){ const langData=getDb(currentLang); const total=langData.tools.length; currentToolIndex=((index%total)+total)%total; document.querySelectorAll('#tool-tabs .tool-tab').forEach((b,i)=>b.classList.toggle('active',i===currentToolIndex)); const tab=document.querySelectorAll('#tool-tabs .tool-tab')[currentToolIndex]; if(tab)tab.scrollIntoView({behavior:'smooth',inline:'center',block:'nearest'}); showToolContent(currentToolIndex); }
 function navTool(delta){ setToolIndex(currentToolIndex+delta); }
-function showToolContent(index){ const langData=getDb(currentLang); const u=langData.ui; const tool=langData.tools[index]; const counter=(u.toolOf||'Tool {n} of 8').replace('{n}',index+1); document.getElementById('tool-counter').innerText=counter; document.getElementById('tool-prev').innerText=u.prev||'←'; document.getElementById('tool-next').innerText=u.next||'→'; let html=`<h3>${tool.name}</h3><p>${tool.desc}</p>`; if(tool.realWorld)html+=`<div class="real-badge">${u.realInvention||'Real invention'}: ${tool.realWorld}</div>`; if(tool.examples&&tool.examples.length){ html+=`<div style="font-size:.78rem;font-weight:800;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px">${u.example||'See it in real life'}</div><div class="example-grid">`; tool.examples.forEach(ex=>{ html+=`<div class="example-card"><div class="ex-icon">${ex.icon||'💡'}</div><div class="ex-label">${ex.label}</div><div class="ex-note">${ex.note||''}</div></div>`; }); html+=`</div>`; } else if(tool.ex){ html+=`<div class="example"><strong>${u.example||'Example:'}</strong><br>${tool.ex}</div>`; } if(tool.searchTasks&&tool.searchTasks.length){ const tasks=tool.searchTasks.map(t=>`<li>${t}</li>`).join(''); html+=`<button class="search-cta-btn" onclick="this.nextElementSibling.classList.toggle('open')">${u.searchAround||'🔍 Search around you'}</button><ul class="search-checklist">${tasks}</ul>`; } html+=`<div class="video-placeholder">${u.watchVideo||'▶ Watch 30-sec example'} · <span style="opacity:.7">${u.comingSoon||'Coming soon'}</span></div>`; document.getElementById('tool-display').innerHTML=html; }
+function showToolContent(index){ const langData=getDb(currentLang); const u=langData.ui; const tool=langData.tools[index]; const counter=(u.toolOf||'Tool {n} of 8').replace('{n}',index+1); document.getElementById('tool-counter').innerText=counter; document.getElementById('tool-prev').innerText=u.prev||'←'; document.getElementById('tool-next').innerText=u.next||'→'; let html=`<h3>${tool.name}</h3><p>${tool.desc}</p>`; if(tool.realWorld)html+=`<div class="real-badge">${u.realInvention||'Real invention'}: ${tool.realWorld}</div>`; if(tool.examples&&tool.examples.length){ html+=`<div style="font-size:.78rem;font-weight:800;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px">${u.example||'See it in real life'}</div><div class="example-grid">`; tool.examples.forEach(ex=>{ html+=`<div class="example-card"><div class="ex-icon">${ex.icon||'💡'}</div><div class="ex-label">${ex.label}</div><div class="ex-note">${ex.note||''}</div></div>`; }); html+=`</div>`; } else if(tool.ex){ html+=`<div class="example"><strong>${u.example||'Example:'}</strong><br>${tool.ex}</div>`; } if(tool.searchTasks&&tool.searchTasks.length){ const tasks=tool.searchTasks.map(t=>`<li>${t}</li>`).join(''); html+=`<button class="search-cta-btn" onclick="this.nextElementSibling.classList.toggle('open')">${u.searchAround||'🔍 Search around you'}</button><ul class="search-checklist">${tasks}</ul>`; } if(window.InventorAnim&&index<InventorAnim.count){ html+=`<button type="button" class="watch-btn" onclick="InventorAnim.open(this,${index},currentLang)">${u.watchVideo||'▶ Watch 30-sec example'}</button>`; } else { html+=`<div class="video-placeholder">${u.watchVideo||'▶ Watch 30-sec example'} · <span style="opacity:.7">${u.comingSoon||'Coming soon'}</span></div>`; } if(window.InventorAnim)InventorAnim.stop(); document.getElementById('tool-display').innerHTML=html; }
 function pick(arr){ return arr[Math.floor(Math.random()*arr.length)]; }
 
 let currentChallengeIndex=0;
