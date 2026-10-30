@@ -1,7 +1,7 @@
 // Inventor Lab — 30-секундні анімації для 8 інструментів ТРВЗ.
 // Кожна анімація = 5 сцен по 6 секунд. Малюнки без слів (тільки цифри й символи),
 // тому їх не треба перекладати. Підписи до сцен — у ANIM_TEXT нижче (en, uk);
-// для інших мов показується англійська, поки не додано переклад.
+// решта мов — у anim-text-1.js і anim-text-2.js.
 //
 // Як працює малюнок:
 //   data-s="0-2,4"  — у яких сценах елемент видно (нумерація з 0)
@@ -292,7 +292,8 @@
     const card = btn.parentElement;
     const old = card.querySelector('.anim-player');
     if (old) { old.remove(); btn.hidden = false; return; }
-    const texts = (ANIM_TEXT[lang] || ANIM_TEXT.en)[toolIndex];
+    const extra = window.INVENTOR_ANIM_TEXT || {};
+    const texts = (ANIM_TEXT[lang] || extra[lang] || ANIM_TEXT.en)[toolIndex];
     const draw = DRAW[toolIndex];
     if (!texts || !draw) return;
 
@@ -300,7 +301,7 @@
     wrap.className = 'anim-player';
     wrap.innerHTML = `
       <div class="anim-stage"><svg viewBox="0 0 320 200" role="img" aria-label="${texts[texts.length - 1][0]}">${draw()}</svg></div>
-      <div class="anim-cap" aria-live="polite"><div class="anim-step"></div><b></b><p></p></div>
+      <div class="anim-cap" aria-live="polite"><div class="anim-step"></div><b dir="auto"></b><p dir="auto"></p></div>
       <div class="anim-ctrl">
         <button type="button" class="anim-btn" data-act="prev" aria-label="Back">←</button>
         <button type="button" class="anim-btn anim-play" data-act="play" aria-label="Play or pause">❚❚</button>
