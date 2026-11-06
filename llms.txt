@@ -26,6 +26,7 @@ English, Ukrainian, Polish, Spanish, German, French, Romanian, Italian, Portugue
 - What If: https://prybambas.com/what-if/
 - Inventor Lab: https://prybambas.com/inventor/
 - AI Coach: https://prybambas.com/coach/
+- Play While You Wait (games for clinic posters): https://prybambas.com/play/
 - About: https://prybambas.com/about.html
 - FAQ: https://prybambas.com/faq.html
 

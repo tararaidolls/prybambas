@@ -1,0 +1,98 @@
+/* Prybambas Play — сторінки для QR з постерів у клініках.
+   Базовий стиль береться з ../assets/notebook.css, тут лише доповнення. */
+
+.main-card { min-height: 0; align-items: stretch; }
+
+.play-hero { text-align: center; margin-bottom: 18px; }
+.play-hero h1 { font-size: 1.35rem; font-weight: 800; line-height: 1.25; text-wrap: balance; }
+.play-hero .hero-emoji { font-size: 2.6rem; line-height: 1; display: block; margin-bottom: 6px; }
+.play-hero p { color: var(--ink-soft); font-size: 0.95rem; margin-top: 8px; text-wrap: pretty; }
+
+.play-poster {
+    display: block; width: 100%; max-width: 220px; margin: 0 auto 20px;
+    border: 1.5px solid var(--ink); border-radius: 4px;
+    box-shadow: 4px 4px 0 var(--blue); transform: rotate(-1.2deg);
+}
+
+.section-title {
+    font-weight: 800; font-size: 1.05rem; margin: 6px 0 12px;
+    display: flex; align-items: center; gap: 8px;
+}
+.section-title::after { content: ""; flex: 1; height: 1.5px; background: var(--grid); }
+
+/* Вибір віку */
+.age-tabs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 16px; }
+.age-tab {
+    background: var(--card); border: 1.5px solid var(--ink); border-radius: 10px;
+    padding: 10px 4px 8px; cursor: pointer; text-align: center;
+    font: 700 0.85rem var(--f-main); color: var(--ink);
+    box-shadow: 3px 3px 0 var(--grid);
+    transition: transform 0.15s, box-shadow 0.15s, background 0.15s;
+}
+.age-tab .ico { display: block; font-size: 1.7rem; line-height: 1.2; }
+.age-tab:hover { transform: translate(-1px, -2px); }
+.age-tab[aria-selected="true"].a0 { background: var(--yellow-bg); box-shadow: 4px 4px 0 var(--yellow); }
+.age-tab[aria-selected="true"].a1 { background: var(--blue-bg); box-shadow: 4px 4px 0 var(--blue); }
+.age-tab[aria-selected="true"].a2 { background: var(--pink-bg); box-shadow: 4px 4px 0 var(--pink); }
+.age-tab:focus-visible { outline: 3px solid var(--blue); outline-offset: 3px; }
+
+/* Картки ігор */
+.games { display: flex; flex-direction: column; gap: 12px; margin-bottom: 22px; }
+.game {
+    background: var(--paper);
+    background-image: repeating-linear-gradient(transparent 0 27px, var(--grid) 27px 28px);
+    border: 1.5px solid var(--ink); border-radius: 6px;
+    padding: 14px 16px; animation: fadeIn 0.25s ease-out;
+}
+.game h3 { font-size: 1rem; font-weight: 800; display: flex; gap: 8px; align-items: flex-start; }
+.game h3 .ico { font-size: 1.25rem; line-height: 1.2; }
+.game p { font-size: 0.93rem; line-height: 1.45; margin-top: 6px; white-space: pre-line; }
+.reveal-btn {
+    margin-top: 10px; background: var(--card); border: 1.5px solid var(--ink); border-radius: 6px;
+    padding: 6px 12px; font: 700 0.82rem var(--f-main); cursor: pointer; color: var(--ink);
+    box-shadow: 2px 2px 0 var(--yellow);
+}
+.reveal-btn:focus-visible { outline: 3px solid var(--blue); outline-offset: 2px; }
+.answer {
+    display: none; margin-top: 8px; padding: 8px 12px; border-radius: 6px;
+    background: var(--yellow-bg); font-size: 0.9rem; line-height: 1.45; white-space: pre-line;
+}
+.answer.open { display: block; animation: popIn 0.25s ease-out; }
+
+/* Відповіді до постера */
+details.poster-answers {
+    border: 1.5px solid var(--ink); border-radius: 6px; margin-bottom: 18px;
+    background: var(--card); box-shadow: 3px 3px 0 var(--pink);
+}
+details.poster-answers summary {
+    cursor: pointer; padding: 12px 16px; font-weight: 800; list-style: none;
+    display: flex; justify-content: space-between; align-items: center;
+}
+details.poster-answers summary::-webkit-details-marker { display: none; }
+details.poster-answers summary::after { content: "＋"; font-weight: 800; }
+details.poster-answers[open] summary::after { content: "－"; }
+details.poster-answers .rows { padding: 0 16px 14px; display: flex; flex-direction: column; gap: 10px; }
+details.poster-answers .row { display: flex; gap: 10px; font-size: 0.92rem; line-height: 1.45; }
+details.poster-answers .row b { display: block; }
+details.poster-answers .row .ico { font-size: 1.2rem; flex-shrink: 0; }
+
+.grownups {
+    border: 1.5px dashed var(--ink); border-radius: 6px; padding: 12px 16px;
+    font-size: 0.88rem; color: var(--ink-soft); line-height: 1.45; margin-bottom: 4px;
+}
+.grownups b { color: var(--ink); }
+
+.play-footer { margin-top: 22px; display: flex; align-items: center; gap: 8px; color: var(--ink-soft); font-size: 0.85rem; }
+.play-footer img { width: 28px; height: 28px; }
+
+/* Список постерів на /play/ */
+.poster-list { display: flex; flex-direction: column; gap: 14px; }
+.poster-link {
+    display: flex; gap: 14px; align-items: center; text-decoration: none; color: var(--ink);
+    border: 1.5px solid var(--ink); border-radius: 8px; padding: 10px; background: var(--paper);
+    box-shadow: 3px 3px 0 var(--blue); transition: transform 0.15s;
+}
+.poster-link:hover { transform: translate(-1px, -2px); }
+.poster-link img { width: 72px; border: 1px solid var(--ink); border-radius: 3px; }
+.poster-link b { display: block; font-size: 1rem; }
+.poster-link span { font-size: 0.85rem; color: var(--ink-soft); }
