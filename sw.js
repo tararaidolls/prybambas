@@ -1,4 +1,4 @@
-const CACHE_NAME = 'prybambas-v7';
+const CACHE_NAME = 'prybambas-v8';
 const ASSETS = [
     './',
     './index.html',
@@ -24,12 +24,15 @@ self.addEventListener('activate', event => {
     );
 });
 
+// Сторінки й усе з «Наймолодшим» (/little/): спершу мережа, щоб завжди бачити свіжу версію;
+// без інтернету — збережена копія (тож трекер для батьків працює офлайн).
 self.addEventListener('fetch', event => {
     const req = event.request;
     if (req.method !== 'GET') return;
+    const url = new URL(req.url);
+    const isLittle = url.origin === location.origin && url.pathname.startsWith('/little/');
 
-    // Сторінки: спершу мережа (щоб завжди бачити свіжу версію), кеш — лише офлайн
-    if (req.mode === 'navigate') {
+    if (req.mode === 'navigate' || isLittle) {
         event.respondWith(
             fetch(req)
                 .then(res => {
@@ -37,7 +40,7 @@ self.addEventListener('fetch', event => {
                     caches.open(CACHE_NAME).then(cache => cache.put(req, copy));
                     return res;
                 })
-                .catch(() => caches.match(req).then(r => r || caches.match('./index.html')))
+                .catch(() => caches.match(req).then(r => r || (req.mode === 'navigate' ? caches.match('./index.html') : undefined)))
         );
         return;
     }

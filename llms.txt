@@ -1,18 +1,20 @@
 # Prybambas
 
-> Free STEM education hub for curious kids ages 5–14. No login required.
+> Free STEM education hub for curious kids ages 5–14, plus free tools for parents of little ones 0–4. No login required.
 
 ## What it is
 
-Prybambas (https://prybambas.com) is a free web app and PWA with three learning spaces:
+Prybambas (https://prybambas.com) is a free web app and PWA with these spaces:
 
 - **What If?** — logic and cause-and-effect game for kids. Modes: single round, logic chain, deduction.
 - **Inventor Lab** — TRIZ-inspired creative thinking: tools, 30-day calendar, challenges, missions (Rookie / Agent / Elite).
 - **AI Coach** — language practice companion (links to coach-ai hub).
+- **For the Littlest** (Наймолодшим) — tools for parents of babies and toddlers 0–4. First tool: the **100 First Foods & Allergen Tracker**, a free baby-led weaning / solid food tracker with daily plate ideas (protein, complex carb, veggie, fruit), a 3-day allergen rhythm (introduce, a day with no new foods, repeat), a reaction log, a weekly summary and a printable doctor report. No account; data stays on the parent's device or in their own family file; works offline.
 
 ## Who it's for
 
 - Children ages 5–14
+- Parents of babies and toddlers 0–4 (For the Littlest)
 - Parents, homeschoolers, teachers
 - Multilingual families (11+ languages)
 
@@ -26,6 +28,8 @@ English, Ukrainian, Polish, Spanish, German, French, Romanian, Italian, Portugue
 - What If: https://prybambas.com/what-if/
 - Inventor Lab: https://prybambas.com/inventor/
 - AI Coach: https://prybambas.com/coach/
+- For the Littlest: https://prybambas.com/little/
+- 100 First Foods & Allergen Tracker: https://prybambas.com/little/first-foods/
 - About: https://prybambas.com/about.html
 - FAQ: https://prybambas.com/faq.html
 
