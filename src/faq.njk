@@ -1,0 +1,42 @@
+---js
+{
+  // Сторінка FAQ: англійська — /faq.html (стара адреса), інші мови — /<мова>/faq/.
+  // Тексти — у src/_data/faq.yml
+  pagination: { data: "faqLangs", size: 1, alias: "fl" },
+  faqLangs: ["en", "uk", "pl", "de", "es"],
+  permalink: (data) => (data.fl === "en" ? "/faq.html" : `/${data.fl}/faq/`),
+  layout: "base.njk",
+  alternates: [
+    { lang: "en", url: "/faq.html" },
+    { lang: "uk", url: "/uk/faq/" },
+    { lang: "pl", url: "/pl/faq/" },
+    { lang: "de", url: "/de/faq/" },
+    { lang: "es", url: "/es/faq/" },
+  ],
+  eleventyComputed: {
+    lang: (data) => data.fl,
+    pageTitle: (data) => data.faq[data.fl].pageTitle,
+    description: (data) => data.faq[data.fl].description,
+    jsonld: (data) => ({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      inLanguage: data.fl,
+      mainEntity: data.faq[data.fl].items.map((i) => ({
+        "@type": "Question",
+        name: i.q,
+        acceptedAnswer: { "@type": "Answer", text: String(i.a).replace(/<[^>]+>/g, "") },
+      })),
+    }),
+  },
+}
+---
+{%- set F = faq[fl] -%}
+<article class="post">
+  <h1>{{ F.title }}</h1>
+  <div class="prose">
+  {%- for i in F.items %}
+    <h2>{{ i.q }}</h2>
+    <p>{{ i.a | safe }}</p>
+  {%- endfor %}
+  </div>
+</article>

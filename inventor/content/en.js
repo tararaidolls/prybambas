@@ -1,6 +1,7 @@
 // Inventor Lab — en (v2: visual tools + search-around CTA)
 const inventor_db_en = {
   ui: {
+    legendDone: "done", legendToday: "today", legendMissed: "missed", legendFuture: "future",
     title: "Think Like an Inventor",
     howItWorks: "How it works",
     start: "START",

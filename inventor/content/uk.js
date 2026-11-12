@@ -1,6 +1,7 @@
 // Inventor Lab — uk (v2: повна структура як en.js)
 const inventor_db_uk = {
   ui: {
+    legendDone: "виконано", legendToday: "сьогодні", legendMissed: "пропущено", legendFuture: "попереду",
     title: "Думай як винахідник",
     howItWorks: "Як це працює",
     start: "ПОЧАТИ",

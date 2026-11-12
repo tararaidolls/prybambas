@@ -1,6 +1,7 @@
 // Inventor Lab — ro (v2: structură completă ca en.js)
 const inventor_db_ro = {
   ui: {
+    legendDone: "făcut", legendToday: "azi", legendMissed: "ratat", legendFuture: "urmează",
     title: "Gândește ca un inventator",
     howItWorks: "Cum funcționează",
     start: "START",

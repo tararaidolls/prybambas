@@ -1,6 +1,7 @@
 // Inventor Lab — sv (v2: full struktur som en.js)
 const inventor_db_sv = {
   ui: {
+    legendDone: "klar", legendToday: "idag", legendMissed: "missad", legendFuture: "kommande",
     title: "Tänk som en uppfinnare",
     howItWorks: "Så funkar det",
     start: "STARTA",

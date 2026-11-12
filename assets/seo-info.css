@@ -1,0 +1,35 @@
+/* Текстовий блок під грою: пояснює, що це за гра (для батьків, вчителів і AI-пошуку).
+   Кольори беруться з поточної теми сторінки (світлої або темної). */
+.seo-info {
+  width: 100%;
+  max-width: 720px;
+  margin: 48px auto 32px;
+  padding: 0 16px;
+  font-size: 16px;
+  line-height: 1.6;
+  color: inherit;
+  text-align: start;
+  box-sizing: border-box;
+}
+.seo-info h2 { font-size: 1.35rem; line-height: 1.3; margin: 0 0 .6em; }
+.seo-info h3 { font-size: 1.02rem; margin: 1em 0 .3em; }
+.seo-info p, .seo-info li { margin: 0 0 .7em; }
+.seo-info ul, .seo-info ol { padding-inline-start: 1.3em; margin: 0 0 .7em; }
+.seo-info a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
+.seo-info .lead { font-size: 1.08rem; }
+.seo-info .more { margin-top: 1.2em; opacity: .85; }
+
+.seo-info details {
+  border-top: 1px solid color-mix(in srgb, currentColor 18%, transparent);
+  padding: 12px 0;
+}
+.seo-info details:last-of-type { border-bottom: 1px solid color-mix(in srgb, currentColor 18%, transparent); }
+.seo-info summary {
+  cursor: pointer;
+  font-weight: 700;
+  list-style: none;
+}
+.seo-info summary::-webkit-details-marker { display: none; }
+.seo-info summary::after { content: " +"; opacity: .5; }
+.seo-info details[open] summary::after { content: " −"; }
+.seo-info details > :not(summary):first-of-type { margin-top: .6em; }

@@ -11,6 +11,20 @@
     pageTitle: (data) => data.I.t.title,
     description: (data) => data.I.t.summary || data.I.t.social,
     ogImage: (data) => data.I.post.cover,
+    // Розмітка статті для Google і AI-пошуку
+    jsonld: (data) => ({
+      "@context": "https://schema.org",
+      "@type": "Article",
+      headline: data.I.t.title,
+      description: data.I.t.summary || data.I.t.social,
+      datePublished: new Date(data.I.post.date).toISOString().slice(0, 10),
+      inLanguage: data.I.lang,
+      url: new URL(data.I.url, data.site.url).href,
+      image: new URL(data.I.post.cover || "/logo.png", data.site.url).href,
+      author: { "@type": "Organization", name: "Prybambas", url: data.site.url },
+      publisher: { "@type": "Organization", name: "Prybambas", url: data.site.url, logo: { "@type": "ImageObject", url: new URL("/logo.png", data.site.url).href } },
+      audience: { "@type": "Audience", audienceType: "Parents and teachers of children ages 5-14" },
+    }),
   },
 }
 ---
