@@ -1,6 +1,6 @@
 # Prybambas
 
-> Free thinking games for curious kids ages 5–14: cause-and-effect logic, TRIZ inventor puzzles and language practice. In the browser, no login, no ads, 15 languages. Made by Kids Skill Academy.
+> Free thinking games for curious kids ages 5–14: cause-and-effect logic, TRIZ inventor puzzles and language practice, plus free tools for parents of babies and toddlers 0–4. In the browser, no login, no ads, 15 languages. Made by Kids Skill Academy.
 
 ## Games
 
@@ -9,9 +9,14 @@
 - [AI Coach](https://prybambas.com/coach/): language practice space that pairs with the One Verb a Day workbooks.
 - [Books Gym](https://prybambas.com/book/): printed workbooks that match the games.
 
+## For parents of little ones (0–4)
+
+- [For the Littlest](https://prybambas.com/little/) (Наймолодшим): free tools for parents of babies and toddlers. No account; data stays on the parent's device or in their own family file; works offline.
+- [100 First Foods & Allergen Tracker](https://prybambas.com/little/first-foods/): baby-led weaning / solid food tracker with daily plate ideas (protein, complex carb, veggie, fruit), a 3-day allergen rhythm (introduce, a day with no new foods, repeat), a reaction log, a weekly summary and a printable doctor report.
+
 ## Who it's for
 
-Children ages 5–14, parents, homeschoolers, teachers, multilingual families.
+Children ages 5–14, parents of babies and toddlers 0–4, homeschoolers, teachers, multilingual families.
 
 ## Languages
 

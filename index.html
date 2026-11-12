@@ -242,6 +242,8 @@
         .c-inventor::before { transform: translateX(-50%) rotate(2deg); opacity: 0.45; }
         .c-books::before    { transform: translateX(-50%) rotate(-1deg); opacity: 0.55; }
         .c-coach::before    { transform: translateX(-50%) rotate(4deg); }
+        .c-little   { --tape: #FFC9B0; --spot: #FFC9B0; }
+        .c-little::before   { transform: translateX(-50%) rotate(-2deg); opacity: 0.9; }
 
         .card-ico { position: relative; width: 64px; height: 64px; }
         .card-ico::before {
@@ -419,6 +421,21 @@
             <span class="card-title" id="lbl-coach">AI Coach</span>
             <span class="card-desc" id="desc-coach">Practice languages with a friendly AI coach.</span>
         </a>
+        <!-- 5. Наймолодшим -->
+        <a href="./little/" class="space-card c-little">
+            <div class="card-ico">
+                <svg viewBox="0 0 100 100" fill="none" aria-hidden="true">
+                    <!-- Мисочка з ложкою -->
+                    <path d="M14 52 H80 C80 70 66 82 47 82 C28 82 14 70 14 52 Z" stroke="#1A1A2E" stroke-width="4" stroke-linejoin="round"/>
+                    <path d="M30 52 C30 42 38 38 44 42 C48 34 60 34 62 44 C68 42 72 47 70 52" stroke="#1A1A2E" stroke-width="3.5" stroke-linecap="round"/>
+                    <path d="M84 18 L64 46" stroke="#1A1A2E" stroke-width="4" stroke-linecap="round"/>
+                    <ellipse cx="86" cy="15" rx="5" ry="8" transform="rotate(35 86 15)" stroke="#1A1A2E" stroke-width="3.5"/>
+                </svg>
+            </div>
+            <span class="card-tag" id="tag-little">For parents · 0–4</span>
+            <span class="card-title" id="lbl-little">For the Littlest</span>
+            <span class="card-desc" id="desc-little">First foods &amp; allergen tracker. No account, your data stays with you.</span>
+        </a>
     </nav>
 
 <!-- Текст для батьків, вчителів і AI-пошуку. Згорнуті блоки не заважають. -->
@@ -482,6 +499,7 @@
                 inventor: "Inventor Lab",
                 books: "Books Gym",
                 coach: "AI Coach",
+                little: "For the Littlest",
                 install: "Install App",
                 ios_title: "Install App",
                 ios_desc: "Follow these simple steps to install the app on your iPhone:",
@@ -494,6 +512,7 @@
                 inventor: "Лабораторія ТРВЗ",
                 books: "Зал Книг",
                 coach: "ШІ Тренер",
+                little: "Наймолодшим",
                 install: "Встановити",
                 ios_title: "Встановити додаток",
                 ios_desc: "Виконай ці прості кроки, щоб додати додаток на свій iPhone:",
@@ -506,6 +525,7 @@
                 inventor: "Laborator Inventor",
                 books: "Sala Cărților",
                 coach: "Antrenor AI",
+                little: "Pentru cei mai mici",
                 install: "Instalează",
                 ios_title: "Instalează aplicația",
                 ios_desc: "Urmează acești pași simpli pentru a instala aplicația pe iPhone:",
@@ -518,6 +538,7 @@
                 inventor: "Laboratorium Wynalazców",
                 books: "Sala Książek",
                 coach: "Trener AI",
+                little: "Dla najmłodszych",
                 install: "Zainstaluj",
                 ios_title: "Zainstaluj aplikację",
                 ios_desc: "Wykonaj te proste kroki, aby zainstalować aplikację na iPhone:",
@@ -530,6 +551,7 @@
                 inventor: "Erfinder-Labor",
                 books: "Bücher-Gym",
                 coach: "KI-Coach",
+                little: "Für die Kleinsten",
                 install: "Installieren",
                 ios_title: "App installieren",
                 ios_desc: "Folge diesen einfachen Schritten, um die App auf deinem iPhone zu installieren:",
@@ -542,6 +564,7 @@
                 inventor: "Labo Inventeur",
                 books: "Salle des Livres",
                 coach: "Coach IA",
+                little: "Pour les tout-petits",
                 install: "Installer",
                 ios_title: "Installer l'app",
                 ios_desc: "Suivez ces étapes simples pour installer l'app sur votre iPhone :",
@@ -554,6 +577,7 @@
                 inventor: "Laboratorio Inventore",
                 books: "Sala dei Libri",
                 coach: "Coach IA",
+                little: "Per i più piccoli",
                 install: "Installa",
                 ios_title: "Installa l'app",
                 ios_desc: "Segui questi semplici passaggi per installare l'app sul tuo iPhone:",
@@ -566,6 +590,7 @@
                 inventor: "Uppfinnarlabbet",
                 books: "Bokgymmet",
                 coach: "AI-coach",
+                little: "För de minsta",
                 install: "Installera",
                 ios_title: "Installera appen",
                 ios_desc: "Följ dessa enkla steg för att installera appen på din iPhone:",
@@ -578,6 +603,7 @@
                 inventor: "Keksijälaboratorio",
                 books: "Kirjasali",
                 coach: "AI-valmentaja",
+                little: "Pienimmille",
                 install: "Asenna",
                 ios_title: "Asenna sovellus",
                 ios_desc: "Asenna sovellus iPhoneen näillä helpoilla vaiheilla:",
@@ -590,6 +616,7 @@
                 inventor: "Opfinderlaboratoriet",
                 books: "Boggymnastik",
                 coach: "AI-coach",
+                little: "Til de mindste",
                 install: "Installer",
                 ios_title: "Installer appen",
                 ios_desc: "Følg disse enkle trin for at installere appen på din iPhone:",
@@ -602,6 +629,7 @@
                 inventor: "Laboratorio Inventor",
                 books: "Gimnasio de Libros",
                 coach: "Entrenador IA",
+                little: "Para los más pequeños",
                 install: "Instalar",
                 ios_title: "Instalar app",
                 ios_desc: "Sigue estos pasos simples para instalar la app en tu iPhone:",
@@ -614,6 +642,7 @@
                 inventor: "Laboratório Inventor",
                 books: "Ginásio de Livros",
                 coach: "Treinador IA",
+                little: "Para os pequeninos",
                 install: "Instalar",
                 ios_title: "Instalar app",
                 ios_desc: "Siga estes passos simples para instalar o app no seu iPhone:",
@@ -626,6 +655,7 @@
                 inventor: "מעבדת הממציאים",
                 books: "אולם הספרים",
                 coach: "מאמן AI",
+                little: "לקטנטנים",
                 install: "התקנה",
                 ios_title: "התקנת האפליקציה",
                 ios_desc: "עקבו אחר השלבים הפשוטים האלה להתקנה ב-iPhone:",
@@ -638,6 +668,7 @@
                 inventor: "発明ラボ",
                 books: "ブックジム",
                 coach: "AIコーチ",
+                little: "いちばん小さな子へ",
                 install: "インストール",
                 ios_title: "アプリをインストール",
                 ios_desc: "iPhoneにアプリをインストールする簡単な手順：",
@@ -650,6 +681,7 @@
                 inventor: "مختبر المخترعين",
                 books: "صالة الكتب",
                 coach: "مدرب الذكاء الاصطناعي",
+                little: "للصغار",
                 install: "تثبيت",
                 ios_title: "تثبيت التطبيق",
                 ios_desc: "اتبع هذه الخطوات البسيطة لتثبيت التطبيق على iPhone:",
@@ -662,21 +694,21 @@
 
         // Тексти нового героя й карток (зливаються з dict у changeLang)
         const heroDict = {
-            en: { ideas: "Ideas", shop: "Shop", h1: "What if you <mark>look</mark> a little closer?", sub: "A place where kids ask questions, notice small things and check the answers. Even the ones AI gives.", note: "every “why?” counts!", t_whatif: "Curiosity", t_inventor: "Critical thinking", t_books: "Observation", t_coach: "Languages", d_whatif: "Chains of consequences: one change, a whole new world.", d_inventor: "TRIZ puzzles, contradictions and a 30-day calendar.", d_books: "Exercises for the Kids Skill Academy books.", d_coach: "Practice languages with a friendly AI coach.", about: "About", faq: "FAQ" },
-            uk: { ideas: "Ідеї", shop: "Магазин", h1: "А що, якщо <mark>придивитися</mark> уважніше?", sub: "Простір, де діти ставлять питання, помічають дрібниці й перевіряють відповіді. Навіть ті, що дає ШІ.", note: "кожне «чому?» рахується!", t_whatif: "Допитливість", t_inventor: "Критичне мислення", t_books: "Спостережливість", t_coach: "Мови", d_whatif: "Ланцюжки наслідків: одна зміна і цілий новий світ.", d_inventor: "ТРВЗ-задачі, протиріччя і 30-денний календар.", d_books: "Вправи до книжок Kids Skill Academy.", d_coach: "Практикуй мови з дружнім ШІ-тренером.", about: "Про нас", faq: "Питання" },
-            ro: { ideas: "Idei", shop: "Magazin", h1: "Ce-ar fi să <mark>privești</mark> mai atent?", sub: "Un loc unde copiii pun întrebări, observă detaliile și verifică răspunsurile. Chiar și pe cele date de AI.", note: "fiecare „de ce?” contează!", t_whatif: "Curiozitate", t_inventor: "Gândire critică", t_books: "Observație", t_coach: "Limbi", d_whatif: "Lanțuri de consecințe: o schimbare, o lume nouă.", d_inventor: "Probleme TRIZ, contradicții și un calendar de 30 de zile.", d_books: "Exerciții pentru cărțile Kids Skill Academy.", d_coach: "Exersează limbi cu un antrenor AI prietenos.", about: "Despre", faq: "Întrebări" },
-            pl: { ideas: "Pomysły", shop: "Sklep", h1: "A co, jeśli <mark>przyjrzysz się</mark> uważniej?", sub: "Miejsce, gdzie dzieci zadają pytania, zauważają szczegóły i sprawdzają odpowiedzi. Nawet te od AI.", note: "każde „dlaczego?” się liczy!", t_whatif: "Ciekawość", t_inventor: "Krytyczne myślenie", t_books: "Spostrzegawczość", t_coach: "Języki", d_whatif: "Łańcuchy skutków: jedna zmiana, cały nowy świat.", d_inventor: "Zadania TRIZ, sprzeczności i 30-dniowy kalendarz.", d_books: "Ćwiczenia do książek Kids Skill Academy.", d_coach: "Ćwicz języki z przyjaznym trenerem AI.", about: "O nas", faq: "FAQ" },
-            de: { ideas: "Ideen", shop: "Shop", h1: "Was wäre, wenn du <mark>genauer</mark> hinschaust?", sub: "Ein Ort, an dem Kinder Fragen stellen, Kleinigkeiten bemerken und Antworten prüfen. Auch die von der KI.", note: "jedes „Warum?“ zählt!", t_whatif: "Neugier", t_inventor: "Kritisches Denken", t_books: "Beobachten", t_coach: "Sprachen", d_whatif: "Ketten von Folgen: eine Änderung, eine ganz neue Welt.", d_inventor: "TRIZ-Rätsel, Widersprüche und ein 30-Tage-Kalender.", d_books: "Übungen zu den Büchern von Kids Skill Academy.", d_coach: "Übe Sprachen mit einem freundlichen KI-Coach.", about: "Über uns", faq: "FAQ" },
-            fr: { ideas: "Idées", shop: "Boutique", h1: "Et si tu <mark>regardais</mark> de plus près&nbsp;?", sub: "Un espace où les enfants posent des questions, remarquent les détails et vérifient les réponses. Même celles de l'IA.", note: "chaque « pourquoi ? » compte !", t_whatif: "Curiosité", t_inventor: "Esprit critique", t_books: "Observation", t_coach: "Langues", d_whatif: "Chaînes de conséquences : un changement, tout un monde.", d_inventor: "Défis TRIZ, contradictions et calendrier de 30 jours.", d_books: "Exercices pour les livres Kids Skill Academy.", d_coach: "Pratique les langues avec un coach IA bienveillant.", about: "À propos", faq: "FAQ" },
-            it: { ideas: "Idee", shop: "Negozio", h1: "E se <mark>guardassi</mark> più da vicino?", sub: "Uno spazio dove i bambini fanno domande, notano i dettagli e verificano le risposte. Anche quelle dell'IA.", note: "ogni «perché?» conta!", t_whatif: "Curiosità", t_inventor: "Pensiero critico", t_books: "Osservazione", t_coach: "Lingue", d_whatif: "Catene di conseguenze: un cambiamento, un mondo nuovo.", d_inventor: "Sfide TRIZ, contraddizioni e un calendario di 30 giorni.", d_books: "Esercizi per i libri Kids Skill Academy.", d_coach: "Pratica le lingue con un coach IA amichevole.", about: "Chi siamo", faq: "FAQ" },
-            sv: { ideas: "Idéer", shop: "Butik", h1: "Tänk om du <mark>tittar</mark> lite närmare?", sub: "En plats där barn ställer frågor, lägger märke till detaljer och kollar svaren. Även de som AI ger.", note: "varje ”varför?” räknas!", t_whatif: "Nyfikenhet", t_inventor: "Kritiskt tänkande", t_books: "Iakttagelse", t_coach: "Språk", d_whatif: "Kedjor av följder: en ändring, en helt ny värld.", d_inventor: "TRIZ-uppgifter, motsägelser och en 30-dagarskalender.", d_books: "Övningar till Kids Skill Academy-böckerna.", d_coach: "Öva språk med en vänlig AI-coach.", about: "Om oss", faq: "Frågor" },
-            fi: { ideas: "Ideat", shop: "Kauppa", h1: "Entä jos <mark>katsot</mark> tarkemmin?", sub: "Paikka, jossa lapset kysyvät, huomaavat pieniä asioita ja tarkistavat vastaukset. Myös tekoälyn antamat.", note: "jokainen ”miksi?” on tärkeä!", t_whatif: "Uteliaisuus", t_inventor: "Kriittinen ajattelu", t_books: "Havainnointi", t_coach: "Kielet", d_whatif: "Seurausten ketjut: yksi muutos, kokonaan uusi maailma.", d_inventor: "TRIZ-tehtäviä, ristiriitoja ja 30 päivän kalenteri.", d_books: "Harjoituksia Kids Skill Academyn kirjoihin.", d_coach: "Harjoittele kieliä ystävällisen tekoälyvalmentajan kanssa.", about: "Tietoa", faq: "UKK" },
-            da: { ideas: "Idéer", shop: "Butik", h1: "Hvad nu hvis du <mark>kigger</mark> lidt nærmere?", sub: "Et sted, hvor børn stiller spørgsmål, lægger mærke til detaljer og tjekker svarene. Også dem, AI giver.", note: "hvert “hvorfor?” tæller!", t_whatif: "Nysgerrighed", t_inventor: "Kritisk tænkning", t_books: "Iagttagelse", t_coach: "Sprog", d_whatif: "Kæder af følger: én ændring, en helt ny verden.", d_inventor: "TRIZ-opgaver, modsætninger og en 30-dages kalender.", d_books: "Øvelser til Kids Skill Academy-bøgerne.", d_coach: "Øv sprog med en venlig AI-coach.", about: "Om os", faq: "FAQ" },
-            es: { ideas: "Ideas", shop: "Tienda", h1: "¿Y si <mark>miras</mark> más de cerca?", sub: "Un espacio donde los niños hacen preguntas, notan los detalles y comprueban las respuestas. Incluso las de la IA.", note: "¡cada «¿por qué?» cuenta!", t_whatif: "Curiosidad", t_inventor: "Pensamiento crítico", t_books: "Observación", t_coach: "Idiomas", d_whatif: "Cadenas de consecuencias: un cambio, un mundo nuevo.", d_inventor: "Retos TRIZ, contradicciones y un calendario de 30 días.", d_books: "Ejercicios para los libros de Kids Skill Academy.", d_coach: "Practica idiomas con un entrenador IA amable.", about: "Sobre nosotros", faq: "Preguntas" },
-            pt: { ideas: "Ideias", shop: "Loja", h1: "E se você <mark>olhar</mark> mais de perto?", sub: "Um espaço onde as crianças fazem perguntas, reparam nos detalhes e verificam as respostas. Até as da IA.", note: "cada “por quê?” conta!", t_whatif: "Curiosidade", t_inventor: "Pensamento crítico", t_books: "Observação", t_coach: "Idiomas", d_whatif: "Cadeias de consequências: uma mudança, um mundo novo.", d_inventor: "Desafios TRIZ, contradições e um calendário de 30 dias.", d_books: "Exercícios para os livros da Kids Skill Academy.", d_coach: "Pratique idiomas com um treinador IA amigável.", about: "Sobre", faq: "Perguntas" },
-            he: { ideas: "רעיונות", shop: "חנות", h1: "ומה אם <mark>תסתכלו</mark> קצת יותר מקרוב?", sub: "מקום שבו ילדים שואלים שאלות, שמים לב לפרטים ובודקים תשובות. גם את אלה של הבינה המלאכותית.", note: "כל „למה?” נחשב!", t_whatif: "סקרנות", t_inventor: "חשיבה ביקורתית", t_books: "התבוננות", t_coach: "שפות", d_whatif: "שרשראות של תוצאות: שינוי אחד, עולם חדש.", d_inventor: "חידות TRIZ, סתירות ולוח שנה של 30 יום.", d_books: "תרגילים לספרי Kids Skill Academy.", d_coach: "תרגלו שפות עם מאמן AI ידידותי.", about: "אודות", faq: "שאלות" },
-            ja: { ideas: "アイデア", shop: "ショップ", h1: "もっと<mark>よく見て</mark>みたら？", sub: "子どもたちが質問し、小さなことに気づき、答えを確かめる場所。AIの答えも。", note: "「なぜ？」はぜんぶ大事！", t_whatif: "好奇心", t_inventor: "批判的思考", t_books: "観察力", t_coach: "言語", d_whatif: "結果の連鎖：ひとつの変化で、まったく新しい世界。", d_inventor: "TRIZパズル、矛盾、30日カレンダー。", d_books: "Kids Skill Academyの本のための練習。", d_coach: "やさしいAIコーチと言語を練習しよう。", about: "概要", faq: "よくある質問" },
-            ar: { ideas: "أفكار", shop: "المتجر", h1: "ماذا لو <mark>نظرت</mark> عن قرب أكثر؟", sub: "مكان يطرح فيه الأطفال الأسئلة، ويلاحظون التفاصيل، ويتحققون من الإجابات. حتى إجابات الذكاء الاصطناعي.", note: "كل «لماذا؟» مهم!", t_whatif: "الفضول", t_inventor: "التفكير النقدي", t_books: "الملاحظة", t_coach: "اللغات", d_whatif: "سلاسل من النتائج: تغيير واحد، عالم جديد.", d_inventor: "ألغاز TRIZ وتناقضات وتقويم لمدة 30 يومًا.", d_books: "تمارين لكتب Kids Skill Academy.", d_coach: "تدرّب على اللغات مع مدرب ذكاء اصطناعي ودود.", about: "من نحن", faq: "أسئلة" },
+            en: { ideas: "Ideas", shop: "Shop", h1: "What if you <mark>look</mark> a little closer?", sub: "A place where kids ask questions, notice small things and check the answers. Even the ones AI gives.", note: "every “why?” counts!", t_whatif: "Curiosity", t_inventor: "Critical thinking", t_books: "Observation", t_coach: "Languages", d_whatif: "Chains of consequences: one change, a whole new world.", d_inventor: "TRIZ puzzles, contradictions and a 30-day calendar.", d_books: "Exercises for the Kids Skill Academy books.", d_coach: "Practice languages with a friendly AI coach.", t_little: "For parents · 0–4", d_little: "First foods & allergen tracker. No account, your data stays with you.", about: "About", faq: "FAQ" },
+            uk: { ideas: "Ідеї", shop: "Магазин", h1: "А що, якщо <mark>придивитися</mark> уважніше?", sub: "Простір, де діти ставлять питання, помічають дрібниці й перевіряють відповіді. Навіть ті, що дає ШІ.", note: "кожне «чому?» рахується!", t_whatif: "Допитливість", t_inventor: "Критичне мислення", t_books: "Спостережливість", t_coach: "Мови", d_whatif: "Ланцюжки наслідків: одна зміна і цілий новий світ.", d_inventor: "ТРВЗ-задачі, протиріччя і 30-денний календар.", d_books: "Вправи до книжок Kids Skill Academy.", d_coach: "Практикуй мови з дружнім ШІ-тренером.", t_little: "Для батьків · 0–4", d_little: "Трекер перших продуктів і алергенів. Без акаунта, дані лише у вас.", about: "Про нас", faq: "Питання" },
+            ro: { ideas: "Idei", shop: "Magazin", h1: "Ce-ar fi să <mark>privești</mark> mai atent?", sub: "Un loc unde copiii pun întrebări, observă detaliile și verifică răspunsurile. Chiar și pe cele date de AI.", note: "fiecare „de ce?” contează!", t_whatif: "Curiozitate", t_inventor: "Gândire critică", t_books: "Observație", t_coach: "Limbi", d_whatif: "Lanțuri de consecințe: o schimbare, o lume nouă.", d_inventor: "Probleme TRIZ, contradicții și un calendar de 30 de zile.", d_books: "Exerciții pentru cărțile Kids Skill Academy.", d_coach: "Exersează limbi cu un antrenor AI prietenos.", t_little: "Pentru părinți · 0–4", d_little: "Tracker pentru primele alimente și alergeni. Fără cont, datele rămân la tine.", about: "Despre", faq: "Întrebări" },
+            pl: { ideas: "Pomysły", shop: "Sklep", h1: "A co, jeśli <mark>przyjrzysz się</mark> uważniej?", sub: "Miejsce, gdzie dzieci zadają pytania, zauważają szczegóły i sprawdzają odpowiedzi. Nawet te od AI.", note: "każde „dlaczego?” się liczy!", t_whatif: "Ciekawość", t_inventor: "Krytyczne myślenie", t_books: "Spostrzegawczość", t_coach: "Języki", d_whatif: "Łańcuchy skutków: jedna zmiana, cały nowy świat.", d_inventor: "Zadania TRIZ, sprzeczności i 30-dniowy kalendarz.", d_books: "Ćwiczenia do książek Kids Skill Academy.", d_coach: "Ćwicz języki z przyjaznym trenerem AI.", t_little: "Dla rodziców · 0–4", d_little: "Tracker pierwszych produktów i alergenów. Bez konta, dane zostają u Ciebie.", about: "O nas", faq: "FAQ" },
+            de: { ideas: "Ideen", shop: "Shop", h1: "Was wäre, wenn du <mark>genauer</mark> hinschaust?", sub: "Ein Ort, an dem Kinder Fragen stellen, Kleinigkeiten bemerken und Antworten prüfen. Auch die von der KI.", note: "jedes „Warum?“ zählt!", t_whatif: "Neugier", t_inventor: "Kritisches Denken", t_books: "Beobachten", t_coach: "Sprachen", d_whatif: "Ketten von Folgen: eine Änderung, eine ganz neue Welt.", d_inventor: "TRIZ-Rätsel, Widersprüche und ein 30-Tage-Kalender.", d_books: "Übungen zu den Büchern von Kids Skill Academy.", d_coach: "Übe Sprachen mit einem freundlichen KI-Coach.", t_little: "Für Eltern · 0–4", d_little: "Tracker für erste Lebensmittel und Allergene. Kein Konto, deine Daten bleiben bei dir.", about: "Über uns", faq: "FAQ" },
+            fr: { ideas: "Idées", shop: "Boutique", h1: "Et si tu <mark>regardais</mark> de plus près&nbsp;?", sub: "Un espace où les enfants posent des questions, remarquent les détails et vérifient les réponses. Même celles de l'IA.", note: "chaque « pourquoi ? » compte !", t_whatif: "Curiosité", t_inventor: "Esprit critique", t_books: "Observation", t_coach: "Langues", d_whatif: "Chaînes de conséquences : un changement, tout un monde.", d_inventor: "Défis TRIZ, contradictions et calendrier de 30 jours.", d_books: "Exercices pour les livres Kids Skill Academy.", d_coach: "Pratique les langues avec un coach IA bienveillant.", t_little: "Pour les parents · 0–4", d_little: "Suivi des premiers aliments et allergènes. Sans compte, vos données restent chez vous.", about: "À propos", faq: "FAQ" },
+            it: { ideas: "Idee", shop: "Negozio", h1: "E se <mark>guardassi</mark> più da vicino?", sub: "Uno spazio dove i bambini fanno domande, notano i dettagli e verificano le risposte. Anche quelle dell'IA.", note: "ogni «perché?» conta!", t_whatif: "Curiosità", t_inventor: "Pensiero critico", t_books: "Osservazione", t_coach: "Lingue", d_whatif: "Catene di conseguenze: un cambiamento, un mondo nuovo.", d_inventor: "Sfide TRIZ, contraddizioni e un calendario di 30 giorni.", d_books: "Esercizi per i libri Kids Skill Academy.", d_coach: "Pratica le lingue con un coach IA amichevole.", t_little: "Per i genitori · 0–4", d_little: "Tracker dei primi alimenti e degli allergeni. Nessun account, i dati restano a te.", about: "Chi siamo", faq: "FAQ" },
+            sv: { ideas: "Idéer", shop: "Butik", h1: "Tänk om du <mark>tittar</mark> lite närmare?", sub: "En plats där barn ställer frågor, lägger märke till detaljer och kollar svaren. Även de som AI ger.", note: "varje ”varför?” räknas!", t_whatif: "Nyfikenhet", t_inventor: "Kritiskt tänkande", t_books: "Iakttagelse", t_coach: "Språk", d_whatif: "Kedjor av följder: en ändring, en helt ny värld.", d_inventor: "TRIZ-uppgifter, motsägelser och en 30-dagarskalender.", d_books: "Övningar till Kids Skill Academy-böckerna.", d_coach: "Öva språk med en vänlig AI-coach.", t_little: "För föräldrar · 0–4", d_little: "Spårare för första maten och allergener. Inget konto, dina data stannar hos dig.", about: "Om oss", faq: "Frågor" },
+            fi: { ideas: "Ideat", shop: "Kauppa", h1: "Entä jos <mark>katsot</mark> tarkemmin?", sub: "Paikka, jossa lapset kysyvät, huomaavat pieniä asioita ja tarkistavat vastaukset. Myös tekoälyn antamat.", note: "jokainen ”miksi?” on tärkeä!", t_whatif: "Uteliaisuus", t_inventor: "Kriittinen ajattelu", t_books: "Havainnointi", t_coach: "Kielet", d_whatif: "Seurausten ketjut: yksi muutos, kokonaan uusi maailma.", d_inventor: "TRIZ-tehtäviä, ristiriitoja ja 30 päivän kalenteri.", d_books: "Harjoituksia Kids Skill Academyn kirjoihin.", d_coach: "Harjoittele kieliä ystävällisen tekoälyvalmentajan kanssa.", t_little: "Vanhemmille · 0–4", d_little: "Ensimmäisten ruokien ja allergeenien seuranta. Ei tiliä, tiedot pysyvät sinulla.", about: "Tietoa", faq: "UKK" },
+            da: { ideas: "Idéer", shop: "Butik", h1: "Hvad nu hvis du <mark>kigger</mark> lidt nærmere?", sub: "Et sted, hvor børn stiller spørgsmål, lægger mærke til detaljer og tjekker svarene. Også dem, AI giver.", note: "hvert “hvorfor?” tæller!", t_whatif: "Nysgerrighed", t_inventor: "Kritisk tænkning", t_books: "Iagttagelse", t_coach: "Sprog", d_whatif: "Kæder af følger: én ændring, en helt ny verden.", d_inventor: "TRIZ-opgaver, modsætninger og en 30-dages kalender.", d_books: "Øvelser til Kids Skill Academy-bøgerne.", d_coach: "Øv sprog med en venlig AI-coach.", t_little: "Til forældre · 0–4", d_little: "Tracker for første mad og allergener. Ingen konto, dine data bliver hos dig.", about: "Om os", faq: "FAQ" },
+            es: { ideas: "Ideas", shop: "Tienda", h1: "¿Y si <mark>miras</mark> más de cerca?", sub: "Un espacio donde los niños hacen preguntas, notan los detalles y comprueban las respuestas. Incluso las de la IA.", note: "¡cada «¿por qué?» cuenta!", t_whatif: "Curiosidad", t_inventor: "Pensamiento crítico", t_books: "Observación", t_coach: "Idiomas", d_whatif: "Cadenas de consecuencias: un cambio, un mundo nuevo.", d_inventor: "Retos TRIZ, contradicciones y un calendario de 30 días.", d_books: "Ejercicios para los libros de Kids Skill Academy.", d_coach: "Practica idiomas con un entrenador IA amable.", t_little: "Para padres · 0–4", d_little: "Registro de primeros alimentos y alérgenos. Sin cuenta, tus datos se quedan contigo.", about: "Sobre nosotros", faq: "Preguntas" },
+            pt: { ideas: "Ideias", shop: "Loja", h1: "E se você <mark>olhar</mark> mais de perto?", sub: "Um espaço onde as crianças fazem perguntas, reparam nos detalhes e verificam as respostas. Até as da IA.", note: "cada “por quê?” conta!", t_whatif: "Curiosidade", t_inventor: "Pensamento crítico", t_books: "Observação", t_coach: "Idiomas", d_whatif: "Cadeias de consequências: uma mudança, um mundo novo.", d_inventor: "Desafios TRIZ, contradições e um calendário de 30 dias.", d_books: "Exercícios para os livros da Kids Skill Academy.", d_coach: "Pratique idiomas com um treinador IA amigável.", t_little: "Para pais · 0–4", d_little: "Registro dos primeiros alimentos e alérgenos. Sem conta, seus dados ficam com você.", about: "Sobre", faq: "Perguntas" },
+            he: { ideas: "רעיונות", shop: "חנות", h1: "ומה אם <mark>תסתכלו</mark> קצת יותר מקרוב?", sub: "מקום שבו ילדים שואלים שאלות, שמים לב לפרטים ובודקים תשובות. גם את אלה של הבינה המלאכותית.", note: "כל „למה?” נחשב!", t_whatif: "סקרנות", t_inventor: "חשיבה ביקורתית", t_books: "התבוננות", t_coach: "שפות", d_whatif: "שרשראות של תוצאות: שינוי אחד, עולם חדש.", d_inventor: "חידות TRIZ, סתירות ולוח שנה של 30 יום.", d_books: "תרגילים לספרי Kids Skill Academy.", d_coach: "תרגלו שפות עם מאמן AI ידידותי.", t_little: "להורים · 0–4", d_little: "מעקב אחר מזונות ראשונים ואלרגנים. בלי חשבון, הנתונים נשארים אצלכם.", about: "אודות", faq: "שאלות" },
+            ja: { ideas: "アイデア", shop: "ショップ", h1: "もっと<mark>よく見て</mark>みたら？", sub: "子どもたちが質問し、小さなことに気づき、答えを確かめる場所。AIの答えも。", note: "「なぜ？」はぜんぶ大事！", t_whatif: "好奇心", t_inventor: "批判的思考", t_books: "観察力", t_coach: "言語", d_whatif: "結果の連鎖：ひとつの変化で、まったく新しい世界。", d_inventor: "TRIZパズル、矛盾、30日カレンダー。", d_books: "Kids Skill Academyの本のための練習。", d_coach: "やさしいAIコーチと言語を練習しよう。", t_little: "保護者向け · 0〜4歳", d_little: "はじめての食べもの＆アレルゲン記録。アカウント不要、データは手元に。", about: "概要", faq: "よくある質問" },
+            ar: { ideas: "أفكار", shop: "المتجر", h1: "ماذا لو <mark>نظرت</mark> عن قرب أكثر؟", sub: "مكان يطرح فيه الأطفال الأسئلة، ويلاحظون التفاصيل، ويتحققون من الإجابات. حتى إجابات الذكاء الاصطناعي.", note: "كل «لماذا؟» مهم!", t_whatif: "الفضول", t_inventor: "التفكير النقدي", t_books: "الملاحظة", t_coach: "اللغات", d_whatif: "سلاسل من النتائج: تغيير واحد، عالم جديد.", d_inventor: "ألغاز TRIZ وتناقضات وتقويم لمدة 30 يومًا.", d_books: "تمارين لكتب Kids Skill Academy.", d_coach: "تدرّب على اللغات مع مدرب ذكاء اصطناعي ودود.", t_little: "للوالدين · 0–4", d_little: "متتبع الأطعمة الأولى ومسببات الحساسية. بدون حساب، وتبقى بياناتك لديك.", about: "من نحن", faq: "أسئلة" },
         };
 
         let deferredPrompt = null;
@@ -691,13 +723,14 @@
             document.getElementById('lbl-inventor').innerText = t.inventor;
             document.getElementById('lbl-books').innerText = t.books;
             document.getElementById('lbl-coach').innerText = t.coach;
+            document.getElementById('lbl-little').innerText = t.little;
 
             // Герой, мітки та описи карток
             const h = heroDict[lang] || heroDict['en'];
             document.getElementById('hero-title').innerHTML = h.h1;
             document.getElementById('hero-sub').innerText = h.sub;
             document.getElementById('hero-note').innerText = h.note;
-            ['whatif', 'inventor', 'books', 'coach'].forEach(k => {
+            ['whatif', 'inventor', 'books', 'coach', 'little'].forEach(k => {
                 document.getElementById('tag-' + k).innerText = h['t_' + k];
                 document.getElementById('desc-' + k).innerText = h['d_' + k];
             });
