@@ -9,6 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Geologica:wght@400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../../assets/notebook.css">
     <script defer src="https://cloud.umami.is/script.js" data-website-id="8460fd7f-da31-46c7-8c9d-eff5e64399cc"></script>
+    <script src="../../assets/i18n-fallback.js"></script>
 </head>
 <body>
 
@@ -191,7 +192,7 @@
             localStorage.setItem('prybambas_lang', currentLang);
             
             // Apply UI Translations
-            const ui = translationDict[currentLang] || translationDict['en'];
+            const ui = withEnglish(translationDict, currentLang);
             document.getElementById('scr-title').innerText = ui.title;
             document.getElementById('btn-reveal').innerText = ui.reveal;
             document.getElementById('btn-next').innerText = ui.next;
@@ -201,7 +202,7 @@
             document.getElementById('btn-back').innerText = ui.back;
 
             // Оновлюємо поточне питання на льоту! (UX FIX - No more sync bugs)
-            const list = localizedData[currentLang] || localizedData['en'];
+            const list = withEnglish(localizedData, currentLang);
             if (list.length > 0) {
                 if (currentIndex === -1) {
                     currentIndex = Math.floor(Math.random() * list.length);
@@ -228,7 +229,7 @@
         }
 
         function nextRound() {
-            const list = localizedData[currentLang] || localizedData['en'];
+            const list = withEnglish(localizedData, currentLang);
             if (list.length === 0) return;
 
             let newIndex;

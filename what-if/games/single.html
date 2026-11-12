@@ -9,6 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Geologica:wght@400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../../assets/notebook.css">
     <script defer src="https://cloud.umami.is/script.js" data-website-id="8460fd7f-da31-46c7-8c9d-eff5e64399cc"></script>
+    <script src="../../assets/i18n-fallback.js"></script>
 </head>
 <body>
 
@@ -188,7 +189,7 @@
             localStorage.setItem('prybambas_lang', currentLang);
             
             // Apply UI Translations
-            const ui = translationDict[currentLang] || translationDict['en'];
+            const ui = withEnglish(translationDict, currentLang);
             document.getElementById('scr-title').innerText = ui.title;
             document.getElementById('btn-next').innerText = ui.next;
             document.getElementById('promo-title').innerText = ui.promo_t;
@@ -202,7 +203,7 @@
                 document.getElementById('q-text').innerText = ui.ready;
             } else {
                 // Перекладаємо ПОТОЧНЕ питання на льоту! (UX FIX)
-                const questions = localizedData[currentLang] || localizedData['en'];
+                const questions = withEnglish(localizedData, currentLang);
                 if (questions.length > 0) {
                     // Страхуємось на випадок якщо масиви різної довжини
                     const safeIndex = currentIndex % questions.length;
@@ -213,7 +214,7 @@
 
         function nextQuestion() {
             // Беремо контент відповідно до обраної мови з підтримкою фоллбеку (Fallback)
-            const questions = localizedData[currentLang] || localizedData['en'];
+            const questions = withEnglish(localizedData, currentLang);
             if (questions.length === 0) return;
 
             // Випадковий вибір без повторень підряд
