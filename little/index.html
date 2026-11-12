@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>For the Littlest · Prybambas</title>
+<meta name="description" content="Free tools for parents of little ones 0–4: a first foods and allergen tracker with a daily plate planner and doctor reports. No account, works offline, your data stays on your device.">
+<link rel="canonical" href="https://prybambas.com/little/">
+<link rel="manifest" href="../manifest.json">
+<link rel="icon" href="../icon-192.png">
+<link rel="apple-touch-icon" href="../icon-192.png">
+<meta property="og:title" content="For the Littlest · Prybambas">
+<meta property="og:description" content="First foods & allergen tracker for parents. No account, works offline, your data stays with you.">
+<meta property="og:url" content="https://prybambas.com/little/">
+<meta property="og:image" content="https://prybambas.com/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Geologica:wght@400;600;800&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"100 First Foods & Allergen Tracker","url":"https://prybambas.com/little/first-foods/","applicationCategory":"HealthApplication","operatingSystem":"Any (web browser)","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},"description":"Free baby-led weaning and solid food tracker: 100 first foods, allergen introduction plan, daily plate ideas, reaction log and printable doctor report. No account; data stays on the parent's device.","publisher":{"@type":"Organization","name":"Prybambas","url":"https://prybambas.com"}}
+</script>
+<style>
+:root{--paper:#FBFCFE;--grid:#DCE7F4;--ink:#1A1A2E;--ink-soft:#4A4D66;--pink:#FF48B0;--pink-ink:#D61F86;--blue:#0078BF;--yellow:#FFE800;
+ --peach:#FFC9B0;--sage:#BFE0A8;--card:#FFFFFF;--f-main:'Geologica','Segoe UI',system-ui,-apple-system,sans-serif;--f-hand:'Caveat','Comic Sans MS',cursive;color-scheme:light}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background-color:var(--paper);background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:24px 24px;color:var(--ink);font-family:var(--f-main);line-height:1.5}
+.page{max-width:1040px;margin:0 auto;padding:16px 20px 48px;display:flex;flex-direction:column;gap:36px}
+.top-bar{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;padding-top:env(safe-area-inset-top,0px)}
+.brand{display:flex;align-items:center;gap:10px;color:var(--ink);text-decoration:none;font-weight:800;font-size:1.2rem}
+.brand img{width:40px;height:40px;border-radius:8px;border:1.5px solid var(--ink)}
+.crumb{color:var(--ink-soft);font-weight:600;font-size:.95rem}
+.lang-switch{font:inherit;font-size:.9rem;border:1.5px solid var(--ink);border-radius:6px;padding:6px 8px;background:#fff;color:var(--ink);box-shadow:3px 3px 0 var(--blue)}
+.hero{display:flex;flex-direction:column;gap:12px;position:relative}
+.kicker{font-family:var(--f-hand);font-size:1.6rem;color:var(--pink-ink)}
+.hero h1{font-size:clamp(2rem,5vw,3.1rem);line-height:1.08;font-weight:800;max-width:18ch}
+.hero h1 mark{background:linear-gradient(transparent 56%,var(--peach) 56%,var(--peach) 92%,transparent 92%);color:inherit}
+.hero p{font-size:1.12rem;color:var(--ink-soft);max-width:56ch}
+.trust{display:flex;flex-wrap:wrap;gap:10px}
+.trust span{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1.5px solid var(--ink);border-radius:999px;padding:6px 14px;font-weight:600;font-size:.92rem}
+.trust svg{width:18px;height:18px}
+.tools{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:26px 20px}
+.tool{position:relative;background:var(--card);border:1.5px solid var(--ink);border-radius:6px;padding:24px 20px 20px;display:flex;flex-direction:column;gap:10px;box-shadow:4px 4px 0 var(--ink);color:var(--ink);text-decoration:none}
+.tool::before{content:"";position:absolute;top:-10px;left:50%;width:64px;height:18px;transform:translateX(-50%) rotate(-3deg);background:var(--tape);opacity:.8}
+a.tool{transition:transform .15s,box-shadow .15s}
+a.tool:hover{transform:translate(-2px,-2px) rotate(-.4deg);box-shadow:6px 6px 0 var(--ink)}
+a.tool:focus-visible,.lang-switch:focus-visible,.more a:focus-visible{outline:3px solid var(--blue);outline-offset:3px}
+.tool.soon{opacity:.8;box-shadow:4px 4px 0 #C8CCDA;border-color:#9A9EB3}
+.t-foods{--tape:var(--peach)}.t-words{--tape:var(--yellow)}.t-play{--tape:var(--sage)}
+.tool .ico{width:64px;height:64px;position:relative}
+.tool .ico::before{content:"";position:absolute;width:46px;height:46px;border-radius:50%;right:-2px;bottom:0;background:var(--tape);opacity:.9;mix-blend-mode:multiply}
+.tool .ico svg{position:relative;width:64px;height:64px}
+.tag{font-size:.72rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--blue)}
+.title{font-size:1.3rem;font-weight:800;line-height:1.2}
+.desc{color:var(--ink-soft);font-size:.97rem}
+.feat{list-style:none;display:flex;flex-direction:column;gap:4px;font-size:.92rem}
+.feat li::before{content:"✓ ";color:var(--pink-ink);font-weight:800}
+.go{margin-top:auto;display:inline-flex;align-self:flex-start;align-items:center;gap:8px;background:var(--ink);color:#fff;font-weight:800;padding:10px 16px;border-radius:6px;box-shadow:3px 3px 0 var(--pink)}
+.note{font-size:.82rem;color:var(--ink-soft)}
+.sticker{position:absolute;top:14px;right:14px;background:var(--yellow);border:1.5px solid var(--ink);font-weight:800;font-size:.75rem;padding:3px 9px;border-radius:999px;transform:rotate(4deg)}
+.more{background:#fff;border:1.5px dashed var(--ink);border-radius:8px;padding:20px;display:flex;gap:18px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+.more h2{font-size:1.25rem;font-weight:800}
+.more p{color:var(--ink-soft)}
+.more a{color:var(--ink);font-weight:800;border:1.5px solid var(--ink);border-radius:6px;padding:9px 14px;text-decoration:none;background:var(--yellow);box-shadow:3px 3px 0 var(--ink)}
+.foot{display:flex;gap:16px;flex-wrap:wrap;justify-content:space-between;color:var(--ink-soft);font-size:.88rem;border-top:1.5px solid var(--ink);padding-top:14px}
+.foot a{color:var(--ink);font-weight:600}
+</style>
+</head>
+<body>
+<div class="page">
+ <header class="top-bar">
+  <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap">
+   <a class="brand" href="/" aria-label="Prybambas home"><img src="../logo.png" alt="">Prybambas</a>
+   <span class="crumb" id="crumb">/ For the Littlest</span>
+  </div>
+  <select class="lang-switch" id="lang" aria-label="Language">
+   <option value="en">🇺🇸 English</option><option value="uk">🇺🇦 Українська</option><option value="ro">🇷🇴 Română</option>
+   <option value="pl">🇵🇱 Polski</option><option value="de">🇩🇪 Deutsch</option><option value="fr">🇫🇷 Français</option><option value="es">🇪🇸 Español</option>
+  </select>
+ </header>
+
+ <section class="hero">
+  <span class="kicker" id="kicker">For the Littlest · 0–4</span>
+  <h1 id="h1">First steps, <mark>together</mark></h1>
+  <p id="sub">Simple tools for parents of little ones: first foods, first words, first discoveries.</p>
+  <div class="trust">
+   <span><svg viewBox="0 0 24 24" fill="none" stroke="#1A1A2E" stroke-width="2.2"><circle cx="12" cy="8" r="4"/><path d="M4 21c1-4 4-6 8-6s7 2 8 6"/><path d="M3 3l18 18" stroke="#D61F86"/></svg><b id="tr1">No account</b></span>
+   <span><svg viewBox="0 0 24 24" fill="none" stroke="#1A1A2E" stroke-width="2.2"><path d="M2 9a15 15 0 0 1 20 0M5 12.5a10 10 0 0 1 14 0M8.5 16a5 5 0 0 1 7 0"/><path d="M3 3l18 18" stroke="#D61F86"/></svg><b id="tr2">Works offline</b></span>
+   <span><svg viewBox="0 0 24 24" fill="none" stroke="#1A1A2E" stroke-width="2.2"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg><b id="tr3">Your data stays on your device</b></span>
+  </div>
+ </section>
+
+ <section class="tools" aria-label="Tools">
+  <a class="tool t-foods" href="./first-foods/">
+   <div class="ico"><svg viewBox="0 0 100 100" fill="none" aria-hidden="true"><path d="M14 52 H80 C80 70 66 82 47 82 C28 82 14 70 14 52 Z" stroke="#1A1A2E" stroke-width="4" stroke-linejoin="round"/><path d="M30 52 C30 42 38 38 44 42 C48 34 60 34 62 44 C68 42 72 47 70 52" stroke="#1A1A2E" stroke-width="3.5" stroke-linecap="round"/><path d="M84 18 L64 46" stroke="#1A1A2E" stroke-width="4" stroke-linecap="round"/><ellipse cx="86" cy="15" rx="5" ry="8" transform="rotate(35 86 15)" stroke="#1A1A2E" stroke-width="3.5"/></svg></div>
+   <span class="tag" id="f_tag">Weaning · 6–12+ months</span>
+   <span class="title" id="f_title">100 First Foods &amp; Allergen Tracker</span>
+   <span class="desc" id="f_desc">Log every new taste, introduce allergens safely and see your progress to 100.</span>
+   <ul class="feat"><li id="f1">Today's plate: protein, carb, veggie, fruit</li><li id="f2">3-day allergen rhythm, planned for you</li><li id="f3">Weekly summary and doctor report</li><li id="f4">Save to your own family file</li></ul>
+   <span class="go" id="f_go">Open the tracker →</span>
+   <span class="note" id="f_note">Free. Interface in English for now.</span>
+  </a>
+  <div class="tool t-words soon" aria-disabled="true">
+   <span class="sticker" id="soon1">Coming soon</span>
+   <div class="ico"><svg viewBox="0 0 100 100" fill="none" aria-hidden="true"><path d="M16 22 H70 a8 8 0 0 1 8 8 V54 a8 8 0 0 1 -8 8 H40 L26 76 V62 H16 a8 8 0 0 1 -8 -8 V30 a8 8 0 0 1 8 -8 Z" stroke="#1A1A2E" stroke-width="4" stroke-linejoin="round"/><path d="M24 38 H62 M24 48 H50" stroke="#1A1A2E" stroke-width="3.5" stroke-linecap="round"/></svg></div>
+   <span class="tag" id="w_tag">Speech · 9 months–3 years</span>
+   <span class="title" id="w_title">First Words</span>
+   <span class="desc" id="w_desc">Write down first words and phrases and watch the vocabulary grow, in every language your family speaks.</span>
+  </div>
+  <div class="tool t-play soon" aria-disabled="true">
+   <span class="sticker" id="soon2">Coming soon</span>
+   <div class="ico"><svg viewBox="0 0 100 100" fill="none" aria-hidden="true"><circle cx="42" cy="42" r="22" stroke="#1A1A2E" stroke-width="4.5"/><path d="M58 58 L82 82" stroke="#1A1A2E" stroke-width="7" stroke-linecap="round"/><path d="M32 36 a10 10 0 0 1 10 -8" stroke="#1A1A2E" stroke-width="3" stroke-linecap="round"/></svg></div>
+   <span class="tag" id="p_tag">Play · 1–4 years</span>
+   <span class="title" id="p_title">Little Explorers</span>
+   <span class="desc" id="p_desc">Five-minute games and noticing walks for toddlers, the first steps to asking "why?".</span>
+  </div>
+ </section>
+
+ <section class="more">
+  <div><h2 id="m_h">Also on paper</h2><p id="m_p">The 100 First Foods journal and printable trackers for the fridge.</p></div>
+  <a id="m_a" href="/en/shop/little-ones/">See in the shop →</a>
+ </section>
+
+ <footer class="foot">
+  <span id="disc">These tools help you plan and keep records. They are not medical advice: always follow your pediatrician.</span>
+  <a href="/" id="home">← All Prybambas spaces</a>
+ </footer>
+</div>
+<script>
+const L={
+ en:{title:"For the Littlest · Prybambas",crumb:"/ For the Littlest",kicker:"For the Littlest · 0–4",h1:"First steps, <mark>together</mark>",sub:"Simple tools for parents of little ones: first foods, first words, first discoveries.",tr1:"No account",tr2:"Works offline",tr3:"Your data stays on your device",
+  f_tag:"Weaning · 6–12+ months",f_title:"100 First Foods & Allergen Tracker",f_desc:"Log every new taste, introduce allergens safely and see your progress to 100.",f1:"Today's plate: protein, carb, veggie, fruit",f2:"3-day allergen rhythm, planned for you",f3:"Weekly summary and doctor report",f4:"Save to your own family file",f_go:"Open the tracker →",f_note:"Free. Interface in English for now.",
+  soon:"Coming soon",w_tag:"Speech · 9 months–3 years",w_title:"First Words",w_desc:"Write down first words and phrases and watch the vocabulary grow, in every language your family speaks.",p_tag:"Play · 1–4 years",p_title:"Little Explorers",p_desc:"Five-minute games and noticing walks for toddlers, the first steps to asking \"why?\".",
+  m_h:"Also on paper",m_p:"The 100 First Foods journal and printable trackers for the fridge.",m_a:"See in the shop →",disc:"These tools help you plan and keep records. They are not medical advice: always follow your pediatrician.",home:"← All Prybambas spaces"},
+ uk:{title:"Наймолодшим · Prybambas",crumb:"/ Наймолодшим",kicker:"Наймолодшим · 0–4",h1:"Перші кроки <mark>разом</mark>",sub:"Прості інструменти для батьків малюків: перші продукти, перші слова, перші відкриття.",tr1:"Без акаунта",tr2:"Працює офлайн",tr3:"Дані лише на вашому пристрої",
+  f_tag:"Прикорм · 6–12+ місяців",f_title:"100 перших продуктів і алергени",f_desc:"Записуйте кожен новий смак, безпечно вводьте алергени й бачте шлях до 100.",f1:"Тарілка дня: білок, вуглевод, овоч, фрукт",f2:"3-денний ритм алергенів, сплановано за вас",f3:"Тижневий підсумок і звіт для лікаря",f4:"Збереження у ваш власний сімейний файл",f_go:"Відкрити трекер →",f_note:"Безкоштовно. Інтерфейс поки англійською.",
+  soon:"Скоро",w_tag:"Мовлення · 9 міс.–3 роки",w_title:"Перші слова",w_desc:"Записуйте перші слова й фрази та дивіться, як росте словник, кожною мовою вашої родини.",p_tag:"Гра · 1–4 роки",p_title:"Маленькі дослідники",p_desc:"П'ятихвилинні ігри й прогулянки-спостереження для малюків, перші кроки до питання «чому?».",
+  m_h:"Також на папері",m_p:"Щоденник «100 перших продуктів» і трекери для друку на холодильник.",m_a:"Подивитися в магазині →",disc:"Ці інструменти допомагають планувати й вести записи. Вони не є медичною порадою: завжди дотримуйтеся рекомендацій педіатра.",home:"← Усі простори Prybambas"},
+ ro:{title:"Pentru cei mai mici · Prybambas",crumb:"/ Pentru cei mai mici",kicker:"Pentru cei mai mici · 0–4",h1:"Primii pași, <mark>împreună</mark>",sub:"Instrumente simple pentru părinții celor mici: primele alimente, primele cuvinte, primele descoperiri.",tr1:"Fără cont",tr2:"Funcționează offline",tr3:"Datele rămân pe dispozitivul tău",
+  f_tag:"Diversificare · 6–12+ luni",f_title:"100 de prime alimente și alergeni",f_desc:"Notează fiecare gust nou, introdu alergenii în siguranță și vezi progresul spre 100.",f1:"Farfuria zilei: proteină, carbohidrat, legumă, fruct",f2:"Ritmul de 3 zile pentru alergeni, planificat pentru tine",f3:"Rezumat săptămânal și raport pentru medic",f4:"Salvare în propriul fișier de familie",f_go:"Deschide trackerul →",f_note:"Gratuit. Interfața este deocamdată în engleză.",
+  soon:"În curând",w_tag:"Vorbire · 9 luni–3 ani",w_title:"Primele cuvinte",w_desc:"Notează primele cuvinte și fraze și urmărește cum crește vocabularul, în fiecare limbă a familiei.",p_tag:"Joacă · 1–4 ani",p_title:"Micii exploratori",p_desc:"Jocuri de cinci minute și plimbări de observație pentru cei mici, primii pași spre „de ce?”.",
+  m_h:"Și pe hârtie",m_p:"Jurnalul „100 de prime alimente” și trackere de printat pentru frigider.",m_a:"Vezi în magazin →",disc:"Aceste instrumente te ajută să planifici și să ții evidența. Nu sunt sfaturi medicale: urmează mereu recomandările medicului pediatru.",home:"← Toate spațiile Prybambas"},
+ pl:{title:"Dla najmłodszych · Prybambas",crumb:"/ Dla najmłodszych",kicker:"Dla najmłodszych · 0–4",h1:"Pierwsze kroki <mark>razem</mark>",sub:"Proste narzędzia dla rodziców maluchów: pierwsze produkty, pierwsze słowa, pierwsze odkrycia.",tr1:"Bez konta",tr2:"Działa offline",tr3:"Dane zostają na Twoim urządzeniu",
+  f_tag:"Rozszerzanie diety · 6–12+ mies.",f_title:"100 pierwszych produktów i alergeny",f_desc:"Zapisuj każdy nowy smak, bezpiecznie wprowadzaj alergeny i śledź drogę do 100.",f1:"Talerz dnia: białko, węglowodan, warzywo, owoc",f2:"3-dniowy rytm alergenów, zaplanowany za Ciebie",f3:"Podsumowanie tygodnia i raport dla lekarza",f4:"Zapis we własnym pliku rodzinnym",f_go:"Otwórz tracker →",f_note:"Za darmo. Interfejs na razie po angielsku.",
+  soon:"Wkrótce",w_tag:"Mowa · 9 mies.–3 lata",w_title:"Pierwsze słowa",w_desc:"Zapisuj pierwsze słowa i zdania i patrz, jak rośnie słownictwo, w każdym języku Twojej rodziny.",p_tag:"Zabawa · 1–4 lata",p_title:"Mali odkrywcy",p_desc:"Pięciominutowe zabawy i spacery obserwacyjne dla maluchów, pierwsze kroki do pytania „dlaczego?”.",
+  m_h:"Także na papierze",m_p:"Dziennik „100 pierwszych produktów” i trackery do druku na lodówkę.",m_a:"Zobacz w sklepie →",disc:"Te narzędzia pomagają planować i prowadzić zapiski. Nie są poradą medyczną: zawsze stosuj się do zaleceń pediatry.",home:"← Wszystkie przestrzenie Prybambas"},
+ de:{title:"Für die Kleinsten · Prybambas",crumb:"/ Für die Kleinsten",kicker:"Für die Kleinsten · 0–4",h1:"Erste Schritte, <mark>gemeinsam</mark>",sub:"Einfache Tools für Eltern kleiner Kinder: erste Lebensmittel, erste Wörter, erste Entdeckungen.",tr1:"Kein Konto",tr2:"Funktioniert offline",tr3:"Deine Daten bleiben auf deinem Gerät",
+  f_tag:"Beikost · 6–12+ Monate",f_title:"100 erste Lebensmittel & Allergene",f_desc:"Halte jeden neuen Geschmack fest, führe Allergene sicher ein und sieh deinen Weg zu 100.",f1:"Teller des Tages: Eiweiß, Kohlenhydrat, Gemüse, Obst",f2:"3-Tage-Rhythmus für Allergene, für dich geplant",f3:"Wochenübersicht und Bericht für den Kinderarzt",f4:"Speichern in deiner eigenen Familiendatei",f_go:"Tracker öffnen →",f_note:"Kostenlos. Oberfläche vorerst auf Englisch.",
+  soon:"Demnächst",w_tag:"Sprache · 9 Monate–3 Jahre",w_title:"Erste Wörter",w_desc:"Schreib erste Wörter und Sätze auf und sieh, wie der Wortschatz wächst, in jeder Sprache deiner Familie.",p_tag:"Spiel · 1–4 Jahre",p_title:"Kleine Entdecker",p_desc:"Fünf-Minuten-Spiele und Beobachtungsspaziergänge für Kleinkinder, die ersten Schritte zum „Warum?“.",
+  m_h:"Auch auf Papier",m_p:"Das Tagebuch „100 erste Lebensmittel“ und Tracker zum Ausdrucken für den Kühlschrank.",m_a:"Im Shop ansehen →",disc:"Diese Tools helfen beim Planen und Dokumentieren. Sie ersetzen keine ärztliche Beratung: Folge immer deinem Kinderarzt.",home:"← Alle Prybambas-Bereiche"},
+ fr:{title:"Pour les tout-petits · Prybambas",crumb:"/ Pour les tout-petits",kicker:"Pour les tout-petits · 0–4",h1:"Les premiers pas, <mark>ensemble</mark>",sub:"Des outils simples pour les parents de tout-petits : premiers aliments, premiers mots, premières découvertes.",tr1:"Sans compte",tr2:"Fonctionne hors ligne",tr3:"Vos données restent sur votre appareil",
+  f_tag:"Diversification · 6–12+ mois",f_title:"100 premiers aliments & allergènes",f_desc:"Notez chaque nouveau goût, introduisez les allergènes en sécurité et suivez votre route vers 100.",f1:"L'assiette du jour : protéine, féculent, légume, fruit",f2:"Rythme de 3 jours pour les allergènes, planifié pour vous",f3:"Bilan de la semaine et rapport pour le médecin",f4:"Sauvegarde dans votre propre fichier familial",f_go:"Ouvrir le suivi →",f_note:"Gratuit. Interface en anglais pour l'instant.",
+  soon:"Bientôt",w_tag:"Langage · 9 mois–3 ans",w_title:"Premiers mots",w_desc:"Notez les premiers mots et phrases et regardez le vocabulaire grandir, dans chaque langue de votre famille.",p_tag:"Jeu · 1–4 ans",p_title:"Petits explorateurs",p_desc:"Des jeux de cinq minutes et des balades d'observation pour les tout-petits, premiers pas vers le « pourquoi ? ».",
+  m_h:"Aussi sur papier",m_p:"Le journal « 100 premiers aliments » et des suivis à imprimer pour le frigo.",m_a:"Voir dans la boutique →",disc:"Ces outils aident à planifier et à garder une trace. Ce ne sont pas des conseils médicaux : suivez toujours votre pédiatre.",home:"← Tous les espaces Prybambas"},
+ es:{title:"Para los más pequeños · Prybambas",crumb:"/ Para los más pequeños",kicker:"Para los más pequeños · 0–4",h1:"Primeros pasos, <mark>juntos</mark>",sub:"Herramientas sencillas para padres de peques: primeros alimentos, primeras palabras, primeros descubrimientos.",tr1:"Sin cuenta",tr2:"Funciona sin conexión",tr3:"Tus datos se quedan en tu dispositivo",
+  f_tag:"Alimentación complementaria · 6–12+ meses",f_title:"100 primeros alimentos y alérgenos",f_desc:"Anota cada sabor nuevo, introduce los alérgenos con seguridad y mira tu camino a 100.",f1:"El plato del día: proteína, carbohidrato, verdura, fruta",f2:"Ritmo de 3 días para alérgenos, planificado para ti",f3:"Resumen semanal e informe para el pediatra",f4:"Guarda en tu propio archivo familiar",f_go:"Abrir el registro →",f_note:"Gratis. Interfaz en inglés por ahora.",
+  soon:"Próximamente",w_tag:"Habla · 9 meses–3 años",w_title:"Primeras palabras",w_desc:"Anota las primeras palabras y frases y mira cómo crece el vocabulario, en cada idioma de tu familia.",p_tag:"Juego · 1–4 años",p_title:"Pequeños exploradores",p_desc:"Juegos de cinco minutos y paseos de observación para peques, los primeros pasos hacia el «¿por qué?».",
+  m_h:"También en papel",m_p:"El diario «100 primeros alimentos» y registros imprimibles para la nevera.",m_a:"Ver en la tienda →",disc:"Estas herramientas ayudan a planificar y llevar un registro. No son consejo médico: sigue siempre a tu pediatra.",home:"← Todos los espacios de Prybambas"}
+};
+const SHOP=["uk","en","pl","de","es"];
+function apply(lang){
+ const t=L[lang]||L.en;document.documentElement.lang=L[lang]?lang:"en";document.title=t.title;
+ for(const k in t){const el=document.getElementById(k);if(!el)continue;if(k==="h1")el.innerHTML=t[k];else el.textContent=t[k]}
+ document.getElementById("soon1").textContent=t.soon;document.getElementById("soon2").textContent=t.soon;
+ document.getElementById("m_a").href="/"+(SHOP.includes(lang)?lang:"en")+"/shop/little-ones/";
+}
+const sel=document.getElementById("lang");
+let saved="en";try{saved=localStorage.getItem("prybambas_lang")||(navigator.language||"en").slice(0,2)}catch(e){}
+if(!L[saved])saved="en";sel.value=saved;apply(saved);
+sel.onchange=()=>{try{localStorage.setItem("prybambas_lang",sel.value)}catch(e){}apply(sel.value)};
+if("serviceWorker" in navigator&&location.protocol==="https:")navigator.serviceWorker.register("/sw.js").catch(()=>{});
+</script>
+</body>
+</html>

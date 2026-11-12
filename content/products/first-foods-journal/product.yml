@@ -1,0 +1,10 @@
+# Щоденник «100 перших продуктів» + безкоштовний онлайн-трекер на /little/first-foods/
+series: little-ones
+type: journal
+status: coming-soon       # зміни на available, коли додаси посилання на Amazon / Etsy
+order: 1
+ages: "6-12 months"
+game: first-foods         # кнопка «Спробуй онлайн» веде на трекер
+editions:
+  - lang: en
+    pages: 68
