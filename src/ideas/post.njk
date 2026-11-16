@@ -20,7 +20,7 @@
       datePublished: new Date(data.I.post.date).toISOString().slice(0, 10),
       inLanguage: data.I.lang,
       url: new URL(data.I.url, data.site.url).href,
-      image: new URL(data.I.post.cover || "/logo.png", data.site.url).href,
+      image: new URL(data.I.post.cover || "/assets/og-default.png", data.site.url).href,
       author: { "@type": "Organization", name: "Prybambas", url: data.site.url },
       publisher: { "@type": "Organization", name: "Prybambas", url: data.site.url, logo: { "@type": "ImageObject", url: new URL("/logo.png", data.site.url).href } },
       audience: { "@type": "Audience", audienceType: "Parents and teachers of children ages 5-14" },

@@ -5,7 +5,7 @@ const PASSTHROUGH = [
   "what-if", "inventor", "coach", "book", "little", "assets",
   "index.html",
   "CNAME", "robots.txt", "llms.txt", "manifest.json", "sw.js",
-  "icon-192.png", "icon-512.png", "logo.png", "logo.jpg", "bg-image.jpg",
+  "icon-192.png", "icon-512.png", "logo.png",
 ];
 
 export default function (cfg) {
