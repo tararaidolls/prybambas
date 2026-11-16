@@ -328,23 +328,7 @@
             <!-- Розумна кнопка встановлення додатку -->
             <button class="install-btn" id="install-pwa-btn" onclick="triggerInstall()">Install App</button>
 
-            <select class="lang-switch" id="lang-selector" onchange="changeLang()" aria-label="Language">
-                <option value="en">🇺🇸 English</option>
-                <option value="uk">🇺🇦 Українська</option>
-                <option value="ro">🇷🇴 Română</option>
-                <option value="pl">🇵🇱 Polski</option>
-                <option value="de">🇩🇪 Deutsch</option>
-                <option value="fr">🇫🇷 Français</option>
-                <option value="it">🇮🇹 Italiano</option>
-                <option value="sv">🇸🇪 Svenska</option>
-                <option value="fi">🇫🇮 Suomi</option>
-                <option value="da">🇩🇰 Dansk</option>
-                <option value="es">🇪🇸 Español</option>
-                <option value="pt">🇵🇹 Português</option>
-                <option value="he">🇮🇱 עברית</option>
-                <option value="ja">🇯🇵 日本語</option>
-                <option value="ar">🇸🇦 العربية</option>
-            </select>
+            <select class="lang-switch" id="lang-selector" onchange="changeLang()" aria-label="Language" data-lang-select></select><script src="./assets/langs.js"></script>
         </div>
     </header>
 

@@ -3,6 +3,7 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "check": "node scripts/check-translations.mjs",
     "build": "eleventy",
     "start": "eleventy --serve"
   },

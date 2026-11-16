@@ -8,6 +8,25 @@ name: Prybambas
 languages: [uk, en, pl, de, es]
 defaultLang: en
 
+# Усі мови сайту — єдиний список для перемикачів мов в іграх і на головній.
+# Щоб додати мову в ігри: допиши її сюди і додай переклади у файли ігор.
+gameLanguages:
+  - { code: en, name: English,    flag: "🇺🇸" }
+  - { code: uk, name: Українська, flag: "🇺🇦" }
+  - { code: ro, name: Română,     flag: "🇷🇴" }
+  - { code: pl, name: Polski,     flag: "🇵🇱" }
+  - { code: de, name: Deutsch,    flag: "🇩🇪" }
+  - { code: fr, name: Français,   flag: "🇫🇷" }
+  - { code: it, name: Italiano,   flag: "🇮🇹" }
+  - { code: sv, name: Svenska,    flag: "🇸🇪" }
+  - { code: fi, name: Suomi,      flag: "🇫🇮" }
+  - { code: da, name: Dansk,      flag: "🇩🇰" }
+  - { code: es, name: Español,    flag: "🇪🇸" }
+  - { code: pt, name: Português,  flag: "🇵🇹" }
+  - { code: he, name: עברית,      flag: "🇮🇱", rtl: true }
+  - { code: ja, name: 日本語,      flag: "🇯🇵" }
+  - { code: ar, name: العربية,    flag: "🇸🇦", rtl: true }
+
 # Майданчики продажу. Порядок тут = порядок кнопок на сторінці товару.
 # kind: digital (файл) або print (друкована книжка)
 stores:
