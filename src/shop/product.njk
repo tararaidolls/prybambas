@@ -11,7 +11,7 @@
     pageTitle: (data) => data.P.t.title,
     description: (data) => data.P.t.tagline || data.P.t.title,
     ogImage: (data) => data.P.product.cover,
-    gumroad: (data) => data.P.product.editions.some((e) => e.buy && e.buy.gumroad),
+    gumroad: (data) => data.P.product.editions.some((e) => e.buttons.some((b) => b.platform === "gumroad")),
     jsonld: (data) => ({
       "@context": "https://schema.org", "@type": "Product",
       name: data.P.t.title, description: data.P.t.tagline || "",
@@ -47,7 +47,7 @@
 
     {% if p.editions.length %}
     <div class="buy">
-      {% for e in p.editions %}
+      {% for e in p.editions %}{% set btns = e.buttons | forLang(P.lang) %}{% if btns.length or e.pages or e.title %}
       <div class="edition">
         <div class="edition-head">
           {% if e.lang %}<b>{{ e.lang | langName(P.lang) }}</b>{% endif %}
@@ -56,14 +56,14 @@
           {% if e.price %}<span class="price">{{ e.price }}</span>{% endif %}
         </div>
         <div class="edition-btns">
-          {% for st in site.stores %}{% if e.buy and e.buy[st.key] %}
-          <a class="btn {% if st.kind == 'print' %}btn-ghost{% endif %}" href="{{ e.buy[st.key] }}" {% if st.key != 'site' %}target="_blank" rel="noopener"{% endif %} data-umami-event="buy-{{ st.key }}" data-umami-event-product="{{ p.slug }}">
-            <small>{{ t.buy_print if st.kind == 'print' else t.buy_digital }}</small>{{ t.buy_on | fmt({store: st.label}) }}
+          {% for b in btns %}
+          <a class="btn {% if b.print %}btn-ghost{% endif %}" href="{{ b.url }}" {% if b.platform != 'site' %}target="_blank" rel="noopener"{% endif %} data-umami-event="buy-{{ b.platform }}" data-umami-event-product="{{ p.slug }}">
+            <small>{{ t.formats[b.format] or (t.buy_print if b.print else t.buy_digital) }}</small>{{ t.buy_on | fmt({store: b.label}) }}
           </a>
-          {% endif %}{% endfor %}
+          {% endfor %}
         </div>
       </div>
-      {% endfor %}
+      {% endif %}{% endfor %}
     </div>
     {% endif %}
 

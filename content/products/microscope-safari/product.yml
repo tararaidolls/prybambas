@@ -1,7 +1,11 @@
 series: explorers
 type: journal
 status: available
-editions:
-  - lang: en
-    buy:
-      kdp: https://www.amazon.com/dp/B0H6H4RRBT
+
+# Оголошення на платформах. Назва, ціна й статус підтягуються зі знімків content/shops/*.json
+listings:
+  - { platform: kdp, id: B0H6H4RRBT, lang: en, variant: "Paperback", format: paperback }
+  - { platform: kdp, id: B0HN4MT853, lang: en, variant: "Kindle", format: kindle }
+  - { platform: kdp, id: B0HG65FZX2, lang: de, variant: "Mikroskop-Safari · Taschenbuch", format: paperback }
+  - { platform: kdp, id: B0HN7PN4BP, lang: de, variant: "Mikroskop-Safari · Kindle", format: kindle }
+  - { platform: prom, id: "3247989226", lang: uk, variant: "Зошит-воркбук" }

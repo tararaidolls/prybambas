@@ -4,6 +4,8 @@
   "type": "module",
   "scripts": {
     "check": "node scripts/check-translations.mjs",
+    "shops": "NODE_USE_ENV_PROXY=1 node scripts/catalog/import.mjs",
+    "catalog": "node scripts/catalog/report.mjs",
     "build": "eleventy",
     "start": "eleventy --serve"
   },

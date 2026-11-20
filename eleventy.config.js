@@ -28,6 +28,8 @@ export default function (cfg) {
   cfg.addFilter("dateIso", (d) => new Date(d).toISOString().slice(0, 10));
   cfg.addFilter("fmt", (s, vars = {}) => String(s).replace(/\{(\w+)\}/g, (_, k) => vars[k] ?? ""));
   cfg.addFilter("where", (arr, key, val) => (arr || []).filter((x) => x[key] === val));
+  // Кнопки, які показуються цією мовою сайту (напр. Prom лише українською)
+  cfg.addFilter("forLang", (buttons, lang) => (buttons || []).filter((b) => !b.markets || b.markets.includes(lang)));
   cfg.addFilter("json", (v) => JSON.stringify(v));
   cfg.addFilter("absolute", (url, base) => new URL(url, base).href);
   cfg.addFilter("stripHtml", (s) => String(s || "").replace(/<[^>]+>/g, "").replace(/\s+/g, " ").trim());

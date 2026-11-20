@@ -10,6 +10,7 @@ import path from "node:path";
 import yaml from "js-yaml";
 import matter from "gray-matter";
 import MarkdownIt from "markdown-it";
+import { loadShops, resolveListings, buyEditions } from "../../scripts/catalog/model.mjs";
 
 const md = new MarkdownIt({ html: true, linkify: true, typographer: true });
 const ROOT = path.resolve("content");
@@ -42,12 +43,14 @@ const series = readEntries("series", "series.yml")
   .sort((a, b) => (a.order ?? 99) - (b.order ?? 99));
 const seriesBySlug = Object.fromEntries(series.map((s) => [s.slug, s]));
 
+const shops = loadShops();
 const products = readEntries("products", "product.yml")
   .filter((p) => !p.draft)
   .map((p) => ({
     ...p,
     status: p.status || "available",
-    editions: p.editions || [],
+    // Кнопки купівлі збираються з оголошень (listings) + знімків магазинів
+    editions: buyEditions(p, resolveListings(p, shops), site),
     url: (lang) => `/${lang}/shop/${p.series}/${p.slug}/`,
   }))
   .sort((a, b) => (a.order ?? 99) - (b.order ?? 99) || a.slug.localeCompare(b.slug));

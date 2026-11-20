@@ -4,7 +4,52 @@ status: available
 featured: true
 order: 1
 game: coach
-editions:
-  - lang: en
-    buy:
-      kdp: https://www.amazon.com/dp/B0FT96B31H
+
+# Оголошення на платформах. Назва, ціна й статус підтягуються зі знімків content/shops/*.json
+# (lang = мова, яку вивчають)
+listings:
+  - { platform: kdp, id: B0H3NXYCRG, lang: en, variant: "English · Vol. 1", format: paperback }
+  - { platform: kdp, id: B0GXKTBJSM, lang: fr, variant: "French · Vol. 1 Survival & Basics", format: paperback }
+  - { platform: kdp, id: B0GXR8CBFV, lang: de, variant: "German · Vol. 1 Survival & Basics", format: paperback }
+  - { platform: kdp, id: B0HFMST5L2, lang: he, variant: "Hebrew · Vol. 1 Survival & Basics", format: paperback }
+  - { platform: kdp, id: B0GWCH26YH, lang: ro, variant: "Romanian · Vol. 1 Survival & Basics", format: paperback }
+  - { platform: kdp, id: B0GYYLB916, lang: es, variant: "Spanish · Vol. 2 Daily Life & Routine", format: paperback }
+  - { platform: tpt, id: "16198493", lang: es, variant: "Spanish · Ultimate bundle, parts 1–12", format: bundle }
+  - { platform: tpt, id: "16198517", lang: es, variant: "Spanish · Foundation bundle, parts 1–4", format: bundle }
+  - { platform: tpt, id: "16198535", lang: es, variant: "Spanish · Fluency bundle, parts 5–8", format: bundle }
+  - { platform: tpt, id: "16198550", lang: es, variant: "Spanish · Advanced bundle, parts 9–12", format: bundle }
+  - { platform: tpt, id: "16188863", lang: es, variant: "Part 1", format: digital }
+  - { platform: tpt, id: "16188891", lang: es, variant: "Part 2", format: digital }
+  - { platform: tpt, id: "16188917", lang: es, variant: "Part 3", format: digital }
+  - { platform: tpt, id: "16188939", lang: es, variant: "Part 4", format: digital }
+  - { platform: tpt, id: "16188977", lang: es, variant: "Part 5", format: digital }
+  - { platform: tpt, id: "16189012", lang: es, variant: "Part 6", format: digital }
+  - { platform: tpt, id: "16189032", lang: es, variant: "Part 7", format: digital }
+  - { platform: tpt, id: "16192918", lang: es, variant: "Part 8", format: digital }
+  - { platform: tpt, id: "16192967", lang: es, variant: "Part 9", format: digital }
+  - { platform: tpt, id: "16192991", lang: es, variant: "Part 10", format: digital }
+  - { platform: tpt, id: "16193027", lang: es, variant: "Part 11", format: digital }
+  - { platform: tpt, id: "16193053", lang: es, variant: "Part 12", format: digital }
+  - { platform: tpt, id: "16173944", lang: es, variant: "Spanish · free sample, 12 days", format: digital }
+  - { platform: tpt, id: "16216479", lang: fr, variant: "French · Vol. 1, verbs 1–100", format: bundle }
+  - { platform: tpt, id: "16216477", lang: fr, variant: "French · Vol. 2, verbs 101–200", format: bundle }
+  - { platform: tpt, id: "16216490", lang: fr, variant: "French · Vol. 3, verbs 201–300", format: bundle }
+  - { platform: tpt, id: "16200919", lang: fr, variant: "Part 1", format: digital }
+  - { platform: tpt, id: "16200935", lang: fr, variant: "Part 2", format: digital }
+  - { platform: tpt, id: "16200948", lang: fr, variant: "Part 3", format: digital }
+  - { platform: tpt, id: "16200966", lang: fr, variant: "Part 4", format: digital }
+  - { platform: tpt, id: "16200990", lang: fr, variant: "Part 5", format: digital }
+  - { platform: tpt, id: "16201022", lang: fr, variant: "Part 6", format: digital }
+  - { platform: tpt, id: "16201039", lang: fr, variant: "Part 7", format: digital }
+  - { platform: tpt, id: "16201058", lang: fr, variant: "Part 8", format: digital }
+  - { platform: tpt, id: "16201080", lang: fr, variant: "Part 9", format: digital }
+  - { platform: tpt, id: "16201102", lang: fr, variant: "Part 10", format: digital }
+  - { platform: tpt, id: "16201115", lang: fr, variant: "Part 11", format: digital }
+  - { platform: tpt, id: "16201129", lang: fr, variant: "Part 12", format: digital }
+  - { platform: tpt, id: "17570580", lang: he, variant: "Hebrew · Vol. 1, verbs 1–100", format: digital }
+  - { platform: prom, id: "3282274057", lang: en, variant: "Англійська", format: pdf }
+  - { platform: prom, id: "3282239757", lang: fr, variant: "Французька", format: pdf }
+  - { platform: prom, id: "3282243570", lang: de, variant: "Німецька", format: pdf }
+  - { platform: prom, id: "3282270423", lang: he, variant: "Іврит", format: pdf }
+  - { platform: prom, id: "3282276389", lang: ro, variant: "Румунська", format: pdf }
+  - { platform: prom, id: "3282240307", lang: es, variant: "Іспанська", format: pdf }

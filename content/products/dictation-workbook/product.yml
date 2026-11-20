@@ -1,0 +1,11 @@
+name: "Dictation Workbooks (Listen and Write)"         # назва в каталозі (на сайті — з <мова>.md)
+series: language-games
+type: workbook
+status: available
+order: 4
+
+# Оголошення на платформах. Назва, ціна й статус підтягуються зі знімків content/shops/*.json
+# (lang = мова, яку вивчають)
+listings:
+  - { platform: kdp, id: B0GWRP2KH3, lang: fr, variant: "French Dictation Workbook", format: paperback }
+  - { platform: kdp, id: B0GWQ2GCVW, lang: pt, variant: "Portuguese Dictation Workbook", format: paperback }

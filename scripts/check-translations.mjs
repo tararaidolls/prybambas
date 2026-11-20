@@ -79,6 +79,7 @@ for (const kind of ["series", "products", "ideas", "games"]) {
     if (!d.isDirectory() || d.name.startsWith("_")) continue;
     const langs = kind === "games" ? GAME_LANGS : site.languages;
     const have = langs.filter((l) => fs.existsSync(path.join(dir, d.name, `${l}.md`)));
+    if (!have.length && kind === "products") { warnings.push(`${kind}/${d.name}: немає описів — товар є в каталозі, але не показується на сайті`); continue; }
     if (!have.includes(site.defaultLang)) errors.push(`${kind}/${d.name}: немає тексту мовою за замовчуванням (${site.defaultLang}.md)`);
     const miss = langs.filter((l) => !have.includes(l));
     if (miss.length) warnings.push(`${kind}/${d.name}: немає перекладу для ${miss.join(", ")}`);

@@ -35,6 +35,7 @@ stores:
   - { key: etsy,    label: Etsy,      kind: digital }
   - { key: tpt,     label: TpT,       kind: digital }
   - { key: kdp,     label: Amazon,    kind: print }
+  - { key: prom,    label: Prom.ua,   kind: digital, markets: [uk] }   # markets: показувати лише цими мовами сайту
 
 # Ігри на сайті, до яких можна привʼязати товар (поле game у product.yml)
 games:

@@ -22,6 +22,7 @@ uk:
   edition: Мова видання
   buy_digital: Файл для друку
   buy_print: Друкована книжка
+  formats: { kindle: "Kindle", paperback: "Друкована книжка", pdf: "PDF для друку", digital: "PDF для друку", bundle: "Набір" }
   buy_on: "{store}"
   pages: "{n} с."
   ages: "{ages} років"
@@ -68,6 +69,7 @@ en:
   edition: Edition language
   buy_digital: Printable file
   buy_print: Printed book
+  formats: { kindle: "Kindle", paperback: "Paperback", pdf: "Printable PDF", digital: "Printable PDF", bundle: "Bundle" }
   buy_on: "{store}"
   pages: "{n} pages"
   ages: "Ages {ages}"
@@ -114,6 +116,7 @@ pl:
   edition: Język wydania
   buy_digital: Plik do druku
   buy_print: Książka drukowana
+  formats: { kindle: "Kindle", paperback: "Książka drukowana", pdf: "PDF do druku", digital: "PDF do druku", bundle: "Zestaw" }
   buy_on: "{store}"
   pages: "{n} str."
   ages: "Wiek {ages}"
@@ -160,6 +163,7 @@ de:
   edition: Sprache der Ausgabe
   buy_digital: Druckdatei
   buy_print: Gedrucktes Buch
+  formats: { kindle: "Kindle", paperback: "Taschenbuch", pdf: "PDF zum Drucken", digital: "PDF zum Drucken", bundle: "Paket" }
   buy_on: "{store}"
   pages: "{n} Seiten"
   ages: "{ages} Jahre"
@@ -206,6 +210,7 @@ es:
   edition: Idioma de la edición
   buy_digital: Archivo para imprimir
   buy_print: Libro impreso
+  formats: { kindle: "Kindle", paperback: "Libro impreso", pdf: "PDF para imprimir", digital: "PDF para imprimir", bundle: "Paquete" }
   buy_on: "{store}"
   pages: "{n} págs."
   ages: "{ages} años"

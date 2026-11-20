@@ -1,0 +1,9 @@
+name: "Перехитри! (Outsmart)"         # назва в каталозі (на сайті — з <мова>.md)
+series: thinking
+type: game
+status: available
+order: 4
+
+# Оголошення на платформах. Назва, ціна й статус підтягуються зі знімків content/shops/*.json
+listings:
+  - { platform: prom, id: "3276946955", lang: uk, variant: "Книжка-гра A4, 60 с." }

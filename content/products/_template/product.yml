@@ -11,16 +11,20 @@ game: coach               # необовʼязково: what-if | inventor | coa
 cover: cover.jpg          # картинка в цій же папці (можна не вказувати)
 images: [page-1.jpg, page-2.jpg]   # додаткові превʼю (необовʼязково)
 
-# Видання: окремо для кожної мови самого зошита
+# Додаткові дані видань (необовʼязково): кількість сторінок, підзаголовок
 editions:
-  - lang: en              # мова зошита (будь-яка: en, uk, fr, ja…)
-    pages: 60
-    price: "$6"
-    buy:                  # залиш лише ті майданчики, де товар є
-      gumroad: https://yourname.gumroad.com/l/xxxx
-      etsy: https://www.etsy.com/listing/xxxx
-      tpt: https://www.teacherspayteachers.com/Product/xxxx
-      kdp: https://www.amazon.com/dp/XXXXXXXXXX
-  - lang: uk
-    buy:
-      etsy: https://www.etsy.com/listing/yyyy
+  - { lang: en, pages: 60 }
+
+# Оголошення на платформах — по одному рядку на кожне.
+# platform: kdp (Amazon) | tpt | etsy | prom | gumroad | site
+# id: номер оголошення (ASIN для Amazon, число з адреси для TpT/Etsy/Prom)
+# lang: мова видання (для мовних зошитів — мова, яку вивчають)
+# format: paperback | kindle | pdf | digital | bundle
+# Назва, ціна, посилання й статус підтягнуться зі знімка магазину (npm run shops).
+# Для Etsy, поки немає знімка, впиши url і price вручну.
+listings:
+  - { platform: kdp,  id: B0XXXXXXXX, lang: en, format: paperback }
+  - { platform: kdp,  id: B0YYYYYYYY, lang: en, format: kindle }
+  - { platform: tpt,  id: "12345678", lang: en, format: digital, variant: "Part 1" }
+  - { platform: prom, id: "3200000000", lang: uk, format: pdf }
+  - { platform: etsy, url: "https://www.etsy.com/listing/1234567890", lang: en, format: pdf, price: 6.5, currency: USD }
