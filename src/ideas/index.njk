@@ -3,6 +3,7 @@
   pagination: { data: "catalog.langPages", size: 1, alias: "L" },
   permalink: (data) => `/${data.L.lang}/ideas/`,
   layout: "base.njk",
+  ogAuto: true,
   section: "ideas",
   eleventyComputed: {
     lang: (data) => data.L.lang,

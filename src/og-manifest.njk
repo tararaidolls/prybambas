@@ -1,0 +1,24 @@
+---
+permalink: /og/manifest.json
+eleventyExcludeFromCollections: true
+---
+{%- set items = [] -%}
+{%- for P in catalog.productPages %}{% if not P.product.cover %}
+{%- set items = (items.push({ path: P.url | ogPath, title: P.t.title, eyebrow: P.seriesT.title, tagline: P.t.tagline, color: P.color, badge: (i18n[P.lang].ages | fmt({ages: P.product.ages}) if P.product.ages and P.product.ages != "adult" and "month" not in P.product.ages else "") }), items) -%}
+{%- endif %}{% endfor -%}
+{%- for I in catalog.postPages %}{% if not I.post.cover %}
+{%- set items = (items.push({ path: I.url | ogPath, title: I.t.title, eyebrow: i18n[I.lang].ideas_title, tagline: I.t.summary, color: "pink" }), items) -%}
+{%- endif %}{% endfor -%}
+{%- for C in catalog.collectionPages %}{% set t = i18n[C.lang] %}
+{%- set ttl = t.skills[C.key].name if C.kind == "skill" else t.ages | fmt({ages: C.key | replace("-", "–")}) -%}
+{%- set items = (items.push({ path: C.url | ogPath, title: ttl, eyebrow: (t.by_skill if C.kind == "skill" else t.by_age), tagline: (t.skills[C.key].desc if C.kind == "skill" else t.age_intro | fmt({ages: C.key | replace("-", "–")})), color: C.color }), items) -%}
+{%- endfor -%}
+{%- for S in catalog.seriesPages %}
+{%- set items = (items.push({ path: S.url | ogPath, title: S.t.title, eyebrow: i18n[S.lang].shop_title, tagline: S.t.tagline, color: S.color }), items) -%}
+{%- endfor -%}
+{%- for L in catalog.langPages %}{% set t = i18n[L.lang] %}
+{%- set items = (items.push({ path: ("/" + L.lang + "/") | ogPath, title: t.home_title, eyebrow: "prybambas.com", tagline: t.home_intro, color: "yellow" }), items) -%}
+{%- set items = (items.push({ path: ("/" + L.lang + "/shop/") | ogPath, title: t.shop_title, eyebrow: "Prybambas", tagline: t.shop_intro, color: "blue" }), items) -%}
+{%- set items = (items.push({ path: ("/" + L.lang + "/ideas/") | ogPath, title: t.ideas_title, eyebrow: "Prybambas", tagline: t.ideas_intro, color: "pink" }), items) -%}
+{%- endfor -%}
+{{ items | json | safe }}

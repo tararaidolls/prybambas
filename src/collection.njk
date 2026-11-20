@@ -3,6 +3,7 @@
   pagination: { data: "catalog.collectionPages", size: 1, alias: "C" },
   permalink: (data) => data.C.url,
   layout: "base.njk",
+  ogAuto: true,
   eleventyComputed: {
     lang: (data) => data.C.lang,
     alternates: (data) => data.C.alternates,

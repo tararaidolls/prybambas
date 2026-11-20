@@ -1,7 +1,7 @@
 {%- set t = i18n[lang] -%}
 {%- set fullTitle = (pageTitle + " · " + site.name) if pageTitle else site.name -%}
 {%- set desc = description or t.home_intro -%}
-{%- set ogImg = (ogImage or "/assets/og-default.png") | absolute(site.url) -%}
+{%- set ogImg = (ogImage or (page.url | ogPath if ogAuto else "/assets/og-default.png")) | absolute(site.url) -%}
 <!DOCTYPE html>
 <html lang="{{ lang }}">
 <head>

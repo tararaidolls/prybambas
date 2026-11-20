@@ -1,4 +1,5 @@
 import yaml from "js-yaml";
+import { renderOgImages } from "./scripts/og-images.mjs";
 
 // Статичні файли, які копіюються на сайт без змін (ігри, стилі, іконки)
 const PASSTHROUGH = [
@@ -29,6 +30,13 @@ export default function (cfg) {
   cfg.addFilter("where", (arr, key, val) => (arr || []).filter((x) => x[key] === val));
   // Кнопки, які показуються цією мовою сайту (напр. Prom лише українською)
   cfg.addFilter("forLang", (buttons, lang) => (buttons || []).filter((b) => !b.markets || b.markets.includes(lang)));
+  // Адреса картинки-превʼю для сторінки: /uk/shop/x/ → /og/uk/shop/x.png
+  cfg.addFilter("ogPath", (url) => "/og" + String(url).replace(/\/$/, "").replace(/\/index\.html$/, "") + ".png");
+  // Після збірки малюємо превʼю для соцмереж (scripts/og-images.mjs)
+  cfg.on("eleventy.after", async ({ dir }) => {
+    const n = await renderOgImages(dir.output);
+    if (n) console.log(`[og] ${n} картинок-превʼю`);
+  });
   cfg.addFilter("json", (v) => JSON.stringify(v));
   cfg.addFilter("absolute", (url, base) => new URL(url, base).href);
   cfg.addFilter("stripHtml", (s) => String(s || "").replace(/<[^>]+>/g, "").replace(/\s+/g, " ").trim());
