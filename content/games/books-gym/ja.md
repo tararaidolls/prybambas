@@ -1,5 +1,5 @@
 ---
 title: "ブックジム"
 tag: "観察力"
-desc: "Kids Skill Academyの本のための練習。"
+desc: "ゲームと合わせて使えるワークブックと印刷教材。"
 ---

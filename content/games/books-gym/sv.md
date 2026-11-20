@@ -1,5 +1,5 @@
 ---
 title: "Bokgymmet"
 tag: "Iakttagelse"
-desc: "Övningar till Kids Skill Academy-böckerna."
+desc: "Arbetsböcker och utskrifter som hör till spelen."
 ---

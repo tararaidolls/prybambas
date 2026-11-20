@@ -1,5 +1,5 @@
 ---
 title: "Sala Cărților"
 tag: "Observație"
-desc: "Exerciții pentru cărțile Kids Skill Academy."
+desc: "Caiete și materiale de printat pentru fiecare joc."
 ---

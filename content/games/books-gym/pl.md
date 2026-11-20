@@ -1,5 +1,5 @@
 ---
 title: "Sala Książek"
 tag: "Spostrzegawczość"
-desc: "Ćwiczenia do książek Kids Skill Academy."
+desc: "Zeszyty i materiały do druku do każdej gry."
 ---

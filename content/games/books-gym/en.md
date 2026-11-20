@@ -1,5 +1,5 @@
 ---
 title: "Books Gym"
 tag: "Observation"
-desc: "Exercises for the Kids Skill Academy books."
+desc: "Workbooks and printables to match the games."
 ---

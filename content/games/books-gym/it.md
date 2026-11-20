@@ -1,5 +1,5 @@
 ---
 title: "Sala dei Libri"
 tag: "Osservazione"
-desc: "Esercizi per i libri Kids Skill Academy."
+desc: "Quaderni e schede da stampare abbinati ai giochi."
 ---

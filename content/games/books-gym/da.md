@@ -1,5 +1,5 @@
 ---
 title: "Boggymnastik"
 tag: "Iagttagelse"
-desc: "Øvelser til Kids Skill Academy-bøgerne."
+desc: "Arbejdshæfter og printark, der passer til spillene."
 ---
