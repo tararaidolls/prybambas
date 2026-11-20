@@ -39,6 +39,33 @@ function readEntries(kind, metaFile) {
     });
 }
 
+// Ігри: content/games/<slug>/game.yml + icon.svg + <мова>.md (усі мови ігор, site.gameLanguages)
+const GAME_LANGS = (site.gameLanguages || []).map((l) => l.code);
+const games = (() => {
+  const dir = path.join(ROOT, "games");
+  if (!fs.existsSync(dir)) return [];
+  return fs.readdirSync(dir, { withFileTypes: true })
+    .filter((d) => d.isDirectory() && !d.name.startsWith("_"))
+    .map((d) => {
+      const folder = path.join(dir, d.name);
+      const meta = yaml.load(fs.readFileSync(path.join(folder, "game.yml"), "utf8")) || {};
+      const icon = meta.icon && fs.existsSync(path.join(folder, meta.icon)) ? fs.readFileSync(path.join(folder, meta.icon), "utf8").trim() : "";
+      const texts = {};
+      for (const lang of GAME_LANGS) {
+        const file = path.join(folder, `${lang}.md`);
+        if (fs.existsSync(file)) texts[lang] = matter(fs.readFileSync(file, "utf8")).data;
+      }
+      return { slug: d.name, ...meta, iconSvg: icon, texts };
+    })
+    .filter((g) => !g.draft)
+    .sort((a, b) => (a.order ?? 99) - (b.order ?? 99));
+})();
+// Текст гри мовою, або англійською
+const gameText = (g, lang) => g.texts[lang] || g.texts[site.defaultLang] || Object.values(g.texts)[0] || { title: g.slug };
+const gameCards = (lang) => games.map((g) => ({ slug: g.slug, url: g.url, skill: g.skill, ages: g.ages, tape: g.tape, spot: g.spot, tilt: g.tilt, tapeOpacity: g.tapeOpacity, iconSvg: g.iconSvg, ...gameText(g, lang) }));
+// slug гри → адреса (для кнопки «Спробуй онлайн» на сторінках товарів); site.games — додаткові адреси
+const gameUrls = { ...(site.games || {}), ...Object.fromEntries(games.map((g) => [g.slug, g.url])) };
+
 const series = readEntries("series", "series.yml")
   .sort((a, b) => (a.order ?? 99) - (b.order ?? 99));
 const seriesBySlug = Object.fromEntries(series.map((s) => [s.slug, s]));
@@ -88,6 +115,15 @@ const postsIn = (lang) => posts.filter((p) => p.texts[lang]);
 export default {
   languages: LANGS,
   series,
+  games,
+  gameCards,
+  // Дані для головної «/» (перемикання мови без перезавантаження): ігри 15 мовами, ідеї й товари мовами магазину
+  homeTeasers: Object.fromEntries(LANGS.map((lang) => [lang, {
+    posts: postsIn(lang).slice(0, 3).map((p) => { const c = postCard(p, lang); return { url: c.url, title: c.title, date: c.date }; }),
+    products: (productsIn(lang).filter((p) => p.featured).length ? productsIn(lang).filter((p) => p.featured) : productsIn(lang))
+      .slice(0, 4).map((p) => { const c = productCard(p, lang); return { url: c.url, title: c.title, tagline: c.tagline, series: c.seriesTitle }; }),
+  }])),
+  homeData: Object.fromEntries(GAME_LANGS.map((lang) => [lang, { games: gameCards(lang).map(({ iconSvg, ...g }) => g) }])),
 
   // /{lang}/  /{lang}/shop/  /{lang}/ideas/
   langPages: LANGS.map((lang) => ({
@@ -122,7 +158,7 @@ export default {
     seriesUrl: `/${lang}/shop/${p.series}/`,
     color: p.color || seriesBySlug[p.series].color,
     editionLangs: [...new Set(p.editions.map((e) => e.lang).filter(Boolean))],
-    gameUrl: p.game ? site.games[p.game] : null,
+    gameUrl: p.game ? gameUrls[p.game] : null,
     more: productsIn(lang).filter((o) => o.series === p.series && o.slug !== p.slug).slice(0, 3).map((o) => productCard(o, lang)),
     ideas: postsIn(lang).filter((o) => o.product === p.slug || o.series === p.series).slice(0, 3).map((o) => postCard(o, lang)),
     alternates: alternatesOf(p),
@@ -134,7 +170,7 @@ export default {
     return {
       lang, post: p, t: p.texts[lang], url: p.url(lang),
       product: prod ? productCard(prod, lang) : null,
-      gameUrl: p.game ? site.games[p.game] : null,
+      gameUrl: p.game ? gameUrls[p.game] : null,
       alternates: alternatesOf(p),
     };
   })),

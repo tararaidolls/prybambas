@@ -1,0 +1,10 @@
+# Гра або інструмент на сайті. Картка зʼявляється на головній автоматично.
+url: /book/            # адреса гри на сайті
+order: 3                  # порядок на головній
+skill: observation      # curiosity | critical-thinking | observation | languages | soft-skills | parents
+ages: "5-14"
+tape: "var(--pink)"     # колір «скотчу» на картці
+spot: "var(--pink)"     # колір кружечка за іконкою
+tilt: -1                   # нахил скотчу, градуси
+tapeOpacity: 0.55
+icon: icon.svg             # чорнильна іконка 100×100

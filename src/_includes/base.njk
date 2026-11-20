@@ -40,7 +40,7 @@
       <span>{{ site.name }}</span>
     </a>
     <nav class="site-nav" aria-label="Main">
-      <a href="/">{{ t.nav_games }}</a>
+      <a href="/{{ lang }}/#games">{{ t.nav_games }}</a>
       <a href="/{{ lang }}/ideas/" {% if section == "ideas" %}aria-current="page"{% endif %}>{{ t.nav_ideas }}</a>
       <a href="/{{ lang }}/shop/" {% if section == "shop" %}aria-current="page"{% endif %}>{{ t.nav_shop }}</a>
     </nav>

@@ -1,0 +1,524 @@
+---
+permalink: /index.html
+eleventyExcludeFromCollections: true
+---
+{%- from "games.njk" import gameGrid -%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#FBFCFE">
+    <title>Prybambas — Free Thinking Games for Curious Kids (Ages 5–14)</title>
+    <link rel="manifest" href="./manifest.json">
+    <link rel="apple-touch-icon" href="./icon-192.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="./icon-192.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="./icon-192.png">
+    <link rel="apple-touch-icon" sizes="167x167" href="./icon-192.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="description" content="Free STEM thinking games for kids ages 5–14: What If? logic puzzles, Inventor Lab (TRIZ creative thinking) and AI Coach. 15 languages. No login, no ads.">
+<link rel="canonical" href="https://prybambas.com/">
+<meta property="og:title" content="Prybambas — Free STEM Games for Curious Kids">
+<meta property="og:description" content="What If logic game, Inventor Lab, AI Coach. Free multilingual PWA for kids 5–14.">
+<meta property="og:url" content="https://prybambas.com/">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://prybambas.com/assets/og-default.png">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "Organization",
+   "@id": "https://prybambas.com/#org",
+   "name": "Prybambas",
+   "alternateName": "Kids Skill Academy",
+   "url": "https://prybambas.com/",
+   "logo": "https://prybambas.com/logo.png",
+   "description": "Free thinking games and printed workbooks that teach kids ages 5–14 to ask questions, notice details and check answers."
+  },
+  {
+   "@type": "WebSite",
+   "@id": "https://prybambas.com/#website",
+   "name": "Prybambas",
+   "url": "https://prybambas.com/",
+   "publisher": {
+    "@id": "https://prybambas.com/#org"
+   },
+   "inLanguage": [
+    "en",
+    "uk",
+    "ro",
+    "pl",
+    "de",
+    "fr",
+    "it",
+    "sv",
+    "fi",
+    "da",
+    "es",
+    "pt",
+    "he",
+    "ja",
+    "ar"
+   ]
+  },
+  {
+   "@type": "WebApplication",
+   "name": "Prybambas",
+   "url": "https://prybambas.com/",
+   "applicationCategory": "EducationalApplication",
+   "operatingSystem": "Any (web browser)",
+   "isAccessibleForFree": true,
+   "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+   },
+   "audience": {
+    "@type": "Audience",
+    "audienceType": "Children ages 5-14, parents and teachers"
+   },
+   "description": "Free STEM hub: What If? logic game, Inventor Lab TRIZ thinking, AI Coach language practice. 15 languages.",
+   "publisher": {
+    "@id": "https://prybambas.com/#org"
+   }
+  }
+ ]
+}
+</script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Geologica:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        /* Стиль «Блокнот дослідника»: папір у клітинку, чорнило, різограф-кольори */
+        :root {
+            --paper: #FBFCFE;
+            --grid: #DCE7F4;
+            --ink: #1A1A2E;
+            --ink-soft: #4A4D66;
+            --pink: #FF48B0;
+            --pink-ink: #D61F86;
+            --blue: #0078BF;
+            --yellow: #FFE800;
+            --card: #FFFFFF;
+            --f-main: 'Geologica', 'Segoe UI', system-ui, -apple-system, sans-serif;
+            --f-hand: 'Caveat', 'Comic Sans MS', cursive;
+            color-scheme: light;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        html, body { min-height: 100%; }
+
+        body {
+            background-color: var(--paper);
+            background-image:
+                linear-gradient(var(--grid) 1px, transparent 1px),
+                linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+            background-size: 24px 24px;
+            color: var(--ink);
+            font-family: var(--f-main);
+            line-height: 1.5;
+            overflow-x: hidden;
+        }
+
+        .page {
+            max-width: 1040px;
+            margin: 0 auto;
+            padding-inline: 20px;
+            padding-block: 16px 40px;
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            min-height: 100vh;
+        }
+
+        /* Верхня панель */
+        .top-bar {
+            display: flex; justify-content: space-between; align-items: center;
+            gap: 12px; flex-wrap: wrap;
+            padding-top: env(safe-area-inset-top, 0px);
+        }
+        .brand {
+            display: flex; align-items: center; gap: 10px;
+            color: var(--ink); text-decoration: none;
+            font-weight: 800; font-size: 1.35rem; letter-spacing: 0.01em;
+        }
+        .brand svg { width: 34px; height: 34px; flex-shrink: 0; }
+        .top-actions { display: flex; gap: 10px; align-items: center; }
+        .top-nav { display: flex; gap: 4px; margin-inline-start: auto; }
+        .top-nav a { color: var(--ink); text-decoration: none; font-weight: 600; font-size: 0.95rem; padding: 6px 12px; border-radius: 6px; }
+        .top-nav a:hover { background: #FFF9C2; }
+        .top-nav a:focus-visible { outline: 3px solid var(--blue); outline-offset: 3px; }
+        @media (max-width: 560px) { .top-nav { order: 3; width: 100%; margin-inline-start: 0; } .top-actions { margin-inline-start: auto; } }
+
+        .lang-switch {
+            background: var(--card);
+            border: 1.5px solid var(--ink);
+            color: var(--ink);
+            padding: 7px 12px;
+            border-radius: 8px;
+            font: 600 0.88rem var(--f-main);
+            cursor: pointer;
+            box-shadow: 3px 3px 0 var(--blue);
+        }
+
+        .install-btn {
+            background: var(--ink);
+            border: 1.5px solid var(--ink);
+            color: #fff;
+            padding: 7px 14px;
+            border-radius: 8px;
+            font: 600 0.88rem var(--f-main);
+            cursor: pointer;
+            display: none; /* Показується тільки коли PWA готовий до встановлення */
+            box-shadow: 3px 3px 0 var(--pink);
+            transition: transform 0.15s, box-shadow 0.15s;
+        }
+        .install-btn:hover { transform: translate(-1px, -1px); box-shadow: 4px 4px 0 var(--pink); }
+
+        .lang-switch:focus-visible, .install-btn:focus-visible, .space-card:focus-visible, .ios-modal-close:focus-visible, .foot a:focus-visible {
+            outline: 3px solid var(--blue); outline-offset: 3px;
+        }
+
+        /* Герой */
+        .hero { position: relative; display: grid; gap: 16px; max-width: 720px; padding-top: 12px; }
+        .hero h1 {
+            font-size: clamp(2.2rem, 6vw, 3.9rem);
+            line-height: 1.04; font-weight: 800; letter-spacing: -0.02em;
+            text-wrap: balance;
+        }
+        .hero h1 mark {
+            color: inherit;
+            background: linear-gradient(transparent 56%, var(--yellow) 56%, var(--yellow) 92%, transparent 92%);
+            padding: 0 0.08em;
+        }
+        .hero p { font-size: 1.12rem; color: var(--ink-soft); max-width: 52ch; }
+
+        .hand {
+            font-family: var(--f-hand); font-weight: 700; color: var(--pink-ink);
+            font-size: 1.6rem; line-height: 1;
+        }
+        .hero-note {
+            position: absolute; top: 18px; inset-inline-end: -220px; width: 190px;
+            text-align: center; transform: rotate(-5deg);
+        }
+        .hero-note svg { display: block; margin: 6px auto 0; width: 70px; height: 44px; }
+        [dir="rtl"] .hero-note svg { transform: scaleX(-1); }
+        [dir="rtl"] .card-tag { letter-spacing: 0; }
+        @media (max-width: 1100px) {
+            .hero-note { position: static; width: auto; text-align: start; transform: rotate(-2deg); }
+            .hero-note svg { display: none; }
+        }
+
+        /* Картки просторів */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+            gap: 26px 20px;
+        }
+
+        .space-card {
+            position: relative;
+            background: var(--card);
+            border: 1.5px solid var(--ink);
+            border-radius: 6px;
+            padding: 22px 18px 18px;
+            display: flex; flex-direction: column; gap: 8px;
+            color: var(--ink); text-decoration: none;
+            box-shadow: 4px 4px 0 var(--ink);
+            transition: transform 0.15s, box-shadow 0.15s;
+        }
+        .space-card:hover { transform: translate(-2px, -2px) rotate(-0.4deg); box-shadow: 6px 6px 0 var(--ink); }
+        .space-card:active { transform: translate(2px, 2px); box-shadow: 2px 2px 0 var(--ink); }
+
+        /* Скотч зверху */
+        .space-card::before {
+            content: ""; position: absolute; top: -10px; left: 50%;
+            width: 64px; height: 18px; transform: translateX(-50%) rotate(var(--tilt, -3deg));
+            background: var(--tape); opacity: var(--tape-op, 0.75);
+        }
+
+        .card-ico { position: relative; width: 64px; height: 64px; }
+        .card-ico::before {
+            content: ""; position: absolute; width: 46px; height: 46px; border-radius: 50%;
+            right: -2px; bottom: 0; background: var(--spot); opacity: 0.85; mix-blend-mode: multiply;
+        }
+        .card-ico svg { position: relative; width: 64px; height: 64px; }
+
+        .card-tag {
+            font-size: 0.72rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+            color: var(--blue);
+        }
+        .card-title { font-size: 1.22rem; font-weight: 800; line-height: 1.2; }
+        .card-desc { font-size: 0.95rem; color: var(--ink-soft); }
+
+        /* Нові ідеї та зошити */
+        .teasers { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+        .teaser { background: var(--card); border: 1.5px solid var(--ink); border-radius: 6px; padding: 16px 18px; box-shadow: 4px 4px 0 var(--pink); min-width: 0; }
+        .teaser:nth-child(2) { box-shadow: 4px 4px 0 var(--blue); }
+        .teaser-head { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; flex-wrap: wrap; margin-bottom: 8px; }
+        .teaser-head h2 { font-size: 1.15rem; font-weight: 800; }
+        .teaser-head a { font-size: 0.9rem; font-weight: 600; color: var(--ink); text-decoration-color: var(--pink); text-underline-offset: 3px; }
+        .teaser ul { list-style: none; display: grid; }
+        .teaser li + li { border-top: 1.5px dashed var(--grid); }
+        .teaser li a { display: grid; gap: 2px; padding: 9px 0; color: var(--ink); text-decoration: none; font-weight: 700; line-height: 1.3; }
+        .teaser li a:hover { text-decoration: underline; text-decoration-color: var(--pink); }
+        .teaser li small { font-size: 0.72rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: var(--blue); }
+
+        /* Підвал */
+        .foot {
+            margin-top: auto;
+            display: flex; flex-wrap: wrap; gap: 8px 20px; align-items: center;
+            font-size: 0.9rem; color: var(--ink-soft);
+            border-top: 1.5px dashed var(--grid); padding-top: 16px;
+        }
+        .foot a { color: var(--ink); font-weight: 600; text-decoration-color: var(--pink); text-underline-offset: 3px; }
+
+        /* Діалогове вікно-інструкція для iOS (iPhone) */
+        .ios-modal {
+            position: fixed; bottom: calc(20px + env(safe-area-inset-bottom, 0px)); left: 50%; transform: translateX(-50%);
+            width: 90%; max-width: 380px;
+            background: var(--card);
+            border: 1.5px solid var(--ink);
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 5px 5px 0 var(--pink);
+            z-index: 1000;
+            display: none;
+            flex-direction: column; gap: 12px;
+            animation: slide-up 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        @keyframes slide-up {
+            from { transform: translate(-50%, 100px); opacity: 0; }
+            to { transform: translate(-50%, 0); opacity: 1; }
+        }
+        .ios-modal h3 { font-size: 1.1rem; font-weight: 800; text-align: center; }
+        .ios-modal p { font-size: 0.92rem; line-height: 1.4; color: var(--ink-soft); text-align: center; }
+        .ios-modal-step {
+            display: flex; align-items: center; gap: 10px;
+            background: var(--paper); border: 1px solid var(--grid);
+            padding: 10px 14px; border-radius: 6px;
+            font-size: 0.88rem; font-weight: 600;
+        }
+        .ios-modal-step span.icon { font-size: 1.3rem; }
+        .ios-modal-close {
+            background: var(--ink); border: none; color: #fff; padding: 9px;
+            border-radius: 6px; font: 600 0.88rem var(--f-main); cursor: pointer; margin-top: 4px;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after { animation: none !important; transition: none !important; }
+        }
+    </style>
+    <script defer src="https://cloud.umami.is/script.js" data-website-id="8460fd7f-da31-46c7-8c9d-eff5e64399cc"></script>
+<link rel="stylesheet" href="/assets/seo-info.css">
+</head>
+<body>
+  <div class="page">
+
+    <!-- Верхня панель -->
+    <header class="top-bar">
+        <a class="brand" href="./index.html" aria-label="Prybambas">
+            <svg viewBox="0 0 34 34" fill="none" aria-hidden="true">
+                <circle cx="19" cy="14" r="9" fill="#FFE800" style="mix-blend-mode:multiply"/>
+                <circle cx="14" cy="14" r="9" stroke="#1A1A2E" stroke-width="2.6"/>
+                <path d="M20.5 20.5 L29 29" stroke="#1A1A2E" stroke-width="3" stroke-linecap="round"/>
+            </svg>
+            <span>Prybambas</span>
+        </a>
+        <nav class="top-nav">
+            <a href="/en/ideas/" id="lnk-ideas">Ideas</a>
+            <a href="/en/shop/" id="lnk-shop">Shop</a>
+        </nav>
+        <div class="top-actions">
+            <!-- Розумна кнопка встановлення додатку -->
+            <button class="install-btn" id="install-pwa-btn" onclick="triggerInstall()">Install App</button>
+
+            <select class="lang-switch" id="lang-selector" onchange="changeLang()" aria-label="Language" data-lang-select></select><script src="./assets/langs.js"></script>
+        </div>
+    </header>
+
+    <!-- Герой -->
+    <section class="hero">
+        <h1 id="hero-title">What if you <mark>look</mark> a little closer?</h1>
+        <p id="hero-sub">A place where kids ask questions, notice small things and check the answers. Even the ones AI gives.</p>
+        <div class="hero-note" aria-hidden="true">
+            <span class="hand" id="hero-note">every “why?” counts!</span>
+            <svg viewBox="0 0 70 44" fill="none" stroke="#D61F86" stroke-width="2.2" stroke-linecap="round"><path d="M62 4 C 48 22, 30 32, 8 36"/><path d="M8 36 l10 -8 M8 36 l12 3"/></svg>
+        </div>
+    </section>
+
+    <!-- Сітка просторів -->
+    {{ gameGrid(catalog.gameCards("en"), true) }}
+
+    {% include "home-teasers.njk" %}
+
+<!-- Текст для батьків, вчителів і AI-пошуку. Згорнуті блоки не заважають. -->
+    <section class="seo-info" lang="en">
+      <h2>What is Prybambas?</h2>
+      <p class="lead">Prybambas is a free collection of thinking games for kids ages 5–14. Children explore cause and effect, solve inventor puzzles and practise languages — in the browser, with no login and no ads, in 15 languages.</p>
+      <p>It is made for parents, teachers, homeschoolers and multilingual families who want screen time that builds curiosity, logic and creativity — and the habit of checking answers, even the ones AI gives.</p>
+
+      <details>
+        <summary>Which games are included?</summary>
+        <ul>
+          <li><a href="/what-if/"><strong>What If?</strong></a> — a cause-and-effect logic game with three modes: single question, logical chain and deduction.</li>
+          <li><a href="/inventor/"><strong>Inventor Lab</strong></a> — creative problem solving with 8 TRIZ tools, a 30-day observation calendar, challenges and missions.</li>
+          <li><a href="/coach/"><strong>AI Coach</strong></a> — language practice that pairs with the <em>One Verb a Day</em> workbooks.</li>
+          <li><a href="/book/"><strong>Books Gym</strong></a> — printed workbooks that match the games.</li>
+        </ul>
+      </details>
+
+      <details>
+        <summary>Who is it for?</summary>
+        <p>Children ages 5–14. Younger kids (5–7) usually play with a parent; older kids play on their own. Teachers use the games as warm-ups, discussion starters and logic lessons — students need no accounts.</p>
+      </details>
+
+      <details>
+        <summary>Do I need to install anything?</summary>
+        <p>No. Prybambas opens in any modern browser on phone, tablet or computer. You can also add it to the home screen so it opens like an app.</p>
+      </details>
+
+      <p class="more"><a href="/about.html">About</a> · <a href="/faq.html">FAQ</a> · <a href="/en/ideas/">Ideas for the dinner table</a></p>
+    </section>
+
+    <footer class="foot">
+        <a href="./about.html" id="lnk-about">About</a>
+        <a href="./faq.html" id="lnk-faq">FAQ</a>
+        <span>© Prybambas by Kids Skill Academy</span>
+    </footer>
+  </div>
+
+    <!-- Вікно-інструкція для користувачів iPhone -->
+    <div class="ios-modal" id="ios-install-modal" role="dialog" aria-labelledby="ios-title">
+        <h3 id="ios-title">Install App</h3>
+        <p id="ios-desc">Follow these simple steps to install the app on your iPhone:</p>
+
+        <div class="ios-modal-step">
+            <span class="icon">📤</span>
+            <span id="ios-step-1">1. Tap the "Share" button in Safari's bottom toolbar.</span>
+        </div>
+        <div class="ios-modal-step">
+            <span class="icon">➕</span>
+            <span id="ios-step-2">2. Scroll down and select "Add to Home Screen".</span>
+        </div>
+
+        <button class="ios-modal-close" onclick="closeIosModal()" id="ios-btn-close">Got It</button>
+    </div>
+
+    <script>
+        // Тексти головної (src/_data/home.json) і картки ігор (content/games) усіма мовами
+        const HOME = {{ home | json | safe }};
+        const GAMES = {{ catalog.homeData | json | safe }};
+        const SITE_LANGS = {{ site.languages | json | safe }};
+        let deferredPrompt = null;
+        let isIos = false;
+
+        function changeLang() {
+            const lang = document.getElementById('lang-selector').value;
+            localStorage.setItem('prybambas_lang', lang);
+            
+            const t = HOME[lang] || HOME.en;
+            const g = (GAMES[lang] || GAMES.en).games;
+
+            // Картки ігор
+            g.forEach(x => {
+                const set = (id, v) => { const el = document.getElementById(id); if (el && v != null) el.innerText = v; };
+                set('lbl-' + x.slug, x.title); set('tag-' + x.slug, x.tag); set('desc-' + x.slug, x.desc);
+            });
+
+            // Герой і посилання
+            document.getElementById('hero-title').innerHTML = t.h1;
+            document.getElementById('hero-sub').innerText = t.sub;
+            document.getElementById('hero-note').innerText = t.note;
+            document.getElementById('lnk-about').innerText = t.about;
+            document.getElementById('lnk-faq').innerText = t.faq;
+            // Магазин та ідеї є мовами з site.yml; для інших мов ведемо на англійську версію
+            const siteLang = SITE_LANGS.includes(lang) ? lang : 'en';
+            document.getElementById('lnk-ideas').innerText = t.ideas;
+            document.getElementById('lnk-ideas').href = '/' + siteLang + '/ideas/';
+            document.getElementById('lnk-shop').innerText = t.shop;
+            document.getElementById('lnk-shop').href = '/' + siteLang + '/shop/';
+            if (window.renderTeasers) window.renderTeasers(siteLang);
+            document.documentElement.lang = lang;
+            document.documentElement.dir = (lang === 'he' || lang === 'ar') ? 'rtl' : 'ltr';
+
+            // Оновлення текстів кнопки встановлення
+            const btn = document.getElementById('install-pwa-btn');
+            if (btn) btn.innerText = t.install;
+
+            // Оновлення текстів модалки iOS
+            document.getElementById('ios-title').innerText = t.ios_title;
+            document.getElementById('ios-desc').innerText = t.ios_desc;
+            document.getElementById('ios-step-1').innerText = t.ios_step1;
+            document.getElementById('ios-step-2').innerText = t.ios_step2;
+            document.getElementById('ios-btn-close').innerText = t.ios_close;
+        }
+
+        // Обробка події встановлення PWA на Android/Chrome
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault(); // Запобігаємо автоматичному спливанню дефолтного вікна
+            deferredPrompt = e; // Зберігаємо подію
+            
+            // Показуємо кнопку встановлення для Android
+            const installBtn = document.getElementById('install-pwa-btn');
+            if (installBtn) installBtn.style.display = 'block';
+        });
+
+        // Виявлення iOS пристроїв
+        function checkIos() {
+            isIos = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+            // Показуємо кнопку для iOS користувачів завжди (так як передзапиту немає)
+            if (isIos && !window.navigator.standalone) {
+                const installBtn = document.getElementById('install-pwa-btn');
+                if (installBtn) installBtn.style.display = 'block';
+            }
+        }
+
+        function triggerInstall() {
+            if (isIos) {
+                // Відкриваємо кастомну інструкцію для Apple
+                document.getElementById('ios-install-modal').style.display = 'flex';
+                if (window.umami) umami.track('click-install-ios-modal');
+            } else if (deferredPrompt) {
+                // Запускаємо системний діалог Google Chrome
+                deferredPrompt.prompt();
+                if (window.umami) umami.track('click-install-pwa-prompt');
+                
+                deferredPrompt.userChoice.then((choiceResult) => {
+                    if (choiceResult.outcome === 'accepted') {
+                        console.log('User accepted the install prompt');
+                        if (window.umami) umami.track('install-pwa-success');
+                    } else {
+                        console.log('User dismissed the install prompt');
+                    }
+                    deferredPrompt = null;
+                    const installBtn = document.getElementById('install-pwa-btn');
+                    if (installBtn) installBtn.style.display = 'none';
+                });
+            }
+        }
+
+        function closeIosModal() {
+            document.getElementById('ios-install-modal').style.display = 'none';
+        }
+
+        window.onload = function() {
+            const savedLang = localStorage.getItem('prybambas_lang') || 'en';
+            document.getElementById('lang-selector').value = savedLang;
+            changeLang();
+            checkIos(); // Перевіряємо пристрій
+
+            // Register PWA Service Worker
+            if ('serviceWorker' in navigator) {
+                navigator.serviceWorker.register('./sw.js')
+                    .then(reg => console.log('Service Worker Registered!', reg))
+                    .catch(err => console.log('Service Worker Failed!', err));
+            }
+        }
+    </script>
+</body>
+</html>

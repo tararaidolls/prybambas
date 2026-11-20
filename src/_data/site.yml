@@ -37,9 +37,7 @@ stores:
   - { key: kdp,     label: Amazon,    kind: print }
   - { key: prom,    label: Prom.ua,   kind: digital, markets: [uk] }   # markets: показувати лише цими мовами сайту
 
-# Ігри на сайті, до яких можна привʼязати товар (поле game у product.yml)
+# Ігри тепер описані в content/games/<назва>/ (картка на головній + посилання з товарів).
+# Тут — лише додаткові адреси для поля game у product.yml, яких немає серед ігор.
 games:
-  what-if:  /what-if/
-  inventor: /inventor/
-  coach:    /coach/
   first-foods: /little/first-foods/

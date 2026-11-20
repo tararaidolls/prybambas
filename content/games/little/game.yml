@@ -1,0 +1,10 @@
+# Гра або інструмент на сайті. Картка зʼявляється на головній автоматично.
+url: /little/            # адреса гри на сайті
+order: 5                  # порядок на головній
+skill: parents      # curiosity | critical-thinking | observation | languages | soft-skills | parents
+ages: "0-4"
+tape: "#FFC9B0"     # колір «скотчу» на картці
+spot: "#FFC9B0"     # колір кружечка за іконкою
+tilt: -2                   # нахил скотчу, градуси
+tapeOpacity: 0.9
+icon: icon.svg             # чорнильна іконка 100×100

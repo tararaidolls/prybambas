@@ -1,0 +1,13 @@
+{# Картки ігор з content/games. ids=true — додає id для перемикання мови на головній «/» #}
+{% macro gameGrid(cards, ids=false) %}
+<nav class="grid-container" id="games" aria-label="Games">
+  {%- for g in cards %}
+  <a href="{{ g.url }}" class="space-card" data-game="{{ g.slug }}" style="--tape: {{ g.tape }}; --spot: {{ g.spot }}; --tilt: {{ g.tilt or -3 }}deg; --tape-op: {{ g.tapeOpacity or 0.75 }};">
+    <div class="card-ico">{{ g.iconSvg | safe }}</div>
+    <span class="card-tag"{% if ids %} id="tag-{{ g.slug }}"{% endif %}>{{ g.tag }}</span>
+    <span class="card-title"{% if ids %} id="lbl-{{ g.slug }}"{% endif %}>{{ g.title }}</span>
+    <span class="card-desc"{% if ids %} id="desc-{{ g.slug }}"{% endif %}>{{ g.desc }}</span>
+  </a>
+  {%- endfor %}
+</nav>
+{% endmacro %}

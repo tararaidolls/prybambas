@@ -1,0 +1,10 @@
+# Гра або інструмент на сайті. Картка зʼявляється на головній автоматично.
+url: /my-game/           # адреса гри на сайті
+order: 10                 # порядок на головній
+skill: languages      # curiosity | critical-thinking | observation | languages | soft-skills | parents
+ages: "7-14"
+tape: "var(--yellow)"     # колір «скотчу» на картці
+spot: "var(--blue)"     # колір кружечка за іконкою
+tilt: 4                   # нахил скотчу, градуси
+tapeOpacity: 0.75
+icon: icon.svg             # чорнильна іконка 100×100

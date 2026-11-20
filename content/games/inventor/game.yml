@@ -1,0 +1,10 @@
+# Гра або інструмент на сайті. Картка зʼявляється на головній автоматично.
+url: /inventor/            # адреса гри на сайті
+order: 2                  # порядок на головній
+skill: critical-thinking      # curiosity | critical-thinking | observation | languages | soft-skills | parents
+ages: "8-14"
+tape: "var(--blue)"     # колір «скотчу» на картці
+spot: "var(--blue)"     # колір кружечка за іконкою
+tilt: 2                   # нахил скотчу, градуси
+tapeOpacity: 0.45
+icon: icon.svg             # чорнильна іконка 100×100
