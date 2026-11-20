@@ -1,0 +1,11 @@
+name: "One Verb a Day for Seniors"
+series: language-games
+type: workbook
+status: available
+order: 6
+
+# Оголошення на платформах. Назва, ціна й статус підтягуються зі знімків content/shops/*.json
+listings:
+  - { platform: etsy, id: "img8676846595", lang: en, variant: "English · large print", format: pdf }
+  - { platform: etsy, id: "img8805008024", lang: en, variant: "English for German speakers · 50 verbs", format: pdf }
+  - { platform: etsy, id: "img8628976688", lang: es, variant: "Spanish · large print", format: pdf }

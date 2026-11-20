@@ -153,18 +153,31 @@ function parseCsv(text) {
   return body.map((r) => Object.fromEntries(head.map((h, i) => [h.trim().toUpperCase(), r[i]])));
 }
 
-export function etsyFromCsv(text) {
+// У CSV-експорті Etsy немає номера оголошення, тому ключ — номер першого фото (IMAGE1).
+// Він стабільний, поки не заміниш головне фото. Посилання — пошук назви в магазині.
+export function etsyFromCsv(text, shopUrl = "https://www.etsy.com/shop/Prybambas") {
+  const seen = new Map();
   return parseCsv(text).map((r) => {
-    const id = r.LISTING_ID || r["LISTING ID"] || "";
+    const listingId = r.LISTING_ID || r["LISTING ID"];
+    const img = ((r.IMAGE1 || "").match(/\/(\d+)\/il_/) || [])[1];
+    let id = listingId || (img ? `img${img}` : `t${[...String(r.TITLE)].reduce((h, c) => (h * 31 + c.charCodeAt(0)) >>> 0, 7)}`);
+    seen.set(id, (seen.get(id) || 0) + 1);
+    if (seen.get(id) > 1) id += `-${seen.get(id)}`;
+    const title = decode(r.TITLE);
+    const variations = [1, 2, 3].map((n) => r[`VARIATION ${n} NAME`]).filter(Boolean);
+    const physical = /physical print|t-shirt|shirt|sweatshirt|mug|\boz\b/i.test(title) || variations.length > 0;
+    const short = title.split(/[|,:–(]/)[0].trim();
     return {
       platform: "etsy",
-      id: id || undefined,
-      sku: r.SKU || undefined,
-      title: decode(r.TITLE),
-      url: id ? `https://www.etsy.com/listing/${id}` : undefined,
+      id,
+      title,
+      url: listingId ? `https://www.etsy.com/listing/${listingId}` : `${shopUrl}?search_query=${encodeURIComponent(short)}`,
+      urlKind: listingId ? "listing" : "search",
       price: r.PRICE ? Number(String(r.PRICE).replace(",", ".")) : undefined,
       currency: r.CURRENCY_CODE || "USD",
-      format: "digital",
+      format: physical ? "print" : "pdf",
+      variations: variations.length ? variations : undefined,
+      image: r.IMAGE1 || undefined,
       status: "active",
     };
   });

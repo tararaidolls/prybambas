@@ -8,3 +8,4 @@ order: 1
 listings:
   - { platform: kdp, id: B0HNDK3HSM, lang: en, variant: "Paperback", format: paperback }
   - { platform: tpt, id: "17893234", lang: en, variant: "Printable · PISA skills", format: digital }
+  - { platform: etsy, id: "img8696593629", lang: en, variant: "PDF", format: pdf }

@@ -47,6 +47,7 @@ uk:
     diary: Щоденник
     journal: Журнал
     bundle: Набір
+    merch: Мерч
 
 en:
   nav_games: Games
@@ -94,6 +95,7 @@ en:
     diary: Diary
     journal: Journal
     bundle: Bundle
+    merch: Merch
 
 pl:
   nav_games: Gry
@@ -141,6 +143,7 @@ pl:
     diary: Dziennik
     journal: Dziennik
     bundle: Zestaw
+    merch: Gadżety
 
 de:
   nav_games: Spiele
@@ -188,6 +191,7 @@ de:
     diary: Tagebuch
     journal: Journal
     bundle: Paket
+    merch: Merch
 
 es:
   nav_games: Juegos
@@ -235,3 +239,4 @@ es:
     diary: Diario
     journal: Diario
     bundle: Paquete
+    merch: Merch

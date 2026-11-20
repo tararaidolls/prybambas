@@ -8,3 +8,8 @@ game: first-foods         # кнопка «Спробуй онлайн» вед�
 editions:
   - lang: en
     pages: 68
+
+listings:
+  - { platform: etsy, id: "img8701483288", lang: en, variant: "Tracker · printable log", format: pdf }
+  - { platform: etsy, id: "img3915173834", lang: en, variant: "Tracker · checklist", format: pdf }
+  - { platform: etsy, id: "img4005212551", lang: en, variant: "Tracker · baby-led weaning", format: pdf }

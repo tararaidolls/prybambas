@@ -1,0 +1,10 @@
+name: "The Oracle Game (ESL)"
+series: language-games
+type: game
+status: available
+order: 9
+# можливо, це і є Verb Oracle — тоді перенеси оголошення в content/products/verb-oracle/
+
+# Оголошення на платформах. Назва, ціна й статус підтягуються зі знімків content/shops/*.json
+listings:
+  - { platform: etsy, id: "img8574378184", lang: en, variant: "Halloween edition", format: pdf }

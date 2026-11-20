@@ -1,0 +1,10 @@
+name: "SCAMPER Creative Thinking Workbook"
+series: thinking
+type: workbook
+status: available
+order: 5
+ages: "8-11"
+
+# Оголошення на платформах. Назва, ціна й статус підтягуються зі знімків content/shops/*.json
+listings:
+  - { platform: etsy, id: "img8804890998", lang: en, variant: "PDF", format: pdf }

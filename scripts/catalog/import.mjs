@@ -35,7 +35,7 @@ const readers = {
 };
 
 let failed = 0;
-if (etsyCsv) save("etsy", etsyFromCsv(fs.readFileSync(etsyCsv, "utf8")), `CSV: ${path.basename(etsyCsv)}`);
+if (etsyCsv) save("etsy", etsyFromCsv(fs.readFileSync(etsyCsv, "utf8").replace(/^\uFEFF/, ""), cfg.etsy), `CSV з кабінету Etsy`);
 for (const [platform, read] of Object.entries(readers)) {
   if (etsyCsv && !only.length) break;
   if (only.length && !only.includes(platform)) continue;

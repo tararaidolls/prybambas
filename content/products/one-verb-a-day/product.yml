@@ -53,3 +53,4 @@ listings:
   - { platform: prom, id: "3282270423", lang: he, variant: "Іврит", format: pdf }
   - { platform: prom, id: "3282276389", lang: ro, variant: "Румунська", format: pdf }
   - { platform: prom, id: "3282240307", lang: es, variant: "Іспанська", format: pdf }
+  - { platform: etsy, id: "img8488661342", lang: de, variant: "German · 100-day workbook A1–A2", format: pdf }

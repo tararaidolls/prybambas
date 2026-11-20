@@ -7,3 +7,4 @@ order: 4
 # Оголошення на платформах. Назва, ціна й статус підтягуються зі знімків content/shops/*.json
 listings:
   - { platform: prom, id: "3276946955", lang: uk, variant: "Книжка-гра A4, 60 с." }
+  - { platform: etsy, id: "img8804977206", lang: en, variant: "Strategy Games for Kids 11–14", format: pdf }

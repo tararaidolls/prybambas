@@ -7,3 +7,4 @@ order: 5
 # Оголошення на платформах. Назва, ціна й статус підтягуються зі знімків content/shops/*.json
 listings:
   - { platform: tpt, id: "18096824", lang: he, variant: "Printable workbook", format: digital }
+  - { platform: etsy, id: "img8749016332", lang: he, variant: "PDF with audio", format: pdf }

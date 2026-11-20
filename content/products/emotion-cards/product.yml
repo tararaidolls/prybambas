@@ -1,0 +1,9 @@
+name: "Kids Emotion Cards"
+series: soft-skills
+type: cards
+status: available
+order: 4
+
+# Оголошення на платформах. Назва, ціна й статус підтягуються зі знімків content/shops/*.json
+listings:
+  - { platform: etsy, id: "img7891544055", lang: en, variant: "Montessori feelings flashcards", format: pdf }

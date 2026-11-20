@@ -26,6 +26,7 @@ const products = fs.readdirSync(dir, { withFileTypes: true })
   .sort((a, b) => String(a.series).localeCompare(String(b.series)) || (a.order ?? 99) - (b.order ?? 99));
 
 const issues = { critical: [], warn: [], info: [] };
+const noTexts = [];
 const money = (p, c) => p == null ? "?" : p === 0 ? "free" : `${c === "UAH" ? "" : c === "USD" ? "$" : ""}${p}${c === "UAH" ? " ₴" : c && !["USD", "UAH"].includes(c) ? " " + c : ""}`;
 const langList = (ls) => [...new Set(ls.map((l) => l.lang).filter(Boolean))].join(", ");
 
@@ -41,12 +42,20 @@ for (const p of products) {
   }
   if (p.status === "available" && !active.length) issues.warn.push(`**${p.slug}**: позначений «можна купити», але не має жодного активного оголошення`);
   if (p.status === "coming-soon" && active.length) issues.warn.push(`**${p.slug}**: позначений «скоро», хоча вже продається (${active.length} огол.) — зміни status на available`);
-  if (!p.texts.length) issues.info.push(`**${p.slug}**: немає описів, тому товар не показується на сайті (додай ${site.defaultLang}.md)`);
+  if (!p.texts.length) noTexts.push(p.slug);
   else if (p.texts.length < site.languages.length) issues.info.push(`**${p.slug}**: опис є лише мовами ${p.texts.join(", ")}`);
   // кілька однакових оголошень
   const keys = new Map();
   for (const l of p.listings) { const k = `${l.platform}|${l.id}`; if (keys.has(k)) issues.warn.push(`**${p.slug}**: ${l.platform} ${l.id} вказано двічі`); keys.set(k, 1); }
 }
+
+if (noTexts.length) issues.info.push(`Не показуються на сайті, бо немає описів (${noTexts.length}): ${noTexts.map((x) => `**${x}**`).join(", ")}. Щоб товар зʼявився, додай \`${site.defaultLang}.md\` у його папку.`);
+
+// ---- Etsy: у CSV немає номерів оголошень ----
+const etsySearch = products.flatMap((p) => p.listings.filter((l) => l.platform === "etsy" && l.urlKind === "search"));
+if (etsySearch.length) issues.info.push(`Etsy: ${etsySearch.length} оголошень без прямого посилання — у CSV-експорті Etsy немає номерів, тому кнопки на сайті ведуть на пошук у магазині. Щоб були прямі посилання, впиши \`url\` в product.yml або підключи Etsy API.`);
+for (const p of products) for (const l of p.listings.filter((l) => l.platform === "etsy" && /-\d+$/.test(l.id || "")))
+  issues.warn.push(`**${p.slug}** · Etsy «${l.title}»: те саме головне фото, що й в іншого оголошення — можливий дубль`);
 
 // ---- оголошення в магазинах, які не прив'язані до жодного товару ----
 const used = new Set(products.flatMap((p) => p.listings.map((l) => `${l.platform}|${l.id}`)));

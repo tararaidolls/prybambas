@@ -2,3 +2,14 @@ series: soft-skills
 type: poster
 status: coming-soon
 editions: []
+
+listings:
+  - { platform: etsy, id: "img8488132254", lang: en, variant: "Captain of My Ship · digital", format: pdf }
+  - { platform: etsy, id: "img8394300978", lang: en, variant: "Captain of My Ship · print", format: print }
+  - { platform: etsy, id: "img8535842105", lang: en, variant: "Conflict Resolution · digital", format: pdf }
+  - { platform: etsy, id: "img8388315154", lang: en, variant: "Conflict Resolution · print", format: print }
+  - { platform: etsy, id: "img8461822023", lang: en, variant: "Output Engine · print", format: print }
+  - { platform: etsy, id: "img8435235575", lang: en, variant: "Energy Tracker · print", format: print }
+  - { platform: etsy, id: "img8442077167", lang: en, variant: "The Idea Tree · print", format: print }
+  - { platform: etsy, id: "img8598884458", lang: en, variant: "Ninja Chore Chart · digital", format: pdf }
+  - { platform: etsy, id: "img8598860234", lang: en, variant: "Ninja Chore Chart · print", format: print }

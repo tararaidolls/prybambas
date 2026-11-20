@@ -15,3 +15,4 @@ listings:
   - { platform: tpt, id: "17257172", lang: en, variant: "GATE Level 2", format: digital }
   - { platform: tpt, id: "17257202", lang: en, variant: "GATE Level 3", format: digital }
   - { platform: prom, id: "3279614112", lang: uk, variant: "Робочий зошит A4" }
+  - { platform: etsy, id: "img8414002052", lang: en, variant: "PDF", format: pdf }

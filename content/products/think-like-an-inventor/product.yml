@@ -9,3 +9,7 @@ game: inventor
 listings:
   - { platform: kdp, id: B0GWRLCN2S, lang: en, variant: "Vol. 1 · 10 engineering challenges", format: paperback }
   - { platform: prom, id: "3279615358", lang: uk, variant: "Зошит A4" }
+  - { platform: etsy, id: "img8461957971", lang: en, variant: "STEM bundle · TRIZ", format: bundle }
+  - { platform: etsy, id: "img8413967230", lang: en, variant: "Think Like an Inventor", format: pdf }
+  - { platform: etsy, id: "img8461894531", lang: en, variant: "The Invention Machine", format: pdf }
+  - { platform: etsy, id: "img8414043434", lang: en, variant: "The Ultimate Inventor's Workbook", format: pdf }

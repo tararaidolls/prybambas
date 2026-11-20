@@ -2,4 +2,4 @@
 kdp:  https://www.amazon.com/stores/Maryna-Skliar/author/B0GVRB7TL5
 tpt:  https://www.teacherspayteachers.com/store/prybambas-creative-lab
 prom: https://prybambas.prom.ua/ua/
-etsy: https://www.etsy.com/shop/Prybambas   # Etsy блокує автоматичне читання → імпорт CSV
+etsy: https://www.etsy.com/shop/Prybambas   # Etsy блокує автоматичне читання → npm run shops -- --etsy-csv файл.csv

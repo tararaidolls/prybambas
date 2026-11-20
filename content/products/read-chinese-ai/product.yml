@@ -1,0 +1,9 @@
+name: "Read Chinese: AI & Tech"
+series: language-games
+type: workbook
+status: available
+order: 7
+
+# Оголошення на платформах. Назва, ціна й статус підтягуються зі знімків content/shops/*.json
+listings:
+  - { platform: etsy, id: "img8804817832", lang: zh, variant: "PDF", format: pdf }

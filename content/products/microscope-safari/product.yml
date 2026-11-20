@@ -9,3 +9,5 @@ listings:
   - { platform: kdp, id: B0HG65FZX2, lang: de, variant: "Mikroskop-Safari · Taschenbuch", format: paperback }
   - { platform: kdp, id: B0HN7PN4BP, lang: de, variant: "Mikroskop-Safari · Kindle", format: kindle }
   - { platform: prom, id: "3247989226", lang: uk, variant: "Зошит-воркбук" }
+  - { platform: etsy, id: "img8489202842", lang: en, variant: "PDF", format: pdf }
+  - { platform: etsy, id: "img8489237802", lang: de, variant: "Mikroskop-Safari · PDF", format: pdf }
