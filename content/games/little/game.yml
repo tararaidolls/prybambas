@@ -8,3 +8,6 @@ spot: "#FFC9B0"     # колір кружечка за іконкою
 tilt: -2                   # нахил скотчу, градуси
 tapeOpacity: 0.9
 icon: icon.svg             # чорнильна іконка 100×100
+localized: true
+langs: [en, uk, ro, pl, de, fr, es]   # мови, які підтримує розділ
+file: little/index.html

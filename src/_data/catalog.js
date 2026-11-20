@@ -60,9 +60,19 @@ const games = (() => {
     .filter((g) => !g.draft)
     .sort((a, b) => (a.order ?? 99) - (b.order ?? 99));
 })();
+// Мовні адреси ігор: /<мова>/<гра>/ — копія сторінки гри, що відкривається цією мовою
+const gameLangs = (g) => (g.localized ? (g.langs || GAME_LANGS) : []);
+const gameLangUrl = (g, lang) => `/${lang}/${g.slug}/`;
+const gameLangPages = games.flatMap((g) => gameLangs(g).map((lang) => ({
+  slug: g.slug, lang, file: g.file, base: g.url, url: gameLangUrl(g, lang),
+  title: (g.texts[lang] || g.texts.en || {}).title, desc: (g.texts[lang] || g.texts.en || {}).desc,
+  rtl: (site.gameLanguages || []).some((l) => l.code === lang && l.rtl),
+  alternates: [...gameLangs(g).map((l) => ({ lang: l, url: gameLangUrl(g, l) })), { lang: "x-default", url: g.url }],
+})));
+
 // Текст гри мовою, або англійською
 const gameText = (g, lang) => g.texts[lang] || g.texts[site.defaultLang] || Object.values(g.texts)[0] || { title: g.slug };
-const gameCards = (lang) => games.map((g) => ({ slug: g.slug, url: g.url, skill: g.skill, ages: g.ages, tape: g.tape, spot: g.spot, tilt: g.tilt, tapeOpacity: g.tapeOpacity, iconSvg: g.iconSvg, ...gameText(g, lang) }));
+const gameCards = (lang) => games.map((g) => ({ slug: g.slug, url: gameLangs(g).includes(lang) ? gameLangUrl(g, lang) : g.url, baseUrl: g.url, langs: gameLangs(g), skill: g.skill, ages: g.ages, tape: g.tape, spot: g.spot, tilt: g.tilt, tapeOpacity: g.tapeOpacity, iconSvg: g.iconSvg, ...gameText(g, lang) }));
 // slug гри → адреса (для кнопки «Спробуй онлайн» на сторінках товарів); site.games — додаткові адреси
 const gameUrls = { ...(site.games || {}), ...Object.fromEntries(games.map((g) => [g.slug, g.url])) };
 
@@ -137,6 +147,7 @@ export default {
   series,
   games,
   gameCards,
+  gameLangPages,
   // Дані для головної «/» (перемикання мови без перезавантаження): ігри 15 мовами, ідеї й товари мовами магазину
   homeTeasers: Object.fromEntries(LANGS.map((lang) => [lang, {
     posts: postsIn(lang).slice(0, 3).map((p) => { const c = postCard(p, lang); return { url: c.url, title: c.title, date: c.date }; }),
@@ -216,6 +227,7 @@ export default {
   allUrls: [
     ...LANGS.flatMap((l) => [`/${l}/`, `/${l}/shop/`, `/${l}/ideas/`]),
     ...LANGS.flatMap((l) => series.map((s) => `/${l}/shop/${s.slug}/`)),
+    ...gameLangPages.map((p) => p.url),
     ...LANGS.flatMap((l) => [...SKILLS.map((k) => `/${l}/skills/${k.key}/`), ...AGE_GROUPS.map((g) => `/${l}/ages/${g.key}/`)]),
     ...products.flatMap((p) => alternatesOf(p).map((a) => a.url)),
     ...posts.flatMap((p) => alternatesOf(p).map((a) => a.url)),

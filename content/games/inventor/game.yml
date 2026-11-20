@@ -8,3 +8,5 @@ spot: "var(--blue)"     # колір кружечка за іконкою
 tilt: 2                   # нахил скотчу, градуси
 tapeOpacity: 0.45
 icon: icon.svg             # чорнильна іконка 100×100
+localized: true
+file: inventor/index.html

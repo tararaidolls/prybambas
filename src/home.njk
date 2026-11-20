@@ -428,6 +428,7 @@ eleventyExcludeFromCollections: true
             g.forEach(x => {
                 const set = (id, v) => { const el = document.getElementById(id); if (el && v != null) el.innerText = v; };
                 set('lbl-' + x.slug, x.title); set('tag-' + x.slug, x.tag); set('desc-' + x.slug, x.desc);
+                const card = document.querySelector('.space-card[data-game="' + x.slug + '"]'); if (card && x.url) card.href = x.url;
             });
 
             // Герой і посилання

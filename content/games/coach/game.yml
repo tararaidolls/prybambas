@@ -8,3 +8,5 @@ spot: "var(--blue)"     # колір кружечка за іконкою
 tilt: 4                   # нахил скотчу, градуси
 tapeOpacity: 0.75
 icon: icon.svg             # чорнильна іконка 100×100
+localized: true
+file: coach/index.html

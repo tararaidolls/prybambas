@@ -8,3 +8,5 @@ spot: "var(--yellow)"     # колір кружечка за іконкою
 tilt: -3                   # нахил скотчу, градуси
 tapeOpacity: 0.75
 icon: icon.svg             # чорнильна іконка 100×100
+localized: true
+file: what-if/index.html   # сторінка гри (для мовних адрес /<мова>/what-if/)
