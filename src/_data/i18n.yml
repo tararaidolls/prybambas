@@ -2,6 +2,7 @@
 # Нова мова = новий блок з тими самими ключами.
 
 uk:
+  newsletter: { title: "Нова ідея щотижня", text: "Одне питання для розмови з дитиною й новинки магазину. Без спаму, відписка в один клік.", placeholder: "Твій email", button: "Підписатися", note: "Ми надсилаємо лише листи Prybambas." }
   filter: { type: "Тип", age: "Вік", lang: "Мова видання", all: "Усі", available: "Лише в продажу", reset: "Скинути", shown: "Показано: {n}", adults: "Для дорослих" }
   by_age: "За віком"
   by_skill: "За навичкою"
@@ -64,6 +65,7 @@ uk:
     merch: Мерч
 
 en:
+  newsletter: { title: "A new idea every week", text: "One question to talk about with your kid, plus new workbooks. No spam, unsubscribe in one click.", placeholder: "Your email", button: "Subscribe", note: "We only send Prybambas emails." }
   filter: { type: "Type", age: "Age", lang: "Edition language", all: "All", available: "Available only", reset: "Reset", shown: "Showing {n}", adults: "Adults" }
   by_age: "By age"
   by_skill: "By skill"
@@ -126,6 +128,7 @@ en:
     merch: Merch
 
 pl:
+  newsletter: { title: "Nowy pomysł co tydzień", text: "Jedno pytanie do rozmowy z dzieckiem i nowości w sklepie. Bez spamu, rezygnacja jednym kliknięciem.", placeholder: "Twój e-mail", button: "Zapisz się", note: "Wysyłamy tylko wiadomości Prybambas." }
   filter: { type: "Rodzaj", age: "Wiek", lang: "Język wydania", all: "Wszystkie", available: "Tylko dostępne", reset: "Wyczyść", shown: "Pokazano: {n}", adults: "Dla dorosłych" }
   by_age: "Według wieku"
   by_skill: "Według umiejętności"
@@ -188,6 +191,7 @@ pl:
     merch: Gadżety
 
 de:
+  newsletter: { title: "Jede Woche eine neue Idee", text: "Eine Frage zum Gespräch mit deinem Kind und neue Arbeitshefte. Kein Spam, Abmeldung mit einem Klick.", placeholder: "Deine E-Mail", button: "Abonnieren", note: "Wir senden nur E-Mails von Prybambas." }
   filter: { type: "Art", age: "Alter", lang: "Sprache der Ausgabe", all: "Alle", available: "Nur erhältlich", reset: "Zurücksetzen", shown: "Angezeigt: {n}", adults: "Erwachsene" }
   by_age: "Nach Alter"
   by_skill: "Nach Fähigkeit"
@@ -250,6 +254,7 @@ de:
     merch: Merch
 
 es:
+  newsletter: { title: "Una idea nueva cada semana", text: "Una pregunta para hablar con tu hijo y novedades de la tienda. Sin spam, te das de baja con un clic.", placeholder: "Tu correo", button: "Suscribirme", note: "Solo enviamos correos de Prybambas." }
   filter: { type: "Tipo", age: "Edad", lang: "Idioma de la edición", all: "Todos", available: "Solo disponibles", reset: "Restablecer", shown: "Mostrando {n}", adults: "Adultos" }
   by_age: "Por edad"
   by_skill: "Por habilidad"

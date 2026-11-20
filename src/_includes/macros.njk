@@ -48,3 +48,22 @@
   </div>
 </nav>
 {% endmacro %}
+
+{# Форма підписки: показується, лише якщо в site.yml заповнено newsletter.action #}
+{% macro newsletter(site, t, lang, where="") %}
+{% if site.newsletter and site.newsletter.action %}
+<section class="newsletter" aria-labelledby="nl-{{ where }}">
+  <div>
+    <h2 id="nl-{{ where }}">{{ t.newsletter.title }}</h2>
+    <p>{{ t.newsletter.gift or t.newsletter.text }}</p>
+  </div>
+  <form action="{{ site.newsletter.action }}" method="post" target="_blank" rel="noopener" data-umami-event="newsletter-{{ where }}">
+    <label class="visually-hidden" for="nl-email-{{ where }}">{{ t.newsletter.placeholder }}</label>
+    <input id="nl-email-{{ where }}" type="email" name="{{ site.newsletter.emailField or 'email' }}" placeholder="{{ t.newsletter.placeholder }}" required autocomplete="email">
+    <input type="hidden" name="tag" value="{{ lang }}">
+    <button class="btn" type="submit">{{ t.newsletter.button }}</button>
+    <small>{{ t.newsletter.note }}</small>
+  </form>
+</section>
+{% endif %}
+{% endmacro %}

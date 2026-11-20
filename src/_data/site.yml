@@ -54,3 +54,13 @@ ageGroups:
   - { key: "0-4",   min: 0,  max: 4 }
   - { key: "5-9",   min: 5,  max: 9 }
   - { key: "10-14", min: 10, max: 14 }
+
+# Email-підписка. Форма зʼявиться на сайті, щойно заповниш action.
+# action — адреса форми підписки з кабінету сервісу розсилок, напр.:
+#   Buttondown: https://buttondown.com/api/emails/embed-subscribe/<твій-нік>
+#   MailerLite: https://assets.mailerlite.com/jsonp/<акаунт>/forms/<форма>/subscribe   (emailField: fields[email])
+#   Kit:        https://app.kit.com/forms/<номер>/subscriptions                          (emailField: email_address)
+newsletter:
+  action: ""
+  emailField: email
+  # Необовʼязково: подарунок за підписку (напр. безкоштовний аркуш для друку) — текст у i18n.yml → newsletter.gift

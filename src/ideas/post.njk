@@ -29,7 +29,7 @@
   },
 }
 ---
-{%- from "macros.njk" import productCard -%}
+{%- from "macros.njk" import productCard, newsletter -%}
 {%- set t = i18n[I.lang] -%}
 <p class="crumbs"><a href="/{{ I.lang }}/ideas/">{{ t.ideas_title }}</a></p>
 <article class="post">
@@ -45,3 +45,5 @@
   <div class="p-grid p-grid-one">{{ productCard(I.product, t, I.lang) }}</div>
 </section>
 {% endif %}
+
+{{ newsletter(site, t, I.lang, "post") }}

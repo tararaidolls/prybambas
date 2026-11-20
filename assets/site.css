@@ -246,3 +246,12 @@ a:focus-visible, select:focus-visible, .btn:focus-visible { outline: 3px solid v
 .filters .btn { padding: 6px 14px; }
 .filters output { margin-inline-start: auto; font-weight: 700; font-size: 0.92rem; padding-bottom: 6px; }
 @media (max-width: 560px) { .filters label { flex: 1 1 40%; } .filters select { min-width: 0; width: 100%; } .filters output { margin-inline-start: 0; } }
+
+/* Підписка */
+.newsletter { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 16px 28px; align-items: center; background: var(--yellow-bg); border: 1.5px solid var(--ink); border-radius: 6px; padding: 20px; box-shadow: 4px 4px 0 var(--ink); }
+.newsletter h2 { font-size: 1.3rem; font-weight: 800; }
+.newsletter p { color: var(--ink-soft); }
+.newsletter form { display: flex; flex-wrap: wrap; gap: 10px; }
+.newsletter input[type=email] { flex: 1 1 14rem; min-width: 0; font: 0.95rem var(--f-main); padding: 10px 12px; border: 1.5px solid var(--ink); border-radius: 8px; background: var(--card); }
+.newsletter small { flex-basis: 100%; color: var(--ink-soft); font-size: 0.78rem; }
+@media (max-width: 700px) { .newsletter { grid-template-columns: 1fr; } }

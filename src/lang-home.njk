@@ -10,7 +10,7 @@
   },
 }
 ---
-{%- from "macros.njk" import productCard, postCard, browseChips -%}
+{%- from "macros.njk" import productCard, postCard, browseChips, newsletter -%}
 {%- from "games.njk" import gameGrid -%}
 {%- set t = i18n[L.lang] -%}
 <section class="hero">
@@ -40,3 +40,5 @@
   <div class="block-head"><h2>{{ t.featured }}</h2><a href="/{{ L.lang }}/shop/">{{ t.all_products }} →</a></div>
   <div class="p-grid">{% for p in (L.featured if L.featured.length else L.products) | batch(6) | first %}{{ productCard(p, t, L.lang) }}{% endfor %}</div>
 </section>
+
+{{ newsletter(site, t, L.lang, "lang-home") }}
