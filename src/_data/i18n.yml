@@ -2,6 +2,7 @@
 # Нова мова = новий блок з тими самими ключами.
 
 uk:
+  filter: { type: "Тип", age: "Вік", lang: "Мова видання", all: "Усі", available: "Лише в продажу", reset: "Скинути", shown: "Показано: {n}", adults: "Для дорослих" }
   by_age: "За віком"
   by_skill: "За навичкою"
   games_here: "Ігри онлайн"
@@ -63,6 +64,7 @@ uk:
     merch: Мерч
 
 en:
+  filter: { type: "Type", age: "Age", lang: "Edition language", all: "All", available: "Available only", reset: "Reset", shown: "Showing {n}", adults: "Adults" }
   by_age: "By age"
   by_skill: "By skill"
   games_here: "Games to play online"
@@ -124,6 +126,7 @@ en:
     merch: Merch
 
 pl:
+  filter: { type: "Rodzaj", age: "Wiek", lang: "Język wydania", all: "Wszystkie", available: "Tylko dostępne", reset: "Wyczyść", shown: "Pokazano: {n}", adults: "Dla dorosłych" }
   by_age: "Według wieku"
   by_skill: "Według umiejętności"
   games_here: "Gry online"
@@ -185,6 +188,7 @@ pl:
     merch: Gadżety
 
 de:
+  filter: { type: "Art", age: "Alter", lang: "Sprache der Ausgabe", all: "Alle", available: "Nur erhältlich", reset: "Zurücksetzen", shown: "Angezeigt: {n}", adults: "Erwachsene" }
   by_age: "Nach Alter"
   by_skill: "Nach Fähigkeit"
   games_here: "Online-Spiele"
@@ -246,6 +250,7 @@ de:
     merch: Merch
 
 es:
+  filter: { type: "Tipo", age: "Edad", lang: "Idioma de la edición", all: "Todos", available: "Solo disponibles", reset: "Restablecer", shown: "Mostrando {n}", adults: "Adultos" }
   by_age: "Por edad"
   by_skill: "Por habilidad"
   games_here: "Juegos en línea"

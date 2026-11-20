@@ -13,7 +13,7 @@
 {% endmacro %}
 
 {% macro productCard(p, t, lang) %}
-<a class="p-card" href="{{ p.url }}">
+<a class="p-card" href="{{ p.url }}" data-type="{{ p.type }}" data-status="{{ p.status }}" data-langs="{{ p.editionLangs | join(',') }}" data-age="{{ p.ageRange | join('-') if p.ageRange else 'adult' }}">
   {{ cover(p, t) }}
   <span class="p-meta">
     {%- if p.type %}<span>{{ t.types[p.type] or p.type }}</span>{% endif -%}

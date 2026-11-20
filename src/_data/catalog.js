@@ -100,6 +100,7 @@ const alternatesOf = (item) => LANGS.filter((l) => item.texts[l]).map((l) => ({ 
 const productCard = (p, lang) => ({
   slug: p.slug, url: p.url(lang), cover: p.cover, color: p.color || seriesBySlug[p.series].color,
   type: p.type, status: p.status, ages: p.ages, series: p.series, skills: skillsOf(p),
+  ageRange: rangeOf(p),
   seriesTitle: seriesText(seriesBySlug[p.series], lang).title,
   title: p.texts[lang].title, tagline: p.texts[lang].tagline,
   editionLangs: [...new Set(p.editions.map((e) => e.lang).filter(Boolean))],
