@@ -67,10 +67,11 @@ for (const p of products) for (const l of p.listings) { const k = `${l.platform}
 for (const [k, o] of owners) if (new Set(o).size > 1) issues.critical.push(`${k.replace("|", " ")} прив'язане до кількох товарів: ${[...new Set(o)].join(", ")}`);
 
 // ---- звіт ----
-const today = new Date().toISOString().slice(0, 10);
+// Дата звіту = дата найсвіжішого знімка (щоб звіт не змінювався щодня без потреби)
+const today = Object.values(shops).map((s) => s.updated).sort().pop() || new Date().toISOString().slice(0, 10);
 const L = [];
 L.push(`# Каталог Prybambas`, ``);
-L.push(`Згенеровано ${today} командою \`npm run catalog\`. Не редагуй вручну: зміни вносяться в \`content/products/*/product.yml\`, а дані магазинів оновлює \`npm run shops\`.`, ``);
+L.push(`Дані магазинів станом на ${today}. Згенеровано командою \`npm run catalog\`. Не редагуй вручну: зміни вносяться в \`content/products/*/product.yml\`, а дані магазинів оновлює \`npm run shops\`.`, ``);
 L.push(`## Магазини`, ``, `| Платформа | Оголошень | Знімок | Джерело |`, `|---|---:|---|---|`);
 for (const c of COLS) {
   const s = shops[c];

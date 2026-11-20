@@ -19,11 +19,24 @@ const fromDir = flag("--from");
 const only = args.filter((a) => !a.startsWith("-"));
 
 const today = new Date().toISOString().slice(0, 10);
+// Коротко: що змінилося між знімками
+const summarize = (a, b) => {
+  const A = new Map(a.map((i) => [i.id, i])), B = new Map(b.map((i) => [i.id, i]));
+  const added = [...B.keys()].filter((k) => !A.has(k)).length;
+  const removed = [...A.keys()].filter((k) => !B.has(k)).length;
+  const price = [...B.keys()].filter((k) => A.has(k) && A.get(k).price !== B.get(k).price).length;
+  const other = [...B.keys()].filter((k) => A.has(k) && A.get(k).price === B.get(k).price && JSON.stringify(A.get(k)) !== JSON.stringify(B.get(k))).length;
+  return [added && `+${added} нових`, removed && `−${removed} зникло`, price && `${price} змін ціни`, other && `${other} інших змін`].filter(Boolean).join(", ") || "без змін";
+};
 const save = (platform, items, source) => {
   items.sort((a, b) => String(a.title).localeCompare(String(b.title)));
   const file = path.join("content/shops", `${platform}.json`);
+  // Перезаписуємо лише коли змінилися самі оголошення, щоб не було щоденних «порожніх» змін
+  const old = fs.existsSync(file) ? JSON.parse(fs.readFileSync(file, "utf8")) : null;
+  if (old && JSON.stringify(old.items) === JSON.stringify(items)) { console.log(`= ${platform}: ${items.length} оголошень, без змін`); return; }
   fs.writeFileSync(file, JSON.stringify({ platform, source, updated: today, count: items.length, items }, null, 2) + "\n");
-  console.log(`✓ ${platform}: ${items.length} оголошень → ${file}`);
+  const diff = old ? summarize(old.items, items) : "новий знімок";
+  console.log(`✓ ${platform}: ${items.length} оголошень → ${file} (${diff})`);
 };
 
 const readers = {

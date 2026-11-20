@@ -1,6 +1,6 @@
 # Каталог Prybambas
 
-Згенеровано 2026-11-20 командою `npm run catalog`. Не редагуй вручну: зміни вносяться в `content/products/*/product.yml`, а дані магазинів оновлює `npm run shops`.
+Дані магазинів станом на 2026-11-20. Згенеровано командою `npm run catalog`. Не редагуй вручну: зміни вносяться в `content/products/*/product.yml`, а дані магазинів оновлює `npm run shops`.
 
 ## Магазини
 
@@ -33,7 +33,7 @@
 | Read Chinese: AI & Tech | language-games | — | — | 1 (zh) | — | — | — |
 | German Verbs Visual Flashcards | language-games | — | — | 1 (de) | — | — | — |
 | The Oracle Game (ESL) | language-games | — | — | 1 (en) | — | — | — |
-| 100 First Foods & Allergen Tracker · _скоро_ | little-ones | — | — | 3 (en) | — | — | ✓ |
+| 100 First Foods & Allergen Tracker | little-ones | — | — | 3 (en) | — | — | ✓ |
 | Baby Milestone Tracker & Checklists | little-ones | — | — | 2 (en) | — | — | — |
 | Twin Parent Kit | little-ones | — | — | 3 (en) | — | — | — |
 | Parent Merch | merch | — | — | 4 (en) | — | — | — |
@@ -42,7 +42,7 @@
 | Stand-Up Comedy & Public Speaking | soft-skills | 1 (en) | 6 (en) | — | — | — | — |
 | Dental Waiting Room Game Poster | soft-skills | — | — | 1 (en) | — | — | — |
 | Kids Emotion Cards | soft-skills | — | — | 1 (en) | — | — | — |
-| Soft Skills Posters · _скоро_ | soft-skills | — | — | 9 (en) | — | — | ✓ |
+| Soft Skills Posters | soft-skills | — | — | 9 (en) | — | — | ✓ |
 | What If? Book | thinking | 2 (en) | — | — | — | — | ✓ |
 | Think Like an Inventor | thinking | 1 (en) | — | 4 (en) | 1 (uk) | — | ✓ |
 | Mission Possible · Gifted STEM Challenges | thinking | 2 (en) | 4 (en) | 1 (en) | 1 (uk) | — | — |
@@ -51,10 +51,8 @@
 
 ## Потребує уваги
 
-### Варто виправити (3)
+### Варто виправити (1)
 
-- **first-foods-journal**: позначений «скоро», хоча вже продається (3 огол.) — зміни status на available
-- **soft-skills-posters**: позначений «скоро», хоча вже продається (9 огол.) — зміни status на available
 - **dictation-workbook** · Etsy «German Dictation Exercises A1 Workbook, Beginner Language Learning (PDF)»: те саме головне фото, що й в іншого оголошення — можливий дубль
 
 ### До відома (8)
@@ -233,7 +231,7 @@
 
 ### 100 First Foods & Allergen Tracker
 
-`content/products/first-foods-journal/` · серія little-ones · coming-soon
+`content/products/first-foods-journal/` · серія little-ones · available
 
 | Платформа | Мова | Варіант | Формат | Ціна | Статус | Назва на платформі |
 |---|---|---|---|---:|---|---|
@@ -313,7 +311,7 @@
 
 ### Soft Skills Posters
 
-`content/products/soft-skills-posters/` · серія soft-skills · coming-soon
+`content/products/soft-skills-posters/` · серія soft-skills · available
 
 | Платформа | Мова | Варіант | Формат | Ціна | Статус | Назва на платформі |
 |---|---|---|---|---:|---|---|
