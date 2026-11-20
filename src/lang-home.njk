@@ -9,7 +9,7 @@
   },
 }
 ---
-{%- from "macros.njk" import productCard, postCard -%}
+{%- from "macros.njk" import productCard, postCard, browseChips -%}
 {%- from "games.njk" import gameGrid -%}
 {%- set t = i18n[L.lang] -%}
 <section class="hero">
@@ -20,6 +20,8 @@
     <a class="btn btn-ghost" href="/{{ L.lang }}/shop/">{{ t.nav_shop }}</a>
   </div>
 </section>
+
+{{ browseChips(catalog, t, L.lang) }}
 
 <section class="block">
   <div class="block-head"><h2>{{ t.nav_games }}</h2></div>

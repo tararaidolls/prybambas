@@ -61,6 +61,16 @@ content/
 Картка сама зʼявиться на головній `/` і на `/uk/`, `/en/`…, а товари з `game: word-detective`
 отримають кнопку «Спробуй онлайн».
 
+## Вік і навички
+
+Сайт сам збирає добірки `/<мова>/ages/<група>/` (0–4, 5–9, 10–14) і `/<мова>/skills/<навичка>/`
+(curiosity, observation, critical-thinking, languages, soft-skills, parents) з ігор, ідей і товарів.
+
+- У `series.yml` задані `skills` і `ages` за замовчуванням для всієї серії.
+- Товар, ідея чи гра можуть уточнити: `skills: [languages]`, `ages: "6-12"`, `ages: "10+"`
+  або `ages: adult` (для дорослих — не потрапляє в дитячі добірки).
+- Список навичок і вікових груп — у `src/_data/site.yml`, назви — в `src/_data/i18n.yml` (`skills`).
+
 ## Додати серію
 
 Папка в `content/series/` з `series.yml` (`order`, `color`: pink / blue / yellow / ink)

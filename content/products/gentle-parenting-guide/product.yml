@@ -7,3 +7,4 @@ order: 2
 # Оголошення на платформах. Назва, ціна й статус підтягуються зі знімків content/shops/*.json
 listings:
   - { platform: etsy, id: "img7840733422", lang: en, variant: "4 pillars cheat sheet", format: pdf }
+ages: "0-12"

@@ -1,3 +1,5 @@
 # Порядок у магазині і колір обкладинок серії (pink, blue, yellow, ink)
 order: 1
 color: pink
+skills: [critical-thinking, curiosity]   # навички за замовчуванням для товарів серії
+ages: "5-14"   # вік за замовчуванням ("5-9", "10+", adult)

@@ -10,3 +10,4 @@ listings:
   - { platform: etsy, id: "img8656674034", lang: en, variant: "«Tired but Still Inspired» sweatshirt", format: print }
   - { platform: etsy, id: "img8656648152", lang: en, variant: "«Tired but Inspired» mug", format: print }
   - { platform: etsy, id: "img8704539599", lang: en, variant: "«Powered by Love» T-shirt", format: print }
+ages: adult

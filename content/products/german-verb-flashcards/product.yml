@@ -7,3 +7,4 @@ order: 8
 # Оголошення на платформах. Назва, ціна й статус підтягуються зі знімків content/shops/*.json
 listings:
   - { platform: etsy, id: "img8629237548", lang: de, variant: "Separable prefixes", format: pdf }
+ages: "10+"

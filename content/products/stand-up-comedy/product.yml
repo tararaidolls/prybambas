@@ -14,3 +14,4 @@ listings:
   - { platform: tpt, id: "17252822", lang: en, variant: "Week 3 · Finding Your Voice", format: digital }
   - { platform: tpt, id: "17252877", lang: en, variant: "Week 4 · Stage Confidence", format: digital }
   - { platform: tpt, id: "17250965", lang: en, variant: "Free sample lesson", format: digital }
+skills: [soft-skills]

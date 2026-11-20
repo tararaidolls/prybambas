@@ -32,3 +32,19 @@
   {% if p.summary %}<span class="i-sum">{{ p.summary }}</span>{% endif %}
 </a>
 {% endmacro %}
+
+{# Навігація «За віком / За навичкою»; current = "skill:curiosity" або "age:5-9" #}
+{% macro browseChips(catalog, t, lang, current="") %}
+<nav class="browse" aria-label="{{ t.by_age }} / {{ t.by_skill }}">
+  <div class="browse-row"><span class="browse-label">{{ t.by_age }}</span>
+    {%- for g in catalog.ageGroups %}
+    <a class="chip{% if current == 'age:' + g.key %} is-current{% endif %}" href="/{{ lang }}/ages/{{ g.key }}/">{{ t.ages | fmt({ages: g.key | replace("-", "–")}) }}</a>
+    {%- endfor %}
+  </div>
+  <div class="browse-row"><span class="browse-label">{{ t.by_skill }}</span>
+    {%- for k in catalog.skills %}
+    <a class="chip chip-{{ k.color }}{% if current == 'skill:' + k.key %} is-current{% endif %}" href="/{{ lang }}/skills/{{ k.key }}/">{{ t.skills[k.key].name }}</a>
+    {%- endfor %}
+  </div>
+</nav>
+{% endmacro %}

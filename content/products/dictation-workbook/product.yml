@@ -26,3 +26,4 @@ listings:
   - { platform: etsy, id: "img7842679088", lang: uk, variant: "Ukrainian A2", format: pdf }
   - { platform: etsy, id: "img7890614685", lang: ro, variant: "Romanian A1", format: pdf }
   - { platform: etsy, id: "img7880213971", lang: ro, variant: "Romanian listening", format: pdf }
+ages: "10+"

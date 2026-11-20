@@ -1,7 +1,7 @@
 # Гра або інструмент на сайті. Картка зʼявляється на головній автоматично.
 url: /what-if/            # адреса гри на сайті
 order: 1                  # порядок на головній
-skill: curiosity      # curiosity | critical-thinking | observation | languages | soft-skills | parents
+skills: [curiosity, critical-thinking]   # curiosity | observation | critical-thinking | languages | soft-skills | parents
 ages: "5-14"
 tape: "var(--yellow)"     # колір «скотчу» на картці
 spot: "var(--yellow)"     # колір кружечка за іконкою

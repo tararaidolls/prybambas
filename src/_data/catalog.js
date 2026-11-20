@@ -99,7 +99,7 @@ const alternatesOf = (item) => LANGS.filter((l) => item.texts[l]).map((l) => ({ 
 // Короткі картки для списків
 const productCard = (p, lang) => ({
   slug: p.slug, url: p.url(lang), cover: p.cover, color: p.color || seriesBySlug[p.series].color,
-  type: p.type, status: p.status, ages: p.ages, series: p.series,
+  type: p.type, status: p.status, ages: p.ages, series: p.series, skills: skillsOf(p),
   seriesTitle: seriesText(seriesBySlug[p.series], lang).title,
   title: p.texts[lang].title, tagline: p.texts[lang].tagline,
   editionLangs: [...new Set(p.editions.map((e) => e.lang).filter(Boolean))],
@@ -111,6 +111,25 @@ const postCard = (p, lang) => ({
 
 const productsIn = (lang) => products.filter((p) => p.texts[lang]);
 const postsIn = (lang) => posts.filter((p) => p.texts[lang]);
+
+// ---------- Вік і навички ----------
+// "6-12" → [6,12]; "10+" → [10,99]; "6-12 months" → [0,1]; adult → null (не потрапляє в дитячі добірки)
+const ageRange = (a) => {
+  if (a == null || a === "") return null;
+  const str = String(a).trim().toLowerCase();
+  if (str === "adult") return null;
+  const m = str.match(/^(\d+)\s*(?:-|–)\s*(\d+)\s*(months?)?/);
+  if (m) return m[3] ? [0, Math.ceil(+m[2] / 12)] : [+m[1], +m[2]];
+  const plus = str.match(/^(\d+)\s*\+/);
+  if (plus) return [+plus[1], 99];
+  return null;
+};
+const inGroup = (range, g) => range && range[0] <= g.max && range[1] >= g.min;
+const seriesOf = (slug) => seriesBySlug[slug] || {};
+const skillsOf = (item) => item.skills || seriesOf(item.series).skills || [];
+const rangeOf = (item) => ageRange(item.ages ?? seriesOf(item.series).ages);
+const SKILLS = site.skills || [];
+const AGE_GROUPS = site.ageGroups || [];
 
 export default {
   languages: LANGS,
@@ -159,6 +178,7 @@ export default {
     color: p.color || seriesBySlug[p.series].color,
     editionLangs: [...new Set(p.editions.map((e) => e.lang).filter(Boolean))],
     gameUrl: p.game ? gameUrls[p.game] : null,
+    skills: skillsOf(p).filter((k) => (site.skills || []).some((x) => x.key === k)),
     more: productsIn(lang).filter((o) => o.series === p.series && o.slug !== p.slug).slice(0, 3).map((o) => productCard(o, lang)),
     ideas: postsIn(lang).filter((o) => o.product === p.slug || o.series === p.series).slice(0, 3).map((o) => postCard(o, lang)),
     alternates: alternatesOf(p),
@@ -175,10 +195,27 @@ export default {
     };
   })),
 
+  skills: SKILLS,
+  ageGroups: AGE_GROUPS,
+
+  // /{lang}/skills/{skill}/ і /{lang}/ages/{group}/ — ігри, ідеї й товари за навичкою чи віком
+  collectionPages: LANGS.flatMap((lang) => [
+    ...SKILLS.map((sk) => ({ kind: "skill", key: sk.key, color: sk.color, match: (x) => skillsOf(x).includes(sk.key) })),
+    ...AGE_GROUPS.map((g) => ({ kind: "age", key: g.key, color: "yellow", match: (x) => inGroup(rangeOf(x), g) })),
+  ].map((c) => ({
+    lang, kind: c.kind, key: c.key, color: c.color,
+    url: `/${lang}/${c.kind === "skill" ? "skills" : "ages"}/${c.key}/`,
+    games: gameCards(lang).filter((g) => c.match(games.find((x) => x.slug === g.slug))),
+    products: productsIn(lang).filter(c.match).map((p) => productCard(p, lang)),
+    posts: postsIn(lang).filter(c.match).map((p) => postCard(p, lang)),
+    alternates: LANGS.map((l) => ({ lang: l, url: `/${l}/${c.kind === "skill" ? "skills" : "ages"}/${c.key}/` })),
+  }))),
+
   // Усі адреси для sitemap.xml
   allUrls: [
     ...LANGS.flatMap((l) => [`/${l}/`, `/${l}/shop/`, `/${l}/ideas/`]),
     ...LANGS.flatMap((l) => series.map((s) => `/${l}/shop/${s.slug}/`)),
+    ...LANGS.flatMap((l) => [...SKILLS.map((k) => `/${l}/skills/${k.key}/`), ...AGE_GROUPS.map((g) => `/${l}/ages/${g.key}/`)]),
     ...products.flatMap((p) => alternatesOf(p).map((a) => a.url)),
     ...posts.flatMap((p) => alternatesOf(p).map((a) => a.url)),
   ],

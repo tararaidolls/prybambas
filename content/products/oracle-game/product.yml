@@ -8,3 +8,4 @@ order: 9
 # Оголошення на платформах. Назва, ціна й статус підтягуються зі знімків content/shops/*.json
 listings:
   - { platform: etsy, id: "img8574378184", lang: en, variant: "Halloween edition", format: pdf }
+ages: "6-12"

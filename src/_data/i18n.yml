@@ -2,6 +2,19 @@
 # Нова мова = новий блок з тими самими ключами.
 
 uk:
+  by_age: "За віком"
+  by_skill: "За навичкою"
+  games_here: "Ігри онлайн"
+  ideas_here: "Ідеї"
+  shop_here: "Зошити й матеріали"
+  age_intro: "Ігри, ідеї й зошити, які підходять дітям {ages} років."
+  skills:
+    curiosity: { name: "Допитливість", desc: "Питати «а що, якщо?» і шукати наслідки." }
+    observation: { name: "Спостережливість", desc: "Помічати деталі навколо: вдома, надворі, у книжці." }
+    critical-thinking: { name: "Критичне мислення", desc: "Шукати протиріччя, перевіряти відповіді, винаходити." }
+    languages: { name: "Мови", desc: "Щоденна практика дієслів, слухання й читання." }
+    soft-skills: { name: "Soft skills", desc: "Емоції, спілкування, звички й робота в команді." }
+    parents: { name: "Для батьків", desc: "Трекери, чеклісти й гайди для сімейних буднів." }
   nav_games: Ігри
   nav_ideas: Ідеї
   nav_shop: Магазин
@@ -50,6 +63,19 @@ uk:
     merch: Мерч
 
 en:
+  by_age: "By age"
+  by_skill: "By skill"
+  games_here: "Games to play online"
+  ideas_here: "Ideas"
+  shop_here: "Workbooks & printables"
+  age_intro: "Games, ideas and workbooks that suit kids aged {ages}."
+  skills:
+    curiosity: { name: "Curiosity", desc: "Ask \"what if?\" and follow the consequences." }
+    observation: { name: "Observation", desc: "Notice the details around you: at home, outdoors, in a book." }
+    critical-thinking: { name: "Critical thinking", desc: "Spot contradictions, check answers, invent." }
+    languages: { name: "Languages", desc: "Daily practice with verbs, listening and reading." }
+    soft-skills: { name: "Soft skills", desc: "Feelings, communication, habits and teamwork." }
+    parents: { name: "For parents", desc: "Trackers, checklists and guides for family life." }
   nav_games: Games
   nav_ideas: Ideas
   nav_shop: Shop
@@ -98,6 +124,19 @@ en:
     merch: Merch
 
 pl:
+  by_age: "Według wieku"
+  by_skill: "Według umiejętności"
+  games_here: "Gry online"
+  ideas_here: "Pomysły"
+  shop_here: "Zeszyty i materiały"
+  age_intro: "Gry, pomysły i zeszyty dla dzieci w wieku {ages} lat."
+  skills:
+    curiosity: { name: "Ciekawość", desc: "Pytaj „co by było, gdyby?” i szukaj skutków." }
+    observation: { name: "Spostrzegawczość", desc: "Zauważaj szczegóły: w domu, na dworze, w książce." }
+    critical-thinking: { name: "Krytyczne myślenie", desc: "Szukaj sprzeczności, sprawdzaj odpowiedzi, wynajduj." }
+    languages: { name: "Języki", desc: "Codzienna praktyka czasowników, słuchania i czytania." }
+    soft-skills: { name: "Kompetencje miękkie", desc: "Emocje, komunikacja, nawyki i praca w zespole." }
+    parents: { name: "Dla rodziców", desc: "Trackery, listy i poradniki na rodzinną codzienność." }
   nav_games: Gry
   nav_ideas: Pomysły
   nav_shop: Sklep
@@ -146,6 +185,19 @@ pl:
     merch: Gadżety
 
 de:
+  by_age: "Nach Alter"
+  by_skill: "Nach Fähigkeit"
+  games_here: "Online-Spiele"
+  ideas_here: "Ideen"
+  shop_here: "Arbeitshefte & Druckvorlagen"
+  age_intro: "Spiele, Ideen und Arbeitshefte für Kinder von {ages} Jahren."
+  skills:
+    curiosity: { name: "Neugier", desc: "„Was wäre, wenn?“ fragen und den Folgen nachgehen." }
+    observation: { name: "Beobachten", desc: "Details bemerken: zu Hause, draußen, im Buch." }
+    critical-thinking: { name: "Kritisches Denken", desc: "Widersprüche finden, Antworten prüfen, erfinden." }
+    languages: { name: "Sprachen", desc: "Tägliches Üben von Verben, Hören und Lesen." }
+    soft-skills: { name: "Soft Skills", desc: "Gefühle, Kommunikation, Gewohnheiten und Teamarbeit." }
+    parents: { name: "Für Eltern", desc: "Tracker, Checklisten und Leitfäden für den Familienalltag." }
   nav_games: Spiele
   nav_ideas: Ideen
   nav_shop: Shop
@@ -194,6 +246,19 @@ de:
     merch: Merch
 
 es:
+  by_age: "Por edad"
+  by_skill: "Por habilidad"
+  games_here: "Juegos en línea"
+  ideas_here: "Ideas"
+  shop_here: "Cuadernos e imprimibles"
+  age_intro: "Juegos, ideas y cuadernos para niños de {ages} años."
+  skills:
+    curiosity: { name: "Curiosidad", desc: "Preguntar «¿y si…?» y seguir las consecuencias." }
+    observation: { name: "Observación", desc: "Fijarse en los detalles: en casa, al aire libre, en un libro." }
+    critical-thinking: { name: "Pensamiento crítico", desc: "Detectar contradicciones, comprobar respuestas, inventar." }
+    languages: { name: "Idiomas", desc: "Práctica diaria de verbos, escucha y lectura." }
+    soft-skills: { name: "Habilidades blandas", desc: "Emociones, comunicación, hábitos y trabajo en equipo." }
+    parents: { name: "Para padres", desc: "Registros, listas y guías para el día a día en familia." }
   nav_games: Juegos
   nav_ideas: Ideas
   nav_shop: Tienda

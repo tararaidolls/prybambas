@@ -67,6 +67,8 @@
     </div>
     {% endif %}
 
+    {% if P.skills.length %}<p class="browse-row">{% for k in P.skills %}<a class="chip" href="/{{ P.lang }}/skills/{{ k }}/">{{ t.skills[k].name }}</a>{% endfor %}</p>{% endif %}
+
     {% if P.gameUrl %}<a class="game-link" href="{{ P.gameUrl }}">▶ {{ t.try_game }}</a>{% endif %}
 
     {% if P.t.html %}<div class="prose">{{ P.t.html | safe }}</div>{% endif %}

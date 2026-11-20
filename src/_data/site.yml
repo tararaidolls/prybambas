@@ -41,3 +41,16 @@ stores:
 # Тут — лише додаткові адреси для поля game у product.yml, яких немає серед ігор.
 games:
   first-foods: /little/first-foods/
+
+# Навички й вікові групи — для сторінок-добірок /<мова>/skills/<навичка>/ і /<мова>/ages/<група>/
+skills:
+  - { key: curiosity,         color: yellow }
+  - { key: observation,       color: pink }
+  - { key: critical-thinking, color: blue }
+  - { key: languages,         color: blue }
+  - { key: soft-skills,       color: yellow }
+  - { key: parents,           color: ink }
+ageGroups:
+  - { key: "0-4",   min: 0,  max: 4 }
+  - { key: "5-9",   min: 5,  max: 9 }
+  - { key: "10-14", min: 10, max: 14 }

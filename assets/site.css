@@ -222,3 +222,17 @@ a:focus-visible, select:focus-visible, .btn:focus-visible { outline: 3px solid v
 .card-title { font-size: 1.15rem; font-weight: 800; line-height: 1.2; }
 .card-desc { font-size: 0.92rem; color: var(--ink-soft); }
 @media (max-width: 560px) { .grid-container { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px 14px; } .space-card { padding: 18px 12px 14px; } .card-desc { display: none; } }
+
+/* Навігація за віком і навичкою */
+.eyebrow { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--blue); }
+.browse { display: grid; gap: 10px; }
+.browse-row { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.browse-label { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-soft); min-width: 9ch; }
+.chip {
+    display: inline-block; padding: 6px 12px; border-radius: 999px; border: 1.5px solid var(--ink);
+    background: var(--card); color: var(--ink); text-decoration: none; font-weight: 600; font-size: 0.88rem;
+    transition: transform .15s, box-shadow .15s;
+}
+.chip:hover { transform: translate(-1px, -1px); box-shadow: 2px 2px 0 var(--ink); }
+.chip-yellow { background: var(--yellow-bg); } .chip-pink { background: var(--pink-bg); } .chip-blue { background: var(--blue-bg); } .chip-ink { background: #ECEDF3; }
+.chip.is-current { background: var(--ink); color: #fff; }
