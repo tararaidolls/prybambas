@@ -2,6 +2,7 @@ name: "Stand-Up Comedy & Public Speaking"         # назва в каталоз
 series: soft-skills
 type: workbook
 status: available
+ages: "11-18"
 order: 1
 
 # Оголошення на платформах. Назва, ціна й статус підтягуються зі знімків content/shops/*.json

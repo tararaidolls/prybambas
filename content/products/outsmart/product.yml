@@ -2,6 +2,7 @@ name: "Перехитри! (Outsmart)"         # назва в каталозі 
 series: thinking
 type: game
 status: available
+ages: "11-14"
 order: 4
 
 # Оголошення на платформах. Назва, ціна й статус підтягуються зі знімків content/shops/*.json

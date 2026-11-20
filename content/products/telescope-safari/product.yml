@@ -2,6 +2,7 @@ name: "Telescope Safari"         # назва в каталозі (на сайт
 series: explorers
 type: journal
 status: available
+ages: "6-12"
 order: 2
 
 # Оголошення на платформах. Назва, ціна й статус підтягуються зі знімків content/shops/*.json

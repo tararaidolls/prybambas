@@ -45,7 +45,7 @@ const seriesBySlug = Object.fromEntries(series.map((s) => [s.slug, s]));
 
 const shops = loadShops();
 const products = readEntries("products", "product.yml")
-  .filter((p) => !p.draft)
+  .filter((p) => !p.draft && p.site !== false)   // site: false — є в каталозі, але не на сайті
   .map((p) => ({
     ...p,
     status: p.status || "available",

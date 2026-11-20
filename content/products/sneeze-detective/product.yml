@@ -2,6 +2,7 @@ name: "Sneeze Detective"
 series: family-tools
 type: journal
 status: available
+ages: "4-12"
 order: 1
 
 # Оголошення на платформах. Назва, ціна й статус підтягуються зі знімків content/shops/*.json

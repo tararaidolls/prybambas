@@ -20,34 +20,34 @@
 
 | Товар | Серія | Amazon | TpT | Etsy | Prom.ua | Gumroad | сайт |
 |---|---|:---:|:---:|:---:|:---:|:---:|:---:|
-| Telescope Safari | explorers | 2 (en) | — | — | — | — | — |
+| Telescope Safari | explorers | 2 (en) | — | — | — | — | ✓ |
 | Microscope Safari | explorers | 4 (en, de) | — | 2 (en, de) | 1 (uk) | — | ✓ |
-| Sneeze Detective | family-tools | — | — | 1 (en) | — | — | — |
-| Gentle Parenting Quick Guide | family-tools | — | — | 1 (en) | — | — | — |
+| Sneeze Detective | family-tools | — | — | 1 (en) | — | — | ✓ |
+| Gentle Parenting Quick Guide | family-tools | — | — | 1 (en) | — | — | ✓ |
 | One Verb a Day | language-games | 6 (en, fr, de, he, ro, es) | 33 (es, fr, he) | 1 (de) | 6 (en, fr, de, he, ro, es) | — | ✓ |
 | Verb Oracle · _скоро_ | language-games | — | — | — | — | — | ✓ |
 | Magic This · _скоро_ | language-games | — | — | — | — | — | ✓ |
-| Dictation Workbooks (Listen and Write) | language-games | 2 (fr, pt) | — | 17 (de, it, fr, pt, pl, es, uk, ro) | — | — | — |
-| Read Hebrew by Roots | language-games | — | 1 (he) | 1 (he) | — | — | — |
-| One Verb a Day for Seniors | language-games | — | — | 3 (en, es) | — | — | — |
-| Read Chinese: AI & Tech | language-games | — | — | 1 (zh) | — | — | — |
-| German Verbs Visual Flashcards | language-games | — | — | 1 (de) | — | — | — |
-| The Oracle Game (ESL) | language-games | — | — | 1 (en) | — | — | — |
+| Listen & Write Dictation Workbooks | language-games | 2 (fr, pt) | — | 17 (de, it, fr, pt, pl, es, uk, ro) | — | — | ✓ |
+| Read Hebrew by Roots | language-games | — | 1 (he) | 1 (he) | — | — | ✓ |
+| One Verb a Day for Seniors | language-games | — | — | 3 (en, es) | — | — | ✓ |
+| Read Chinese: AI & Tech | language-games | — | — | 1 (zh) | — | — | ✓ |
+| German Verbs Visual Flashcards | language-games | — | — | 1 (de) | — | — | ✓ |
+| The Oracle Game (ESL) | language-games | — | — | 1 (en) | — | — | ✓ |
 | 100 First Foods & Allergen Tracker | little-ones | — | — | 3 (en) | — | — | ✓ |
-| Baby Milestone Tracker & Checklists | little-ones | — | — | 2 (en) | — | — | — |
-| Twin Parent Kit | little-ones | — | — | 3 (en) | — | — | — |
-| Parent Merch | merch | — | — | 4 (en) | — | — | — |
-| Around the World in 80 Days · Reading Journal | reading-diaries | 1 (en) | 1 (en) | 1 (en) | — | — | — |
+| Baby Milestone Tracker & Checklists | little-ones | — | — | 2 (en) | — | — | ✓ |
+| Twin Parent Kit | little-ones | — | — | 3 (en) | — | — | ✓ |
+| Parent Merch | merch | — | — | 4 (en) | — | — | ✓ |
+| Around the World in 80 Days · Reading Journal | reading-diaries | 1 (en) | 1 (en) | 1 (en) | — | — | ✓ |
 | Reading Journal · _скоро_ | reading-diaries | — | — | — | — | — | ✓ |
-| Stand-Up Comedy & Public Speaking | soft-skills | 1 (en) | 6 (en) | — | — | — | — |
-| Dental Waiting Room Game Poster | soft-skills | — | — | 1 (en) | — | — | — |
-| Kids Emotion Cards | soft-skills | — | — | 1 (en) | — | — | — |
+| Stand-Up Comedy & Public Speaking | soft-skills | 1 (en) | 6 (en) | — | — | — | ✓ |
+| Dental Waiting Room Game Poster | soft-skills | — | — | 1 (en) | — | — | ✓ |
+| Kids Emotion Cards | soft-skills | — | — | 1 (en) | — | — | ✓ |
 | Soft Skills Posters | soft-skills | — | — | 9 (en) | — | — | ✓ |
 | What If? Book | thinking | 2 (en) | — | — | — | — | ✓ |
 | Think Like an Inventor | thinking | 1 (en) | — | 4 (en) | 1 (uk) | — | ✓ |
-| Mission Possible · Gifted STEM Challenges | thinking | 2 (en) | 4 (en) | 1 (en) | 1 (uk) | — | — |
-| Перехитри! (Outsmart) | thinking | — | — | 1 (en) | 1 (uk) | — | — |
-| SCAMPER Creative Thinking Workbook | thinking | — | — | 1 (en) | — | — | — |
+| Mission Possible | thinking | 2 (en) | 4 (en) | 1 (en) | 1 (uk) | — | ✓ |
+| Outsmart! | thinking | — | — | 1 (en) | 1 (uk) | — | ✓ |
+| SCAMPER Creative Thinking Workbook | thinking | — | — | 1 (en) | — | — | ✓ |
 
 ## Потребує уваги
 
@@ -55,7 +55,7 @@
 
 - **dictation-workbook** · Etsy «German Dictation Exercises A1 Workbook, Beginner Language Learning (PDF)»: те саме головне фото, що й в іншого оголошення — можливий дубль
 
-### До відома (8)
+### До відома (7)
 
 - **one-verb-a-day** · Prom 3282274057: PDF позначений «Під замовлення» — для файлу краще «В наявності»
 - **one-verb-a-day** · Prom 3282239757: PDF позначений «Під замовлення» — для файлу краще «В наявності»
@@ -63,7 +63,6 @@
 - **one-verb-a-day** · Prom 3282270423: PDF позначений «Під замовлення» — для файлу краще «В наявності»
 - **one-verb-a-day** · Prom 3282276389: PDF позначений «Під замовлення» — для файлу краще «В наявності»
 - **one-verb-a-day** · Prom 3282240307: PDF позначений «Під замовлення» — для файлу краще «В наявності»
-- Не показуються на сайті, бо немає описів (19): **telescope-safari**, **sneeze-detective**, **gentle-parenting-guide**, **dictation-workbook**, **read-hebrew-by-roots**, **one-verb-a-day-seniors**, **read-chinese-ai**, **german-verb-flashcards**, **oracle-game**, **baby-trackers**, **twin-parent-kit**, **parent-merch**, **around-the-world-80-days**, **stand-up-comedy**, **dental-game-poster**, **emotion-cards**, **mission-possible**, **outsmart**, **scamper-workbook**. Щоб товар зʼявився, додай `en.md` у його папку.
 - Etsy: 60 оголошень без прямого посилання — у CSV-експорті Etsy немає номерів, тому кнопки на сайті ведуть на пошук у магазині. Щоб були прямі посилання, впиши `url` в product.yml або підключи Etsy API.
 
 ## Товари детально
@@ -160,7 +159,7 @@
 | [Prom.ua](https://prybambas.prom.ua/ua/p3282240307-ispanskij-100-vazhnejshih.html) | es | Іспанська | pdf | 399 ₴ | preorder | Іспанська: 100 найважливіших дієслів. Робочий зошит One Verb a Day з аудіо, PDF |
 | [Etsy](https://www.etsy.com/shop/Prybambas?search_query=100-Day%20German%20Verb%20Workbook) | de | German · 100-day workbook A1–A2 | pdf | $6.99 | active | 100-Day German Verb Workbook, A1-A2 Level, Audio & AI Assistant (PDF) |
 
-### Dictation Workbooks (Listen and Write)
+### Listen & Write Dictation Workbooks
 
 `content/products/dictation-workbook/` · серія language-games · available
 
@@ -347,7 +346,7 @@
 | [Etsy](https://www.etsy.com/shop/Prybambas?search_query=The%20Invention%20Machine) | en | The Invention Machine | pdf | $4.99 | active | The Invention Machine · Kids STEM Activity Book · Printable Engineering Puzzles · Homesc… |
 | [Etsy](https://www.etsy.com/shop/Prybambas?search_query=The%20Ultimate%20Inventor's%20Workbook) | en | The Ultimate Inventor's Workbook | pdf | $4.99 | active | The Ultimate Inventor's Workbook · Kids STEM Activity Book · Printable Engineering Puzzl… |
 
-### Mission Possible · Gifted STEM Challenges
+### Mission Possible
 
 `content/products/mission-possible/` · серія thinking · available
 
@@ -362,7 +361,7 @@
 | [Prom.ua](https://prybambas.prom.ua/ua/p3279614112-missiya-osuschestvlena-missii.html) | uk | Робочий зошит A4 |  | 299 ₴ | preorder | Місія здійсненна. 24 місії-втечі для творчих дітей 8–14 років. Робочий зошит з ТРВЗ, A4 |
 | [Etsy](https://www.etsy.com/shop/Prybambas?search_query=Mission%20Possible) | en | PDF | pdf | $4.99 | active | Mission Possible · Kids STEM Activity Book · Printable Engineering Puzzles · Homeschool … |
 
-### Перехитри! (Outsmart)
+### Outsmart!
 
 `content/products/outsmart/` · серія thinking · available
 

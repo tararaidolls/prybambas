@@ -42,7 +42,8 @@ for (const p of products) {
   }
   if (p.status === "available" && !active.length) issues.warn.push(`**${p.slug}**: позначений «можна купити», але не має жодного активного оголошення`);
   if (p.status === "coming-soon" && active.length) issues.warn.push(`**${p.slug}**: позначений «скоро», хоча вже продається (${active.length} огол.) — зміни status на available`);
-  if (!p.texts.length) noTexts.push(p.slug);
+  if (p.site === false) issues.info.push(`**${p.slug}**: прихований із сайту (site: false)`);
+  else if (!p.texts.length) noTexts.push(p.slug);
   else if (p.texts.length < site.languages.length) issues.info.push(`**${p.slug}**: опис є лише мовами ${p.texts.join(", ")}`);
   // кілька однакових оголошень
   const keys = new Map();
@@ -89,7 +90,7 @@ for (const p of products) {
     const miss = ls.filter((l) => l.status === "missing").length;
     return `${ls.length}${miss ? ` ⚠${miss}` : ""} (${langList(ls)})`;
   });
-  L.push(`| ${p.title}${p.status === "coming-soon" ? " · _скоро_" : ""} | ${p.series} | ${cells.join(" | ")} | ${p.texts.length ? "✓" : "—"} |`);
+  L.push(`| ${p.title}${p.status === "coming-soon" ? " · _скоро_" : ""} | ${p.series} | ${cells.join(" | ")} | ${p.site === false ? "прих." : p.texts.length ? "✓" : "—"} |`);
 }
 
 L.push(``, `## Потребує уваги`, ``);
