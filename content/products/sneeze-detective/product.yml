@@ -1,0 +1,14 @@
+name: "Sneeze Detective"
+series: family-tools
+type: journal
+status: available
+ages: "4-12"
+order: 1
+
+cover: cover.jpg            # з etsy img8763055761
+
+images: [preview-1.jpg, preview-2.jpg, preview-3.jpg]
+
+# Оголошення на платформах. Назва, ціна й статус підтягуються зі знімків content/shops/*.json
+listings:
+  - { platform: etsy, id: "img8763055761", lang: en, variant: "Hay fever tracker", format: pdf }

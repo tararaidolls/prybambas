@@ -1,0 +1,21 @@
+name: "Stand-Up Comedy & Public Speaking"         # назва в каталозі (на сайті — з <мова>.md)
+series: soft-skills
+type: workbook
+status: available
+ages: "11-18"
+order: 1
+
+cover: cover.jpg            # з kdp B0H9RTMN67
+
+images: [preview-1.jpg, preview-2.jpg, preview-3.jpg]
+
+# Оголошення на платформах. Назва, ціна й статус підтягуються зі знімків content/shops/*.json
+listings:
+  - { platform: kdp, id: B0H9RTMN67, lang: en, variant: "The 30-Day Open Mic Challenge", format: paperback }
+  - { platform: tpt, id: "17252955", lang: en, variant: "30-day unit bundle, grades 6–12", format: bundle }
+  - { platform: tpt, id: "17251380", lang: en, variant: "Week 1 · Mining for Material", format: digital }
+  - { platform: tpt, id: "17252755", lang: en, variant: "Week 2 · Joke Structure", format: digital }
+  - { platform: tpt, id: "17252822", lang: en, variant: "Week 3 · Finding Your Voice", format: digital }
+  - { platform: tpt, id: "17252877", lang: en, variant: "Week 4 · Stage Confidence", format: digital }
+  - { platform: tpt, id: "17250965", lang: en, variant: "Free sample lesson", format: digital }
+skills: [soft-skills]

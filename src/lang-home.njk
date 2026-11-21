@@ -3,21 +3,30 @@
   pagination: { data: "catalog.langPages", size: 1, alias: "L" },
   permalink: (data) => `/${data.L.lang}/`,
   layout: "base.njk",
+  ogAuto: true,
   eleventyComputed: {
     lang: (data) => data.L.lang,
     alternates: (data) => data.L.altHome,
   },
 }
 ---
-{%- from "macros.njk" import productCard, postCard -%}
+{%- from "macros.njk" import productCard, postCard, browseChips, newsletter -%}
+{%- from "games.njk" import gameGrid -%}
 {%- set t = i18n[L.lang] -%}
 <section class="hero">
   <h1>{{ t.home_title }}</h1>
   <p>{{ t.home_intro }}</p>
   <div class="hero-links">
-    <a class="btn" href="/">{{ t.play_online }}</a>
+    <a class="btn" href="#games">{{ t.play_online }}</a>
     <a class="btn btn-ghost" href="/{{ L.lang }}/shop/">{{ t.nav_shop }}</a>
   </div>
+</section>
+
+{{ browseChips(catalog, t, L.lang) }}
+
+<section class="block">
+  <div class="block-head"><h2>{{ t.nav_games }}</h2></div>
+  {{ gameGrid(catalog.gameCards(L.lang)) }}
 </section>
 
 {% if L.posts.length %}
@@ -31,3 +40,5 @@
   <div class="block-head"><h2>{{ t.featured }}</h2><a href="/{{ L.lang }}/shop/">{{ t.all_products }} →</a></div>
   <div class="p-grid">{% for p in (L.featured if L.featured.length else L.products) | batch(6) | first %}{{ productCard(p, t, L.lang) }}{% endfor %}</div>
 </section>
+
+{{ newsletter(site, t, L.lang, "lang-home") }}

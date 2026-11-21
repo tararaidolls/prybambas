@@ -1,0 +1,30 @@
+{#- Нові ідеї й зошити на головній «/». Мова перемикається в renderTeasers() без перезавантаження. -#}
+{%- set T = catalog.homeTeasers.en -%}
+<section class="teasers" aria-label="Ideas and shop">
+  <div class="teaser">
+    <div class="teaser-head"><h2 id="ts-ideas-h">{{ i18n.en.latest_ideas }}</h2><a id="ts-ideas-all" href="/en/ideas/">{{ i18n.en.all_ideas }} →</a></div>
+    <ul id="ts-ideas">{% for p in T.posts %}<li><a href="{{ p.url }}"><small>{{ p.date | dateLocal("en") }}</small>{{ p.title }}</a></li>{% endfor %}</ul>
+  </div>
+  <div class="teaser">
+    <div class="teaser-head"><h2 id="ts-shop-h">{{ i18n.en.featured }}</h2><a id="ts-shop-all" href="/en/shop/">{{ i18n.en.all_products }} →</a></div>
+    <ul id="ts-shop">{% for p in T.products %}<li><a href="{{ p.url }}"><small>{{ p.series }}</small>{{ p.title }}</a></li>{% endfor %}</ul>
+  </div>
+</section>
+<script>
+  window.TEASERS = {{ catalog.homeTeasers | json | safe }};
+  window.TEASER_UI = {{ i18n | json | safe }};
+  window.renderTeasers = function (lang) {
+    var d = window.TEASERS[lang] || window.TEASERS.en, ui = window.TEASER_UI[lang] || window.TEASER_UI.en;
+    var esc = function (s) { var e = document.createElement('span'); e.textContent = s == null ? '' : s; return e.innerHTML; };
+    document.getElementById('ts-ideas-h').textContent = ui.latest_ideas;
+    document.getElementById('ts-shop-h').textContent = ui.featured;
+    var ai = document.getElementById('ts-ideas-all'); ai.textContent = ui.all_ideas + ' →'; ai.href = '/' + lang + '/ideas/';
+    var as = document.getElementById('ts-shop-all'); as.textContent = ui.all_products + ' →'; as.href = '/' + lang + '/shop/';
+    document.getElementById('ts-ideas').innerHTML = d.posts.map(function (p) {
+      return '<li><a href="' + p.url + '"><small>' + esc(new Date(p.date).toLocaleDateString(lang, { year: 'numeric', month: 'long', day: 'numeric' })) + '</small>' + esc(p.title) + '</a></li>';
+    }).join('');
+    document.getElementById('ts-shop').innerHTML = d.products.map(function (p) {
+      return '<li><a href="' + p.url + '"><small>' + esc(p.series) + '</small>' + esc(p.title) + '</a></li>';
+    }).join('');
+  };
+</script>

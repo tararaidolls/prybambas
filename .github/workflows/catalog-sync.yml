@@ -1,0 +1,86 @@
+# Щодня читає магазини (Amazon, TpT, Prom), оновлює знімки й звіт CATALOG.md.
+# Якщо щось змінилося — відкриває (або оновлює) pull request «Каталог: зміни в магазинах».
+# Ти переглядаєш зміни й зливаєш — без цього на сайті нічого не змінюється.
+#
+# Etsy сюди не входить: оновлюється вручну з CSV (npm run shops -- --etsy-csv файл.csv).
+#
+# Одноразове налаштування репозиторію:
+#   Settings → Actions → General → Workflow permissions →
+#   «Allow GitHub Actions to create and approve pull requests».
+name: Catalog sync
+
+on:
+  schedule:
+    - cron: "17 5 * * *"   # щодня о 05:17 UTC (07:17 / 08:17 за Києвом)
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: catalog-sync
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+
+      - name: Read shops
+        id: shops
+        # Магазин може тимчасово не відповісти (Amazon часто блокує сервери) —
+        # тоді його знімок лишається попереднім, а інші все одно оновлюються.
+        run: |
+          set +e
+          npm run --silent shops -- prom tpt kdp 2>&1 | tee shops.log
+          echo "failed=$([ ${PIPESTATUS[0]} -ne 0 ] && echo yes || echo no)" >> "$GITHUB_OUTPUT"
+
+      - name: Update report
+        run: npm run --silent catalog | tee catalog.log
+
+      - name: Check the site still builds
+        run: npm run build
+
+      - name: Open or update pull request
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          git add content/shops CATALOG.md
+          if git diff --cached --quiet; then
+            echo "Змін у магазинах немає."
+            exit 0
+          fi
+          BRANCH=catalog-sync
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout -B "$BRANCH"
+          git commit -m "Catalog: shop changes $(date -u +%Y-%m-%d)"
+          git push --force origin "$BRANCH"
+          {
+            echo "Автоматична перевірка магазинів знайшла зміни."
+            echo
+            echo "### Магазини"
+            echo '```'
+            grep -E '^[✓✗=]' shops.log || cat shops.log
+            echo '```'
+            echo
+            echo "### Звіт"
+            echo '```'
+            cat catalog.log
+            echo '```'
+            echo
+            echo "Подробиці — у файлі CATALOG.md цієї гілки (розділ «Потребує уваги»)."
+            echo "Якщо магазин зняв оголошення або зʼявилося нове — привʼяжи чи прибери його в content/products/*/product.yml."
+          } > pr-body.md
+          if gh pr view "$BRANCH" --json state -q .state 2>/dev/null | grep -q OPEN; then
+            gh pr edit "$BRANCH" --body-file pr-body.md
+          else
+            gh pr create --base main --head "$BRANCH" --title "Каталог: зміни в магазинах" --body-file pr-body.md
+          fi

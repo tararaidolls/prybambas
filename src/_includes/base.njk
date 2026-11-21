@@ -1,7 +1,7 @@
 {%- set t = i18n[lang] -%}
 {%- set fullTitle = (pageTitle + " · " + site.name) if pageTitle else site.name -%}
 {%- set desc = description or t.home_intro -%}
-{%- set ogImg = (ogImage or "/logo.png") | absolute(site.url) -%}
+{%- set ogImg = (ogImage or (page.url | ogPath if ogAuto else "/assets/og-default.png")) | absolute(site.url) -%}
 <!DOCTYPE html>
 <html lang="{{ lang }}">
 <head>
@@ -40,7 +40,7 @@
       <span>{{ site.name }}</span>
     </a>
     <nav class="site-nav" aria-label="Main">
-      <a href="/">{{ t.nav_games }}</a>
+      <a href="/{{ lang }}/#games">{{ t.nav_games }}</a>
       <a href="/{{ lang }}/ideas/" {% if section == "ideas" %}aria-current="page"{% endif %}>{{ t.nav_ideas }}</a>
       <a href="/{{ lang }}/shop/" {% if section == "shop" %}aria-current="page"{% endif %}>{{ t.nav_shop }}</a>
     </nav>

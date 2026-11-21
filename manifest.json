@@ -1,11 +1,11 @@
 {
   "name": "Prybambas",
   "short_name": "Prybambas",
-  "description": "Educational Games and Smart Puzzles Hub",
+  "description": "Thinking games, daily ideas and workbooks for curious kids",
   "start_url": "./index.html",
   "display": "standalone",
-  "background_color": "#020617",
-  "theme_color": "#020617",
+  "background_color": "#FBFCFE",
+  "theme_color": "#FBFCFE",
   "icons": [
     {
       "src": "./icon-192.png",
@@ -15,7 +15,8 @@
     {
       "src": "./icon-512.png",
       "sizes": "512x512",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any maskable"
     }
   ]
 }

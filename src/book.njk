@@ -1,0 +1,24 @@
+---
+permalink: /book/index.html
+eleventyExcludeFromCollections: true
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Workbooks · Prybambas</title>
+<meta name="robots" content="noindex">
+<link rel="canonical" href="{{ site.url }}/en/shop/">
+<meta http-equiv="refresh" content="0; url=/en/shop/">
+<script>
+  // «Книжковий спортзал» тепер — магазин: відкриваємо його мовою, яку обрано на сайті
+  (function () {
+    var langs = {{ site.languages | json | safe }}, l = "en";
+    try { l = localStorage.getItem("prybambas_lang") || navigator.language.slice(0, 2); } catch (e) {}
+    location.replace("/" + (langs.indexOf(l) >= 0 ? l : "en") + "/shop/");
+  })();
+</script>
+</head>
+<body><p><a href="/en/shop/">Workbooks &amp; printables →</a></p></body>
+</html>

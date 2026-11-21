@@ -1,0 +1,23 @@
+name: "Mission Possible · Gifted STEM Challenges"         # назва в каталозі (на сайті — з <мова>.md)
+series: thinking
+type: workbook
+status: available
+ages: "8-14"
+order: 3
+game: inventor
+
+# Оголошення на платформах. Назва, ціна й статус підтягуються зі знімків content/shops/*.json
+# (на TpT продається як «Gifted STEM Challenges»)
+cover: cover.jpg            # з kdp B0GWR8P5SX
+
+images: [preview-1.jpg, preview-2.jpg, preview-3.jpg]
+
+listings:
+  - { platform: kdp, id: B0GWR8P5SX, lang: en, variant: "Paperback", format: paperback }
+  - { platform: kdp, id: B0HNRYCQNS, lang: en, variant: "Kindle", format: kindle }
+  - { platform: tpt, id: "17257265", lang: en, variant: "GATE bundle · Levels 1–3", format: bundle }
+  - { platform: tpt, id: "16029003", lang: en, variant: "GATE Level 1", format: digital }
+  - { platform: tpt, id: "17257172", lang: en, variant: "GATE Level 2", format: digital }
+  - { platform: tpt, id: "17257202", lang: en, variant: "GATE Level 3", format: digital }
+  - { platform: prom, id: "3279614112", lang: uk, variant: "Робочий зошит A4" }
+  - { platform: etsy, id: "img8414002052", lang: en, variant: "PDF", format: pdf }

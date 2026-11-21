@@ -1,0 +1,15 @@
+name: "Read Hebrew by Roots"         # назва в каталозі (на сайті — з <мова>.md)
+series: language-games
+type: workbook
+status: available
+order: 5
+
+cover: cover.jpg            # з etsy img8749016332
+
+images: [preview-1.jpg, preview-2.jpg, preview-3.jpg]
+
+# Оголошення на платформах. Назва, ціна й статус підтягуються зі знімків content/shops/*.json
+listings:
+  - { platform: tpt, id: "18096824", lang: he, variant: "Printable workbook", format: digital }
+  - { platform: etsy, id: "img8749016332", lang: he, variant: "PDF with audio", format: pdf }
+ages: "10+"

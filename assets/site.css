@@ -201,3 +201,63 @@ a:focus-visible, select:focus-visible, .btn:focus-visible { outline: 3px solid v
     .p-title { font-size: 1rem; }
     .p-tag { font-size: 0.85rem; }
 }
+
+/* Картки ігор (ті самі, що на головній «/») */
+.grid-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 26px 20px; padding-top: 10px; }
+.space-card {
+    position: relative; background: var(--card); border: 1.5px solid var(--ink); border-radius: 6px;
+    padding: 22px 18px 18px; display: flex; flex-direction: column; gap: 8px;
+    color: var(--ink); text-decoration: none; box-shadow: 4px 4px 0 var(--ink);
+    transition: transform .15s, box-shadow .15s; min-width: 0;
+}
+.space-card:hover { transform: translate(-2px, -2px) rotate(-0.4deg); box-shadow: 6px 6px 0 var(--ink); }
+.space-card::before {
+    content: ""; position: absolute; top: -10px; left: 50%; width: 64px; height: 18px;
+    transform: translateX(-50%) rotate(var(--tilt, -3deg)); background: var(--tape); opacity: var(--tape-op, 0.75);
+}
+.card-ico { position: relative; width: 64px; height: 64px; }
+.card-ico::before { content: ""; position: absolute; width: 46px; height: 46px; border-radius: 50%; right: -2px; bottom: 0; background: var(--spot); opacity: 0.85; mix-blend-mode: multiply; }
+.card-ico svg { position: relative; width: 64px; height: 64px; }
+.card-tag { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--blue); }
+.card-title { font-size: 1.15rem; font-weight: 800; line-height: 1.2; }
+.card-desc { font-size: 0.92rem; color: var(--ink-soft); }
+@media (max-width: 560px) { .grid-container { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px 14px; } .space-card { padding: 18px 12px 14px; } .card-desc { display: none; } }
+
+/* Навігація за віком і навичкою */
+.eyebrow { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--blue); }
+.browse { display: grid; gap: 10px; }
+.browse-row { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.browse-label { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-soft); min-width: 9ch; }
+.chip {
+    display: inline-block; padding: 6px 12px; border-radius: 999px; border: 1.5px solid var(--ink);
+    background: var(--card); color: var(--ink); text-decoration: none; font-weight: 600; font-size: 0.88rem;
+    transition: transform .15s, box-shadow .15s;
+}
+.chip:hover { transform: translate(-1px, -1px); box-shadow: 2px 2px 0 var(--ink); }
+.chip-yellow { background: var(--yellow-bg); } .chip-pink { background: var(--pink-bg); } .chip-blue { background: var(--blue-bg); } .chip-ink { background: #ECEDF3; }
+.chip.is-current { background: var(--ink); color: #fff; }
+
+/* Фільтри магазину */
+.filters { display: flex; flex-wrap: wrap; align-items: end; gap: 12px 16px; background: var(--card); border: 1.5px solid var(--ink); border-radius: 6px; padding: 14px 16px; box-shadow: 4px 4px 0 var(--yellow); }
+.filters label { display: grid; gap: 4px; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-soft); }
+.filters select { font: 600 0.92rem var(--f-main); color: var(--ink); background: var(--paper); border: 1.5px solid var(--ink); border-radius: 6px; padding: 6px 8px; min-width: 9rem; max-width: 100%; }
+.filters .check { display: flex; align-items: center; gap: 8px; text-transform: none; letter-spacing: 0; font-size: 0.92rem; color: var(--ink); padding-bottom: 6px; }
+.filters .check input { width: 18px; height: 18px; accent-color: var(--ink); }
+.filters .btn { padding: 6px 14px; }
+.filters output { margin-inline-start: auto; font-weight: 700; font-size: 0.92rem; padding-bottom: 6px; }
+@media (max-width: 560px) { .filters label { flex: 1 1 40%; } .filters select { min-width: 0; width: 100%; } .filters output { margin-inline-start: 0; } }
+
+/* Підписка */
+.newsletter { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 16px 28px; align-items: center; background: var(--yellow-bg); border: 1.5px solid var(--ink); border-radius: 6px; padding: 20px; box-shadow: 4px 4px 0 var(--ink); }
+.newsletter h2 { font-size: 1.3rem; font-weight: 800; }
+.newsletter p { color: var(--ink-soft); }
+.newsletter form { display: flex; flex-wrap: wrap; gap: 10px; }
+.newsletter input[type=email] { flex: 1 1 14rem; min-width: 0; font: 0.95rem var(--f-main); padding: 10px 12px; border: 1.5px solid var(--ink); border-radius: 8px; background: var(--card); }
+.newsletter small { flex-basis: 100%; color: var(--ink-soft); font-size: 0.78rem; }
+@media (max-width: 700px) { .newsletter { grid-template-columns: 1fr; } }
+
+/* Справжні обкладинки: фото цілком, без намальованого корінця */
+.cover.has-img { background: var(--card); padding: 0; }
+.cover.has-img::before { display: none; }
+.cover.has-img img { object-fit: contain; background: var(--card); }
+.thumbs img { object-fit: contain; background: var(--card); aspect-ratio: 1; }

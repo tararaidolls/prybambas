@@ -1,0 +1,15 @@
+name: "Twin Parent Kit"
+series: little-ones
+type: bundle
+status: available
+order: 3
+
+cover: cover.jpg            # з etsy img7876187187
+
+images: [preview-1.jpg, preview-2.jpg, preview-3.jpg]
+
+# Оголошення на платформах. Назва, ціна й статус підтягуються зі знімків content/shops/*.json
+listings:
+  - { platform: etsy, id: "img7876187187", lang: en, variant: "Starter kit", format: bundle }
+  - { platform: etsy, id: "img7822007166", lang: en, variant: "Milestones for twins", format: pdf }
+  - { platform: etsy, id: "img7819902824", lang: en, variant: "Feeding & sleep tracker", format: pdf }

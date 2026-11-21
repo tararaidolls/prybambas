@@ -1,0 +1,52 @@
+---js
+{
+  pagination: { data: "catalog.collectionPages", size: 1, alias: "C" },
+  permalink: (data) => data.C.url,
+  layout: "base.njk",
+  ogAuto: true,
+  eleventyComputed: {
+    lang: (data) => data.C.lang,
+    alternates: (data) => data.C.alternates,
+    pageTitle: (data) => {
+      const t = data.i18n[data.C.lang];
+      return data.C.kind === "skill" ? t.skills[data.C.key].name : t.ages.replace("{ages}", data.C.key.replace("-", "–"));
+    },
+    description: (data) => {
+      const t = data.i18n[data.C.lang];
+      return data.C.kind === "skill" ? t.skills[data.C.key].desc : t.age_intro.replace("{ages}", data.C.key.replace("-", "–"));
+    },
+  },
+}
+---
+{%- from "macros.njk" import productCard, postCard, browseChips -%}
+{%- from "games.njk" import gameGrid -%}
+{%- set t = i18n[C.lang] -%}
+<section class="page-head c-{{ C.color }}">
+  <p class="eyebrow">{{ t.by_skill if C.kind == "skill" else t.by_age }}</p>
+  <h1><span class="hl">{{ pageTitle }}</span></h1>
+  <p>{{ description }}</p>
+</section>
+
+{{ browseChips(catalog, t, C.lang, C.kind + ":" + C.key) }}
+
+{% if C.games.length %}
+<section class="block">
+  <div class="block-head"><h2>{{ t.games_here }}</h2></div>
+  {{ gameGrid(C.games) }}
+</section>
+{% endif %}
+
+{% if C.posts.length %}
+<section class="block">
+  <div class="block-head"><h2>{{ t.ideas_here }}</h2></div>
+  <div class="i-grid">{% for p in C.posts %}{{ postCard(p, t, C.lang) }}{% endfor %}</div>
+</section>
+{% endif %}
+
+{% if C.products.length %}
+<section class="block">
+  <div class="block-head"><h2>{{ t.shop_here }}</h2></div>
+  <div class="p-grid">{% for p in C.products %}{{ productCard(p, t, C.lang) }}{% endfor %}</div>
+</section>
+{% endif %}
+{% if not (C.games.length or C.posts.length or C.products.length) %}<p class="empty">{{ t.no_items }}</p>{% endif %}

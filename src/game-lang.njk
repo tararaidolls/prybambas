@@ -1,0 +1,9 @@
+---js
+{
+  // Мовні копії сторінок ігор: /<мова>/<гра>/ (див. localizeGame в eleventy.config.js)
+  pagination: { data: "catalog.gameLangPages", size: 1, alias: "G" },
+  permalink: (data) => data.G.url,
+  eleventyExcludeFromCollections: true,
+}
+---
+{{ G | localizeGame(site.url) | safe }}

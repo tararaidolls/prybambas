@@ -1,0 +1,22 @@
+---
+permalink: /assets/langs.js
+eleventyExcludeFromCollections: true
+---
+/* Згенеровано з src/_data/site.yml — не редагуй вручну.
+   Заповнює перемикачі мов: <select data-lang-select [data-langs="en,uk"]></select> */
+window.PRYBAMBAS_LANGS = {{ site.gameLanguages | json | safe }};
+window.PRYBAMBAS_SITE_LANGS = {{ site.languages | json | safe }};
+(function () {
+  function fill() {
+    document.querySelectorAll('select[data-lang-select]').forEach(function (sel) {
+      if (sel.options.length) return;
+      var only = (sel.getAttribute('data-langs') || '').split(',').filter(Boolean);
+      window.PRYBAMBAS_LANGS.forEach(function (l) {
+        if (only.length && only.indexOf(l.code) < 0) return;
+        sel.add(new Option(l.flag + ' ' + l.name, l.code));
+      });
+    });
+  }
+  fill();
+  document.addEventListener('DOMContentLoaded', fill);
+})();

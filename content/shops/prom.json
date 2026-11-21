@@ -1,0 +1,118 @@
+{
+  "platform": "prom",
+  "source": "https://prybambas.prom.ua/ua/",
+  "updated": "2026-11-20",
+  "count": 10,
+  "items": [
+    {
+      "platform": "prom",
+      "id": "3247989226",
+      "sku": "PR01",
+      "title": "Microscope Safari: зошит-воркбук з місіями для мікроскопа, 25 дослідів для дітей 6–12 років",
+      "url": "https://prybambas.prom.ua/ua/p3247989226-microscope-safari-tetrad.html",
+      "price": 299,
+      "currency": "UAH",
+      "status": "preorder",
+      "image": "https://images.prom.ua/7826857400_w500_h500_microscope-safari-zoshit-vorkbuk.jpg"
+    },
+    {
+      "platform": "prom",
+      "id": "3282274057",
+      "sku": "PR-OV-006",
+      "title": "Англійська: 100 найважливіших дієслів. Робочий зошит One Verb a Day з аудіо, PDF",
+      "url": "https://prybambas.prom.ua/ua/p3282274057-anglijskaya-100-vazhnejshih.html",
+      "price": 399,
+      "currency": "UAH",
+      "status": "preorder",
+      "image": "https://images.prom.ua/7905727514_w500_h500_anglijska-100-najvazhlivishih.jpg"
+    },
+    {
+      "platform": "prom",
+      "id": "3279615358",
+      "sku": "PR04",
+      "title": "Думай як винахідник. 10 інструментів ТРВЗ і 20 інженерних викликів для дітей 8–14 років. Зошит A4",
+      "url": "https://prybambas.prom.ua/ua/p3279615358-missiya-osuschestvlena-missii.html",
+      "price": 299,
+      "currency": "UAH",
+      "status": "preorder",
+      "image": "https://images.prom.ua/7902292152_w500_h500_dumaj-yak-vinahidnik.jpg"
+    },
+    {
+      "platform": "prom",
+      "id": "3282270423",
+      "sku": "PR-OV-001",
+      "title": "Іврит: 100 найважливіших дієслів. Робочий зошит One Verb a Day з аудіо, PDF",
+      "url": "https://prybambas.prom.ua/ua/p3282270423-ivrit-100-vazhnejshih.html",
+      "price": 399,
+      "currency": "UAH",
+      "status": "preorder",
+      "image": "https://images.prom.ua/7905762790_w500_h500_ivrit-100-najvazhlivishih.jpg"
+    },
+    {
+      "platform": "prom",
+      "id": "3282240307",
+      "sku": "PR-OV-002",
+      "title": "Іспанська: 100 найважливіших дієслів. Робочий зошит One Verb a Day з аудіо, PDF",
+      "url": "https://prybambas.prom.ua/ua/p3282240307-ispanskij-100-vazhnejshih.html",
+      "price": 399,
+      "currency": "UAH",
+      "status": "preorder",
+      "image": "https://images.prom.ua/7905722739_w500_h500_ispanska-100-najvazhlivishih.jpg"
+    },
+    {
+      "platform": "prom",
+      "id": "3276946955",
+      "sku": "PR02",
+      "title": "Книжка-гра «Перехитри!» для дітей 11–14 років: 10 стратегічних ігор, теорія ігор, A4, 60 сторінок",
+      "url": "https://prybambas.prom.ua/ua/p3276946955-knizhka-igra-perehitry.html",
+      "price": 299,
+      "currency": "UAH",
+      "status": "preorder",
+      "image": "https://images.prom.ua/7894941546_w500_h500_knizhka-gra-perehitri-dlya.jpg"
+    },
+    {
+      "platform": "prom",
+      "id": "3279614112",
+      "sku": "PR03",
+      "title": "Місія здійсненна. 24 місії-втечі для творчих дітей 8–14 років. Робочий зошит з ТРВЗ, A4",
+      "url": "https://prybambas.prom.ua/ua/p3279614112-missiya-osuschestvlena-missii.html",
+      "price": 299,
+      "currency": "UAH",
+      "status": "preorder",
+      "image": "https://images.prom.ua/7900641305_w500_h500_misiya-zdijsnenna-24.jpg"
+    },
+    {
+      "platform": "prom",
+      "id": "3282243570",
+      "sku": "PR-OV-003",
+      "title": "Німецька: 100 найважливіших дієслів. Робочий зошит One Verb a Day з аудіо, PDF",
+      "url": "https://prybambas.prom.ua/ua/p3282243570-nemetskaya-100-vazhnejshih.html",
+      "price": 399,
+      "currency": "UAH",
+      "status": "preorder",
+      "image": "https://images.prom.ua/7905727514_w500_h500_nimetska-100-najvazhlivishih.jpg"
+    },
+    {
+      "platform": "prom",
+      "id": "3282276389",
+      "sku": "PR-OV-007",
+      "title": "Румунська: 100 найважливіших дієслів. Робочий зошит One Verb a Day з аудіо, PDF",
+      "url": "https://prybambas.prom.ua/ua/p3282276389-rumunskaya-100-vazhnejshih.html",
+      "price": 399,
+      "currency": "UAH",
+      "status": "preorder",
+      "image": "https://images.prom.ua/7905775165_w500_h500_rumunska-100-najvazhlivishih.jpg"
+    },
+    {
+      "platform": "prom",
+      "id": "3282239757",
+      "sku": "PR-OV-001",
+      "title": "Французька: 100 найважливіших дієслів. Робочий зошит One Verb a Day з аудіо, PDF",
+      "url": "https://prybambas.prom.ua/ua/p3282239757-frantsuzskaya-100-vazhnejshih.html",
+      "price": 399,
+      "currency": "UAH",
+      "status": "preorder",
+      "image": "https://images.prom.ua/7905717670_w500_h500_frantsuzka-100-najvazhlivishih.jpg"
+    }
+  ]
+}

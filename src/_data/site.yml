@@ -8,6 +8,25 @@ name: Prybambas
 languages: [uk, en, pl, de, es]
 defaultLang: en
 
+# Усі мови сайту — єдиний список для перемикачів мов в іграх і на головній.
+# Щоб додати мову в ігри: допиши її сюди і додай переклади у файли ігор.
+gameLanguages:
+  - { code: en, name: English,    flag: "🇺🇸" }
+  - { code: uk, name: Українська, flag: "🇺🇦" }
+  - { code: ro, name: Română,     flag: "🇷🇴" }
+  - { code: pl, name: Polski,     flag: "🇵🇱" }
+  - { code: de, name: Deutsch,    flag: "🇩🇪" }
+  - { code: fr, name: Français,   flag: "🇫🇷" }
+  - { code: it, name: Italiano,   flag: "🇮🇹" }
+  - { code: sv, name: Svenska,    flag: "🇸🇪" }
+  - { code: fi, name: Suomi,      flag: "🇫🇮" }
+  - { code: da, name: Dansk,      flag: "🇩🇰" }
+  - { code: es, name: Español,    flag: "🇪🇸" }
+  - { code: pt, name: Português,  flag: "🇵🇹" }
+  - { code: he, name: עברית,      flag: "🇮🇱", rtl: true }
+  - { code: ja, name: 日本語,      flag: "🇯🇵" }
+  - { code: ar, name: العربية,    flag: "🇸🇦", rtl: true }
+
 # Майданчики продажу. Порядок тут = порядок кнопок на сторінці товару.
 # kind: digital (файл) або print (друкована книжка)
 stores:
@@ -16,10 +35,32 @@ stores:
   - { key: etsy,    label: Etsy,      kind: digital }
   - { key: tpt,     label: TpT,       kind: digital }
   - { key: kdp,     label: Amazon,    kind: print }
+  - { key: prom,    label: Prom.ua,   kind: digital, markets: [uk] }   # markets: показувати лише цими мовами сайту
 
-# Ігри на сайті, до яких можна привʼязати товар (поле game у product.yml)
+# Ігри тепер описані в content/games/<назва>/ (картка на головній + посилання з товарів).
+# Тут — лише додаткові адреси для поля game у product.yml, яких немає серед ігор.
 games:
-  what-if:  /what-if/
-  inventor: /inventor/
-  coach:    /coach/
   first-foods: /little/first-foods/
+
+# Навички й вікові групи — для сторінок-добірок /<мова>/skills/<навичка>/ і /<мова>/ages/<група>/
+skills:
+  - { key: curiosity,         color: yellow }
+  - { key: observation,       color: pink }
+  - { key: critical-thinking, color: blue }
+  - { key: languages,         color: blue }
+  - { key: soft-skills,       color: yellow }
+  - { key: parents,           color: ink }
+ageGroups:
+  - { key: "0-4",   min: 0,  max: 4 }
+  - { key: "5-9",   min: 5,  max: 9 }
+  - { key: "10-14", min: 10, max: 14 }
+
+# Email-підписка. Форма зʼявиться на сайті, щойно заповниш action.
+# action — адреса форми підписки з кабінету сервісу розсилок, напр.:
+#   Buttondown: https://buttondown.com/api/emails/embed-subscribe/<твій-нік>
+#   MailerLite: https://assets.mailerlite.com/jsonp/<акаунт>/forms/<форма>/subscribe   (emailField: fields[email])
+#   Kit:        https://app.kit.com/forms/<номер>/subscriptions                          (emailField: email_address)
+newsletter:
+  action: ""
+  emailField: email
+  # Необовʼязково: подарунок за підписку (напр. безкоштовний аркуш для друку) — текст у i18n.yml → newsletter.gift

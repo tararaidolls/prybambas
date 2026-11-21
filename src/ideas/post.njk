@@ -3,6 +3,7 @@
   pagination: { data: "catalog.postPages", size: 1, alias: "I" },
   permalink: (data) => data.I.url,
   layout: "base.njk",
+  ogAuto: true,
   section: "ideas",
   ogType: "article",
   eleventyComputed: {
@@ -20,7 +21,7 @@
       datePublished: new Date(data.I.post.date).toISOString().slice(0, 10),
       inLanguage: data.I.lang,
       url: new URL(data.I.url, data.site.url).href,
-      image: new URL(data.I.post.cover || "/logo.png", data.site.url).href,
+      image: new URL(data.I.post.cover || "/assets/og-default.png", data.site.url).href,
       author: { "@type": "Organization", name: "Prybambas", url: data.site.url },
       publisher: { "@type": "Organization", name: "Prybambas", url: data.site.url, logo: { "@type": "ImageObject", url: new URL("/logo.png", data.site.url).href } },
       audience: { "@type": "Audience", audienceType: "Parents and teachers of children ages 5-14" },
@@ -28,7 +29,7 @@
   },
 }
 ---
-{%- from "macros.njk" import productCard -%}
+{%- from "macros.njk" import productCard, newsletter -%}
 {%- set t = i18n[I.lang] -%}
 <p class="crumbs"><a href="/{{ I.lang }}/ideas/">{{ t.ideas_title }}</a></p>
 <article class="post">
@@ -44,3 +45,5 @@
   <div class="p-grid p-grid-one">{{ productCard(I.product, t, I.lang) }}</div>
 </section>
 {% endif %}
+
+{{ newsletter(site, t, I.lang, "post") }}

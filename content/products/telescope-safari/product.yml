@@ -1,0 +1,15 @@
+name: "Telescope Safari"         # назва в каталозі (на сайті — з <мова>.md)
+series: explorers
+type: journal
+status: available
+ages: "6-12"
+order: 2
+
+cover: cover.jpg            # з kdp B0HNDQX97W
+
+images: [preview-1.jpg]
+
+# Оголошення на платформах. Назва, ціна й статус підтягуються зі знімків content/shops/*.json
+listings:
+  - { platform: kdp, id: B0HNDQX97W, lang: en, variant: "Paperback · Northern Hemisphere", format: paperback }
+  - { platform: kdp, id: B0HNRDW1BV, lang: en, variant: "Kindle · Northern Hemisphere", format: kindle }

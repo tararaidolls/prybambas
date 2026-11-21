@@ -3,11 +3,18 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "check": "node scripts/check-translations.mjs",
+    "shops": "NODE_USE_ENV_PROXY=1 node scripts/catalog/import.mjs",
+    "catalog": "node scripts/catalog/report.mjs",
+    "covers": "NODE_USE_ENV_PROXY=1 node scripts/catalog/covers.mjs",
     "build": "eleventy",
     "start": "eleventy --serve"
   },
   "devDependencies": {
     "@11ty/eleventy": "3.1.2",
+    "@expo-google-fonts/caveat": "0.4.2",
+    "@expo-google-fonts/geologica": "0.4.2",
+    "@resvg/resvg-js": "2.6.2",
     "gray-matter": "4.0.3",
     "js-yaml": "4.1.0",
     "markdown-it": "14.1.0"

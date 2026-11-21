@@ -1,0 +1,14 @@
+name: "German Verbs Visual Flashcards"
+series: language-games
+type: cards
+status: available
+order: 8
+
+cover: cover.jpg            # з etsy img8629237548
+
+images: [preview-1.jpg, preview-2.jpg]
+
+# Оголошення на платформах. Назва, ціна й статус підтягуються зі знімків content/shops/*.json
+listings:
+  - { platform: etsy, id: "img8629237548", lang: de, variant: "Separable prefixes", format: pdf }
+ages: "10+"

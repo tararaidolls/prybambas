@@ -1,0 +1,13 @@
+name: "Dental Waiting Room Game Poster"
+series: soft-skills
+type: poster
+status: available
+order: 3
+
+cover: cover.jpg            # з etsy img8855200399
+
+images: [preview-1.jpg, preview-2.jpg]
+
+# Оголошення на платформах. Назва, ціна й статус підтягуються зі знімків content/shops/*.json
+listings:
+  - { platform: etsy, id: "img8855200399", lang: en, variant: "Waiting room poster", format: print }

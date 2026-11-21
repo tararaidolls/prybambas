@@ -3,6 +3,7 @@
   pagination: { data: "catalog.seriesPages", size: 1, alias: "S" },
   permalink: (data) => data.S.url,
   layout: "base.njk",
+  ogAuto: true,
   section: "shop",
   eleventyComputed: {
     lang: (data) => data.S.lang,

@@ -3,6 +3,7 @@
   pagination: { data: "catalog.langPages", size: 1, alias: "L" },
   permalink: (data) => `/${data.L.lang}/shop/`,
   layout: "base.njk",
+  ogAuto: true,
   section: "shop",
   eleventyComputed: {
     lang: (data) => data.L.lang,
@@ -12,12 +13,58 @@
   },
 }
 ---
-{%- from "macros.njk" import productCard -%}
+{%- from "macros.njk" import productCard, browseChips -%}
 {%- set t = i18n[L.lang] -%}
 <section class="page-head">
   <h1>{{ t.shop_title }}</h1>
   <p>{{ t.shop_intro }}</p>
 </section>
+
+{{ browseChips(catalog, t, L.lang) }}
+
+{#- Фільтри: працюють у браузері, ховають картки й порожні серії -#}
+{%- set allTypes = [] -%}{%- set allLangs = [] -%}
+{%- for p in L.products %}{% if p.type and p.type not in allTypes %}{% set allTypes = (allTypes.push(p.type), allTypes) %}{% endif %}{% for el in p.editionLangs %}{% if el not in allLangs %}{% set allLangs = (allLangs.push(el), allLangs) %}{% endif %}{% endfor %}{% endfor -%}
+<form class="filters" id="shop-filters" onsubmit="return false">
+  <label>{{ t.filter.type }}
+    <select id="f-type"><option value="">{{ t.filter.all }}</option>{% for ty in allTypes | sort %}<option value="{{ ty }}">{{ t.types[ty] or ty }}</option>{% endfor %}</select>
+  </label>
+  <label>{{ t.filter.age }}
+    <select id="f-age"><option value="">{{ t.filter.all }}</option>{% for g in catalog.ageGroups %}<option value="{{ g.min }}-{{ g.max }}">{{ t.ages | fmt({ages: g.key | replace("-", "–")}) }}</option>{% endfor %}<option value="adult">{{ t.filter.adults }}</option></select>
+  </label>
+  <label>{{ t.filter.lang }}
+    <select id="f-lang"><option value="">{{ t.filter.all }}</option>{% for el in allLangs | sort %}<option value="{{ el }}">{{ el | langName(L.lang) }}</option>{% endfor %}</select>
+  </label>
+  <label class="check"><input type="checkbox" id="f-avail"> {{ t.filter.available }}</label>
+  <button type="button" class="btn btn-ghost" id="f-reset">{{ t.filter.reset }}</button>
+  <output id="f-count" aria-live="polite"></output>
+</form>
+<script>
+(function () {
+  var f = document.getElementById('shop-filters'), shown = {{ t.filter.shown | json | safe }};
+  function apply() {
+    var ty = f.querySelector('#f-type').value, ag = f.querySelector('#f-age').value,
+        lg = f.querySelector('#f-lang').value, av = f.querySelector('#f-avail').checked, n = 0;
+    document.querySelectorAll('.p-card').forEach(function (c) {
+      var ok = true, a = c.dataset.age;
+      if (ty && c.dataset.type !== ty) ok = false;
+      if (lg && (',' + c.dataset.langs + ',').indexOf(',' + lg + ',') < 0) ok = false;
+      if (av && c.dataset.status === 'coming-soon') ok = false;
+      if (ag) {
+        if (ag === 'adult') ok = ok && a === 'adult';
+        else if (a === 'adult' || !a) ok = false;
+        else { var r = a.split('-').map(Number), g = ag.split('-').map(Number); if (!(r[0] <= g[1] && r[1] >= g[0])) ok = false; }
+      }
+      c.hidden = !ok; if (ok) n++;
+    });
+    document.querySelectorAll('section.block').forEach(function (s) { if (s.querySelector('.p-card')) s.hidden = !s.querySelector('.p-card:not([hidden])'); });
+    document.getElementById('f-count').textContent = shown.replace('{n}', n);
+  }
+  f.addEventListener('change', apply);
+  document.getElementById('f-reset').addEventListener('click', function () { f.reset(); apply(); });
+  document.addEventListener('DOMContentLoaded', apply);
+})();
+</script>
 
 <nav class="series-tabs" aria-label="{{ t.all_series }}">
   {% for s in L.series %}

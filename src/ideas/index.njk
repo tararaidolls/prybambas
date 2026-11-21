@@ -3,6 +3,7 @@
   pagination: { data: "catalog.langPages", size: 1, alias: "L" },
   permalink: (data) => `/${data.L.lang}/ideas/`,
   layout: "base.njk",
+  ogAuto: true,
   section: "ideas",
   eleventyComputed: {
     lang: (data) => data.L.lang,
@@ -12,7 +13,7 @@
   },
 }
 ---
-{%- from "macros.njk" import postCard -%}
+{%- from "macros.njk" import postCard, newsletter -%}
 {%- set t = i18n[L.lang] -%}
 <section class="page-head">
   <h1>{{ t.ideas_title }}</h1>
@@ -21,3 +22,5 @@
 {% if L.posts.length %}
 <div class="i-grid">{% for p in L.posts %}{{ postCard(p, t, L.lang) }}{% endfor %}</div>
 {% else %}<p class="empty">{{ t.no_items }}</p>{% endif %}
+
+{{ newsletter(site, t, L.lang, "index") }}

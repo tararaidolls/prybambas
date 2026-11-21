@@ -1,8 +1,8 @@
 {# Обкладинка: картинка, якщо є, інакше намальована «обкладинка зошита» #}
 {% macro cover(item, t, size="card") %}
-<div class="cover cover-{{ size }} c-{{ item.color or 'blue' }}">
+<div class="cover cover-{{ size }} c-{{ item.color or 'blue' }}{% if item.cover %} has-img{% endif %}">
   {% if item.cover %}
-    <img src="{{ item.cover }}" alt="" loading="lazy">
+    <img src="{{ item.cover }}" alt="{{ item.title }}" loading="lazy" decoding="async">
   {% else %}
     <span class="cover-series">{{ item.seriesTitle }}</span>
     <span class="cover-title">{{ item.title }}</span>
@@ -13,7 +13,7 @@
 {% endmacro %}
 
 {% macro productCard(p, t, lang) %}
-<a class="p-card" href="{{ p.url }}">
+<a class="p-card" href="{{ p.url }}" data-type="{{ p.type }}" data-status="{{ p.status }}" data-langs="{{ p.editionLangs | join(',') }}" data-age="{{ p.ageRange | join('-') if p.ageRange else 'adult' }}">
   {{ cover(p, t) }}
   <span class="p-meta">
     {%- if p.type %}<span>{{ t.types[p.type] or p.type }}</span>{% endif -%}
@@ -31,4 +31,39 @@
   <span class="i-title">{{ p.title }}</span>
   {% if p.summary %}<span class="i-sum">{{ p.summary }}</span>{% endif %}
 </a>
+{% endmacro %}
+
+{# Навігація «За віком / За навичкою»; current = "skill:curiosity" або "age:5-9" #}
+{% macro browseChips(catalog, t, lang, current="") %}
+<nav class="browse" aria-label="{{ t.by_age }} / {{ t.by_skill }}">
+  <div class="browse-row"><span class="browse-label">{{ t.by_age }}</span>
+    {%- for g in catalog.ageGroups %}
+    <a class="chip{% if current == 'age:' + g.key %} is-current{% endif %}" href="/{{ lang }}/ages/{{ g.key }}/">{{ t.ages | fmt({ages: g.key | replace("-", "–")}) }}</a>
+    {%- endfor %}
+  </div>
+  <div class="browse-row"><span class="browse-label">{{ t.by_skill }}</span>
+    {%- for k in catalog.skills %}
+    <a class="chip chip-{{ k.color }}{% if current == 'skill:' + k.key %} is-current{% endif %}" href="/{{ lang }}/skills/{{ k.key }}/">{{ t.skills[k.key].name }}</a>
+    {%- endfor %}
+  </div>
+</nav>
+{% endmacro %}
+
+{# Форма підписки: показується, лише якщо в site.yml заповнено newsletter.action #}
+{% macro newsletter(site, t, lang, where="") %}
+{% if site.newsletter and site.newsletter.action %}
+<section class="newsletter" aria-labelledby="nl-{{ where }}">
+  <div>
+    <h2 id="nl-{{ where }}">{{ t.newsletter.title }}</h2>
+    <p>{{ t.newsletter.gift or t.newsletter.text }}</p>
+  </div>
+  <form action="{{ site.newsletter.action }}" method="post" target="_blank" rel="noopener" data-umami-event="newsletter-{{ where }}">
+    <label class="visually-hidden" for="nl-email-{{ where }}">{{ t.newsletter.placeholder }}</label>
+    <input id="nl-email-{{ where }}" type="email" name="{{ site.newsletter.emailField or 'email' }}" placeholder="{{ t.newsletter.placeholder }}" required autocomplete="email">
+    <input type="hidden" name="tag" value="{{ lang }}">
+    <button class="btn" type="submit">{{ t.newsletter.button }}</button>
+    <small>{{ t.newsletter.note }}</small>
+  </form>
+</section>
+{% endif %}
 {% endmacro %}

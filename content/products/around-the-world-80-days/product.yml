@@ -1,0 +1,16 @@
+name: "Around the World in 80 Days · Reading Journal"         # назва в каталозі (на сайті — з <мова>.md)
+series: reading-diaries
+type: diary
+status: available
+ages: "7-14"
+order: 1
+
+cover: cover.jpg            # з kdp B0HNDK3HSM
+
+images: [preview-1.jpg, preview-2.jpg, preview-3.jpg]
+
+# Оголошення на платформах. Назва, ціна й статус підтягуються зі знімків content/shops/*.json
+listings:
+  - { platform: kdp, id: B0HNDK3HSM, lang: en, variant: "Paperback", format: paperback }
+  - { platform: tpt, id: "17893234", lang: en, variant: "Printable · PISA skills", format: digital }
+  - { platform: etsy, id: "img8696593629", lang: en, variant: "PDF", format: pdf }

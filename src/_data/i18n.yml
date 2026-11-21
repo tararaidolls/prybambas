@@ -2,6 +2,21 @@
 # Нова мова = новий блок з тими самими ключами.
 
 uk:
+  newsletter: { title: "Нова ідея щотижня", text: "Одне питання для розмови з дитиною й новинки магазину. Без спаму, відписка в один клік.", placeholder: "Твій email", button: "Підписатися", note: "Ми надсилаємо лише листи Prybambas." }
+  filter: { type: "Тип", age: "Вік", lang: "Мова видання", all: "Усі", available: "Лише в продажу", reset: "Скинути", shown: "Показано: {n}", adults: "Для дорослих" }
+  by_age: "За віком"
+  by_skill: "За навичкою"
+  games_here: "Ігри онлайн"
+  ideas_here: "Ідеї"
+  shop_here: "Зошити й матеріали"
+  age_intro: "Ігри, ідеї й зошити, які підходять дітям {ages} років."
+  skills:
+    curiosity: { name: "Допитливість", desc: "Питати «а що, якщо?» і шукати наслідки." }
+    observation: { name: "Спостережливість", desc: "Помічати деталі навколо: вдома, надворі, у книжці." }
+    critical-thinking: { name: "Критичне мислення", desc: "Шукати протиріччя, перевіряти відповіді, винаходити." }
+    languages: { name: "Мови", desc: "Щоденна практика дієслів, слухання й читання." }
+    soft-skills: { name: "Soft skills", desc: "Емоції, спілкування, звички й робота в команді." }
+    parents: { name: "Для батьків", desc: "Трекери, чеклісти й гайди для сімейних буднів." }
   nav_games: Ігри
   nav_ideas: Ідеї
   nav_shop: Магазин
@@ -22,6 +37,7 @@ uk:
   edition: Мова видання
   buy_digital: Файл для друку
   buy_print: Друкована книжка
+  formats: { kindle: "Kindle", paperback: "Друкована книжка", pdf: "PDF для друку", digital: "PDF для друку", bundle: "Набір", print: "Друк із доставкою" }
   buy_on: "{store}"
   pages: "{n} с."
   ages: "{ages} років"
@@ -46,8 +62,24 @@ uk:
     diary: Щоденник
     journal: Журнал
     bundle: Набір
+    merch: Мерч
 
 en:
+  newsletter: { title: "A new idea every week", text: "One question to talk about with your kid, plus new workbooks. No spam, unsubscribe in one click.", placeholder: "Your email", button: "Subscribe", note: "We only send Prybambas emails." }
+  filter: { type: "Type", age: "Age", lang: "Edition language", all: "All", available: "Available only", reset: "Reset", shown: "Showing {n}", adults: "Adults" }
+  by_age: "By age"
+  by_skill: "By skill"
+  games_here: "Games to play online"
+  ideas_here: "Ideas"
+  shop_here: "Workbooks & printables"
+  age_intro: "Games, ideas and workbooks that suit kids aged {ages}."
+  skills:
+    curiosity: { name: "Curiosity", desc: "Ask \"what if?\" and follow the consequences." }
+    observation: { name: "Observation", desc: "Notice the details around you: at home, outdoors, in a book." }
+    critical-thinking: { name: "Critical thinking", desc: "Spot contradictions, check answers, invent." }
+    languages: { name: "Languages", desc: "Daily practice with verbs, listening and reading." }
+    soft-skills: { name: "Soft skills", desc: "Feelings, communication, habits and teamwork." }
+    parents: { name: "For parents", desc: "Trackers, checklists and guides for family life." }
   nav_games: Games
   nav_ideas: Ideas
   nav_shop: Shop
@@ -68,6 +100,7 @@ en:
   edition: Edition language
   buy_digital: Printable file
   buy_print: Printed book
+  formats: { kindle: "Kindle", paperback: "Paperback", pdf: "Printable PDF", digital: "Printable PDF", bundle: "Bundle", print: "Printed & shipped" }
   buy_on: "{store}"
   pages: "{n} pages"
   ages: "Ages {ages}"
@@ -92,8 +125,24 @@ en:
     diary: Diary
     journal: Journal
     bundle: Bundle
+    merch: Merch
 
 pl:
+  newsletter: { title: "Nowy pomysł co tydzień", text: "Jedno pytanie do rozmowy z dzieckiem i nowości w sklepie. Bez spamu, rezygnacja jednym kliknięciem.", placeholder: "Twój e-mail", button: "Zapisz się", note: "Wysyłamy tylko wiadomości Prybambas." }
+  filter: { type: "Rodzaj", age: "Wiek", lang: "Język wydania", all: "Wszystkie", available: "Tylko dostępne", reset: "Wyczyść", shown: "Pokazano: {n}", adults: "Dla dorosłych" }
+  by_age: "Według wieku"
+  by_skill: "Według umiejętności"
+  games_here: "Gry online"
+  ideas_here: "Pomysły"
+  shop_here: "Zeszyty i materiały"
+  age_intro: "Gry, pomysły i zeszyty dla dzieci w wieku {ages} lat."
+  skills:
+    curiosity: { name: "Ciekawość", desc: "Pytaj „co by było, gdyby?” i szukaj skutków." }
+    observation: { name: "Spostrzegawczość", desc: "Zauważaj szczegóły: w domu, na dworze, w książce." }
+    critical-thinking: { name: "Krytyczne myślenie", desc: "Szukaj sprzeczności, sprawdzaj odpowiedzi, wynajduj." }
+    languages: { name: "Języki", desc: "Codzienna praktyka czasowników, słuchania i czytania." }
+    soft-skills: { name: "Kompetencje miękkie", desc: "Emocje, komunikacja, nawyki i praca w zespole." }
+    parents: { name: "Dla rodziców", desc: "Trackery, listy i poradniki na rodzinną codzienność." }
   nav_games: Gry
   nav_ideas: Pomysły
   nav_shop: Sklep
@@ -114,6 +163,7 @@ pl:
   edition: Język wydania
   buy_digital: Plik do druku
   buy_print: Książka drukowana
+  formats: { kindle: "Kindle", paperback: "Książka drukowana", pdf: "PDF do druku", digital: "PDF do druku", bundle: "Zestaw", print: "Wydruk z wysyłką" }
   buy_on: "{store}"
   pages: "{n} str."
   ages: "Wiek {ages}"
@@ -138,8 +188,24 @@ pl:
     diary: Dziennik
     journal: Dziennik
     bundle: Zestaw
+    merch: Gadżety
 
 de:
+  newsletter: { title: "Jede Woche eine neue Idee", text: "Eine Frage zum Gespräch mit deinem Kind und neue Arbeitshefte. Kein Spam, Abmeldung mit einem Klick.", placeholder: "Deine E-Mail", button: "Abonnieren", note: "Wir senden nur E-Mails von Prybambas." }
+  filter: { type: "Art", age: "Alter", lang: "Sprache der Ausgabe", all: "Alle", available: "Nur erhältlich", reset: "Zurücksetzen", shown: "Angezeigt: {n}", adults: "Erwachsene" }
+  by_age: "Nach Alter"
+  by_skill: "Nach Fähigkeit"
+  games_here: "Online-Spiele"
+  ideas_here: "Ideen"
+  shop_here: "Arbeitshefte & Druckvorlagen"
+  age_intro: "Spiele, Ideen und Arbeitshefte für Kinder von {ages} Jahren."
+  skills:
+    curiosity: { name: "Neugier", desc: "„Was wäre, wenn?“ fragen und den Folgen nachgehen." }
+    observation: { name: "Beobachten", desc: "Details bemerken: zu Hause, draußen, im Buch." }
+    critical-thinking: { name: "Kritisches Denken", desc: "Widersprüche finden, Antworten prüfen, erfinden." }
+    languages: { name: "Sprachen", desc: "Tägliches Üben von Verben, Hören und Lesen." }
+    soft-skills: { name: "Soft Skills", desc: "Gefühle, Kommunikation, Gewohnheiten und Teamarbeit." }
+    parents: { name: "Für Eltern", desc: "Tracker, Checklisten und Leitfäden für den Familienalltag." }
   nav_games: Spiele
   nav_ideas: Ideen
   nav_shop: Shop
@@ -160,6 +226,7 @@ de:
   edition: Sprache der Ausgabe
   buy_digital: Druckdatei
   buy_print: Gedrucktes Buch
+  formats: { kindle: "Kindle", paperback: "Taschenbuch", pdf: "PDF zum Drucken", digital: "PDF zum Drucken", bundle: "Paket", print: "Gedruckt & versendet" }
   buy_on: "{store}"
   pages: "{n} Seiten"
   ages: "{ages} Jahre"
@@ -184,8 +251,24 @@ de:
     diary: Tagebuch
     journal: Journal
     bundle: Paket
+    merch: Merch
 
 es:
+  newsletter: { title: "Una idea nueva cada semana", text: "Una pregunta para hablar con tu hijo y novedades de la tienda. Sin spam, te das de baja con un clic.", placeholder: "Tu correo", button: "Suscribirme", note: "Solo enviamos correos de Prybambas." }
+  filter: { type: "Tipo", age: "Edad", lang: "Idioma de la edición", all: "Todos", available: "Solo disponibles", reset: "Restablecer", shown: "Mostrando {n}", adults: "Adultos" }
+  by_age: "Por edad"
+  by_skill: "Por habilidad"
+  games_here: "Juegos en línea"
+  ideas_here: "Ideas"
+  shop_here: "Cuadernos e imprimibles"
+  age_intro: "Juegos, ideas y cuadernos para niños de {ages} años."
+  skills:
+    curiosity: { name: "Curiosidad", desc: "Preguntar «¿y si…?» y seguir las consecuencias." }
+    observation: { name: "Observación", desc: "Fijarse en los detalles: en casa, al aire libre, en un libro." }
+    critical-thinking: { name: "Pensamiento crítico", desc: "Detectar contradicciones, comprobar respuestas, inventar." }
+    languages: { name: "Idiomas", desc: "Práctica diaria de verbos, escucha y lectura." }
+    soft-skills: { name: "Habilidades blandas", desc: "Emociones, comunicación, hábitos y trabajo en equipo." }
+    parents: { name: "Para padres", desc: "Registros, listas y guías para el día a día en familia." }
   nav_games: Juegos
   nav_ideas: Ideas
   nav_shop: Tienda
@@ -206,6 +289,7 @@ es:
   edition: Idioma de la edición
   buy_digital: Archivo para imprimir
   buy_print: Libro impreso
+  formats: { kindle: "Kindle", paperback: "Libro impreso", pdf: "PDF para imprimir", digital: "PDF para imprimir", bundle: "Paquete", print: "Impreso y enviado" }
   buy_on: "{store}"
   pages: "{n} págs."
   ages: "{ages} años"
@@ -230,3 +314,4 @@ es:
     diary: Diario
     journal: Diario
     bundle: Paquete
+    merch: Merch

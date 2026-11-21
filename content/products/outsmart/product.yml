@@ -1,0 +1,15 @@
+name: "Перехитри! (Outsmart)"         # назва в каталозі (на сайті — з <мова>.md)
+series: thinking
+type: game
+status: available
+ages: "11-14"
+order: 4
+
+cover: cover.jpg            # з etsy img8804977206
+
+images: [preview-1.jpg, preview-2.jpg, preview-3.jpg]
+
+# Оголошення на платформах. Назва, ціна й статус підтягуються зі знімків content/shops/*.json
+listings:
+  - { platform: prom, id: "3276946955", lang: uk, variant: "Книжка-гра A4, 60 с." }
+  - { platform: etsy, id: "img8804977206", lang: en, variant: "Strategy Games for Kids 11–14", format: pdf }
