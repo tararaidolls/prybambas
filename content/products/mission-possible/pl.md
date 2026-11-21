@@ -1,10 +1,10 @@
 ---
 title: "Misja możliwa"
-tagline: "20 wyzwań inżynierskich dla kreatywnych dzieci 8–14 lat oparte na metodzie TRIZ."
+tagline: "24 misje ucieczki dla kreatywnych dzieci 8–14 lat: wynajdź drogę wyjścia metodą TRIZ."
 ---
 
 ## Co w środku
-- 20 zadań inżynierskich rozwiązywanych własnym wynalazkiem
+- 24 misje ucieczki, każda z sytuacją i 3 losowymi przedmiotami
+- Wydostajesz się, wynajdując rozwiązanie z tego, co masz
 - Nauka dostrzegania sprzeczności i rozwiązywania ich jak wynalazca
-- Strony na szkice i prototypy
-- Trzy poziomy trudności dla zdolnych dzieci
+- Trzy poziomy: Nowicjusz, Agent, Elita
