@@ -88,6 +88,11 @@ const products = readEntries("products", "product.yml")
     status: p.status || "available",
     // Кнопки купівлі збираються з оголошень (listings) + знімків магазинів
     editions: buyEditions(p, resolveListings(p, shops), site),
+    // Пропозиції для розмітки Google (schema.org Offer): лише оголошення з ціною й посиланням
+    offers: resolveListings(p, shops)
+      .filter((l) => l.price > 0 && l.currency && !["removed", "missing"].includes(l.status))
+      // для Etsy відомий лише пошук у магазині, тож пряму адресу не вказуємо (для Google вона необовʼязкова)
+      .map((l) => ({ price: Number(l.price).toFixed(2), currency: l.currency, url: l.urlKind === "search" ? undefined : l.url, preorder: l.status === "preorder", platform: l.platform })),
     url: (lang) => `/${lang}/shop/${p.series}/${p.slug}/`,
   }))
   .sort((a, b) => (a.order ?? 99) - (b.order ?? 99) || a.slug.localeCompare(b.slug));
