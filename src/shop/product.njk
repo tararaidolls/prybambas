@@ -13,13 +13,36 @@
     description: (data) => data.P.t.tagline || data.P.t.title,
     ogImage: (data) => data.P.product.cover,
     gumroad: (data) => data.P.product.editions.some((e) => e.buttons.some((b) => b.platform === "gumroad")),
-    jsonld: (data) => ({
-      "@context": "https://schema.org", "@type": "Product",
-      name: data.P.t.title, description: data.P.t.tagline || "",
-      image: data.P.product.cover ? new URL(data.P.product.cover, data.site.url).href : undefined,
-      brand: { "@type": "Brand", name: "Kids Skill Academy" },
-      inLanguage: data.P.editionLangs,
-    }),
+    // Розмітка для Google. Google вимагає, щоб у Product була ціна (offers), тому:
+    //  - товар у продажу з цінами в оголошеннях (знімки магазинів) → Product з Offer на кожне оголошення;
+    //  - без цін (напр. «скоро») → Book для зошитів і щоденників або CreativeWork — для них ціна не потрібна.
+    jsonld: (data) => {
+      const p = data.P.product;
+      const base = {
+        "@context": "https://schema.org",
+        name: data.P.t.title,
+        description: data.P.t.tagline || "",
+        url: new URL(data.P.url, data.site.url).href,
+        image: p.cover ? new URL(p.cover, data.site.url).href : undefined,
+        inLanguage: data.P.editionLangs,
+      };
+      if (p.status === "available" && p.offers.length) {
+        return {
+          ...base, "@type": "Product",
+          brand: { "@type": "Brand", name: "Kids Skill Academy" },
+          offers: p.offers.map((o) => ({
+            "@type": "Offer", price: o.price, priceCurrency: o.currency, url: o.url,
+            availability: o.preorder ? "https://schema.org/PreOrder" : "https://schema.org/InStock",
+          })),
+        };
+      }
+      return {
+        ...base,
+        "@type": ["workbook", "journal", "diary", "book"].includes(p.type) ? "Book" : "CreativeWork",
+        publisher: { "@type": "Organization", name: "Kids Skill Academy" },
+        author: { "@type": "Person", name: "Maryna Skliar" },
+      };
+    },
   },
 }
 ---
