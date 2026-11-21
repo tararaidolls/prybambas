@@ -4,6 +4,10 @@ type: poster
 status: available
 order: 2
 
+cover: cover.jpg            # з etsy img7840733422
+
+images: [preview-1.jpg]
+
 # Оголошення на платформах. Назва, ціна й статус підтягуються зі знімків content/shops/*.json
 listings:
   - { platform: etsy, id: "img7840733422", lang: en, variant: "4 pillars cheat sheet", format: pdf }

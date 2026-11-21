@@ -4,6 +4,10 @@ type: journal
 status: available
 order: 2
 
+cover: cover.jpg            # з etsy img7874565961
+
+images: [preview-1.jpg, preview-2.jpg, preview-3.jpg]
+
 # Оголошення на платформах. Назва, ціна й статус підтягуються зі знімків content/shops/*.json
 listings:
   - { platform: etsy, id: "img7874565961", lang: en, variant: "Milestone tracker", format: pdf }

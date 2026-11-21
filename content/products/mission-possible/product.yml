@@ -8,6 +8,10 @@ game: inventor
 
 # Оголошення на платформах. Назва, ціна й статус підтягуються зі знімків content/shops/*.json
 # (на TpT продається як «Gifted STEM Challenges»)
+cover: cover.jpg            # з kdp B0GWR8P5SX
+
+images: [preview-1.jpg, preview-2.jpg, preview-3.jpg]
+
 listings:
   - { platform: kdp, id: B0GWR8P5SX, lang: en, variant: "Paperback", format: paperback }
   - { platform: kdp, id: B0HNRYCQNS, lang: en, variant: "Kindle", format: kindle }

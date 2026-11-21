@@ -7,6 +7,10 @@ game: coach
 
 # Оголошення на платформах. Назва, ціна й статус підтягуються зі знімків content/shops/*.json
 # (lang = мова, яку вивчають)
+cover: cover.jpg            # з kdp B0H3NXYCRG
+
+images: [preview-1.jpg, preview-2.jpg]
+
 listings:
   - { platform: kdp, id: B0H3NXYCRG, lang: en, variant: "English · Vol. 1", format: paperback }
   - { platform: kdp, id: B0GXKTBJSM, lang: fr, variant: "French · Vol. 1 Survival & Basics", format: paperback }

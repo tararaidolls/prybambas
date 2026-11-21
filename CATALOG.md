@@ -1,14 +1,14 @@
 # Каталог Prybambas
 
-Дані магазинів станом на 2026-11-20. Згенеровано командою `npm run catalog`. Не редагуй вручну: зміни вносяться в `content/products/*/product.yml`, а дані магазинів оновлює `npm run shops`.
+Дані магазинів станом на 2026-11-21. Згенеровано командою `npm run catalog`. Не редагуй вручну: зміни вносяться в `content/products/*/product.yml`, а дані магазинів оновлює `npm run shops`.
 
 ## Магазини
 
 | Платформа | Оголошень | Знімок | Джерело |
 |---|---:|---|---|
-| Amazon | 21 | 2026-11-20 | збережені сторінки |
-| TpT | 45 | 2026-11-20 | https://www.teacherspayteachers.com/store/prybambas-creative-lab |
-| Etsy | 60 | 2026-11-20 | CSV з кабінету Etsy |
+| Amazon | 21 | 2026-11-21 | збережені сторінки |
+| TpT | 45 | 2026-11-21 | https://www.teacherspayteachers.com/store/prybambas-creative-lab |
+| Etsy | 60 | 2026-11-21 | CSV з кабінету Etsy |
 | Prom.ua | 10 | 2026-11-20 | https://prybambas.prom.ua/ua/ |
 | Gumroad | — | немає | — |
 

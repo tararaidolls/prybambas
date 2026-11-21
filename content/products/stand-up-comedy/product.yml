@@ -5,6 +5,10 @@ status: available
 ages: "11-18"
 order: 1
 
+cover: cover.jpg            # з kdp B0H9RTMN67
+
+images: [preview-1.jpg, preview-2.jpg, preview-3.jpg]
+
 # Оголошення на платформах. Назва, ціна й статус підтягуються зі знімків content/shops/*.json
 listings:
   - { platform: kdp, id: B0H9RTMN67, lang: en, variant: "The 30-Day Open Mic Challenge", format: paperback }

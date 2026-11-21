@@ -1,8 +1,8 @@
 {# Обкладинка: картинка, якщо є, інакше намальована «обкладинка зошита» #}
 {% macro cover(item, t, size="card") %}
-<div class="cover cover-{{ size }} c-{{ item.color or 'blue' }}">
+<div class="cover cover-{{ size }} c-{{ item.color or 'blue' }}{% if item.cover %} has-img{% endif %}">
   {% if item.cover %}
-    <img src="{{ item.cover }}" alt="" loading="lazy">
+    <img src="{{ item.cover }}" alt="{{ item.title }}" loading="lazy" decoding="async">
   {% else %}
     <span class="cover-series">{{ item.seriesTitle }}</span>
     <span class="cover-title">{{ item.title }}</span>

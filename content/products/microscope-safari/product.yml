@@ -2,6 +2,10 @@ series: explorers
 type: journal
 status: available
 
+cover: cover.jpg            # з kdp B0H6H4RRBT
+
+images: [preview-1.jpg, preview-2.jpg]
+
 # Оголошення на платформах. Назва, ціна й статус підтягуються зі знімків content/shops/*.json
 listings:
   - { platform: kdp, id: B0H6H4RRBT, lang: en, variant: "Paperback", format: paperback }

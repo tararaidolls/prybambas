@@ -9,6 +9,10 @@ editions:
   - lang: en
     pages: 68
 
+cover: cover.jpg            # з etsy img8701483288
+
+images: [preview-1.jpg, preview-2.jpg, preview-3.jpg]
+
 listings:
   - { platform: etsy, id: "img8701483288", lang: en, variant: "Tracker · printable log", format: pdf }
   - { platform: etsy, id: "img3915173834", lang: en, variant: "Tracker · checklist", format: pdf }

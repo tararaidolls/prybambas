@@ -5,6 +5,10 @@ status: available
 ages: "7-14"
 order: 1
 
+cover: cover.jpg            # з kdp B0HNDK3HSM
+
+images: [preview-1.jpg, preview-2.jpg, preview-3.jpg]
+
 # Оголошення на платформах. Назва, ціна й статус підтягуються зі знімків content/shops/*.json
 listings:
   - { platform: kdp, id: B0HNDK3HSM, lang: en, variant: "Paperback", format: paperback }

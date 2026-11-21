@@ -5,6 +5,10 @@ status: available
 order: 5
 ages: "8-11"
 
+cover: cover.jpg            # з etsy img8804890998
+
+images: [preview-1.jpg, preview-2.jpg, preview-3.jpg]
+
 # Оголошення на платформах. Назва, ціна й статус підтягуються зі знімків content/shops/*.json
 listings:
   - { platform: etsy, id: "img8804890998", lang: en, variant: "PDF", format: pdf }

@@ -70,6 +70,7 @@ export function parseTpt(html) {
     const price = sale || original;
     const free = !price && /\bFREE\b/.test(card);
     const bundleSize = (card.match(/Bundle \((\d+) products\)/) || [])[1];
+    const image = (card.match(/<img src="(https:\/\/ecdn\.teacherspayteachers\.com\/thumbitem\/[^"]+\.(?:jpg|png))"/) || [])[1];
     const includedIn = (card.match(/Also included in:\s*(?:<[^>]+>\s*)*([^<]+)/) || [])[1];
     out.push({
       platform: "tpt",
@@ -82,6 +83,7 @@ export function parseTpt(html) {
       format: bundleSize || /bundle/i.test(title || "") ? "bundle" : "digital",
       bundleSize: bundleSize ? Number(bundleSize) : undefined,
       includedIn: includedIn ? decode(includedIn) : undefined,
+      image,
       status: "active",
     });
   }
@@ -112,6 +114,7 @@ export function parseAmazonAuthor(html) {
     const series = (seg.match(/"seriesTitle":"((?:[^"\\]|\\.)*)"/) || [])[1];
     const position = (seg.match(/"bookSeriesInfo":\{"position":(\d+)/) || [])[1];
     const price = (seg.match(/"minPrice":\{"amount":([\d.]+),"currencyCode":"([A-Z]{3})"/) || []);
+    const image = (seg.match(/"productImages":\{[^]*?"hiRes":\{"url":"(https:[^"]+)"/) || [])[1];
     const prev = out.get(asin) || {};
     out.set(asin, {
       platform: "kdp",
@@ -123,6 +126,7 @@ export function parseAmazonAuthor(html) {
       format: prev.format || (binding ? binding.toLowerCase().replace(/ edition$/, "").replace(/\s+/g, "-") : undefined),
       series: prev.series || (series ? decode(JSON.parse(`"${series}"`)) : undefined),
       seriesPosition: prev.seriesPosition || (position ? Number(position) : undefined),
+      image: prev.image || image,
       status: "active",
     });
   });
@@ -178,6 +182,7 @@ export function etsyFromCsv(text, shopUrl = "https://www.etsy.com/shop/Prybambas
       format: physical ? "print" : "pdf",
       variations: variations.length ? variations : undefined,
       image: r.IMAGE1 || undefined,
+      images: [2, 3, 4, 5, 6, 7, 8, 9, 10].map((k) => r[`IMAGE${k}`]).filter(Boolean),
       status: "active",
     };
   });

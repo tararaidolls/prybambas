@@ -4,6 +4,10 @@ type: workbook
 status: available
 order: 7
 
+cover: cover.jpg            # з etsy img8804817832
+
+images: [preview-1.jpg, preview-2.jpg, preview-3.jpg]
+
 # Оголошення на платформах. Назва, ціна й статус підтягуються зі знімків content/shops/*.json
 listings:
   - { platform: etsy, id: "img8804817832", lang: zh, variant: "PDF", format: pdf }

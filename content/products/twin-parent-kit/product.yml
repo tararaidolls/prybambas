@@ -4,6 +4,10 @@ type: bundle
 status: available
 order: 3
 
+cover: cover.jpg            # з etsy img7876187187
+
+images: [preview-1.jpg, preview-2.jpg, preview-3.jpg]
+
 # Оголошення на платформах. Назва, ціна й статус підтягуються зі знімків content/shops/*.json
 listings:
   - { platform: etsy, id: "img7876187187", lang: en, variant: "Starter kit", format: bundle }

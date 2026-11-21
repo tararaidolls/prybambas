@@ -5,6 +5,10 @@ status: available
 order: 9
 # можливо, це і є Verb Oracle — тоді перенеси оголошення в content/products/verb-oracle/
 
+cover: cover.jpg            # з etsy img8574378184
+
+images: [preview-1.jpg, preview-2.jpg]
+
 # Оголошення на платформах. Назва, ціна й статус підтягуються зі знімків content/shops/*.json
 listings:
   - { platform: etsy, id: "img8574378184", lang: en, variant: "Halloween edition", format: pdf }

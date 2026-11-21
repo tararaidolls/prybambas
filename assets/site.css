@@ -255,3 +255,9 @@ a:focus-visible, select:focus-visible, .btn:focus-visible { outline: 3px solid v
 .newsletter input[type=email] { flex: 1 1 14rem; min-width: 0; font: 0.95rem var(--f-main); padding: 10px 12px; border: 1.5px solid var(--ink); border-radius: 8px; background: var(--card); }
 .newsletter small { flex-basis: 100%; color: var(--ink-soft); font-size: 0.78rem; }
 @media (max-width: 700px) { .newsletter { grid-template-columns: 1fr; } }
+
+/* Справжні обкладинки: фото цілком, без намальованого корінця */
+.cover.has-img { background: var(--card); padding: 0; }
+.cover.has-img::before { display: none; }
+.cover.has-img img { object-fit: contain; background: var(--card); }
+.thumbs img { object-fit: contain; background: var(--card); aspect-ratio: 1; }

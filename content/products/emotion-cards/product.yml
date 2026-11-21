@@ -4,6 +4,10 @@ type: cards
 status: available
 order: 4
 
+cover: cover.jpg            # з etsy img7891544055
+
+images: [preview-1.jpg]
+
 # Оголошення на платформах. Назва, ціна й статус підтягуються зі знімків content/shops/*.json
 listings:
   - { platform: etsy, id: "img7891544055", lang: en, variant: "Montessori feelings flashcards", format: pdf }

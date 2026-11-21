@@ -1,7 +1,7 @@
 {
   "platform": "kdp",
   "source": "збережені сторінки",
-  "updated": "2026-11-20",
+  "updated": "2026-11-21",
   "count": 21,
   "items": [
     {
@@ -12,6 +12,7 @@
       "price": 9.99,
       "currency": "USD",
       "format": "paperback",
+      "image": "https://m.media-amazon.com/images/I/71GeNb4DjOL.jpg",
       "status": "active"
     },
     {
@@ -22,6 +23,7 @@
       "price": 12.99,
       "currency": "USD",
       "format": "paperback",
+      "image": "https://m.media-amazon.com/images/I/61w+Q4Ew1fL.jpg",
       "status": "active"
     },
     {
@@ -34,6 +36,7 @@
       "format": "paperback",
       "series": "One Verb Per Day",
       "seriesPosition": 11,
+      "image": "https://m.media-amazon.com/images/I/51b67yyIGZL.jpg",
       "status": "active"
     },
     {
@@ -46,6 +49,7 @@
       "format": "kindle",
       "series": "Young Explorer Science Adventures",
       "seriesPosition": 1,
+      "image": "https://m.media-amazon.com/images/I/71GK6DQzPaL.jpg",
       "status": "active"
     },
     {
@@ -58,6 +62,7 @@
       "format": "paperback",
       "series": "Young Explorer Science Adventures",
       "seriesPosition": 1,
+      "image": "https://m.media-amazon.com/images/I/71DWALAMcCL.jpg",
       "status": "active"
     },
     {
@@ -68,6 +73,7 @@
       "price": 3.99,
       "currency": "USD",
       "format": "kindle",
+      "image": "https://m.media-amazon.com/images/I/81X+4-duDSL.jpg",
       "status": "active"
     },
     {
@@ -78,6 +84,7 @@
       "price": 9.99,
       "currency": "USD",
       "format": "paperback",
+      "image": "https://m.media-amazon.com/images/I/71K9vOb4NLL.jpg",
       "status": "active"
     },
     {
@@ -90,6 +97,7 @@
       "format": "kindle",
       "series": "Think Like an Inventor | Challenges for Creative Kids",
       "seriesPosition": 3,
+      "image": "https://m.media-amazon.com/images/I/81X+CZzEWgL.jpg",
       "status": "active"
     },
     {
@@ -102,6 +110,7 @@
       "format": "paperback",
       "series": "Think Like an Inventor | Challenges for Creative Kids",
       "seriesPosition": 3,
+      "image": "https://m.media-amazon.com/images/I/71QX88FEuNL.jpg",
       "status": "active"
     },
     {
@@ -114,6 +123,7 @@
       "format": "paperback",
       "series": "One Verb Per Day",
       "seriesPosition": 3,
+      "image": "https://m.media-amazon.com/images/I/51-CuPwdVfL.jpg",
       "status": "active"
     },
     {
@@ -126,6 +136,7 @@
       "format": "paperback",
       "series": "One Verb Per Day",
       "seriesPosition": 4,
+      "image": "https://m.media-amazon.com/images/I/511WoYteTrL.jpg",
       "status": "active"
     },
     {
@@ -138,6 +149,7 @@
       "format": "paperback",
       "series": "One Verb Per Day",
       "seriesPosition": 14,
+      "image": "https://m.media-amazon.com/images/I/51yW5S5AmSL.jpg",
       "status": "active"
     },
     {
@@ -150,6 +162,7 @@
       "format": "paperback",
       "series": "One Verb Per Day",
       "seriesPosition": 2,
+      "image": "https://m.media-amazon.com/images/I/51K24Wfn6KL.jpg",
       "status": "active"
     },
     {
@@ -162,6 +175,7 @@
       "format": "paperback",
       "series": "One Verb Per Day",
       "seriesPosition": 5,
+      "image": "https://m.media-amazon.com/images/I/51cHx1OA4eL.jpg",
       "status": "active"
     },
     {
@@ -172,6 +186,7 @@
       "price": 12.99,
       "currency": "USD",
       "format": "paperback",
+      "image": "https://m.media-amazon.com/images/I/61ESekCftFL.jpg",
       "status": "active"
     },
     {
@@ -182,6 +197,7 @@
       "price": 3.99,
       "currency": "USD",
       "format": "kindle",
+      "image": "https://m.media-amazon.com/images/I/914PTXEKn0L.jpg",
       "status": "active"
     },
     {
@@ -192,6 +208,7 @@
       "price": 9.99,
       "currency": "USD",
       "format": "paperback",
+      "image": "https://m.media-amazon.com/images/I/71uaITUD7RL.jpg",
       "status": "active"
     },
     {
@@ -202,6 +219,7 @@
       "price": 12.99,
       "currency": "USD",
       "format": "paperback",
+      "image": "https://m.media-amazon.com/images/I/61aqw7hyMjL.jpg",
       "status": "active"
     },
     {
@@ -214,6 +232,7 @@
       "format": "kindle",
       "series": "What If? Logical chain game",
       "seriesPosition": 11,
+      "image": "https://m.media-amazon.com/images/I/714jyp1Y3CL.jpg",
       "status": "active"
     },
     {
@@ -226,6 +245,7 @@
       "format": "paperback",
       "series": "What If? Logical chain game",
       "seriesPosition": 11,
+      "image": "https://m.media-amazon.com/images/I/61gcghmfQCL.jpg",
       "status": "active"
     },
     {
@@ -238,6 +258,7 @@
       "format": "paperback",
       "series": "Think Like an Inventor | Challenges for Creative Kids",
       "seriesPosition": 1,
+      "image": "https://m.media-amazon.com/images/I/71unCyIgftL.jpg",
       "status": "active"
     }
   ]

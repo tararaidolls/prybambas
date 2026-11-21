@@ -3,6 +3,10 @@ type: poster
 status: available
 editions: []
 
+cover: cover.jpg            # з etsy img8488132254
+
+images: [preview-1.jpg, preview-2.jpg, preview-3.jpg]
+
 listings:
   - { platform: etsy, id: "img8488132254", lang: en, variant: "Captain of My Ship · digital", format: pdf }
   - { platform: etsy, id: "img8394300978", lang: en, variant: "Captain of My Ship · print", format: print }

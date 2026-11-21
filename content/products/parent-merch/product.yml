@@ -4,6 +4,10 @@ type: merch
 status: available
 order: 1
 
+cover: cover.jpg            # з etsy img8656686352
+
+images: [preview-1.jpg]
+
 # Оголошення на платформах. Назва, ціна й статус підтягуються зі знімків content/shops/*.json
 listings:
   - { platform: etsy, id: "img8656686352", lang: en, variant: "«Tired but Still Inspired» T-shirt", format: print }

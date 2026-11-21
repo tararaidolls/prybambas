@@ -108,6 +108,9 @@ content/
 - `npm run shops` — оновити знімки магазинів (Amazon, TpT, Prom читаються з публічних сторінок).
 - `npm run shops -- --etsy-csv файл.csv` — імпорт Etsy з CSV
   (Etsy → Shop Manager → Settings → Options → Download Data → Currently for sale listings).
+- `npm run covers` — завантажити справжні обкладинки й до 3 фото для галереї з магазинів
+  (Amazon → Etsy → TpT → Prom) для товарів, у яких ще немає `cover`. `--force` — перезавантажити всі,
+  `coverFrom: "kdp B0…"` у product.yml — взяти обкладинку з конкретного оголошення.
 - `npm run catalog` — оновити звіт `CATALOG.md`: товар × платформа, ціни, що потребує уваги
   (оголошення зникло з магазину, товар не привʼязаний до каталогу, PDF «під замовлення» тощо).
 

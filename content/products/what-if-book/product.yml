@@ -6,6 +6,10 @@ order: 1
 game: what-if          # кнопка «Спробуй онлайн» веде на гру
 # cover: cover.jpg     # поклади картинку в цю папку і розкоментуй
 
+cover: cover.jpg            # з kdp B0GW3S7FLK
+
+images: [preview-1.jpg]
+
 # Оголошення на платформах. Назва, ціна й статус підтягуються зі знімків content/shops/*.json
 listings:
   - { platform: kdp, id: B0GW3S7FLK, lang: en, variant: "Paperback · 60 questions & bonus activities", format: paperback }

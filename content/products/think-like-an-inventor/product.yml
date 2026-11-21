@@ -5,6 +5,10 @@ featured: true
 order: 2
 game: inventor
 
+cover: cover.jpg            # з kdp B0GWRLCN2S
+
+images: [preview-1.jpg, preview-2.jpg, preview-3.jpg]
+
 # Оголошення на платформах. Назва, ціна й статус підтягуються зі знімків content/shops/*.json
 listings:
   - { platform: kdp, id: B0GWRLCN2S, lang: en, variant: "Vol. 1 · 10 engineering challenges", format: paperback }
