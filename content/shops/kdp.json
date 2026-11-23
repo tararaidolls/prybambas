@@ -1,7 +1,7 @@
 {
   "platform": "kdp",
-  "source": "збережені сторінки",
-  "updated": "2026-11-21",
+  "source": "https://www.amazon.com/stores/Maryna-Skliar/author/B0GVRB7TL5",
+  "updated": "2026-11-23",
   "count": 21,
   "items": [
     {
@@ -111,19 +111,6 @@
       "series": "Think Like an Inventor | Challenges for Creative Kids",
       "seriesPosition": 3,
       "image": "https://m.media-amazon.com/images/I/71QX88FEuNL.jpg",
-      "status": "active"
-    },
-    {
-      "platform": "kdp",
-      "id": "B0GXKTBJSM",
-      "title": "ONE VERB A DAY: French Workbook: Volume 1: Survival & Basics (One Verb Per Day)",
-      "url": "https://www.amazon.com/dp/B0GXKTBJSM",
-      "price": 14.99,
-      "currency": "USD",
-      "format": "paperback",
-      "series": "One Verb Per Day",
-      "seriesPosition": 3,
-      "image": "https://m.media-amazon.com/images/I/51-CuPwdVfL.jpg",
       "status": "active"
     },
     {
@@ -259,6 +246,17 @@
       "series": "Think Like an Inventor | Challenges for Creative Kids",
       "seriesPosition": 1,
       "image": "https://m.media-amazon.com/images/I/71unCyIgftL.jpg",
+      "status": "active"
+    },
+    {
+      "platform": "kdp",
+      "id": "B0GWQ3CFVM",
+      "title": "Ukrainian Dictation Workbook: The Complete Listen and Write Series: Master Listening, Spelling and Vocabulary",
+      "url": "https://www.amazon.com/dp/B0GWQ3CFVM",
+      "price": 12.99,
+      "currency": "USD",
+      "format": "paperback",
+      "image": "https://m.media-amazon.com/images/I/61v9VJzoWuL.jpg",
       "status": "active"
     }
   ]

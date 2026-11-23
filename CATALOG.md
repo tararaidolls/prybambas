@@ -1,18 +1,18 @@
 # Каталог Prybambas
 
-Дані магазинів станом на 2026-11-21. Згенеровано командою `npm run catalog`. Не редагуй вручну: зміни вносяться в `content/products/*/product.yml`, а дані магазинів оновлює `npm run shops`.
+Дані магазинів станом на 2026-11-23. Згенеровано командою `npm run catalog`. Не редагуй вручну: зміни вносяться в `content/products/*/product.yml`, а дані магазинів оновлює `npm run shops`.
 
 ## Магазини
 
 | Платформа | Оголошень | Знімок | Джерело |
 |---|---:|---|---|
-| Amazon | 21 | 2026-11-21 | збережені сторінки |
+| Amazon | 21 | 2026-11-23 | https://www.amazon.com/stores/Maryna-Skliar/author/B0GVRB7TL5 |
 | TpT | 45 | 2026-11-21 | https://www.teacherspayteachers.com/store/prybambas-creative-lab |
 | Etsy | 60 | 2026-11-21 | CSV з кабінету Etsy |
 | Prom.ua | 10 | 2026-11-20 | https://prybambas.prom.ua/ua/ |
 | Gumroad | — | немає | — |
 
-**28** товарів · **136** оголошень у каталозі · **0** не прив'язаних · **0** критичних проблем
+**28** товарів · **136** оголошень у каталозі · **1** не прив'язаних · **1** критичних проблем
 
 ## Товар × платформа
 
@@ -24,7 +24,7 @@
 | Microscope Safari | explorers | 4 (en, de) | — | 2 (en, de) | 1 (uk) | — | ✓ |
 | Sneeze Detective | family-tools | — | — | 1 (en) | — | — | ✓ |
 | Gentle Parenting Quick Guide | family-tools | — | — | 1 (en) | — | — | ✓ |
-| One Verb a Day | language-games | 6 (en, fr, de, he, ro, es) | 33 (es, fr, he) | 1 (de) | 6 (en, fr, de, he, ro, es) | — | ✓ |
+| One Verb a Day | language-games | 6 ⚠1 (en, fr, de, he, ro, es) | 33 (es, fr, he) | 1 (de) | 6 (en, fr, de, he, ro, es) | — | ✓ |
 | Verb Oracle · _скоро_ | language-games | — | — | — | — | — | ✓ |
 | Magic This · _скоро_ | language-games | — | — | — | — | — | ✓ |
 | Listen & Write Dictation Workbooks | language-games | 2 (fr, pt) | — | 17 (de, it, fr, pt, pl, es, uk, ro) | — | — | ✓ |
@@ -51,9 +51,14 @@
 
 ## Потребує уваги
 
-### Варто виправити (1)
+### Критично (1)
+
+- **one-verb-a-day** · Amazon B0GXKTBJSM: оголошення немає в магазині (знімок від 2026-11-23). Зняте з продажу або змінився номер?
+
+### Варто виправити (2)
 
 - **dictation-workbook** · Etsy «German Dictation Exercises A1 Workbook, Beginner Language Learning (PDF)»: те саме головне фото, що й в іншого оголошення — можливий дубль
+- Amazon B0GWQ3CFVM «Ukrainian Dictation Workbook: The Complete Listen and Write Series: Master Listening, Spelling and Vocabulary» не прив'язане до товару в каталозі
 
 ### До відома (7)
 
@@ -113,7 +118,7 @@
 | Платформа | Мова | Варіант | Формат | Ціна | Статус | Назва на платформі |
 |---|---|---|---|---:|---|---|
 | [Amazon](https://www.amazon.com/dp/B0H3NXYCRG) | en | English · Vol. 1 | paperback | $12.99 | active | Learn English: One Verb a Day: Volume 1: Interactive English Verb Conjugation and Gramma… |
-| [Amazon](https://www.amazon.com/dp/B0GXKTBJSM) | fr | French · Vol. 1 Survival & Basics | paperback | $14.99 | active | ONE VERB A DAY: French Workbook: Volume 1: Survival & Basics (One Verb Per Day) |
+| [Amazon](https://www.amazon.com/dp/B0GXKTBJSM) | fr | French · Vol. 1 Survival & Basics | paperback | ? | missing |  |
 | [Amazon](https://www.amazon.com/dp/B0GXR8CBFV) | de | German · Vol. 1 Survival & Basics | paperback | $14.99 | active | ONE VERB A DAY: German Workbook: Volume 1: Survival & Basics (One Verb Per Day) |
 | [Amazon](https://www.amazon.com/dp/B0HFMST5L2) | he | Hebrew · Vol. 1 Survival & Basics | paperback | $12.99 | active | ONE VERB A DAY: Hebrew Workbook: Volume 1: Survival & Basics (One Verb Per Day) |
 | [Amazon](https://www.amazon.com/dp/B0GWCH26YH) | ro | Romanian · Vol. 1 Survival & Basics | paperback | $12.99 | active | ONE VERB A DAY: Romanian Workbook: Volume 1: Survival & Basics (One Verb Per Day) |
