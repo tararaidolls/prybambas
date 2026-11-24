@@ -13,6 +13,8 @@ const PASSTHROUGH = [
 export default function (cfg) {
   cfg.addDataExtension("yml,yaml", (contents) => yaml.load(contents));
   for (const p of PASSTHROUGH) cfg.addPassthroughCopy(p);
+  // Бонус-сторінки за QR-кодами з книжки «Prybambas Passport: Around the World in 80 Days»
+  cfg.addPassthroughCopy({ "passport-80": "en/80" });
   // Картинки й файли з папки content (обкладинки, превʼю)
   cfg.addPassthroughCopy("content/**/*.{jpg,jpeg,png,webp,gif,svg}");
   cfg.addWatchTarget("content/");
