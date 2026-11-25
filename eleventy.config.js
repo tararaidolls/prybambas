@@ -15,6 +15,10 @@ export default function (cfg) {
   for (const p of PASSTHROUGH) cfg.addPassthroughCopy(p);
   // Бонус-сторінки за QR-кодами з книжки «Prybambas Passport: Around the World in 80 Days»
   cfg.addPassthroughCopy({ "passport-80": "en/80" });
+  // Prybambas Offline: спільний рендерер плаката (браузер + друк) і бібліотека QR-кодів
+  cfg.addPassthroughCopy({ "offline/poster.mjs": "offline/poster.mjs" });
+  cfg.addPassthroughCopy({ "node_modules/qrcode-generator/qrcode.js": "assets/vendor/qrcode.js" });
+  cfg.addWatchTarget("offline/");
   // Картинки й файли з папки content (обкладинки, превʼю)
   cfg.addPassthroughCopy("content/**/*.{jpg,jpeg,png,webp,gif,svg}");
   cfg.addWatchTarget("content/");

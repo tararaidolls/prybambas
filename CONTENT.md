@@ -136,3 +136,8 @@ Etsy оновлюється вручну: завантаж CSV і запусти
 npm install
 npm start        # http://localhost:8080
 ```
+
+## Плакати для зон очікування (Prybambas Offline)
+
+Конструктор плакатів для клінік і кафе: `/uk/offline/`, `/en/offline/` (`/offline/` веде туди).
+Базові плакати, друковані завдання, формати й ціни — у `content/offline/`. Докладно — **OFFLINE.md**.

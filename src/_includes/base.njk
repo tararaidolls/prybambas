@@ -65,6 +65,9 @@
     <a href="{{ '/about.html' if lang == 'en' else '/' + lang + '/about/' }}">{{ t.about }}</a>
     <a href="{{ '/faq.html' if lang == 'en' else '/' + lang + '/faq/' }}">{{ t.faq }}</a>
     <a href="/{{ lang }}/ideas/feed.xml">{{ t.rss }}</a>
+    {%- if lang in offline.langs %}
+    <a href="/{{ lang }}/offline/">{{ offline.all[lang].t.page_title }}</a>
+    {%- endif %}
     <span>© Prybambas by Kids Skill Academy</span>
   </footer>
 </div>

@@ -1,0 +1,4 @@
+# Базовий плакат. palette: yellow | blue | pink
+order: 1
+palette: yellow
+for: [clinic, cafe, salon, other]

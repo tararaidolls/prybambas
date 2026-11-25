@@ -1,0 +1,147 @@
+---js
+{
+  pagination: { data: "offline.pages", size: 1, alias: "O" },
+  permalink: (data) => data.O.url,
+  layout: "base.njk",
+  eleventyComputed: {
+    lang: (data) => data.O.lang,
+    alternates: (data) => data.O.alternates,
+    pageTitle: (data) => data.O.data.t.page_title,
+    description: (data) => data.O.data.t.description,
+  },
+}
+---
+{%- set T = O.data.t -%}
+{%- set D = O.data -%}
+<link rel="stylesheet" href="/assets/offline.css">
+<section class="hero">
+  <p class="eyebrow">{{ T.hero_eyebrow }}</p>
+  <h1>{{ T.hero_title }}</h1>
+  <p>{{ T.hero_text }}</p>
+  <div class="hero-links"><a class="btn" href="#builder">{{ T.hero_cta }}</a></div>
+</section>
+
+<section class="block">
+  <ol class="off-steps">
+    {%- for s in T.steps %}
+    <li><b>{{ s.title }}</b><span>{{ s.text }}</span></li>
+    {%- endfor %}
+  </ol>
+</section>
+
+<section class="block off-why">
+  <div class="block-head"><h2>{{ T.why_title }}</h2></div>
+  <ul>{% for w in T.why %}<li>{{ w }}</li>{% endfor %}</ul>
+</section>
+
+<section class="block" id="builder">
+  <div class="block-head"><h2>{{ T.builder_title }}</h2></div>
+  <div class="off-builder">
+    <form class="off-controls" id="off-form" novalidate>
+      <fieldset>
+        <legend>{{ T.step_base }}</legend>
+        <div class="off-options off-posters">
+          {%- for p in D.posters %}
+          <label class="off-opt pal-{{ p.palette }}">
+            <input type="radio" name="poster" value="{{ p.slug }}" {% if loop.first %}checked{% endif %}>
+            <span class="off-swatch" aria-hidden="true"></span>
+            <b>{{ p.name }}</b><small>{{ p.desc }}</small>
+          </label>
+          {%- endfor %}
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>{{ T.step_games }} <small class="off-count" data-count="games"></small></legend>
+        <div class="off-options">
+          {%- for g in D.games %}
+          <label class="off-opt off-game">
+            <input type="checkbox" name="games" value="{{ g.slug }}" {% if loop.index <= 2 %}checked{% endif %}>
+            <span class="off-ico" aria-hidden="true">{{ g.iconSvg | safe }}</span>
+            <b>{{ g.title }}</b><small>{{ g.desc }}</small>
+          </label>
+          {%- endfor %}
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>{{ T.step_tasks }} <small class="off-count" data-count="tasks"></small></legend>
+        <div class="off-options off-tasks">
+          {%- for t in D.tasks %}
+          <label class="off-opt">
+            <input type="checkbox" name="tasks" value="{{ t.slug }}" {% if t.slug in ["what-if-no-night", "riddle-holes", "maze-small", "observe-room"] %}checked{% endif %}>
+            <span class="off-kind k-{{ t.kind }}">{{ T.kinds[t.kind] }}</span>
+            <small>{{ t.text }}</small>
+          </label>
+          {%- endfor %}
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>{{ T.step_brand }}</legend>
+        <label class="off-field">{{ T.venue_name }}
+          <input type="text" name="venue" maxlength="80" placeholder="{{ T.venue_name_ph }}" autocomplete="organization">
+        </label>
+        <label class="off-field">{{ T.logo }}
+          <input type="file" name="logo" accept="image/png,image/jpeg,image/svg+xml,image/webp">
+          <small>{{ T.logo_hint }}</small>
+        </label>
+        <button type="button" class="off-link" id="off-logo-remove" hidden>{{ T.logo_remove }}</button>
+        <label class="off-field">{{ T.poster_lang }}
+          <select name="lang">
+            {%- for l in offline.langs %}<option value="{{ l }}" {% if l == O.lang %}selected{% endif %}>{{ l | langName(O.lang) }}</option>{% endfor %}
+          </select>
+        </label>
+      </fieldset>
+
+      <fieldset>
+        <legend>{{ T.step_order }}</legend>
+        <div class="off-row">
+          <label class="off-field">{{ T.size }}
+            <select name="size">
+              {%- for s in D.sizes %}<option value="{{ s.key }}" {% if s.key == D.defaultSize %}selected{% endif %}>{{ s.label }} · {{ s.price or T.price_on_invoice }}</option>{% endfor %}
+            </select>
+          </label>
+          <label class="off-field off-qty">{{ T.qty }}
+            <input type="number" name="qty" min="1" max="50" value="1">
+          </label>
+        </div>
+      </fieldset>
+    </form>
+
+    <div class="off-preview">
+      <h3>{{ T.preview }}</h3>
+      <div class="off-paper" id="off-preview" aria-live="polite"></div>
+      <p class="off-note">{{ T.preview_note }}</p>
+    </div>
+  </div>
+</section>
+
+<section class="block off-request" id="request">
+  <div class="block-head"><h2>{{ T.form_title }}</h2></div>
+  <p class="lead">{{ T.form_text }}</p>
+  <form id="off-request" {% if D.request.action %}action="{{ D.request.action }}" method="post" enctype="multipart/form-data"{% endif %} data-umami-event="offline-request">
+    <div class="off-row">
+      <label class="off-field">{{ T.contact_name }}<input name="name" required autocomplete="name"></label>
+      <label class="off-field">{{ T.email }}<input name="email" type="email" required autocomplete="email"></label>
+      <label class="off-field">{{ T.phone }}<input name="phone" type="tel" autocomplete="tel"></label>
+    </div>
+    <label class="off-field">{{ T.address }}<textarea name="address" rows="2" required placeholder="{{ T.address_ph }}" autocomplete="street-address"></textarea></label>
+    <label class="off-field">{{ T.comment }}<textarea name="message" rows="3" placeholder="{{ T.comment_ph }}"></textarea></label>
+    <p class="off-error" id="off-error" role="alert" hidden></p>
+    {%- if D.request.action %}
+    <button class="btn" type="submit">{{ T.send }}</button>
+    {%- else %}
+    <p>{{ T.manual_text | fmt({ email: D.request.email }) }}</p>
+    <div class="hero-links">
+      <button class="btn" type="submit">{{ T.download_request }}</button>
+      <a class="btn btn-ghost" id="off-mailto" href="mailto:{{ D.request.email }}">{{ T.write_email }}</a>
+    </div>
+    {%- endif %}
+    <p class="off-ok" id="off-ok" role="status" hidden>{{ T.sent }}</p>
+  </form>
+</section>
+
+<script>window.OFFLINE = {{ { site: site.url, ui: O.lang, data: offline.all } | json | safe }};</script>
+<script src="/assets/vendor/qrcode.js"></script>
+<script type="module" src="/assets/offline.js"></script>

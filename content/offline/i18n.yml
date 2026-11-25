@@ -1,0 +1,125 @@
+# Тексти Prybambas Offline: сторінка-конструктор і підписи на самому плакаті.
+# Нова мова = новий блок з тими самими ключами + <мова>.md у плакатах і завданнях.
+
+uk:
+  page_title: "Плакати для зони очікування"
+  description: "Плакат для клініки чи кафе з вашим логотипом, QR-кодами на безкоштовні ігри Prybambas і завданнями для дітей. Друк і доставка через Gelato."
+  hero_eyebrow: "Prybambas Offline · для бізнесу"
+  hero_title: "Діти чекають спокійніше, коли їм цікаво"
+  hero_text: "Плакат для клініки, кафе чи салону: ваш логотип, QR-коди на безкоштовні ігри Prybambas і завдання, які можна розвʼязати просто на стіні. Друкуємо й доставляємо на вашу адресу."
+  hero_cta: "Зібрати плакат"
+  steps:
+    - { title: "Оберіть основу", text: "Базовий плакат під ваш заклад: клініка, кафе чи універсальний." }
+    - { title: "Додайте розваги", text: "До 3 ігор з QR-кодами й до 4 друкованих завдань: загадки, «що, якби?», лабіринти." }
+    - { title: "Ваш логотип", text: "Завантажте логотип: плакат буде вашим, а не рекламою." }
+    - { title: "Друк і доставка", text: "Надсилаєте заявку, ми виставляємо рахунок і друкуємо через Gelato поруч із вами." }
+  why_title: "Чому це працює"
+  why:
+    - "Без реклами й реєстрації: ігри відкриваються одразу з телефона батьків."
+    - "Тиха гра: питання для розмови замість мультиків на повну гучність."
+    - "QR-коди з міткою вашого закладу: ми можемо показати, скільки разів їх сканували."
+  builder_title: "Конструктор"
+  step_base: "1. Базовий плакат"
+  step_games: "2. Ігри з QR-кодом"
+  step_tasks: "3. Друковані завдання"
+  step_brand: "4. Ваш заклад"
+  step_order: "5. Формат і кількість"
+  pick_up_to: "Обрано {n} з {max}"
+  venue_name: "Назва закладу"
+  venue_name_ph: "Напр. Стоматологія «Усмішка»"
+  logo: "Логотип (PNG, JPG або SVG)"
+  logo_hint: "Найкраще PNG з прозорим тлом, від 1000 px завширшки."
+  logo_remove: "Прибрати логотип"
+  poster_lang: "Мова плаката"
+  size: "Формат"
+  qty: "Кількість"
+  price_on_invoice: "ціна в рахунку"
+  preview: "Попередній перегляд"
+  preview_note: "QR-коди справжні: відскануйте телефоном, щоб перевірити."
+  download_preview: "Завантажити превʼю (PNG)"
+  form_title: "Заявка"
+  form_text: "Відповімо протягом робочого дня з рахунком і терміном доставки. Оплата за рахунком, без передоплати карткою."
+  contact_name: "Ваше імʼя"
+  email: "Email"
+  phone: "Телефон"
+  address: "Адреса доставки"
+  address_ph: "Вулиця, будинок, місто, індекс, країна"
+  comment: "Коментар"
+  comment_ph: "Побажання щодо кольорів, кілька філій, інша мова…"
+  send: "Надіслати заявку"
+  sending: "Надсилаємо…"
+  sent: "Дякуємо! Заявку отримано, ми скоро напишемо."
+  send_error: "Не вдалося надіслати. Завантажте файл заявки й надішліть його на {email}."
+  manual_text: "Завантажте файл заявки (там уся конфігурація й логотип) і надішліть його на {email}."
+  download_request: "Завантажити файл заявки"
+  write_email: "Написати листа"
+  need_one_game: "Оберіть хоча б одну гру або завдання."
+  kinds: { question: "Що, якби…?", riddle: "Загадка", challenge: "Завдання", maze: "Лабіринт" }
+  for: { clinic: "клініка", cafe: "кафе", salon: "салон", other: "інше" }
+  # Підписи на плакаті
+  poster:
+    games_title: "Скануй і грай"
+    tasks_title: "Подумай разом"
+    answers_title: "Відповіді"
+    footer: "Безкоштовні ігри для допитливих дітей 5–14 років. Без реклами й реєстрації."
+
+en:
+  page_title: "Posters for waiting areas"
+  description: "A poster for your clinic or café with your logo, QR codes to free Prybambas games and puzzles for kids. Printed and shipped via Gelato."
+  hero_eyebrow: "Prybambas Offline · for business"
+  hero_title: "Kids wait calmer when they are curious"
+  hero_text: "A poster for your clinic, café or salon: your logo, QR codes to free Prybambas games and puzzles kids can solve right on the wall. We print it and ship it to your door."
+  hero_cta: "Build a poster"
+  steps:
+    - { title: "Pick a base", text: "A base poster for your place: clinic, café or all-purpose." }
+    - { title: "Add the fun", text: "Up to 3 games with QR codes and up to 4 printed puzzles: riddles, “what if?”, mazes." }
+    - { title: "Your logo", text: "Upload your logo: the poster is yours, not an ad." }
+    - { title: "Print & ship", text: "Send a request, we invoice you and print it via Gelato close to you." }
+  why_title: "Why it works"
+  why:
+    - "No ads, no sign-up: games open straight away on a parent's phone."
+    - "Quiet play: conversation questions instead of cartoons at full volume."
+    - "QR codes tagged with your venue, so we can tell you how often they were scanned."
+  builder_title: "Builder"
+  step_base: "1. Base poster"
+  step_games: "2. Games with QR codes"
+  step_tasks: "3. Printed puzzles"
+  step_brand: "4. Your venue"
+  step_order: "5. Size and quantity"
+  pick_up_to: "{n} of {max} selected"
+  venue_name: "Venue name"
+  venue_name_ph: "e.g. Bright Smile Dental"
+  logo: "Logo (PNG, JPG or SVG)"
+  logo_hint: "Best: PNG with a transparent background, 1000 px wide or more."
+  logo_remove: "Remove logo"
+  poster_lang: "Poster language"
+  size: "Size"
+  qty: "Quantity"
+  price_on_invoice: "price on invoice"
+  preview: "Preview"
+  preview_note: "The QR codes are real: scan them with your phone to check."
+  download_preview: "Download preview (PNG)"
+  form_title: "Request"
+  form_text: "We reply within one working day with an invoice and delivery time. Pay by invoice, no card needed."
+  contact_name: "Your name"
+  email: "Email"
+  phone: "Phone"
+  address: "Delivery address"
+  address_ph: "Street, number, city, postcode, country"
+  comment: "Comment"
+  comment_ph: "Colour wishes, several branches, another language…"
+  send: "Send request"
+  sending: "Sending…"
+  sent: "Thank you! We got your request and will write soon."
+  send_error: "Couldn't send it. Download the request file and email it to {email}."
+  manual_text: "Download the request file (it holds the whole setup and your logo) and email it to {email}."
+  download_request: "Download request file"
+  write_email: "Write an email"
+  need_one_game: "Pick at least one game or puzzle."
+  kinds: { question: "What if…?", riddle: "Riddle", challenge: "Challenge", maze: "Maze" }
+  for: { clinic: "clinic", cafe: "café", salon: "salon", other: "other" }
+  poster:
+    games_title: "Scan & play"
+    tasks_title: "Think together"
+    answers_title: "Answers"
+    footer: "Free games for curious kids aged 5–14. No ads, no sign-up."

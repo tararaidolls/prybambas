@@ -1,0 +1,4 @@
+# Друковане завдання. kind: question | riddle | challenge | maze
+order: 30
+kind: maze
+seed: 7        # інше число = інший лабіринт

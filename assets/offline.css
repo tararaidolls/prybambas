@@ -1,0 +1,61 @@
+/* Prybambas Offline — конструктор плакатів. Кольори з tokens.css (через site.css). */
+.eyebrow { font-weight: 700; font-size: .8rem; letter-spacing: .12em; text-transform: uppercase; color: var(--blue); }
+
+.off-steps { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; counter-reset: step; }
+.off-steps li { background: var(--card); border: 1.5px solid var(--ink); border-radius: 12px; padding: 16px 16px 14px; display: grid; gap: 6px; box-shadow: 3px 3px 0 var(--yellow); }
+.off-steps li::before { counter-increment: step; content: counter(step); font-family: var(--f-hand); font-size: 2rem; line-height: 1; color: var(--pink-ink); }
+.off-steps span { color: var(--ink-soft); font-size: .95rem; }
+
+.off-why ul { margin: 0; padding-left: 1.2em; display: grid; gap: 6px; color: var(--ink-soft); max-width: 70ch; }
+
+.off-builder { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 28px; align-items: start; }
+.off-controls { display: grid; gap: 18px; }
+.off-controls fieldset { border: 1.5px solid var(--ink); border-radius: 12px; background: var(--card); padding: 14px 16px 16px; margin: 0; display: grid; gap: 12px; min-width: 0; }
+.off-controls legend { font-weight: 800; padding: 0 6px; margin-left: -6px; }
+.off-count { font-weight: 500; color: var(--ink-soft); margin-left: 6px; }
+
+.off-options { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 10px; }
+.off-opt { position: relative; display: grid; grid-template-columns: auto 1fr; column-gap: 10px; row-gap: 2px; align-items: start;
+  border: 1.5px solid var(--grid); border-radius: 10px; padding: 10px 12px; cursor: pointer; background: var(--paper); }
+.off-opt > input { position: absolute; opacity: 0; pointer-events: none; }
+.off-opt b, .off-opt small { grid-column: 2; }
+.off-opt small { color: var(--ink-soft); font-size: .82rem; line-height: 1.35; }
+.off-opt:has(input:checked) { border-color: var(--ink); box-shadow: 3px 3px 0 var(--blue); background: var(--card); }
+.off-opt:has(input:focus-visible) { outline: 3px solid var(--blue); outline-offset: 2px; }
+.off-opt.is-off { opacity: .45; cursor: not-allowed; }
+.off-opt::after { content: ""; position: absolute; top: 8px; right: 8px; width: 18px; height: 18px; border: 1.5px solid var(--ink); border-radius: 5px; background: #fff; }
+.off-opt:has(input[type=radio])::after { border-radius: 50%; }
+.off-opt:has(input:checked)::after { background: var(--ink); box-shadow: inset 0 0 0 3px #fff; }
+.off-opt b { padding-right: 24px; }
+
+.off-swatch { grid-row: span 2; width: 34px; height: 44px; border-radius: 4px; border: 1.5px solid var(--ink); background: var(--sw); }
+.pal-yellow { --sw: var(--yellow); } .pal-blue { --sw: var(--blue); } .pal-pink { --sw: var(--pink); }
+.off-ico { grid-row: span 2; width: 40px; height: 40px; } .off-ico svg { width: 100%; height: 100%; }
+.off-tasks .off-opt { grid-template-columns: 1fr; } .off-tasks .off-opt small { grid-column: 1; }
+.off-kind { font-family: var(--f-hand); font-weight: 700; font-size: 1.25rem; line-height: 1; padding-right: 24px; }
+.k-question { color: var(--blue); } .k-riddle { color: var(--pink-ink); } .k-challenge { color: #8a6d00; } .k-maze { color: var(--ink); }
+
+.off-field { display: grid; gap: 5px; font-weight: 600; font-size: .92rem; min-width: 0; }
+.off-field small { font-weight: 400; color: var(--ink-soft); }
+.off-field input, .off-field select, .off-field textarea { font: inherit; font-weight: 400; color: var(--ink); background: #fff; border: 1.5px solid var(--ink-soft); border-radius: 8px; padding: 9px 11px; width: 100%; box-sizing: border-box; }
+.off-field input[type=file] { padding: 7px; }
+.off-field :focus-visible { outline: 3px solid var(--blue); outline-offset: 1px; }
+.off-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; }
+.off-link { justify-self: start; background: none; border: 0; padding: 0; font: inherit; color: var(--pink-ink); text-decoration: underline; cursor: pointer; }
+
+.off-preview { position: sticky; top: 16px; display: grid; gap: 10px; justify-items: center; }
+.off-preview h3 { justify-self: start; font-weight: 800; }
+.off-paper { width: 100%; max-width: 520px; background: #fff; border: 1.5px solid var(--ink); box-shadow: 6px 6px 0 var(--yellow); line-height: 0; }
+.off-paper svg { width: 100%; height: auto; display: block; }
+.off-note { font-size: .88rem; color: var(--ink-soft); text-align: center; }
+
+.off-request form { display: grid; gap: 14px; max-width: 760px; }
+.off-error { color: var(--pink-ink); font-weight: 600; }
+.off-ok { background: var(--yellow-bg); border: 1.5px solid var(--ink); border-radius: 10px; padding: 12px 14px; font-weight: 600; }
+button.btn { font: inherit; font-weight: 700; cursor: pointer; }
+
+@media (max-width: 860px) {
+  .off-builder { grid-template-columns: 1fr; }
+  .off-preview { position: static; }
+  .off-paper { max-width: 380px; }
+}

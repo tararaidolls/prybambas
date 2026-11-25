@@ -1,0 +1,17 @@
+---
+permalink: /offline/index.html
+eleventyExcludeFromCollections: true
+---
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<title>Prybambas Offline</title>
+<link rel="canonical" href="{{ site.url }}/en/offline/">
+<meta name="robots" content="noindex">
+<script>
+  // Українською, якщо відвідувач уже обирав українську або браузер українською; інакше англійською
+  var l = "en";
+  try { l = localStorage.getItem("prybambas_lang") || ""; } catch (e) {}
+  if ({{ offline.langs | json | safe }}.indexOf(l) < 0) l = /^uk|^ru/.test(navigator.language || "") ? "uk" : "en";
+  location.replace("/" + l + "/offline/" + location.search + location.hash);
+</script>
+</head><body><a href="/en/offline/">Prybambas Offline</a> · <a href="/uk/offline/">Українською</a></body></html>
