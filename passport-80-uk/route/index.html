@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="uk"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Живий маршрут · Паспорт Prybambas</title><meta name="description" content="Живий маршрут — бонус-сторінка до читацького щоденника «Паспорт Prybambas: Навколо світу за 80 днів» (6–12 років).">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Rubik:wght@500;700;800&display=swap" rel="stylesheet">
+<style>/* VOICE: warm, curious explorer's companion for kids 6-12 and their grown-ups
+   IDEA: the pages of a travel passport/journal from 1872 that came to life
+   PICTURE: each page leads with its working thing — stamp, map, experiment, quiz
+   COLOUR: journal navy, stamp red, paper white, yellow note card
+   TYPE: Rubik bold headings (like the book), Nunito body
+   LAYOUT: single calm column up to 760px, big touch targets */
+:root{color-scheme:light dark;
+--bg:light-dark(#fbfaf6,#141a26);--card:light-dark(#ffffff,#1d2535);--ink:light-dark(#1d2433,#eef1f7);
+--muted:light-dark(#5d6678,#a9b2c4);--navy:light-dark(#1c3d6e,#8fb3ea);--red:light-dark(#d4452b,#ff7a5c);
+--note:light-dark(#fff6dc,#2b2a1f);--noteb:light-dark(#e8c25a,#b8973a);--line:light-dark(#e3ded2,#2f3a50);
+--sea:light-dark(#dcebf6,#16263c);--land:light-dark(#efe4c8,#3a4256);--purple:light-dark(#7b3fb5,#c49cf0);--green:light-dark(#4f7f2f,#9fd07a)}
+:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.55 Nunito,system-ui,sans-serif;overflow-x:clip}
+h1,h2,h3{font-family:Rubik,Nunito,system-ui,sans-serif;color:var(--navy);line-height:1.1;text-wrap:balance;margin:0 0 .4em}
+h1{font-size:clamp(32px,7vw,46px);font-weight:800}h2{font-size:24px;font-weight:700;margin-top:1.4em}h3{font-size:19px}
+a{color:var(--navy)}
+.top{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;padding:12px max(5vw,16px);border-bottom:2px solid var(--navy);font-size:14px}
+.top b{font-family:Rubik,sans-serif;color:var(--navy);letter-spacing:.02em}
+.top a{font-weight:700;text-decoration:none;padding:8px 0}
+main{max-width:760px;margin:0 auto;padding:24px max(5vw,16px) 56px}
+.tag{display:inline-block;font:700 13px Rubik,sans-serif;color:#fff;background:var(--navy);border-radius:99px;padding:4px 12px;margin-bottom:12px}
+.tag.red{background:var(--red)}.tag.purple{background:var(--purple)}.tag.green{background:var(--green)}
+.lead{font-size:19px;color:var(--muted);margin:0 0 20px}
+.card{background:var(--card);border:2px solid var(--navy);border-radius:18px;padding:20px;margin:18px 0}
+.note{background:var(--note);border:2px solid var(--noteb);border-radius:18px;padding:18px 20px;margin:18px 0}
+.lvl{font:700 13px Rubik,sans-serif;border-radius:99px;padding:3px 10px;margin-right:6px;white-space:nowrap}
+.lvl.d{background:#f2c14e;color:#3a2b00}.lvl.n{background:var(--navy);color:var(--card)}
+button,.btn{font:700 17px Rubik,Nunito,sans-serif;min-height:48px;padding:10px 20px;border-radius:14px;border:2px solid var(--navy);background:var(--navy);color:var(--card);cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:8px}
+button.ghost,.btn.ghost{background:transparent;color:var(--navy)}
+button:focus-visible,input:focus-visible,a:focus-visible{outline:3px solid var(--red);outline-offset:2px}
+button:disabled{opacity:.5;cursor:default}
+input[type=text]{font:700 20px Rubik,sans-serif;letter-spacing:.08em;text-transform:uppercase;min-height:52px;padding:8px 14px;border:2px solid var(--navy);border-radius:14px;background:var(--card);color:var(--ink);width:100%}
+input.plain{text-transform:none;letter-spacing:0;font:600 17px Nunito,sans-serif}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.fig{position:relative;width:100%}.fig svg{display:block;width:100%;height:auto}
+.story p{margin:0 0 1em}
+.listen{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.foot{text-align:center;color:var(--muted);font-size:14px;padding:24px 16px 40px;border-top:1px solid var(--line)}
+.ok{color:var(--green);font-weight:700}.bad{color:var(--red);font-weight:700}
+details{border-top:1px dashed var(--line);padding:10px 0}summary{cursor:pointer;font-weight:700;color:var(--navy);min-height:32px}
+.stamps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+@media(max-width:520px){.stamps{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.slot{text-align:center;font-size:13px;color:var(--muted);text-decoration:none}
+.slot svg{width:100%;height:auto}
+.hl{background:var(--note);padding:0 4px;border-radius:4px}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+@media print{.top,.foot,.noprint{display:none}}
+</style><script>const P80={
+ stamps:[
+  {id:'london',city:'Лондон',date:'2 жовт. 1872',word:'ГОДИННИК',alt:'CLOCK',stage:'Етап 1 · Лондон',icon:'clock'},
+  {id:'suez',city:'Суец',date:'9 жовт. 1872',word:'КАНАЛ',alt:'CANAL',stage:'Етап 2 · Європа і Суец',icon:'pyramid'},
+  {id:'india',city:'Індія',date:'25 жовт. 1872',word:'КІУНІ',alt:'KIOUNI',stage:'Етап 3 · Індія',icon:'dome'},
+  {id:'hongkong',city:'Гонконг',date:'6 лист. 1872',word:'ТАЙФУН',alt:'TYPHOON',stage:'Етап 4 · Сингапур і Гонконг',icon:'spiral'},
+  {id:'yokohama',city:'Йокогама',date:'14 лист. 1872',word:'ЖУРАВЛИК',alt:'CRANE',stage:'Етап 5 · Японія',icon:'crane'},
+  {id:'sanfrancisco',city:'Сан-Франциско',date:'3 груд. 1872',word:'ҐРАНТ',alt:'GRANT',stage:'Етап 6 · Тихий океан',icon:'ship'},
+  {id:'newyork',city:'Нью-Йорк',date:'11 груд. 1872',word:'ВІТРИЛО',alt:'SAIL',stage:'Етап 7 · Через Америку',icon:'sledge'},
+  {id:'return',city:'Лондон',date:'21 груд. 1872',word:'СХІД',alt:'EAST',stage:'Етап 8 · Додому',icon:'compass'}],
+ get(k,d){try{const v=localStorage.getItem('p80uk_'+k);return v==null?d:JSON.parse(v)}catch(e){return d}},
+ set(k,v){try{localStorage.setItem('p80uk_'+k,JSON.stringify(v))}catch(e){}},
+ have(){return this.get('stamps',[])},
+ add(id){const s=this.have();if(!s.includes(id)){s.push(id);this.set('stamps',s)}},
+ icon(n,c){const s=`stroke="${c}" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"`;return({
+  clock:`<circle cx="100" cy="92" r="24" ${s}/><path d="M100 76v16l11 7" ${s}/>`,
+  pyramid:`<path d="M70 112l26-40 26 40z M104 112l16-24 16 24" ${s}/><circle cx="130" cy="70" r="7" ${s}/>`,
+  dome:`<path d="M74 114h52M80 114v-18h40v18M84 96c0-16 8-22 16-28 8 6 16 12 16 28M100 68v-6M68 114v-24M132 114v-24" ${s}/>`,
+  spiral:`<path d="M100 92c0-4 6-4 6 0 0 8-12 8-12 0 0-12 18-12 18 0 0 16-24 16-24 0 0-20 30-20 30 0" ${s}/>`,
+  crane:`<path d="M66 100l34-6 34-26-20 30 22 4-30 4-8 12-6-12-26-6z M100 94l-8-22" ${s}/>`,
+  ship:`<path d="M70 104h60l-8 12H78z M84 104V88h30v16 M92 88V74h10v14" ${s}/><path d="M104 70c6-4 12-4 16 0" ${s}/>`,
+  sledge:`<path d="M70 112h56c6 0 8-6 4-8 M78 106h44 M100 106V68l22 34H100" ${s}/>`,
+  compass:`<circle cx="100" cy="92" r="24" ${s}/><path d="M100 76l6 16-6 16-6-16z" ${s}/><path d="M124 92h10l-5-5m5 5l-5 5" ${s}/>`})[n]||''},
+ stampSVG(st,on){const c=on?'var(--red)':'var(--line)',t=on?'var(--red)':'var(--muted)';const id='a'+st.id;
+  return `<svg viewBox="0 0 200 200" role="img" aria-label="Штамп: ${st.city}${on?'':' (ще не отримано)'}">
+  <circle cx="100" cy="100" r="94" fill="none" stroke="${c}" stroke-width="2" stroke-dasharray="6 6"/>
+  <circle cx="100" cy="100" r="82" fill="${on?'light-dark(#fff,#1d2535)':'none'}" stroke="${c}" stroke-width="8"/>
+  <circle cx="100" cy="100" r="68" fill="none" stroke="${c}" stroke-width="2"/>
+  <path id="${id}" d="M42 100a58 58 0 0 1 116 0" fill="none"/>
+  <text font-family="Rubik,sans-serif" font-size="14" font-weight="700" letter-spacing="3" fill="${t}"><textPath href="#${id}" startOffset="50%" text-anchor="middle">PRYBAMBAS</textPath></text>
+  ${on?this.icon(st.icon,'var(--red)'):`<text x="100" y="104" text-anchor="middle" font-size="34" font-family="Rubik" fill="${t}">?</text>`}
+  <rect x="38" y="118" width="124" height="${st.city.length>9?26:30}" rx="4" fill="${on?'var(--red)':'none'}" stroke="${c}" stroke-width="2"/>
+  <text x="100" y="${st.city.length>9?136:140}" text-anchor="middle" font-family="Rubik,sans-serif" font-weight="800" font-size="${st.city.length>9?14:(st.city.length>7?17:20)}" fill="${on?'#fff':t}">${st.city.toUpperCase()}</text>
+  <text x="100" y="164" text-anchor="middle" font-family="Nunito,sans-serif" font-size="12" font-weight="700" fill="${t}">${st.date}</text></svg>`},
+ voice(){const v=speechSynthesis.getVoices();return v.find(x=>/^uk/i.test(x.lang))},
+ // Аудіо: грає ./audio.mp3, якщо покласти файл поруч зі сторінкою, інакше читає текст голосом пристрою
+ listen(btn,textEl){let speaking=false;const audio=new Audio('audio.mp3');let hasFile=false;
+  audio.addEventListener('canplaythrough',()=>{hasFile=true},{once:true});audio.load();
+  audio.onended=()=>{btn.textContent='▶ Слухати';speaking=false};
+  btn.addEventListener('click',()=>{
+   if(hasFile){if(audio.paused){audio.play().catch(()=>{});btn.textContent='❚❚ Пауза'}else{audio.pause();btn.textContent='▶ Слухати'}return}
+   if(!('speechSynthesis' in window)){btn.textContent='Аудіо недоступне';return}
+   if(speaking){speechSynthesis.cancel();speaking=false;btn.textContent='▶ Слухати';return}
+   const u=new SpeechSynthesisUtterance(textEl.innerText);const v=P80.voice();if(v)u.voice=v;u.lang=v?v.lang:'uk-UA';u.rate=.95;
+   u.onend=()=>{speaking=false;btn.textContent='▶ Слухати'};speechSynthesis.speak(u);speaking=true;btn.textContent='■ Стоп'});}
+};
+</script></head><body>
+<header class="top"><b>ПАСПОРТ PRYBAMBAS · Навколо світу за 80 днів</b><a href="../index.html">← Мій паспорт</a></header>
+<main><script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/topojson-client@3.1.0/dist/topojson-client.min.js"></script>
+<span class="tag">Маршрут · Жива мапа</span>
+<h1>Де вони були на <span id="dn">0</span>-й день?</h1>
+<div class="card" style="padding:12px">
+ <div class="fig"><svg id="map" viewBox="0 0 960 500" role="img" aria-label="Мапа маршруту Філеаса Фоґґа навколо світу"></svg></div>
+ <div class="row" style="margin-top:12px">
+  <button id="play">▶ Пуск</button>
+  <input id="day" type="range" min="0" max="80" step="0.25" value="0" style="flex:1;min-width:180px;accent-color:var(--red);height:44px" aria-label="День подорожі">
+ </div>
+</div>
+<div class="note" aria-live="polite"><h3 id="where" style="margin:0 0 4px"></h3><div id="date" style="font-weight:700;color:var(--red)"></div><p id="how" style="margin:.4em 0 0"></p></div>
+<details><summary>Усі зупинки, день за днем</summary><div id="list"></div></details>
+<p style="color:var(--muted);font-size:14px">Дати — за романом. Мапу й лінії між зупинками спрощено.</p>
+<script>{
+const LAND=[
+[[-168,66],[-162,70],[-156,71.3],[-141,69.6],[-128,70],[-115,68.5],[-95,68],[-85,69.5],[-80,63],[-94,59],[-92,57],[-82,55],[-79,51.5],[-77,60],[-70,59],[-64,60.5],[-61,56],[-56,52],[-60,47],[-66,44.5],[-70,41.5],[-74,40.5],[-76,35],[-81,31],[-80,25.5],[-82,27.5],[-84,30],[-89,30],[-94,29.5],[-97,26],[-97.5,21],[-94,18.5],[-91,19],[-90,21],[-87,21.5],[-88,16],[-83.5,15],[-83.5,11],[-79.5,9],[-77.5,8],[-80,7.5],[-82,8.5],[-85.5,10],[-87.5,13],[-92,14.5],[-96,15.7],[-105.5,20],[-105.5,23],[-109,27],[-112.5,30],[-114.7,31.7],[-113,29],[-111,25],[-109.5,23],[-112,25],[-114,28],[-116,30.5],[-117.1,32.5],[-120.6,34.5],[-122.5,37.5],[-124,40.5],[-124,46],[-124.7,48.4],[-127,50],[-130,54],[-135,57.5],[-140,59.8],[-146,60.5],[-152,59],[-158,57],[-164,55],[-158,58.5],[-162,60],[-165,62],[-164.5,63.5],[-161,64.5],[-166,65]],
+[[-73,78],[-60,82],[-30,83.5],[-18,81],[-20,75],[-22,70],[-30,68],[-40,65],[-43,60],[-48,61],[-52,65],[-54,69],[-58,75],[-66,77]],
+[[-80,73.5],[-70,70],[-62,66.5],[-66,63.8],[-72,64],[-78,64.5],[-75,67.5],[-82,69.5],[-88,70.5]],
+[[-120,74.5],[-100,73],[-95,74.5],[-110,77]],[[-90,76.5],[-75,78.5],[-62,82],[-80,83],[-95,80.5]],
+[[-85,21.9],[-82,23.1],[-77,21.7],[-74.2,20.2],[-77.7,19.9],[-81,21.7]],[[-74.4,18.4],[-72.8,19.9],[-69,19.7],[-68.4,18.5],[-71.4,17.7]],
+[[-77.5,8],[-75.5,10.8],[-71.5,12.4],[-68,10.5],[-62,10.5],[-60,8.5],[-57,6],[-52,5],[-50,0],[-44,-2.5],[-38,-4],[-35,-7],[-35,-9.5],[-39,-13],[-39,-18],[-41,-22],[-44.5,-23],[-48.5,-26],[-48.7,-28.5],[-52,-32],[-54,-34.5],[-58,-34.5],[-57,-37],[-62,-39],[-65,-41],[-64,-43],[-67.5,-46],[-66,-48],[-69,-51],[-68.5,-52.5],[-71,-54],[-74,-52],[-75.5,-48],[-74,-43],[-73.5,-37],[-71.5,-32],[-71.3,-27],[-70.5,-18.5],[-75,-15.3],[-77,-12],[-79.5,-7],[-81,-5],[-80,-2.5],[-80.3,0],[-79,1.5],[-78,3],[-77.3,4],[-77.5,6.5]],
+[[-17,21],[-16.5,24],[-13,27.8],[-9.8,30],[-9.5,32.5],[-6,35.8],[-2,35.1],[3,36.8],[10,37.3],[11,35],[10.5,33.5],[15,32.3],[19.5,30.5],[20,32],[23,32.6],[25,31.7],[29,30.9],[32.3,31.3],[32.5,29.9],[34,27.5],[35.5,24],[37.2,21],[38.5,18],[39.5,15.5],[41.5,13.5],[43.3,12.5],[44,10.5],[51,11.8],[51,10],[49.5,6.5],[47,3],[44,-0.5],[41.5,-2],[39.5,-4.5],[39,-7.5],[40,-10.5],[40.5,-15],[37,-18],[35,-20.5],[35.5,-24],[33,-26],[32.5,-29],[30,-31.5],[27,-33.8],[23,-34],[20,-34.8],[18.4,-34],[17.8,-31],[15.2,-27],[14.5,-23],[11.8,-18],[12,-15],[13.7,-11],[13,-8.5],[12.2,-6],[9.2,-1],[9.5,3.5],[8.5,4.5],[6,4.3],[3,6.3],[-1.5,5],[-4,5.2],[-7.5,4.4],[-11,6.8],[-13,8.5],[-15,11],[-16.8,13.5],[-17.5,14.7],[-16.5,16.5],[-16,19]],
+[[49.3,-12],[50.5,-15.5],[47.2,-25],[45,-25.5],[43.5,-22],[44.3,-17],[47,-15.5]],
+[[-9.5,43],[-9,37],[-5.6,36],[-2,36.7],[0,38.5],[3.2,41.9],[6,43.1],[9,44.4],[10.5,43],[12.4,41.8],[15.6,40],[16,38],[17,39],[18.5,40.2],[16,41.5],[13.5,43.6],[12.3,45.3],[13.6,45.8],[15,44.5],[19.5,41.8],[19.5,40],[21,38],[23,36.5],[24,38.2],[23,40.3],[26,40.8],[26.3,40],[26.5,38.5],[27.3,37],[28,36.7],[30.5,36.3],[32.5,36.1],[36,36.8],[35.8,34.5],[35,32.8],[34.3,31.3],[32.6,31],[32.6,30],[33.5,28.2],[34.5,28],[35,29.5],[36.5,26],[39,22],[41,18],[42.7,15],[43.3,12.7],[45,13],[49,14.5],[52.2,15.6],[55,17.5],[57,18.8],[59.5,22.5],[58.5,23.6],[56.4,24.9],[56,26.2],[54,24.2],[51.5,24.6],[51,26],[50,26.5],[48,29.5],[50,30],[51.5,27.9],[54,26.6],[56.5,27.1],[57.4,25.7],[61.5,25.2],[66.5,25.4],[67.5,23.8],[68.8,22.5],[70.5,21],[72.8,21.1],[72.8,18.9],[73.5,15.8],[74.8,12.8],[76.3,9.5],[77.5,8.1],[78.2,8.9],[79.8,10.3],[80.3,13.5],[80.1,15.5],[82.3,17],[85,19.5],[87,21.5],[88.5,21.8],[90,22],[91.8,22.4],[92.5,20.5],[94.3,18.8],[94.2,16],[95.5,15.8],[97.6,16.5],[97.7,14],[98.6,10.5],[98.3,8.2],[100.4,6],[100.3,4.2],[101.3,2.8],[103.5,1.3],[104.2,1.4],[103.4,4.5],[102.2,6.2],[100.4,7.5],[100,9.5],[99.2,10.8],[100.1,13.5],[100.9,12.7],[102.7,12],[104.8,10.4],[104.9,8.7],[106.6,9.5],[109.1,11.5],[109.3,13.5],[108,16],[106,18.5],[106.6,20.6],[108.2,21.6],[110.3,20.3],[110.5,21.4],[113,22.2],[114.2,22.3],[116.6,23],[119,25],[120.3,27],[122,29.9],[121.3,30.8],[121.9,31.7],[120.5,33.5],[119.2,35],[120.7,36.4],[122.5,37],[121.5,37.5],[119,37.2],[118,38.5],[118,39.2],[121,40.9],[121.3,39],[122.3,40.4],[124.3,39.9],[125.2,37.7],[126.5,34.5],[129.3,35.2],[129.5,37],[128.5,38.5],[127.5,39.8],[129.8,41],[130.7,42.3],[133,42.8],[135.5,43.9],[138.5,46.9],[140.3,48.9],[140.5,51.5],[141.4,53],[137.5,54],[135,54.7],[138,56.5],[142.5,59.3],[149,59.5],[152,59],[155,59.3],[156.7,61.5],[160,61.6],[163.5,62.5],[160.5,60],[156,57],[156.7,51],[158.5,52.9],[162.5,56.2],[163.2,58],[170.5,60],[179.9,62.3],[179.9,68.9],[175,69.7],[170,70],[160,69.6],[150,71.5],[140,72.5],[130,71],[128,72.8],[113,73.7],[107,76.8],[104,77.7],[98,76],[88,75.5],[80,73.5],[73,72.5],[72.8,68.8],[69,67],[68,68.5],[66,70.5],[60,69.8],[54,68.5],[44,68.4],[44,66],[40,64.5],[36,64.5],[34.8,66],[41,66.4],[41,67.5],[33,69.3],[28,71],[24,71],[18,69.6],[14,67.5],[12.5,65],[10,63.5],[5,62],[5,58.5],[7,58],[10.5,59.3],[11.3,58.5],[12.5,56],[14.3,55.5],[16,56.3],[17,58],[18.8,60],[17.3,61.5],[21.5,64.5],[22.5,65.8],[25.4,65],[21.4,61.5],[21.6,60],[24,60.4],[29,60.2],[28,59.5],[23.5,59.2],[23.5,58],[24.4,57.3],[21.1,56.8],[21,55.5],[19.5,54.4],[14.5,53.9],[11,54],[10,55],[10.5,57.7],[8.1,56.8],[8.6,55.5],[8.7,53.9],[6.8,53.4],[4.8,52.9],[3.6,51.4],[1.6,50.9],[0,49.6],[-1.4,48.6],[-4.6,48.4],[-2.3,47.3],[-1.2,45.5],[-1.6,43.4],[-8,43.7]],
+[[-5.7,50],[1.4,51.2],[1.7,52.7],[0.2,53.5],[-1.5,55],[-2,56],[-3,56.2],[-1.8,57.6],[-3.5,58.6],[-5,58.6],[-6.2,56.8],[-5.5,55.5],[-3,54.9],[-3.2,53.5],[-4.6,53.3],[-4.2,52.3],[-5.2,51.8],[-3,51.4]],
+[[-6,52.2],[-6,53.9],[-5.6,55.2],[-8,55.2],[-10,54.2],[-9.5,52.5],[-10.4,51.8],[-8.3,51.6]],
+[[-22.5,64],[-24,65.5],[-21,66.2],[-16,66.5],[-13.5,65],[-15,64.3],[-19,63.4]],
+[[79.9,9.8],[81.9,7.3],[81,6],[80,6.2]],
+[[130,31.2],[131.5,31.5],[132,33.8],[135,33.5],[136.8,34.2],[139,34.7],[140.9,35.7],[141,38.3],[142,39.6],[141.4,41.4],[140,40.7],[139.8,39],[138.5,37.5],[136.8,37.3],[136,35.7],[133,35.5],[131,34.4],[129.7,33.2]],
+[[140,41.5],[141.2,41.8],[143.3,42],[145.5,43.3],[141.8,45.4],[141.4,43.4],[140,42.5]],
+[[142,46],[143.5,49.5],[143,54],[142.2,54.2],[142,51]],
+[[120.1,23],[120.9,22],[121.9,24.9],[121,25.2]],
+[[95.3,5.6],[97.5,5.2],[100.4,2.2],[104,-0.5],[106,-3],[105.8,-5.8],[104.5,-5.9],[102,-4],[100.3,-1],[98.6,1.8]],
+[[105.2,-6.8],[108,-6.3],[111,-6.4],[114.5,-7.7],[114.4,-8.7],[110,-8.1],[106.5,-7.4]],
+[[109,1.5],[109.6,-0.5],[110.2,-2.9],[113,-3.2],[116,-3.8],[116.5,-1],[118,1],[119,5],[117.2,6.9],[116,6.2],[113.8,4.4],[111.3,2.6],[109.6,2]],
+[[120,18.5],[122.2,18.5],[122,16.5],[124,13],[121.5,13.8],[120.6,14.4],[119.8,16.3]],[[122,7],[126.5,7.2],[126.5,9.3],[124.5,8.9]],
+[[131,-1.3],[135,-3.3],[138,-1.6],[141,-2.6],[145.7,-5.3],[147.5,-6.1],[150.5,-10.5],[147,-10],[144,-7.8],[141,-9.1],[138,-8.3],[137.8,-5],[134,-3.9],[132.3,-2.8]],
+[[113.4,-22],[114,-26.5],[115,-29.5],[115.5,-33.5],[117.9,-35],[123.5,-34],[129,-31.6],[134,-32.5],[135.9,-34.8],[137.8,-32.6],[137.5,-35.2],[139.7,-36.9],[141,-38.3],[144.5,-38.2],[146.4,-39.1],[150,-37.5],[153,-31.5],[153.6,-28],[153,-25],[150.8,-22.6],[149,-20.4],[146.3,-18.9],[145.4,-15],[143.5,-14],[142.6,-10.8],[141.6,-12.8],[141.6,-16.8],[139.3,-17.4],[136,-15.5],[135.9,-13.4],[136.9,-12.2],[132.6,-11.5],[130,-13],[129.5,-15],[126.2,-14],[122.2,-17.4],[121,-19.6],[116.7,-20.6],[114,-21.8]],
+[[172.7,-34.4],[174.6,-36.9],[178.5,-37.7],[177,-39.3],[175,-41.6],[173.8,-39.3],[174.6,-37.5]],[[172.7,-40.5],[174.3,-41.7],[173,-43.8],[171.2,-44.5],[169,-46.6],[166.5,-46],[168,-44],[171.5,-41.8]],
+[[-179.9,-78],[-179.9,-89],[179.9,-89],[179.9,-70],[150,-68],[100,-66],[60,-67],[20,-69],[-10,-71],[-40,-77],[-60,-73],[-60,-64],[-70,-69],[-100,-73],[-140,-75]]];
+const LAKES=[[[28,41.2],[29,41.2],[31,41.1],[36,41.7],[41.5,41.5],[39.5,44],[38,47],[35,45.3],[33.5,44.5],[32.5,45.5],[30,46],[29.5,45],[28,43],[27.5,42]],[[47,45],[49.5,46.5],[53,47],[53,45],[51,44],[52.8,41.5],[53.9,37.3],[51,36.7],[49,38],[49.5,40.5],[47.5,42.5]]];
+const W=[
+['Лондон',51.5,-0.13,0,'Вирушають зі станції Черінг-Крос о 20:45. Потягом до Дувра, далі кораблем до Франції.'],
+['Париж',48.85,2.35,1,'Потягом через Францію та Альпи.'],
+['Бриндізі',40.63,17.94,3,'В Італії сідають на пароплав «Монголія».'],
+['Порт-Саїд',31.26,32.3,6,'«Монголія» заходить у Суецький канал.'],
+['Суец',29.97,32.55,7,'Тут чекає детектив Фікс. Він вважає Фоґґа грабіжником банку!'],
+['Аден',12.8,45.0,12,'Коротка зупинка по вугілля наприкінці Червоного моря.'],
+['Бомбей',18.94,72.83,18,'Прибувають на два дні раніше. Паспарту потрапляє в халепу в храмі.'],
+['Колбі',21.5,76.5,19,'Залізниця обривається! Фоґґ купує слона Кіуні.'],
+['Аллахабад',25.43,81.85,21,'Рятують Ауду й далі їдуть потягом.'],
+['Калькутта',22.57,88.36,23,'Суд через черевики Паспарту — Фоґґ платить заставу.'],
+['Андаманське море',7,95,26,'Пароплав «Рангун» через Бенгальську затоку.'],
+['Сингапур',1.29,103.85,29,'Зупинка по вугілля. Фоґґ і Ауда катаються в кареті.'],
+['Південнокитайське море',12,111,32,'Шторм затримує «Рангун».'],
+['Гонконг',22.3,114.17,35,'Фікс збиває Паспарту з пантелику. «Карнатик» відпливає без Фоґґа.'],
+['Шанхай',31.0,122.5,39,'Після тайфуну на крихітній «Танкадере» Фоґґ подає сигнал великому пароплаву до Йокогами.'],
+['Йокогама',35.44,139.64,43,'Паспарту виступає з акробатами — і знову знаходить Фоґґа.'],
+['Тихий океан',43,-170,52,'Пароплав «Генерал Грант» через Тихий океан.'],
+['Сан-Франциско',37.77,-122.42,62,'Передвиборчий мітинг переростає в бійку.'],
+['Огден',41.22,-111.97,64,'Потягом через гори й пустелі.'],
+['Медісін-Боу',41.9,-106.2,65,'Бізони на колії, а потім хиткий міст.'],
+['Форт Керні',40.7,-99.08,66,'Напад на потяг. Паспарту в полоні — Фоґґ іде його рятувати.'],
+['Омаха',41.26,-95.94,67,'Сухопутна яхта! Сани з вітрилом летять снігом.'],
+['Чикаго',41.88,-87.63,68,'Потягом до Нью-Йорка.'],
+['Нью-Йорк',40.71,-74.0,70,'Запізнюються на пароплав «Китай» на 45 хвилин.'],
+['Атлантичний океан',47,-40,74,'Фоґґ бере «Генрієтту» під своє командування й палить її дерев\'яні частини.'],
+['Квінстаун',51.85,-8.29,79,'З Ірландії — швидким поштовим потягом і пором.'],
+['Ліверпуль',53.4,-2.98,79.5,'Фікс заарештовує Фоґґа! А справжнього грабіжника спіймали кілька днів тому.'],
+['Лондон',51.5,-0.13,80,'Удома — і всі думають, що запізнилися на день…']];
+const start=new Date(Date.UTC(1872,9,2));
+const fmt=d=>{const t=new Date(start.getTime()+Math.floor(d)*864e5);return t.toLocaleDateString('uk-UA',{weekday:'long',day:'numeric',month:'long',year:'numeric',timeZone:'UTC'})};
+const how=(i)=>['потяг і пором','потяг','пароплав «Монголія»','пароплав «Монголія»','пароплав «Монголія»','пароплав «Монголія»','потяг','слон Кіуні','потяг','пароплав «Рангун»','пароплав «Рангун»','пароплав «Рангун»','пароплав «Рангун»','лоцманський бот «Танкадере»','пароплав «Генерал Грант»','пароплав «Генерал Грант»','пароплав «Генерал Грант»','потяг','потяг','потяг','сани з вітрилом','потяг','потяг','пароплав «Генрієтта»','пароплав «Генрієтта»','поштовий потяг і пором','потяг'][i];
+const svg=document.getElementById('map'),dayI=document.getElementById('day');
+let proj,path,ok=typeof d3!=='undefined';
+function seg(d){for(let i=0;i<W.length-1;i++)if(d<=W[i+1][3])return i;return W.length-2}
+function pos(d){const i=seg(d),a=W[i],b=W[i+1],t=b[3]===a[3]?1:(d-a[3])/(b[3]-a[3]);
+ if(ok)return d3.geoInterpolate([a[2],a[1]],[b[2],b[1]])(Math.max(0,Math.min(1,t)));return [a[2]+(b[2]-a[2])*t,a[1]+(b[1]-a[1])*t]}
+const xy=p=>ok?proj(p):[(p[0]+180)/360*960,(90-p[1])/180*500];
+function line(upTo){const pts=[];for(const w of W){if(w[3]<=upTo)pts.push([w[2],w[1]])}pts.push(pos(upTo));return {type:'LineString',coordinates:pts}}
+const full={type:'LineString',coordinates:W.map(w=>[w[2],w[1]])};
+function rough(){const P=r=>'M'+r.map(p=>xy(p).map(v=>v.toFixed(1)).join(' ')).join('L')+'Z';return `<path d="${LAND.map(P).join('')}" fill="var(--land)" stroke="var(--line)" stroke-width=".6" stroke-linejoin="round"/><path d="${LAKES.map(P).join('')}" fill="var(--sea)"/>`}
+function base(land){let h='';
+ if(ok){proj=d3.geoNaturalEarth1().fitExtent([[8,8],[952,492]],{type:'Sphere'});path=d3.geoPath(proj);
+  h+=`<path d="${path({type:'Sphere'})}" fill="var(--sea)"/><path d="${path(d3.geoGraticule10())}" fill="none" stroke="var(--line)" stroke-width=".6"/>`;
+  h+=land?`<path d="${path(land)}" fill="var(--land)" stroke="var(--line)" stroke-width=".5"/>`:rough();
+  h+=`<path d="${path(full)}" fill="none" stroke="var(--navy)" stroke-width="2" stroke-dasharray="5 6" opacity=".55"/>`;}
+ else h+=`<rect width="960" height="500" fill="var(--sea)"/>`+rough();
+ h+=`<path id="done" fill="none" stroke="var(--red)" stroke-width="4" stroke-linecap="round"/>`;
+ W.forEach(w=>{if(/океан|море/.test(w[0]))return;const [x,y]=xy([w[2],w[1]]);h+=`<circle cx="${x}" cy="${y}" r="4" fill="var(--card)" stroke="var(--navy)" stroke-width="2"/>`});
+ h+=`<g id="me"><circle r="13" fill="var(--red)" opacity=".25"/><circle r="7" fill="var(--red)" stroke="#fff" stroke-width="2"/></g><text id="lbl" font-family="Rubik,sans-serif" font-weight="700" font-size="20" fill="var(--ink)" paint-order="stroke" stroke="var(--bg)" stroke-width="5"></text>`;
+ svg.innerHTML=h;draw(+dayI.value)}
+function draw(d){const p=pos(d),[x,y]=xy(p),i=seg(d);
+ document.getElementById('me').setAttribute('transform',`translate(${x},${y})`);
+ const near=W.find(w=>Math.abs(w[3]-d)<.6);const name=near?near[0]:`${W[i][0]} → ${W[i+1][0]}`;
+ const l=document.getElementById('lbl');l.textContent=near?near[0]:'';l.setAttribute('x',Math.min(x+12,860));l.setAttribute('y',y-12);
+ if(ok)document.getElementById('done').setAttribute('d',path(line(d))||'');
+ document.getElementById('dn').textContent=Math.floor(d);
+ document.getElementById('where').textContent=name;
+ document.getElementById('date').textContent='День '+Math.floor(d)+' · '+fmt(d);
+ document.getElementById('how').textContent=near?near[4]:'У дорозі: '+how(i)+'.'}
+document.getElementById('list').innerHTML=W.filter(w=>!/океан|море/.test(w[0])).map(w=>`<p><b>День ${w[3]|0} · ${w[0]}</b><br>${w[4]}</p>`).join('');
+dayI.addEventListener('input',()=>draw(+dayI.value));
+let timer=null;const pb=document.getElementById('play');
+pb.addEventListener('click',()=>{if(timer){clearInterval(timer);timer=null;pb.textContent='▶ Пуск';return}
+ if(+dayI.value>=80)dayI.value=0;pb.textContent='❚❚ Пауза';
+ timer=setInterval(()=>{const v=Math.min(80,+dayI.value+.25);dayI.value=v;draw(v);if(v>=80){clearInterval(timer);timer=null;pb.textContent='▶ Ще раз'}},60)});
+base(null);
+if(ok&&typeof topojson!=='undefined')fetch('https://cdn.jsdelivr.net/npm/world-atlas@2.0.2/land-110m.json').then(r=>r.json()).then(t=>base(topojson.feature(t,t.objects.land))).catch(()=>{});
+}</script>
+</main>
+<footer class="foot">Паспорт Prybambas · читацький щоденник Марини Скляр · <a href="https://prybambas.com">prybambas.com</a></footer>
+</body></html>
