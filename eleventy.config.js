@@ -15,6 +15,7 @@ export default function (cfg) {
   for (const p of PASSTHROUGH) cfg.addPassthroughCopy(p);
   // Бонус-сторінки за QR-кодами з книжки «Prybambas Passport: Around the World in 80 Days»
   cfg.addPassthroughCopy({ "passport-80": "en/80" });
+  cfg.addPassthroughCopy({ "passport-80-uk": "uk/80" });
   // Картинки й файли з папки content (обкладинки, превʼю)
   cfg.addPassthroughCopy("content/**/*.{jpg,jpeg,png,webp,gif,svg}");
   cfg.addWatchTarget("content/");

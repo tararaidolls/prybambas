@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="uk"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Штамп: Лондон · Паспорт Prybambas</title><meta name="description" content="Штамп: Лондон — бонус-сторінка до читацького щоденника «Паспорт Prybambas: Навколо світу за 80 днів» (6–12 років).">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Rubik:wght@500;700;800&display=swap" rel="stylesheet">
+<style>/* VOICE: warm, curious explorer's companion for kids 6-12 and their grown-ups
+   IDEA: the pages of a travel passport/journal from 1872 that came to life
+   PICTURE: each page leads with its working thing — stamp, map, experiment, quiz
+   COLOUR: journal navy, stamp red, paper white, yellow note card
+   TYPE: Rubik bold headings (like the book), Nunito body
+   LAYOUT: single calm column up to 760px, big touch targets */
+:root{color-scheme:light dark;
+--bg:light-dark(#fbfaf6,#141a26);--card:light-dark(#ffffff,#1d2535);--ink:light-dark(#1d2433,#eef1f7);
+--muted:light-dark(#5d6678,#a9b2c4);--navy:light-dark(#1c3d6e,#8fb3ea);--red:light-dark(#d4452b,#ff7a5c);
+--note:light-dark(#fff6dc,#2b2a1f);--noteb:light-dark(#e8c25a,#b8973a);--line:light-dark(#e3ded2,#2f3a50);
+--sea:light-dark(#dcebf6,#16263c);--land:light-dark(#efe4c8,#3a4256);--purple:light-dark(#7b3fb5,#c49cf0);--green:light-dark(#4f7f2f,#9fd07a)}
+:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.55 Nunito,system-ui,sans-serif;overflow-x:clip}
+h1,h2,h3{font-family:Rubik,Nunito,system-ui,sans-serif;color:var(--navy);line-height:1.1;text-wrap:balance;margin:0 0 .4em}
+h1{font-size:clamp(32px,7vw,46px);font-weight:800}h2{font-size:24px;font-weight:700;margin-top:1.4em}h3{font-size:19px}
+a{color:var(--navy)}
+.top{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;padding:12px max(5vw,16px);border-bottom:2px solid var(--navy);font-size:14px}
+.top b{font-family:Rubik,sans-serif;color:var(--navy);letter-spacing:.02em}
+.top a{font-weight:700;text-decoration:none;padding:8px 0}
+main{max-width:760px;margin:0 auto;padding:24px max(5vw,16px) 56px}
+.tag{display:inline-block;font:700 13px Rubik,sans-serif;color:#fff;background:var(--navy);border-radius:99px;padding:4px 12px;margin-bottom:12px}
+.tag.red{background:var(--red)}.tag.purple{background:var(--purple)}.tag.green{background:var(--green)}
+.lead{font-size:19px;color:var(--muted);margin:0 0 20px}
+.card{background:var(--card);border:2px solid var(--navy);border-radius:18px;padding:20px;margin:18px 0}
+.note{background:var(--note);border:2px solid var(--noteb);border-radius:18px;padding:18px 20px;margin:18px 0}
+.lvl{font:700 13px Rubik,sans-serif;border-radius:99px;padding:3px 10px;margin-right:6px;white-space:nowrap}
+.lvl.d{background:#f2c14e;color:#3a2b00}.lvl.n{background:var(--navy);color:var(--card)}
+button,.btn{font:700 17px Rubik,Nunito,sans-serif;min-height:48px;padding:10px 20px;border-radius:14px;border:2px solid var(--navy);background:var(--navy);color:var(--card);cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:8px}
+button.ghost,.btn.ghost{background:transparent;color:var(--navy)}
+button:focus-visible,input:focus-visible,a:focus-visible{outline:3px solid var(--red);outline-offset:2px}
+button:disabled{opacity:.5;cursor:default}
+input[type=text]{font:700 20px Rubik,sans-serif;letter-spacing:.08em;text-transform:uppercase;min-height:52px;padding:8px 14px;border:2px solid var(--navy);border-radius:14px;background:var(--card);color:var(--ink);width:100%}
+input.plain{text-transform:none;letter-spacing:0;font:600 17px Nunito,sans-serif}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.fig{position:relative;width:100%}.fig svg{display:block;width:100%;height:auto}
+.story p{margin:0 0 1em}
+.listen{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.foot{text-align:center;color:var(--muted);font-size:14px;padding:24px 16px 40px;border-top:1px solid var(--line)}
+.ok{color:var(--green);font-weight:700}.bad{color:var(--red);font-weight:700}
+details{border-top:1px dashed var(--line);padding:10px 0}summary{cursor:pointer;font-weight:700;color:var(--navy);min-height:32px}
+.stamps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+@media(max-width:520px){.stamps{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.slot{text-align:center;font-size:13px;color:var(--muted);text-decoration:none}
+.slot svg{width:100%;height:auto}
+.hl{background:var(--note);padding:0 4px;border-radius:4px}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+@media print{.top,.foot,.noprint{display:none}}
+</style><script>const P80={
+ stamps:[
+  {id:'london',city:'Лондон',date:'2 жовт. 1872',word:'ГОДИННИК',alt:'CLOCK',stage:'Етап 1 · Лондон',icon:'clock'},
+  {id:'suez',city:'Суец',date:'9 жовт. 1872',word:'КАНАЛ',alt:'CANAL',stage:'Етап 2 · Європа і Суец',icon:'pyramid'},
+  {id:'india',city:'Індія',date:'25 жовт. 1872',word:'КІУНІ',alt:'KIOUNI',stage:'Етап 3 · Індія',icon:'dome'},
+  {id:'hongkong',city:'Гонконг',date:'6 лист. 1872',word:'ТАЙФУН',alt:'TYPHOON',stage:'Етап 4 · Сингапур і Гонконг',icon:'spiral'},
+  {id:'yokohama',city:'Йокогама',date:'14 лист. 1872',word:'ЖУРАВЛИК',alt:'CRANE',stage:'Етап 5 · Японія',icon:'crane'},
+  {id:'sanfrancisco',city:'Сан-Франциско',date:'3 груд. 1872',word:'ҐРАНТ',alt:'GRANT',stage:'Етап 6 · Тихий океан',icon:'ship'},
+  {id:'newyork',city:'Нью-Йорк',date:'11 груд. 1872',word:'ВІТРИЛО',alt:'SAIL',stage:'Етап 7 · Через Америку',icon:'sledge'},
+  {id:'return',city:'Лондон',date:'21 груд. 1872',word:'СХІД',alt:'EAST',stage:'Етап 8 · Додому',icon:'compass'}],
+ get(k,d){try{const v=localStorage.getItem('p80uk_'+k);return v==null?d:JSON.parse(v)}catch(e){return d}},
+ set(k,v){try{localStorage.setItem('p80uk_'+k,JSON.stringify(v))}catch(e){}},
+ have(){return this.get('stamps',[])},
+ add(id){const s=this.have();if(!s.includes(id)){s.push(id);this.set('stamps',s)}},
+ icon(n,c){const s=`stroke="${c}" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"`;return({
+  clock:`<circle cx="100" cy="92" r="24" ${s}/><path d="M100 76v16l11 7" ${s}/>`,
+  pyramid:`<path d="M70 112l26-40 26 40z M104 112l16-24 16 24" ${s}/><circle cx="130" cy="70" r="7" ${s}/>`,
+  dome:`<path d="M74 114h52M80 114v-18h40v18M84 96c0-16 8-22 16-28 8 6 16 12 16 28M100 68v-6M68 114v-24M132 114v-24" ${s}/>`,
+  spiral:`<path d="M100 92c0-4 6-4 6 0 0 8-12 8-12 0 0-12 18-12 18 0 0 16-24 16-24 0 0-20 30-20 30 0" ${s}/>`,
+  crane:`<path d="M66 100l34-6 34-26-20 30 22 4-30 4-8 12-6-12-26-6z M100 94l-8-22" ${s}/>`,
+  ship:`<path d="M70 104h60l-8 12H78z M84 104V88h30v16 M92 88V74h10v14" ${s}/><path d="M104 70c6-4 12-4 16 0" ${s}/>`,
+  sledge:`<path d="M70 112h56c6 0 8-6 4-8 M78 106h44 M100 106V68l22 34H100" ${s}/>`,
+  compass:`<circle cx="100" cy="92" r="24" ${s}/><path d="M100 76l6 16-6 16-6-16z" ${s}/><path d="M124 92h10l-5-5m5 5l-5 5" ${s}/>`})[n]||''},
+ stampSVG(st,on){const c=on?'var(--red)':'var(--line)',t=on?'var(--red)':'var(--muted)';const id='a'+st.id;
+  return `<svg viewBox="0 0 200 200" role="img" aria-label="Штамп: ${st.city}${on?'':' (ще не отримано)'}">
+  <circle cx="100" cy="100" r="94" fill="none" stroke="${c}" stroke-width="2" stroke-dasharray="6 6"/>
+  <circle cx="100" cy="100" r="82" fill="${on?'light-dark(#fff,#1d2535)':'none'}" stroke="${c}" stroke-width="8"/>
+  <circle cx="100" cy="100" r="68" fill="none" stroke="${c}" stroke-width="2"/>
+  <path id="${id}" d="M42 100a58 58 0 0 1 116 0" fill="none"/>
+  <text font-family="Rubik,sans-serif" font-size="14" font-weight="700" letter-spacing="3" fill="${t}"><textPath href="#${id}" startOffset="50%" text-anchor="middle">PRYBAMBAS</textPath></text>
+  ${on?this.icon(st.icon,'var(--red)'):`<text x="100" y="104" text-anchor="middle" font-size="34" font-family="Rubik" fill="${t}">?</text>`}
+  <rect x="38" y="118" width="124" height="${st.city.length>9?26:30}" rx="4" fill="${on?'var(--red)':'none'}" stroke="${c}" stroke-width="2"/>
+  <text x="100" y="${st.city.length>9?136:140}" text-anchor="middle" font-family="Rubik,sans-serif" font-weight="800" font-size="${st.city.length>9?14:(st.city.length>7?17:20)}" fill="${on?'#fff':t}">${st.city.toUpperCase()}</text>
+  <text x="100" y="164" text-anchor="middle" font-family="Nunito,sans-serif" font-size="12" font-weight="700" fill="${t}">${st.date}</text></svg>`},
+ voice(){const v=speechSynthesis.getVoices();return v.find(x=>/^uk/i.test(x.lang))},
+ // Аудіо: грає ./audio.mp3, якщо покласти файл поруч зі сторінкою, інакше читає текст голосом пристрою
+ listen(btn,textEl){let speaking=false;const audio=new Audio('audio.mp3');let hasFile=false;
+  audio.addEventListener('canplaythrough',()=>{hasFile=true},{once:true});audio.load();
+  audio.onended=()=>{btn.textContent='▶ Слухати';speaking=false};
+  btn.addEventListener('click',()=>{
+   if(hasFile){if(audio.paused){audio.play().catch(()=>{});btn.textContent='❚❚ Пауза'}else{audio.pause();btn.textContent='▶ Слухати'}return}
+   if(!('speechSynthesis' in window)){btn.textContent='Аудіо недоступне';return}
+   if(speaking){speechSynthesis.cancel();speaking=false;btn.textContent='▶ Слухати';return}
+   const u=new SpeechSynthesisUtterance(textEl.innerText);const v=P80.voice();if(v)u.voice=v;u.lang=v?v.lang:'uk-UA';u.rate=.95;
+   u.onend=()=>{speaking=false;btn.textContent='▶ Слухати'};speechSynthesis.speak(u);speaking=true;btn.textContent='■ Стоп'});}
+};
+</script></head><body>
+<header class="top"><b>ПАСПОРТ PRYBAMBAS · Навколо світу за 80 днів</b><a href="../index.html">← Мій паспорт</a></header>
+<main><span class="tag red">Етап 8 · Додому · Цифровий штамп</span>
+<h1>Твій штамп: повернення до Лондона</h1>
+<p class="lead">Знайди пароль на сторінці зі штампом у своєму щоденнику й введи його тут.</p>
+<div class="card" style="text-align:center">
+ <div id="sv" style="max-width:240px;margin:0 auto 14px"></div>
+ <form id="f" class="row" style="justify-content:center"><input id="w" type="text" autocomplete="off" autocapitalize="characters" placeholder="Пароль" aria-label="Пароль" style="max-width:260px"><button>Поставити штамп!</button></form>
+ <p id="m" aria-live="polite" style="min-height:1.6em;margin:10px 0 0"></p>
+</div>
+<h2>Мій паспорт</h2>
+<div class="stamps" id="all"></div>
+<p style="margin-top:20px"><a class="btn ghost" href="../index.html">Відкрити мій паспорт</a></p>
+<script>{
+const st=P80.stamps.find(s=>s.id==='return');const sv=document.getElementById('sv'),m=document.getElementById('m');
+function all(){const h=P80.have();document.getElementById('all').innerHTML=P80.stamps.map(s=>`<div class="slot">${P80.stampSVG(s,h.includes(s.id))}<div>${s.city}</div></div>`).join('')}
+function render(anim){const on=P80.have().includes(st.id);sv.innerHTML=P80.stampSVG(st,on);
+ if(on){document.getElementById('f').style.display='none';m.innerHTML='<span class="ok">Штамп стоїть! Зібрано '+P80.have().length+' з 8.</span>';
+  if(anim)sv.animate([{transform:'scale(1.6) rotate(-20deg)',opacity:0},{transform:'scale(.92) rotate(-6deg)',opacity:1,offset:.7},{transform:'scale(1) rotate(-6deg)'}],{duration:600,easing:'ease-out',fill:'forwards'})}all()}
+document.getElementById('f').addEventListener('submit',e=>{e.preventDefault();const v=document.getElementById('w').value.trim().toUpperCase().replace(/[^A-ZА-ЯІЇЄҐ]/g,'').replace(/Г(?=РАНТ$)/,'Ґ');
+ if(v===st.word||v===st.alt){P80.add(st.id);render(true)}else{m.innerHTML='<span class="bad">Хм, це не той пароль.</span> Пошукай слово «Пароль» біля штампа в щоденнику.'}});
+render(false)}</script></main>
+<footer class="foot">Паспорт Prybambas · читацький щоденник Марини Скляр · <a href="https://prybambas.com">prybambas.com</a></footer>
+</body></html>
