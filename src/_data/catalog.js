@@ -61,18 +61,26 @@ const games = (() => {
     .sort((a, b) => (a.order ?? 99) - (b.order ?? 99));
 })();
 // Мовні адреси ігор: /<мова>/<гра>/ — копія сторінки гри, що відкривається цією мовою
-const gameLangs = (g) => (g.localized ? (g.langs || GAME_LANGS) : []);
-const gameLangUrl = (g, lang) => `/${lang}/${g.slug}/`;
+// Мова за замовчуванням (en) — це сама оригінальна адреса гри, окремої /en/<гра>/ немає.
+// Лише мови, якими гру перекладено (langs у game.yml); для інших адрес — перенаправлення.
+const DEFAULT_GAME_LANG = "en";
+const gameAllLangs = (g) => (g.localized ? (g.langs || GAME_LANGS) : []);
+const gameLangs = (g) => gameAllLangs(g).filter((l) => l !== DEFAULT_GAME_LANG);
+const gameLangUrl = (g, lang) => (lang === DEFAULT_GAME_LANG ? g.url : `/${lang}/${g.slug}/`);
+// Адреси, які раніше існували (усі 15 мов + /en/), а тепер ведуть на оригінал
+const gameRedirectPages = games.filter((g) => g.localized).flatMap((g) => GAME_LANGS
+  .filter((l) => !gameLangs(g).includes(l))
+  .map((lang) => ({ url: `/${lang}/${g.slug}/`, to: gameLangUrl(g, gameAllLangs(g).includes(lang) ? lang : DEFAULT_GAME_LANG) })));
 const gameLangPages = games.flatMap((g) => gameLangs(g).map((lang) => ({
   slug: g.slug, lang, file: g.file, base: g.url, url: gameLangUrl(g, lang),
   title: (g.texts[lang] || g.texts.en || {}).title, desc: (g.texts[lang] || g.texts.en || {}).desc,
   rtl: (site.gameLanguages || []).some((l) => l.code === lang && l.rtl),
-  alternates: [...gameLangs(g).map((l) => ({ lang: l, url: gameLangUrl(g, l) })), { lang: "x-default", url: g.url }],
+  alternates: [...gameAllLangs(g).map((l) => ({ lang: l, url: gameLangUrl(g, l) })), { lang: "x-default", url: g.url }],
 })));
 
 // Текст гри мовою, або англійською
 const gameText = (g, lang) => g.texts[lang] || g.texts[site.defaultLang] || Object.values(g.texts)[0] || { title: g.slug };
-const gameCards = (lang) => games.map((g) => ({ slug: g.slug, url: gameLangs(g).includes(lang) ? gameLangUrl(g, lang) : g.url, baseUrl: g.url, langs: gameLangs(g), skill: g.skill, ages: g.ages, tape: g.tape, spot: g.spot, tilt: g.tilt, tapeOpacity: g.tapeOpacity, iconSvg: g.iconSvg, ...gameText(g, lang) }));
+const gameCards = (lang) => games.map((g) => ({ slug: g.slug, url: gameAllLangs(g).includes(lang) ? gameLangUrl(g, lang) : g.url, baseUrl: g.url, langs: gameAllLangs(g), skill: g.skill, ages: g.ages, tape: g.tape, spot: g.spot, tilt: g.tilt, tapeOpacity: g.tapeOpacity, iconSvg: g.iconSvg, ...gameText(g, lang) }));
 // slug гри → адреса (для кнопки «Спробуй онлайн» на сторінках товарів); site.games — додаткові адреси
 const gameUrls = { ...(site.games || {}), ...Object.fromEntries(games.map((g) => [g.slug, g.url])) };
 
@@ -88,6 +96,11 @@ const products = readEntries("products", "product.yml")
     status: p.status || "available",
     // Кнопки купівлі збираються з оголошень (listings) + знімків магазинів
     editions: buyEditions(p, resolveListings(p, shops), site),
+    // Пропозиції для розмітки Google (schema.org Offer): лише оголошення з ціною й посиланням
+    offers: resolveListings(p, shops)
+      .filter((l) => l.price > 0 && l.currency && !["removed", "missing"].includes(l.status))
+      // для Etsy відомий лише пошук у магазині, тож пряму адресу не вказуємо (для Google вона необовʼязкова)
+      .map((l) => ({ price: Number(l.price).toFixed(2), currency: l.currency, url: l.urlKind === "search" ? undefined : l.url, preorder: l.status === "preorder", platform: l.platform })),
     url: (lang) => `/${lang}/shop/${p.series}/${p.slug}/`,
   }))
   .sort((a, b) => (a.order ?? 99) - (b.order ?? 99) || a.slug.localeCompare(b.slug));
@@ -148,6 +161,7 @@ export default {
   games,
   gameCards,
   gameLangPages,
+  gameRedirectPages,
   // Дані для головної «/» (перемикання мови без перезавантаження): ігри 15 мовами, ідеї й товари мовами магазину
   homeTeasers: Object.fromEntries(LANGS.map((lang) => [lang, {
     posts: postsIn(lang).slice(0, 3).map((p) => { const c = postCard(p, lang); return { url: c.url, title: c.title, date: c.date }; }),

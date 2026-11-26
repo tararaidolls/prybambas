@@ -8,7 +8,7 @@
   eleventyComputed: {
     lang: (data) => data.S.lang,
     alternates: (data) => data.S.alternates,
-    pageTitle: (data) => data.S.t.title,
+    pageTitle: (data) => `${data.S.t.title} — ${data.i18n[data.S.lang].shop_title}`,
     description: (data) => data.S.t.tagline,
   },
 }

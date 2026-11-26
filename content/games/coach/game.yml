@@ -9,4 +9,5 @@ tilt: 4                   # нахил скотчу, градуси
 tapeOpacity: 0.75
 icon: icon.svg             # чорнильна іконка 100×100
 localized: true
+langs: [en, uk]          # мови, якими гру справді перекладено (решта бачила б англійський текст — дублікат для Google)
 file: coach/index.html

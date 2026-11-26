@@ -1,10 +1,10 @@
 ---
 title: "Mission Possible"
-tagline: "20 engineering challenges for creative kids 8–14, built on the TRIZ method."
+tagline: "24 escape missions for creative kids 8–14: invent your way out with the TRIZ method."
 ---
 
 ## What's inside
-- 20 engineering challenges solved with your own invention
+- 24 escape missions, each with a situation and 3 random items
+- Get out by inventing a solution from what you have
 - Learn to spot contradictions and solve them like a real inventor
-- Pages for sketches and prototypes
-- Three difficulty levels for gifted kids
+- Three levels: Rookie, Agent, Elite

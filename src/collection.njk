@@ -9,6 +9,11 @@
     alternates: (data) => data.C.alternates,
     pageTitle: (data) => {
       const t = data.i18n[data.C.lang];
+      const name = data.C.kind === "skill" ? t.skills[data.C.key].name : t.ages.replace("{ages}", data.C.key.replace("-", "–"));
+      return `${name}: ${t.collection_suffix}`;
+    },
+    heading: (data) => {
+      const t = data.i18n[data.C.lang];
       return data.C.kind === "skill" ? t.skills[data.C.key].name : t.ages.replace("{ages}", data.C.key.replace("-", "–"));
     },
     description: (data) => {
@@ -23,7 +28,7 @@
 {%- set t = i18n[C.lang] -%}
 <section class="page-head c-{{ C.color }}">
   <p class="eyebrow">{{ t.by_skill if C.kind == "skill" else t.by_age }}</p>
-  <h1><span class="hl">{{ pageTitle }}</span></h1>
+  <h1><span class="hl">{{ heading }}</span></h1>
   <p>{{ description }}</p>
 </section>
 

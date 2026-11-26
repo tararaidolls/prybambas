@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>My traveler's passport · Prybambas Passport</title><meta name="description" content="Online traveler's passport for the Prybambas Passport reading journal: Around the World in 80 Days. Collect digital stamps, listen to Passepartout, take the quiz.">
+<title>My traveler's passport · Prybambas Passport</title>
+<link rel="canonical" href="https://prybambas.com/en/80/">
+<meta name="robots" content="noindex, follow">  <!-- бонус-сторінка за QR-кодом із книжки; у пошуку не потрібна --><meta name="description" content="Online traveler's passport for the Prybambas Passport reading journal: Around the World in 80 Days. Collect digital stamps, listen to Passepartout, take the quiz.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Rubik:wght@500;700;800&display=swap" rel="stylesheet">
 <style>/* VOICE: warm, curious explorer's companion for kids 6-12 and their grown-ups
@@ -120,9 +122,9 @@ details{border-top:1px dashed var(--line);padding:10px 0}summary{cursor:pointer;
 <div style="display:grid;gap:10px" id="ex"></div>
 <script>{
 const X=[['hello','Hello from Passepartout','Audio · before you start'],['route','Live route map','Where they were on each of the 80 days'],['passepartout',"Passepartout's story",'Audio · Stage 1'],['suez','The canal from above','Stage 2 · with answers to page 16'],['crane','Fold a paper crane','Stage 5 · plus your name in katakana'],['orange','Orange and flashlight','Stage 8 · the lost-and-found day'],['quiz',"The Great Traveler's Quiz",'Finale · online']];
-document.getElementById('ex').innerHTML=X.map(x=>`<a class="note" style="margin:0;text-decoration:none;display:block" href="${x[0]}/index.html"><b style="color:var(--navy);font-family:Rubik,sans-serif">${x[1]}</b><br><span style="color:var(--muted)">${x[2]}</span></a>`).join('');
+document.getElementById('ex').innerHTML=X.map(x=>`<a class="note" style="margin:0;text-decoration:none;display:block" href="${x[0]}/"><b style="color:var(--navy);font-family:Rubik,sans-serif">${x[1]}</b><br><span style="color:var(--muted)">${x[2]}</span></a>`).join('');
 const h=P80.have();
-document.getElementById('st').innerHTML=P80.stamps.map((s,i)=>`<a class="slot" href="stamp-${s.id}/index.html">${P80.stampSVG(s,h.includes(s.id))}<div>${i+1}. ${s.city}${i===7?' again':''}</div></a>`).join('');
+document.getElementById('st').innerHTML=P80.stamps.map((s,i)=>`<a class="slot" href="stamp-${s.id}/">${P80.stampSVG(s,h.includes(s.id))}<div>${i+1}. ${s.city}${i===7?' again':''}</div></a>`).join('');
 document.getElementById('cnt').textContent=h.length===8?'All 8 stamps — you went around the world!':`${h.length} of 8 stamps. Tap a stamp to enter its code word.`;
 const info=P80.get('info',{});
 document.querySelectorAll('[data-k]').forEach(i=>{i.value=info[i.dataset.k]||'';i.addEventListener('input',()=>{info[i.dataset.k]=i.value;P80.set('info',info);cert()})});
