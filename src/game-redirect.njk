@@ -1,0 +1,14 @@
+---js
+{
+  // Колишні мовні адреси ігор (напр. /en/what-if/, /da/coach/) → оригінал або перекладена версія
+  pagination: { data: "catalog.gameRedirectPages", size: 1, alias: "R" },
+  permalink: (data) => data.R.url,
+  eleventyExcludeFromCollections: true,
+}
+---
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><title>Prybambas</title>
+<meta name="robots" content="noindex">
+<link rel="canonical" href="{{ site.url }}{{ R.to }}">
+<meta http-equiv="refresh" content="0; url={{ R.to }}">
+</head><body><a href="{{ R.to }}">{{ site.url }}{{ R.to }}</a></body></html>

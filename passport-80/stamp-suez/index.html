@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Suez stamp · Prybambas Passport</title><meta name="description" content="Suez stamp — bonus page for the Prybambas Passport reading journal for Around the World in 80 Days (ages 6–12).">
+<title>Suez stamp · Prybambas Passport</title>
+<link rel="canonical" href="https://prybambas.com/en/80/stamp-suez/">
+<meta name="robots" content="noindex, follow">  <!-- бонус-сторінка за QR-кодом із книжки; у пошуку не потрібна --><meta name="description" content="Suez stamp — bonus page for the Prybambas Passport reading journal for Around the World in 80 Days (ages 6–12).">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Rubik:wght@500;700;800&display=swap" rel="stylesheet">
 <style>/* VOICE: warm, curious explorer's companion for kids 6-12 and their grown-ups
@@ -98,7 +100,7 @@ details{border-top:1px dashed var(--line);padding:10px 0}summary{cursor:pointer;
    u.onend=()=>{speaking=false;btn.textContent='▶ Listen'};speechSynthesis.speak(u);speaking=true;btn.textContent='■ Stop'});}
 };
 </script></head><body>
-<header class="top"><b>PRYBAMBAS PASSPORT · Around the World in 80 Days</b><a href="../index.html">← My passport</a></header>
+<header class="top"><b>PRYBAMBAS PASSPORT · Around the World in 80 Days</b><a href="../">← My passport</a></header>
 <main><span class="tag red">Stage 2 · Europe and Suez · Digital stamp</span>
 <h1>Your Suez stamp</h1>
 <p class="lead">Find the code word on the stamp page of your journal and type it here.</p>
@@ -109,7 +111,7 @@ details{border-top:1px dashed var(--line);padding:10px 0}summary{cursor:pointer;
 </div>
 <h2>My passport</h2>
 <div class="stamps" id="all"></div>
-<p style="margin-top:20px"><a class="btn ghost" href="../index.html">Open my passport</a></p>
+<p style="margin-top:20px"><a class="btn ghost" href="../">Open my passport</a></p>
 <script>{
 const st=P80.stamps.find(s=>s.id==='suez');const sv=document.getElementById('sv'),m=document.getElementById('m');
 function all(){const h=P80.have();document.getElementById('all').innerHTML=P80.stamps.map(s=>`<div class="slot">${P80.stampSVG(s,h.includes(s.id))}<div>${s.city}</div></div>`).join('')}
